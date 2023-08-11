@@ -1,0 +1,16 @@
+{
+  "name": "data-management-and-databases",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "slides:clean": "rimraf slides",
+    "slides:build": "npm run slides:clean && marp --input-dir content --output slides --pdf"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@marp-team/marp-cli": "^3.2.0",
+    "rimraf": "^5.0.1"
+  }
+}
