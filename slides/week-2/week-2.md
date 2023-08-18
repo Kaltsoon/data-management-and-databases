@@ -80,9 +80,9 @@
 # Entity Integrity
 
 - A _candidate key_ is a superkey that satisfies the property of _minimality_
-    - Minimality is satisfied if an attribute can't be removed from the group of attributes without breaking the uniqueness property
-    - In the "course" relation the group of "code" and "name" attributes doesn't satify minimality, so it isn't a candidate key
-    - What other candidate keys does the "course" relation have?
+  - Minimality is satisfied if an attribute can't be removed from the group of attributes without breaking the uniqueness property
+  - In the "course" relation the group of "code" and "name" attributes doesn't satify minimality, so it isn't a candidate key
+  - What other candidate keys does the "course" relation have?
 - From the set of candidate keys for the relation, _exactly one_ candidate key is chosen to be the _primary key_
 - The other candidate keys become _alternate keys_
 - Each tuple has a value for the primary key, it can't be missing
@@ -116,7 +116,27 @@
 
 # Database manipulation
 
+- A _manipulation mechanism_ is among the most important parts of a data model
+- A manipulation mechanism allows the data to be retrieved and updated
+- _SQL_ is the standard database language for relational databases. With SQL we can:
+  - Create the database and relation structures
+  - Perform insertion, modification, and deletion of data from the relations
+  - Perform database queries
+- Instead of using formal terms of relations, attributes, and tuples, the terms _tables_, _columns_, and _rows_ are used in the SQL standard
 
+---
+
+# SQL
+
+- An SQL query is a single statement in which you describe what you want from the database
+- The query operates on tables and builds a result table from one or more tables in the database
+- Here's an example of an SQL query:
+
+```sql
+SELECT code, name, credits
+FROM course
+WHERE name = 'Data Management and Databases';
+```
 
 ---
 
