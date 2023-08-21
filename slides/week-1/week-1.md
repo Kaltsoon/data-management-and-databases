@@ -78,11 +78,59 @@ Welcome to the Data Management and Databases course!
 
 ---
 
+# Data management example
+
+- Let's consider the following information needs for a database:
+  - A real estate company is renting properties
+  - Each property has a property owner and a lease if the property is rented
+  - Each lease has a client who is renting the property from the owner
+  - The company has a sales team responsible for finding clients for the available properties and a contracts team responsible for managing the leases
+
+---
+
+# File-based approach in data management
+
+![bg fit right](./file-approach.png)
+
+- Data for sales and contracts teams is in _separate files_
+- Each team uses a separate application that defines and manages data in application-specific files
+- Each file has a specific format
+- Applications that use these files depend on knowledge about that format
+
+---
+
+- In the filesystem, there are the following sales files:
+  - PrivateOwner (ownerNo, fName, lName, address, telNo)
+  - PropetyForRent (propertyNo, street, city, postcode, rooms, rent, ownerNo)
+  - Client (clientNo, fName, lName, address, telNo, prefType, maxRent)
+- And the following contracts files:
+  - Lease (leaseNo, propertyNo, clientNo, paymentMethod, deposit, paid,
+  - rentStart, rentFinish, duration)
+  - PropetyForRent (propertyNo, street, city, postcode, rent)
+  - Client (clientNo, fName, lName, address, telNo)
+
+---
+
+# Problems of file-based approach
+
+- Data dependence
+  - Code is tightly coupled with the file structure: if it is modified, all programs that use the file have to be changed accordingly
+- Duplication of data
+  - Storing the same information in multiple files will lead to inconsistency
+- Difficulty in accessing data
+  - New requirement needs a new program or changes in an existing program
+- No provision for security and shared access to the data
+  - No service for providing user access to some, but not all, data
+- Lack of coordination and standardisation
+  - No centralised control of enterprise data
+
+---
+
 # Database Management System (DBMS)
 
 ![bg fit right:25%](./dbms.png)
 
-- One of the major components of a database system is the software
+- Problems of the file-based approach can be avoided by delegating data related operations to a _separate software_
 - _Database Management System_ (DBMS) is the software that:
   - Controls all access to the database
   - Allows users to define the database, usually through a _Data Definition Language_ (DDL)
@@ -90,28 +138,12 @@ Welcome to the Data Management and Databases course!
 
 ---
 
-# Database Management System (DBMS)
-
-- Nowadays, the _relational database management system_ (RDBMS) is the de facto standard
-- _SQL_ is the formal and de facto database language standard for RDBMSs
-- SQL has both DDL and DML features
-- There are multiple RDBMS products, such as _MySQL_ and _PostgreSQL_
-
----
-
-# Database system example
-
-- A real estate company is renting properties
-- Each property has a property owner and a lease if the property is rented
-- Each lease has a client who is renting the property from the owner
-- The company has a sales team responsible for finding clients for the available properties and a contracts team responsible for managing the leases
-
----
+# Database approach in data management
 
 ![bg fit right](./database-system.png)
 
-- People in the sales and contracts teams access the same database system
-- Each team uses a separate application that communicates with the DBMS using a data manipulation language
+- Data for both sales and contracts team is in the _same database_
+- Each team uses a separate application that communicates with the same DBMS using a data manipulation language
 - The DBMS retrieves and manipulates data in the database on behalf of the application
 
 ---
@@ -125,13 +157,18 @@ In the database, the structure of sales and contracts details is the following:
 
 ---
 
-The PrivateOwner table contains data such as:
+# Advantages of database approach
 
-| ownerNo | fName   | lName  | address       | telNo          |
-| ------- | ------- | ------ | ------------- | -------------- |
-| 1       | John    | Smith  | 360 Mary St   | (855) 766-3792 |
-| 2       | Jessica | Miller | 2109 Yonge St | (416) 840-4465 |
-| ...     | ...     | ...    | ...           | ...            |
+- Program-data independence
+  - Improved data accessibility
+- Effective access to data
+  - Standard database language with both programmatic and interactive interfaces
+- Data integrity
+  - Integrity can be maintained with the support of user-defined integrity constraints
+- Data security
+  - Security restrictions can be applied on detailed level
+- Coordination and standardisation
+  - Centralised data administration
 
 ---
 
@@ -146,6 +183,15 @@ The PrivateOwner table contains data such as:
   - Concurrency Control Services
   - Recovery Services
   - Authorization Services
+
+---
+
+# Database Management System (DBMS)
+
+- Nowadays, the _relational database management system_ (RDBMS) is the de facto standard
+- _SQL_ is the formal and de facto database language standard for RDBMSs
+- SQL has both DDL and DML features
+- There are multiple RDBMS products, such as _MySQL_ and _PostgreSQL_
 
 ---
 
