@@ -1,3 +1,8 @@
+<!-- 
+- Kesto noin 60min
+- TODO: arviointi ja tehtävät
+-->
+
 # Data Management and Databases
 
 Welcome to the Data Management and Databases course!
