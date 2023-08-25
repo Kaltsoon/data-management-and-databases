@@ -144,7 +144,7 @@
 
 # Referential Integrity
 
-- _Foregin key_ is a attribute or group attributes whose values are required to match those of the primary key of the referenced relation
+- _Foreign key_ is a attribute or group attributes whose values are required to match those of the primary key of the referenced relation
 - There can be several foreign keys in a relation
 - Foreign-to-primary-key matching is the "glue" which holds the database together
 - _Foreign key constraint_ prevents foreign key not being matched by a primary key in the referenced relation
