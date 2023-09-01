@@ -1,13 +1,17 @@
+<!-- 
+- Kesto noin 90min
+-->
+
 # The relational model
 
 ---
 
 # Data Model
 
-![bg fit right:50%](./data-model.png)
+![bg fit right:40%](./data-model.png)
 
-- A _data model_ is representation of _data elements_ and the relationships between them based on real-world objects
-  - For example when modeling a simple online store, data element representing customer is related to a data element representing an order
+- A _data model_ is an abstract representation of _data elements_ and the relationships between them based on real-world objects
+  - In case of a simple online store, data element representing customer consists of data elements such as customer's name and region
 - Data elements document real-world which means that the data model represents reality
 
 ---
@@ -40,7 +44,7 @@
 # Properties of relations
 
 - Each relation has a name that is distinct from all other relation names
-- Each attribute has a distinct name
+- Each attribute of a relation has a distinct name
 - Each tuple's cell contains exactly one value
 - Values of an attribute are all from the same domain
 - The order of attributes has no significance
@@ -156,6 +160,16 @@
 
 ---
 
+# Example of primary and foreign keys
+
+![bg fit right:50%](./primary-foreign-key-example.png)
+
+- Let's have a look at the exercise 5 in the first week's intro assignment
+- _What are the primary keys for each table?_
+- _What are the foreign keys for each table?_
+
+---
+
 # Not null constraint
 
 - _Null_ is a marker for a missing attribute value
@@ -196,6 +210,7 @@ WHERE name = 'Data Management and Databases';
 
 - A _data model_ consists of three components: the _structural part_, the _integrity part_ and the _manipulative part_
 - In the _relational model_, all data is logically structured within relations that have attributes and tuples
+-  _SQL_ is the standard database language for relational databases
 - _Integrity constraints_ are rules which make sure that the database is in a legal state
 - _Domain constraint_ specifies the set of allowable values for an attribute
 - _Primary key constraint_ prevents duplicate tuples to exist for the relation

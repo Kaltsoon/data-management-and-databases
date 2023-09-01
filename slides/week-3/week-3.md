@@ -1,5 +1,12 @@
 # Introduction to SQL
 
+- During this week we will learn:
+  - How to use a graphical interface to perform database operations
+  - How to create database tables using SQL
+  - How to define primary and foreign key constraints using SQL
+  - How to insert data into a table
+  - How to write simple database queries using SQL
+
 ---
 
 # SQL
@@ -35,7 +42,7 @@ connection = psycopg2.connect(
 
 cursor = connection.cursor()
 # Execute the database query
-cursor.execute("SELECT code, name, credits FROM courses")
+cursor.execute("SELECT course_code, course_name, credits FROM Course")
 courses = cursor.fetchall()
 ```
 
@@ -55,10 +62,11 @@ courses = cursor.fetchall()
 # Create database
 
 - Database is a named collection of tables
+- In addition to tables, database holds different kinds of configuration, for example related to access control
 - We can create a database with the `CREATE DATABASE` statement
 
 ```sql
-CREATE DATABASE university
+CREATE DATABASE University
 ```
 
 ---
@@ -71,9 +79,9 @@ CREATE DATABASE university
 
 ```sql
 CREATE TABLE Student (
-    studentid INTEGER,
-    familyname VARCHAR(50),
-    givenname VARCHAR(50)
+    student_number INTEGER,
+    first_name VARCHAR(50),
+    surname VARCHAR(50)
 )
 ```
 
@@ -83,9 +91,10 @@ CREATE TABLE Student (
 
 - Table and column names should describe the information they store
   - The "Student" table contains rows that represent students
-  - The "familyname" column contains the family name of the student
-- Names should consist of letters, digits or underscores. They _should not contain whitespace_
-- Names are commonly in _singular format_, for example "Student"
+  - The "first_name" column contains the family name of the student
+- Table and column names should consist of letters, digits or underscores. They _should not contain whitespace_
+- In column names, underscode is commonly used instead of whitespace. For example "first_name" instead of "first name"
+- Table names are commonly in _singular format_, for example "Student"
 - Each column has a _type_ that determines the kind of values the column can have
 - For example an `INTEGER` type of column can only contain integer values
 
@@ -97,6 +106,17 @@ CREATE TABLE Student (
 
 ---
 
+# Example of a table creation
+
+- Let's consider a table named "Country" that stores information about countries
+- The table needs the following columns:
+  - "country_code", the three characters long code that identifies the country. This is the table's primary key
+  - "country_name", the name of the country
+  - "population" the number of people living the country
+- _What is the SQL statement that creates the "Country" table with the mentioned columns?_
+
+---
+
 # Constraints
 
 - _Constraints_ specify rules for the data in a table
@@ -105,9 +125,9 @@ CREATE TABLE Student (
 
 ```sql
 CREATE TABLE Student (
-    studentid INTEGER NOT NULL,
-    familyname VARCHAR(50) NOT NULL,
-    givenname VARCHAR(50) NOT NULL
+    student_number INTEGER NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    surname VARCHAR(50) NOT NULL
 )
 ```
 
@@ -121,10 +141,12 @@ CREATE TABLE Student (
 
 ```sql
 CREATE TABLE Student (
-    studentid INTEGER NOT NULL,
-    familyname VARCHAR(50) NOT NULL,
-    givenname VARCHAR(50) NOT NULL,
-    CONSTRAINT Pk_Student PRIMARY KEY (studentid)
+    student_number INTEGER NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    surname VARCHAR(50) NOT NULL,
+
+    -- The primary key is the student_number column
+    CONSTRAINT Pk_Student PRIMARY KEY (student_number)
 )
 ```
 
@@ -137,25 +159,17 @@ CREATE TABLE Student (
 - Foreign key constraint is defined with the `FOREIGN KEY` constraint _after the column definitions_ in the `CREATE TABLE` statement
 
 ```sql
-CREATE TABLE CourseImplementation (
-    coursecode VARCHAR(10),
-    implementationnumber INTEGER,
-    startdate DATE,
-    enddate DATE,
-    CONSTRAINT Fk_CourseImplementationCourse FOREIGN KEY (coursecode)
-    REFERENCES Course(coursecode)
+CREATE TABLE Laptop (
+    serial_number VARCHAR(10) NOT NULL,
+    student_number INTEGER NOT NULL,
+
+    -- The primary key is the serial_number column
+    CONSTRAINT Pk_Laptop PRIMARY KEY (serial_number),
+    --- The foreign key student_number references the primary key student_number in the Student table
+    CONSTRAINT Fk_Student FOREIGN KEY (student_number)
+    REFERENCES Student(student_number)
 )
 ```
-
----
-
-# Example of a table creation
-
-- Let's consider a table named "Country" that stores information about countries. The table needs the following columns:
-  - "countrycode", the three characters long code that identifies the country. This is the table's primary key
-  - "name", the name of the country
-  - "population" the number of people living the country
-- Write an SQL statement that creates the "Country" table with the mentioned columns
 
 ---
 
@@ -164,7 +178,7 @@ CREATE TABLE CourseImplementation (
 - We can delete a table in the database with the `DROP TABLE` statement
 
 ```sql
-DROP TABLE Student
+DROP TABLE Laptop
 ```
 
 ---
@@ -177,10 +191,20 @@ DROP TABLE Student
 
 - We insert a new row into a table by defining the table name and the values for the columns
 - A new row can be inserted with the `INSERT INTO` statement
-- String literals are defined with _single quotes_, for example `'Kalle'`
+- ⚠️ String literals are defined with _single quotes_, for example `'Kalle'`
 
 ```sql
-INSERT INTO Student (studentid, firstname, lastname) VALUES (1, 'Kalle', 'Ilves')
+INSERT INTO Student (student_number, first_name, surname) VALUES (1, 'Kalle', 'Ilves')
+```
+
+# Insert
+
+- Constraits are checked once a new row if inserted
+- For example if `NOT NULL` constraint of a column is violated, there will be an error
+
+```sql
+-- ❌ surname columns has a NOT NULL constraint, omitting it will cause an error
+INSERT INTO Student (student_number, first_name) VALUES (1, 'Kalle')
 ```
 
 ---
@@ -192,7 +216,7 @@ INSERT INTO Student (studentid, firstname, lastname) VALUES (1, 'Kalle', 'Ilves'
 - The result is a result table containing the rows from the target table with the specified columns
 
 ```sql
-SELECT firstname, lastname FROM Student
+SELECT first_name, surname FROM Student
 ```
 
 ---
@@ -204,7 +228,7 @@ SELECT firstname, lastname FROM Student
 - The result table only contains the rows that satisfy the condition
 
 ```sql
-SELECT firstname, lastname FROM Student WHERE firstname = 'Kalle'
+SELECT first_name, surname FROM Student WHERE first_name = 'Matti'
 ```
 
 ---
@@ -214,8 +238,8 @@ SELECT firstname, lastname FROM Student WHERE firstname = 'Kalle'
 - The `WHERE` clause conditions support similar _comparison operators_ as many programming languages
 
 ```sql
-WHERE firstname = 'Kalle' -- equal to
-WHERE firstname <> 'Kalle' -- not equal to
+WHERE first_name = 'Matti' -- equal to. ⚠️ Note, just a single = symbol
+WHERE first_name <> 'Matti' -- not equal to
 WHERE age > 18 -- greater than
 WHERE age >= 30 -- greater than or equal
 WHERE age < 18 -- less than
@@ -230,7 +254,7 @@ WHERE age <= 30 -- less than or equal
 
 ```sql
 WHERE age > 18 AND age < 30  -- AND operator
-WHERE firstname = 'Kalle' OR firstname = 'Elina' -- OR operator
+WHERE first_name = 'Matti' OR first_name = 'Kaarina' -- OR operator
 WHERE NOT age < 18 -- NOT operator
 ```
 
@@ -253,9 +277,9 @@ WHERE (skill = 1 OR skill = 2) AND salary > 10000
 - The sorting is done based on columns
 
 ```sql
-SELECT firstname, lastname
-FROM Student
-ORDER BY firstname -- rows will be sorted by the firstname column's value
+SELECT course_name, credits
+FROM Course
+ORDER BY credits -- rows will be sorted by the credits column's value
 ```
 
 ---
@@ -266,10 +290,10 @@ ORDER BY firstname -- rows will be sorted by the firstname column's value
 - To determine the order of such rows we can provide multiple columns to the `ORDER BY` clause
 
 ```sql
-SELECT firstname, lastname
-FROM Student
--- when the firstname is the same, the lastname is used to determine the order
-ORDER BY firstname, lastname
+SELECT course_name, credits
+FROM Course
+-- when the credits is the same, the course_name is used to determine the order
+ORDER BY credits, course_name
 ```
 
 ---
@@ -280,8 +304,21 @@ ORDER BY firstname, lastname
 - We can change the order by using either `ASC` (ascending order) or `DESC` (descending order) keyword
 
 ```sql
-SELECT firstname, lastname
-FROM Student
--- use descending order for firstname and ascending order for lastname
-ORDER BY firstname DESC, lastname ASC
+SELECT course_name, credits
+FROM Course
+-- use descending order for credits and ascending order for course_name
+ORDER BY credits DESC, course_name ASC
 ```
+
+---
+
+# Summary
+
+- We can create database tables using the `CREATE TABLE` statement
+- `PRIMARY KEY` constraint is used to define the table's primary key
+- `FOREIGN KEY` constraint is used to define a foreign key referencing primary key column of another table
+- `INSERT INTO` statement is used to insert a new row for the table
+- `SELECT` statement is used to select rows from a table
+- `WHERE` clause can be used to filter the rows of a table
+- We can use comparison and logical operators to define a condition for the `WHERE` clause, for example `WHERE first_name = 'Kalle' OR first_name = 'Elina'`
+- We can use `ORDER BY` clause to determine the order of rows in the result table
