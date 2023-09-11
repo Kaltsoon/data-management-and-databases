@@ -123,6 +123,45 @@ SELECT first_name, surname FROM Student WHERE CHARINDEX('ta', surname) <> 0
 
 ---
 
+# Example of string functions
+
+"List all the students (gender, birth date, surname, first name) whose surname is in the range of (A-K). Display girls after all boys in the list. Boys should be listed in ascending order by birth date."
+
+- We'll need to know the _first letter_ of the surname column and check if that is between letters "A" and "K"
+- We can use the `LEFT` function to get the first letter of the surname column
+- The comparison can be done using the `BETWEEN` or `>` and `<` operators
+
+---
+
+# Example of string functions
+
+```sql
+SELECT gender, birth_date, surname, first_name
+FROM Student
+WHERE LEFT(surname, 1) BETWEEN 'A' AND 'K'
+-- "Girls after all boys" (i.e. "Boys before girls")
+-- means descending order because "F" is alphabetically before "M"
+ORDER BY gender DESC, birth_date ASC;
+```
+
+---
+
+# Example of string functions
+
+- Note that the column used in the `ORDER BY` clause _don't necessarily have to be a number_
+- We can sort by for example strings (alphabetical order) and dates
+- Same goes for comparison operators, we can use for example `>` and `<` operators with strings and dates
+- In the example the `gender` column is of type `VARCHAR` (a string value) so alphabetical order will be used
+
+---
+
+# Example of string functions
+
+- A common approach in trying to solve very specific problems, like "List all the students whose surname is in the range of (A-K)" is to _reduce_ the problem into some generic problem, like "how to get a first letter of a string"
+- These generic problems have a well documented generic solutions, for example using the `LEFT` function
+
+---
+
 # Arithmetic operations
 
 - SQL supports similar arithmetic operators for calculations as many programming languages
@@ -227,15 +266,15 @@ SELECT student_number, email FROM Student WHERE email IS NULL
 
 # Omitting duplicate rows
 
-- A common query problem is that we want to know what are all _distinct values_ for a certain column
+- A common query problem is that we want to know what are all _distinct values_ for a column or group of columns
 - For example, _what are the available number of credits from courses?_
 - We can use the `SELECT DISTINCT` statement to select only distinct (different) values
 
 ```sql
--- many courses have the same number of credits
+-- ❌ many courses have the same number of credits
 SELECT credits FROM Course
 
--- SELECT DISTINCT statement omits duplicate number of credits
+-- ✅ SELECT DISTINCT statement omits duplicate number of credits
 SELECT DISTINCT credits FROM Course
 ```
 
@@ -247,7 +286,7 @@ SELECT DISTINCT credits FROM Course
 - For example, _what are the courses teached by each teacher?_
 
 ```sql
--- group of teacher_number and course_code 
+-- group of teacher_number and course_code
 -- needs to be distinct in the result table
 SELECT DISTINCT teacher_number, course_code  FROM CourseInstance
 ORDER BY teacher_number
@@ -259,7 +298,7 @@ ORDER BY teacher_number
 
 - We can use a column alias `column_expression AS alias_name` to use different name for a target table column or to compute a new column
 - String concatenation can be done using the + operator or the `CONCAT` function
-- Calculations can be done using arithmetic operators + (addition), - (substraction), * (multiplication) and / (division)
+- Calculations can be done using arithmetic operators + (addition), - (substraction), \* (multiplication) and / (division)
 - The `CASE` expression allows us to use conditional logic in `SELECT` statements
 - We can use `IS NULL` and `IS NOT NULL` operators to test for `NULL` values
 - We can use the `SELECT DISTINCT` statement to select only distinct (different) values

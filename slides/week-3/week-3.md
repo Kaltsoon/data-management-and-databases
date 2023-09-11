@@ -120,7 +120,7 @@ CREATE TABLE Student (
 # Constraints
 
 - _Constraints_ specify rules for the data in a table
-- For example `NOT NULL` constraint ensures that a column cannot have a ``NULL` (empty) value
+- For example `NOT NULL` constraint ensures that a column cannot have a `NULL` (empty) value
 - The `NOT NULL` constraint is defined _after the column type_ in the `CREATE TABLE` statement
 
 ```sql
@@ -176,6 +176,7 @@ CREATE TABLE Laptop (
 # Drop table
 
 - We can delete a table in the database with the `DROP TABLE` statement
+- ⚠️ This operation will delete all rows in the table
 
 ```sql
 DROP TABLE Laptop
@@ -196,6 +197,8 @@ DROP TABLE Laptop
 ```sql
 INSERT INTO Student (student_number, first_name, surname) VALUES (1, 'Kalle', 'Ilves')
 ```
+
+---
 
 # Insert
 
