@@ -65,8 +65,11 @@ SELECT first_name + ' ' + surname AS full_name FROM Student
 - Column expression can for example be a literal value, an arithmetic operation performed on target table columns, or a function call
 
 ```sql
+-- a literal value 1
 SELECT student_number, 1 AS literal_value FROM Student
+-- an arithmetic operation grade * 20
 SELECT course_code, grade * 20 AS zero_to_hundred_scale_grade FROM CourseGrade
+-- a function call CONCAT(first_name, ' ', surname)
 SELECT student_number, CONCAT(first_name, ' ', surname) AS full_name FROM Student
 ```
 
