@@ -1,9 +1,9 @@
-# SQL queries
+# Aggregate functions and set operators
 
 - During this week we will learn:
   - How to use aggregate functions `COUNT`, `SUM`, `AVG`, `MIN` and `MAX`
   - How to use the `GROUP BY` statement with aggregate functions
-  - How to combine result tables with `UNION`, `INTERSECT` and `UNION` operators
+  - How to combine result tables with `UNION`, `INTERSECT` and `UNION` set operators
 
 ---
 
@@ -189,3 +189,205 @@ GROUP BY course_code
 - This causes the following error:
 
 > Column 'CourseGrade.student_number' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause
+
+---
+
+# Combining results tables with set operators
+
+![bg fit right:30%](./union.png)
+
+- We can use the results from _multiple result tables_ using the `UNION`, `EXCEPT`, and `INTERSECT` _set operators_
+- For example, the `UNION` operator returns _all_ the rows from two or more result tables _without duplicate values_:
+
+```sql
+-- What are all the surnames among teachers and students?
+SELECT surname FROM Teacher
+UNION
+SELECT surname FROM Student
+```
+
+---
+
+# The UNION operator
+
+<div style="display: flex; justify-content: space-around">
+  <div>
+
+```sql
+SELECT surname FROM Teacher
+```
+
+| surname  |
+| -------- |
+| Huhta    |
+| Hellerus |
+
+  </div>
+  <div>
+
+```sql
+SELECT surname FROM Student
+```
+
+| surname |
+| ------- |
+| Kokki   |
+| Kuikka  |
+
+  </div>
+
+  <div>
+
+```sql
+SELECT surname FROM Teacher
+UNION
+SELECT surname FROM Student
+```
+
+| surname  |
+| -------- |
+| Huhta    |
+| Hellerus |
+| Kokki    |
+| Kuikka   |
+
+  </div>
+</div>
+
+---
+
+# The EXCEPT operator
+
+![bg fit right:30%](./except.png)
+
+- The `EXCEPT` operator returns only the rows from the first result table that are _not included_ in the second result table
+
+```sql
+-- What are the campus cities that no student lives in?
+SELECT city FROM Campus
+EXCEPT
+SELECT city FROM Student
+```
+
+---
+
+# The EXCEPT operator
+
+<div style="display: flex; justify-content: space-around">
+  <div>
+
+```sql
+SELECT city FROM Campus
+```
+
+| city     |
+| -------- |
+| Helsinki |
+| Vantaa   |
+
+  </div>
+  <div>
+
+```sql
+SELECT city FROM Student
+```
+
+| city     |
+| -------- |
+| Helsinki |
+| Espoo    |
+
+  </div>
+
+  <div>
+
+```sql
+SELECT city FROM Campus
+EXCEPT
+SELECT city FROM Student
+```
+
+| city   |
+| ------ |
+| Vantaa |
+
+  </div>
+</div>
+
+---
+
+# The INTERSECT operator
+
+![bg fit right:30%](./intersection.png)
+
+- The `INTERSECT` operator returns only the rows that _exist in both_ result tables
+
+```sql
+-- What are the campus cities that have students living in them?
+SELECT city FROM Campus
+INTERSECT
+SELECT city FROM Student
+```
+
+---
+
+# The EXCEPT operator
+
+<div style="display: flex; justify-content: space-around">
+  <div>
+
+```sql
+SELECT city FROM Campus
+```
+
+| city     |
+| -------- |
+| Helsinki |
+| Vantaa   |
+
+  </div>
+  <div>
+
+```sql
+SELECT city FROM Student
+```
+
+| city     |
+| -------- |
+| Helsinki |
+| Espoo    |
+
+  </div>
+
+  <div>
+
+```sql
+SELECT city FROM Campus
+INTERSECT
+SELECT city FROM Student
+```
+
+| city     |
+| -------- |
+| Helsinki |
+
+  </div>
+</div>
+
+---
+
+# The set operators
+
+- ⚠️ With set operators, the column names and data types of each `SELECT` statement _must match_:
+
+```sql
+-- ❌ first_name column is missing from the latter SELECT statement.
+-- This will lead into an error.
+SELECT surname, first_name FROM Teacher
+UNION
+SELECT surname FROM Student
+```
+
+---
+
+# Summary
