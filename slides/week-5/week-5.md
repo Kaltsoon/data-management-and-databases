@@ -1,8 +1,7 @@
 # Aggregate functions and set operators
 
 - During this week we will learn:
-  - How to use aggregate functions `COUNT`, `SUM`, `AVG`, `MIN` and `MAX`
-  - How to use the `GROUP BY` statement with aggregate functions
+  - How to use the aggregate functions `COUNT`, `SUM`, `AVG`, `MIN` and `MAX`
   - How to combine result tables with `UNION`, `INTERSECT` and `UNION` set operators
 
 ---
@@ -53,7 +52,7 @@ WHERE credits > 3
 
 # The SUM aggregate function
 
-- The `SUM` aggregate function takes the name of a column as an argument and returns the _sum of all the values_ in that column:
+- The `SUM` aggregate function returns the _sum of all the values_ of a column:
 
 ```sql
 -- what's the sum of credits in the Course table?
@@ -70,7 +69,7 @@ SELECT SUM(credits) as sum_of_credits FROM Course
 
 # The AVG aggregate function
 
-- The `AVG` aggregate function returns the _average value_ in a column:
+- The `AVG` aggregate function returns the _average value_ of a column:
 
 ```sql
 -- what's the average grade from course with code "a730"?
@@ -86,9 +85,42 @@ WHERE course_code = 'a730'
 
 ---
 
+# The AVG aggregate function
+
+- Calculating the average includes a division operation, which can produce decimal numbers
+- To avoid losing the decimal part of the average, we need to cast integer column values to a `DECIMAL` type:
+
+```sql
+-- multiplying an integer with 1.0 will end up with a DECIMAL type
+SELECT AVG(grade * 1.0) as average_grade FROM CourseGrade
+WHERE course_code = 'a730'
+```
+
+| average_grade |
+| ------------- |
+| 3.333333      |
+
+---
+
+# The AVG aggregate function
+
+- We can limit the number of decimal places in the result by using casting the result to a `DECIMAL` type with specific precision and scale:
+
+```sql
+-- use scale of 2 in the DECIMAL type to round to two decimals places
+SELECT CAST(AVG(grade * 1.0) AS DECIMAL(9, 2)) as average_grade FROM CourseGrade
+WHERE course_code = 'a730'
+```
+
+| average_grade |
+| ------------- |
+| 3.33          |
+
+---
+
 # The MIN aggregate function
 
-- The `MIN` function returns the _smallest value_ in a column
+- The `MIN` function returns the _smallest value_ of a column
 
 ```sql
 -- what's the lowest grade from course with code "a730"?
@@ -106,7 +138,7 @@ WHERE course_code = 'a730'
 
 # The MAX aggregate function
 
-- The `MAX` function returns the _largest value_ in a column
+- The `MAX` function returns the _largest value_ of a column
 
 ```sql
 -- what's the highest grade from course with code "a730"?
@@ -137,58 +169,6 @@ WHERE course_code = 'a730'
 | highest_grade | lowest_grade |
 | ------------- | ------------ |
 | 5             | 1            |
-
----
-
-# Grouping the aggregated rows
-
-- So, an aggregate function performs a calculation for multiple rows so that the end result is a single value
-- If the result table always contains just a single row, how can we write a query such as, _what's the average grade from each course?_
-- To achieve this, we need to _group_ the rows and perform the aggregate function for each group separately
-- This can be done using the `GROUP BY` statement
-
----
-
-# The GROUP BY statement
-
-- The `GROUP BY` statement uses a column or a group of columns to form groups of rows which the aggregate function operators on:
-
-```sql
--- what's the average grade from each course?
-SELECT course_code, AVG(grade) as average_grade FROM CourseGrade
--- form the groups using the course_code
-GROUP BY course_code
-```
-
----
-
-# The GROUP BY statement
-
-- The result table will a row for each group having the aggregation function result. In the example's case the average grade for each course code:
-
-| course_code | average_grade |
-| ----------- | ------------- |
-| a290        | 2             |
-| a450        | 3             |
-| a480        | 2             |
-| a730        | 3             |
-
----
-
-# The GROUP BY statement
-
-- It is worth noting that in the `SELECT` statement we can only select columns that are either aggregate functions or columns used in the `GROUP BY` statement:
-
-```sql
--- ❌ student_number is not an aggreagate function, nor it is in the GROUP BY statement.
--- This will lead into an error
-SELECT course_code, student_number, AVG(grade) as average_grade FROM CourseGrade
-GROUP BY course_code
-```
-
-- This causes the following error:
-
-> Column 'CourseGrade.student_number' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause
 
 ---
 
@@ -260,7 +240,7 @@ SELECT surname FROM Student
 
 ![bg fit right:30%](./except.png)
 
-- The `EXCEPT` operator returns only the rows from the first result table that are _not included_ in the second result table
+- The `EXCEPT` operator returns only the rows from the first result table that are _not included_ in the second result table _without duplicate values_:
 
 ```sql
 -- What are the campus cities that no student lives in?
@@ -320,7 +300,7 @@ SELECT city FROM Student
 
 ![bg fit right:30%](./intersection.png)
 
-- The `INTERSECT` operator returns only the rows that _exist in both_ result tables
+- The `INTERSECT` operator returns only the rows that _exist in both_ result tables _without duplicate values_:
 
 ```sql
 -- What are the campus cities that have students living in them?
@@ -391,3 +371,11 @@ SELECT surname FROM Student
 ---
 
 # Summary
+
+- We can perform calculations on multiple rows so that the end result is a single row using _aggregate functions_
+- The `COUNT` aggregate function returns the _total number of rows_
+- The `SUM` aggregate function returns the _sum of all the values_ of a column
+- The `AVG` aggregate function returns the _average of values_ of a column
+- The `MIN` aggregate function returns the _minimum value_ of a column
+- The `MAX` aggregate function returns the _maximum value_ of a column
+- The `UNION`, `EXCEPT` and `INTERSECT` _set operators_ can be used to combine results of multiple result tables
