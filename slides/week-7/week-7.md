@@ -17,7 +17,7 @@
 
 # Join clauses
 
-- With a `SELECT` stamenet we get the _teacher_number_ foreign key column value:
+- With a `SELECT` stament we get the `teacher_number` foreign key column value:
 
 ```sql
 -- what is the teacher number of each course instance teacher?
@@ -34,7 +34,7 @@ FROM CourseInstance
 
 # Join clauses
 
-- We can use the `INNER JOIN` clause to combine the matching columns from the _Teacher_ table:
+- We can use the `INNER JOIN` clause to combine the matching columns from the `Teacher` table:
 
 ```sql
 -- what is the first name and surname of each course instance teacher?
@@ -53,7 +53,7 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 
 # Join clauses
 
-- In the example each row of the _CourseInstance_ table is combined with a row from the _Teacher_ table based on the _join condition_:
+- In the example each row of the `CourseInstance` table is combined with a row from the `Teacher` table based on the _join condition_:
 
 ```sql
 -- the teacher_number of column in the CourseIntance table
@@ -67,7 +67,7 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 
 # Join clauses
 
-- With join clauses, it is a good idea specify the table name before the column name to avoid _ambiguous column names_:
+- With join clauses, it is a good idea to specify the table name before the column name to avoid _ambiguous column names_:
 
 ```sql
 -- ❌ teacher_number column name is ambiguous because

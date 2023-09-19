@@ -50,20 +50,33 @@ WHERE credits > 3
 
 ---
 
+# The COUNT aggregate function
+
+- We can also provide a column name for the `COUNT` aggregate function in which case the function returns the number of the _non-null values_ of the given column:
+
+```sql
+-- what's the number of students with an email address?
+SELECT COUNT(email) as number_of_students_with_email
+FROM Student
+```
+
+---
+
 # The SUM aggregate function
 
 - The `SUM` aggregate function returns the _sum of all the values_ of a column:
 
 ```sql
--- what's the sum of credits in the Course table?
-SELECT SUM(credits) as sum_of_credits FROM Course
+-- what's the sum of salaries of female teachers?
+SELECT SUM(salary) as sum_of_salaries FROM Teacher
+WHERE gender = 'F'
 ```
 
 - The result table contains a single row:
 
-| sum_of_credits |
-| -------------- |
-| 24             |
+| sum_of_salaries |
+| --------------- |
+| 102273.00       |
 
 ---
 
@@ -108,7 +121,8 @@ WHERE course_code = 'a730'
 
 ```sql
 -- use scale of 2 in the DECIMAL type to round to two decimals places
-SELECT CAST(AVG(grade * 1.0) AS DECIMAL(9, 2)) as average_grade FROM CourseGrade
+SELECT CAST(AVG(grade * 1.0) AS DECIMAL(9, 2)) as average_grade
+FROM CourseGrade
 WHERE course_code = 'a730'
 ```
 
