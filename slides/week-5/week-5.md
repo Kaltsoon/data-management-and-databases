@@ -2,7 +2,7 @@
 
 - During this week we will learn:
   - How to use the aggregate functions `COUNT`, `SUM`, `AVG`, `MIN` and `MAX`
-  - How to combine result tables with `UNION`, `INTERSECT` and `UNION` set operators
+  - How to combine result tables with `UNION`, `EXCEPT` and `INTERSECT` set operators
 
 ---
 
