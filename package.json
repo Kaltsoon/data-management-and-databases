@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "slides:build": "marp slides/**/*.md --pdf --allow-local-files --html"
+    "slides:build": "marp slides/**/*.md --pdf --allow-local-files --html",
+    "mermaid": "mmdc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@marp-team/marp-cli": "^3.2.0",
+    "@mermaid-js/mermaid-cli": "^10.4.0",
     "rimraf": "^5.0.1"
   }
 }
