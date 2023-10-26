@@ -1,12 +1,12 @@
 # SQL queries
 
-- During this week we will learn:
-  - How to define alias names for selected columns
-  - How to handle string values in queries
-  - How to do arithmetic operations
-  - How to define conditional expressions with the `CASE` expression
-  - How to handle missing, `NULL` values in queries
-  - How to omit duplicate rows with `SELECT DISTINCT` statement
+- The learning objectives for this week are:
+  - Knowing how to define alias names for selected columns
+  - Knowing how to handle string values in queries
+  - Knowing how to do arithmetic operations
+  - Knowing how to define conditional expressions with the `CASE` expression
+  - Knowing how to handle missing, `NULL` values in queries
+  - Knowing how to omit duplicate rows with `SELECT DISTINCT` statement
 
 ---
 

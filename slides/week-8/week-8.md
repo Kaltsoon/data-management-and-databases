@@ -1,10 +1,10 @@
 # Database design
 
-- During this week we will learn:
-  - What is database development lifecycle which phases does it consist of
-  - What is conceptual database design
-  - What is entity-relationship modeling
-  - How to implement entity-relationship diagrams
+- The learning objectives for this week are:
+  - Knowing what database development lifecycle is and from which phases it consists of
+  - Knowing what conceptual database design is?
+  - Knowing what is entity-relationship modeling
+  - Knowing how to implement entity-relationship diagrams
 
 ---
 

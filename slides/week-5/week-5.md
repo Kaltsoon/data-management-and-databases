@@ -1,8 +1,10 @@
 # Aggregate functions and set operators
 
-- During this week we will learn:
-  - How to use the aggregate functions `COUNT`, `SUM`, `AVG`, `MIN` and `MAX`
-  - How to combine result tables with `UNION`, `EXCEPT` and `INTERSECT` set operators
+- The learning objectives for this week are:
+  - Knowing what kind of query problems can aggregate functions solve
+  - Knowing how to use the aggregate functions `COUNT`, `SUM`, `AVG`, `MIN` and `MAX`
+  - Knowing what kind of query problems can set operators solve
+  - Knowing how to combine result tables with `UNION`, `EXCEPT` and `INTERSECT` set operators
 
 ---
 
