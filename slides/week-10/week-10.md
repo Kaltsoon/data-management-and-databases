@@ -75,7 +75,7 @@
   - Divide a non-atomic attribute into smaller (atomic) attributes. For example person's address can be divided into, city, postal code and street address
   - Refine attribute domains: data types and lengths, requiredness,
     validation rules etc.
-  - Define which attributes can have NULL values. Allow NULL in an attribute only based on strong arguments
+  - Define which attributes can have NULL values. Allow NULL in an attribute only based on _strong arguments_
 
 ---
 
@@ -136,7 +136,7 @@
 
 - For example, in the ER diagram above _Company_ is the _parent_ entity type and _Department_ is the _child_ entity type
 - When we translate this diagram to relation schemas we must do the following:
-  - Create the two relations: Company and Department
+  - We create the two relations: _Company_ and _Department_
   - We determine primary keys for both relations
   - We represent the relationship by placing a copy of the parent relation's (Company) primary key into the child relation (Department), to act as the foreign key
 
@@ -173,7 +173,7 @@
 ![width:500px](./division-company.png)
 
 - Place a copy of the parent relation's ("..1" side) primary key into the child relation ("..\*" side), to act as a foreign key
-- If the child relation is derived from a weak entity type, then the primary key of the child relation is typically a composite ke
+- If the child relation is derived from a weak entity type, then the primary key of the child relation is typically a composite key
 - In the example above, we would get the following relation schema:
 
   <pre>
