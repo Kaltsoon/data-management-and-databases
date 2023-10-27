@@ -189,7 +189,7 @@
 
 ![width:500px](./athlete-race.png)
 
-- Create a "bridge relation" to represent the relationship
+- Create a bridge relation to represent the relationship
 - Place a copy of the primary key from each of the parent relations into the bridge relation to act as foreign keys
 - Typically, the bridge relation's primary key is a composite key that includes the both foreign keys
 - In the example above, we would get the following relation schema:
@@ -243,3 +243,13 @@
   Email (<u>email</u>, empno)
     FK (empno), REFERENCES Employee(empno)
   </pre>
+
+---
+
+# Summary
+
+- The objective of logical database design is to translate the conceptual schema into a logical database schema based on a specific data model
+- When we derive relations from entity types, we create a relation for each entity type
+- Many-to-many relationship requires an additional bridge relation
+- There should be exactly one primary key in each relation
+- The foreign key placement depends on the relationship type (many-to-one, many-to-many or one-to-one)
