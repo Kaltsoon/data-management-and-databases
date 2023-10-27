@@ -15,8 +15,7 @@
   3. Physical database design
 - Each phase from top to bottom adds more detail to the design
 - We have familiarized ourselves with the _concetual database design_ by defining entity types and their relationship based on the requirements
-- The _logical database design_ is the process of
-  refining and translating the conceptual schema into a logical database schema based on a specific data model, e.g. the relational model
+- The _logical database design_ is the process of refining and translating the conceptual schema into a logical database schema based on a specific data model, e.g. the relational model
 
 ---
 
@@ -46,9 +45,9 @@
 # Creating relations
 
 - We create the relations in the following manner:
-  - For each entity type, create a relation that includes all simple attributes of the entity
-  - For M:N (many-to-many) relationship types, create a _"bridge relation"_ to represent the relationship
-  - For multi-valued attributes, create a new relation to represent the multi-valued attribute. For example, a person may have several phone numbers, but in a relation, multi-valued attributes are not allowed
+  - For _each entity type_, create a relation that includes all simple attributes of the entity
+  - For _M:N (many-to-many) relationship types_, create a _"bridge relation"_ to represent the relationship
+  - For _multi-valued attributes_, create a new relation to represent the multi-valued attribute. For example, a person may have several phone numbers, but multi-valued attributes are not allow in relations
 
 ---
 
@@ -56,18 +55,17 @@
 
 - Let's consider creating relations for the following conceptual model:
 
-![](./albums.drawio.png)
+![width:800px](./albums.drawio.png)
 
 ---
 
-# Handling M:N (many-to-many) relationships
+# Example of creating relations
 
-- In the relational model a many-to-many relationship is handled with a "bridge relation"
 - In the example there's two many-to-many relationships:
   - A musician performs on multiple tracks and tracks have multiple performers
   - A musician composes multiple tracks and tracks are composed by multiple musicians
 - In this case we create two bridge relations: _Track_Performer_ and _Track_Composer_
-- The bridge relation will have foreign key attributes referencing the relationship relations, in this case _Musician_ and _Track_
+- The are no multi-valued attributes, which leaves with the following relations: _Album_, _Musician_, _Track_, _Track_Performer_, and _Track_Composer_
 
 ---
 
@@ -92,7 +90,7 @@
 
 ---
 
-# Determing primary key for a weak entity typea
+# Determing primary key for a weak entity type
 
 - A _weak entity type_ is an entity type that is dependent on the existence of another entity type
 - For example _CourseGrade_ is existence-dependent on _Student_ and _CourseOffering_
@@ -107,6 +105,7 @@
 - If there is initially no suitable candidate key for a relation, then we cannot determine a natural primary key
 - We have to take care of the situation by including an extra attribute in the relation to act as the primary key
 - This kind of primary key is a _surrogate key_
+- Surrogate keys are commonly generated values, such as incrementing or random numbers
 
 ---
 
@@ -117,7 +116,6 @@
 
   <pre>
   Student (<u>studentnumber</u>, ssn, familyname, givenname)
-    PRIMARY KEY (studentnumber), 
     UNIQUE (ssn)
   </pre>
 
@@ -127,10 +125,8 @@
 
 # Determing foreign keys
 
-- In a relational database, _relationships_ are represented by the _primary key/foreign key
-  mechanism_
-- Before deciding where to place the foreign key we have to identify the _parent
-  entity type_ and the _child entity type_ involved in the relationship
+- In a relational database, _relationships_ are represented by the _primary key/foreign key mechanism_
+- Before deciding where to place the foreign key we have to identify the _parent entity type_ and the _child entity type_ involved in the relationship
 
 ---
 
@@ -138,13 +134,11 @@
 
 ![width:500px](./company-department.png)
 
-- For example, in the ER diagram above _Company_ is the _parent_ entity type and _Department_
-  is the _child_ entity type
+- For example, in the ER diagram above _Company_ is the _parent_ entity type and _Department_ is the _child_ entity type
 - When we translate this diagram to relation schemas we must do the following:
   - Create the two relations: Company and Department
   - We determine primary keys for both relations
-  - We represent the relationship by placing a copy of the parent relation's (Company)
-    primary key into the child relation (Department), to act as the foreign key
+  - We represent the relationship by placing a copy of the parent relation's (Company) primary key into the child relation (Department), to act as the foreign key
 
 ---
 
@@ -223,4 +217,29 @@
   Athlete (<u>athlete_id</u>, first_name, family_name)
   Team (<u>team_id</u>, athlete_id, name)
     FK (athlete_id), REFERENCES Athlete(athlete_id)
+  </pre>
+
+---
+
+# Multi-value attributes
+
+![width:300px](./multi-value-attributes.png)
+
+- A relation can't have attributes with _multiple values_, such as the _email_ attribute of the _Employee_ entity type above
+- In such case, we must create a _new relation_ to represent the multi-valued attribute
+- We move the attribute from the original relation and place it to the new relation
+- We Place a copy of the parent relation's primary key into the child relation, to act as the foreign key
+
+---
+
+# Multi-value attributes
+
+![width:300px](./multi-value-attributes.png)
+
+- In the example above, we would get the following relation schema:
+
+  <pre>
+  Employee (<u>empno</u>, first_name, family_name)
+  Email (<u>email</u>, empno)
+    FK (empno), REFERENCES Employee(empno)
   </pre>
