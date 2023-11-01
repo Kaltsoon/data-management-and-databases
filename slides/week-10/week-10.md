@@ -1,255 +1,188 @@
-# Logical database design
+# Database normalisation
 
 - The learning objectives for this week are:
-  - Kowing what is the objective logical database design
-  - Knowing how to derive relations from simple ER diagrams
-  - Knowing how to determine natural primary keys and foreign keys
+  - Knowing what the purpose of database normalisation
+  - Knowing what is a functional dependency, a partial dependency and a transitive dependency
+  - Knowing how to identify functional dependencies in a relation or table
+  - Knowing the different normal form rules
+  - Knowing how to formally check if a relation is in the Boyce-Codd normal form (BCNF)
+  - Knowing how to decompose a relation into smaller relations if it is not in BCNF
 
 ---
 
-# Logical database design
+# Database normalisation
 
-- The typical main phases in a database design process are:
-  1. Conceptual database design
-  2. Logical database design
-  3. Physical database design
-- Each phase from top to bottom adds more detail to the design
-- We have familiarized ourselves with the _concetual database design_ by defining entity types and their relationship based on the requirements
-- The _logical database design_ is the process of refining and translating the conceptual schema into a logical database schema based on a specific data model, e.g. the relational model
+- _Database normalisation_ is a formal technique of organizing data in a database in a way that _redundancy_ and _incosistency_ within the data is eliminated
+- The objective of database normalisation is to ensure that:
+  - Attributes with a _close logical relationship_ (functional dependency) are found in the _same relation_
+  - The relations do not display _hidden data redundancy_, which can cause update anomalies that violate database integrity
+- The technique involves a set of normalisation rules that are defined as _normal forms_ (1NF, 2NF, 3NF, BCDF...)
 
 ---
 
-# Logical database design
+# Database normalisation
 
-- Entity types, attributes, and relationship types can be directly transformed into relations with some simple rules
-- Typically, the logical database design process includes the following
-  types of activities:
-  1. Deriving relations for the logical data model
-  2. Validating relations using normalisation
-  3. Validating relations against user transaction
-  4. Double-checking integrity constraints
-  5. Reviewing logical data model with user
+- In a case of fixing an identified structural problem, normalisation involves _decomposing a relation into less redundant (and smaller) relations_ without losing information
+- When an _ER model is well designed_, the resulting correctly derived relations won't normally have such structural problems and they will meet the criteria of database normalisation
+- Normalisation of candidate relations derived from ER diagrams is accomplished by analysing the _functional dependencies_ (FDs) associated with those relations
 
 ---
 
-# Deriving relations for the logical data model
+# Functional depedency
 
-- The process starts by _deriving relations for the logical data model_, which includes:
-  1. Creating the relations
-  2. Refining the attributes
-  3. Determing primary and foreign keys
-  4. Determing other types of integrity constraints
-
----
-
-# Creating relations
-
-- We create the relations in the following manner:
-  - For _each entity type_, create a relation that includes all simple attributes of the entity
-  - For _M:N (many-to-many) relationship types_, create a _"bridge relation"_ to represent the relationship
-  - For _multi-valued attributes_, create a new relation to represent the multi-valued attribute. For example, a person may have several phone numbers, but multi-valued attributes are not allow in relations
+- _Functional dependency_ (FD) describes the _relationship between attributes_ in a relation
+- With functional dependencies, we are interested in properties of the data that are true for _all the time_
+- For example, if the _student number is unique_, the following property is true all the time:
+  > The surname for a student whose student number is "a12345" is "Smith"
+- So, _all the time_ it is true that there is only one surname for each student
+- By contrast, the following property might to be true for a sample set of students, but it is not true for all the time:
+  > There is exactly one student whose surname is "Smith"
 
 ---
 
-# Example of creating relations
+# Functional dependency
 
-- Let's consider creating relations for the following conceptual model:
-
-![width:800px](./albums.drawio.png)
-
----
-
-# Example of creating relations
-
-- In the example there's two many-to-many relationships:
-  - A musician performs on multiple tracks and tracks have multiple performers
-  - A musician composes multiple tracks and tracks are composed by multiple musicians
-- In this case we create two bridge relations: _Track_Performer_ and _Track_Composer_
-- The are no multi-valued attributes, which leaves with the following relations: _Album_, _Musician_, _Track_, _Track_Performer_, and _Track_Composer_
+- A functional dependency occurs when attribute A in a relation _uniquely determines_ attribute B
+- In other words: for each value of A there is _exactly one value_ of B and that _holds all the time_. This can be written as `A → B`
+- The _determinant_ of a functional dependency refers to the attribute, or group of attributes, on the _left-hand side_ of the arrow. In `A → B`, A is the determinant of B.
+- On the _right-hand side_, there's the _dependent_. In `A → B`, B is the dependent of A.
 
 ---
 
-# Refining the attributes
+# Example of functional dependency
 
-- Once we have created the relations we need to refine the attributes in the following manner:
-  - Divide a non-atomic attribute into smaller (atomic) attributes. For example person's address can be divided into, city, postal code and street address
-  - Refine attribute domains: data types and lengths, requiredness,
-    validation rules etc.
-  - Define which attributes can have NULL values. Allow NULL in an attribute only based on _strong arguments_
+- Let's suppose that each student has a unique student number. In the relation below, _studentnumber_ uniquely determines _surname_ and _firstname_. That is, _studentnumber is the determinant of surname and firstname_:
 
----
+    <pre>Student (<u>studentnumber</u>, surname, firstname)</pre>
 
-# Determing primary keys
-
-- There should be _exactly one primary key in each relation_
-- The primary key can be either a _simple key_ (single column) or a _composite key_ (several columns)
-- By definition, the primary key should always satisfy the properties of _requiredness_, _uniqueness_ and _minimality_
-- The primary key _should remain stable_. That is, primary key values should not need to be updated later
-- The primary key should be _reasonably short_
-- The primary key should have _no privacy issues_. For example social security number has privacy issues
+- In this example, there are the following two functional dependencies:
+  - `studentnumber → surname`
+  - `studentnumber → firstname`
 
 ---
 
-# Determing primary key for a weak entity type
+# Example of functional dependency
 
-- A _weak entity type_ is an entity type that is dependent on the existence of another entity type
-- For example _CourseGrade_ is existence-dependent on _Student_ and _CourseOffering_
-- When a relation derived from a weak entity type, the natural primary key is partially or fully derived from the weak entity type's owner entity type
-- For example, the natural primary key of the _CourseGrade_ relation is a composite key that _includes columns from two foreign keys_, one referencing _Student_ and other referencing _CourseOffering_
-- The primary key of the weak entity's relation cannot be made until after the foreign keys have been determined for the relation
+- Let's suppose the following table occurrence:
 
----
+  | studentnumber | surname | firstname |
+  | ------------- | ------- | --------- |
+  | a12345        | Smith   | John      |
+  | a14444        | Smith   | Susan     |
+  | a15555        | Jones   | Susan     |
 
-# Surrogate keys
+- The _functional dependency_ `studentnumber → surname` guarantees that the query below (that uses an existing student number) returns exactly one surname and that holds all the time:
 
-- If there is initially no suitable candidate key for a relation, then we cannot determine a natural primary key
-- We have to take care of the situation by including an extra attribute in the relation to act as the primary key
-- This kind of primary key is a _surrogate key_
-- Surrogate keys are commonly generated values, such as incrementing or random numbers
-
----
-
-# Alternate keys
-
-- Candidate keys that are not selected to be primary the key are called _alternate keys_
-- We should consider the use of the _unique constraint_ on alternate keys to make sure that their values remain unique:
-
-  <pre>
-  Student (<u>studentnumber</u>, ssn, familyname, givenname)
-    UNIQUE (ssn)
-  </pre>
-
-- Especially, when we are using a surrogate primary key, a unique constraint on at least one natural alternate key improves data quality
+  ```sql
+  SELECT surname FROM Student WHERE studentnumber = 'a12345'
+  ```
 
 ---
 
-# Determing foreign keys
+# Example of functional dependency
 
-- In a relational database, _relationships_ are represented by the _primary key/foreign key mechanism_
-- Before deciding where to place the foreign key we have to identify the _parent entity type_ and the _child entity type_ involved in the relationship
+- By contrast, the query below may return several student numbers:
 
----
+  ```sql
+  SELECT studentnumber FROM Student WHERE surname = 'Smith'
+  ```
 
-# Determing foreign keys
-
-![width:500px](./company-department.png)
-
-- For example, in the ER diagram above _Company_ is the _parent_ entity type and _Department_ is the _child_ entity type
-- When we translate this diagram to relation schemas we must do the following:
-  - We create the two relations: _Company_ and _Department_
-  - We determine primary keys for both relations
-  - We represent the relationship by placing a copy of the parent relation's (Company) primary key into the child relation (Department), to act as the foreign key
+- The latter type of dependency is called _multi-valued dependency_ and it can be written as follows: `surname –>> studentnumber`
 
 ---
 
-# Determing foreign keys
+# Identifying undesired data redundancy
 
-- The result could be for example the following relation schema:
-
-  <pre>
-  Company (<u>company_id</u>, name)
-  
-  Department (<u>department_id</u>, company_id, name)
-    FK (company_id), REFERENCES Company(company_id)
-  </pre>
+- Relations that _do not have_ undesired data redundancy ✅, _each determinant is a candidate key_ (an unique attribute that is suitable for being the primary key)
+- In such case _all arrows are arrows out of whole candidate keys_ (simple or composite key)
+- Let's consider the following relation _without data redundancy_:
+    <pre>CourseOffering (<u>coursecode</u>, <u>offeringnumber</u>, startdate, teachernumber)</pre>
+- In this relations there's for example the following functional depedency:
+  - ✅ `{coursecode, offeringnumber} → startdate, teachernumber`
 
 ---
 
-# Determing foreign keys
+# Identifying undesired data redundancy
 
-- To know in which relation to place the foreign key we need to _identify the relationship type_
-- Most often the structure falls in one of these categories:
-  - N:1 (many-to-one) binary relationship
-    ![width:500px](./division-company.png)
-  - M:N (many-to-many) binary relationship
-    ![width:500px](./athlete-race.png)
-  - 1:1 (one-to-one) binary relationship
-    ![width:500px](./athlete-team.png)
-
----
-
-# N:1 (many-to-one) binary relationship
-
-![width:500px](./division-company.png)
-
-- Place a copy of the parent relation's ("..1" side) primary key into the child relation ("..\*" side), to act as a foreign key
-- If the child relation is derived from a weak entity type, then the primary key of the child relation is typically a composite key
-- In the example above, we would get the following relation schema:
-
-  <pre>
-  Company (<u>company_id</u>, name)
-  
-  Division (<u>division_id</u>, company_id, name)
-    FK (company_id), REFERENCES Company(company_id)
-  </pre>
+- Relations that _have_ undesired data redundancy ❌, _there is a determinant that is not a candidate key_
+- In such case _there is on arrow that is not an arrow out of a whole candidate key_
+- Let's consider the following relation _with data redundancy_:
+    <pre>CourseOffering (
+        <u>coursecode</u>,
+        <u>offeringnumber</u>,
+        coursename,
+        startdate,
+        teachernumber,
+        surname
+    )</pre>
 
 ---
 
-# M:N (many-to-many) binary relationship
+# Identifying undesired data redundancy
 
-![width:500px](./athlete-race.png)
-
-- Create a bridge relation to represent the relationship
-- Place a copy of the primary key from each of the parent relations into the bridge relation to act as foreign keys
-- Typically, the bridge relation's primary key is a composite key that includes the both foreign keys
-- In the example above, we would get the following relation schema:
-
-  <pre>
-  Athlete (<u>athlete_id</u>, first_name, family_name)
-  Race (<u>race_id</u>, name, date)
-  Race_Participation(<u>athlete_id</u>, <u>race_id</u>)
-    FK (athlete_id), REFERENCES Athlete(athlete_id),
-    FK (race_id), REFERENCES Race(race_id)
-  </pre>
+- In this relations there's for example the following functional depedencies:
+  - ✅ `{coursecode, offeringnumber} → coursename, startdate, teachernumber, surname`
+  - ❌ `coursecode → coursename`
+  - ❌ `teachernumber → surname`
+- In functional dependencies `coursecode → coursename` and `teachernumber → surname`, the determinants are not candidate keys
+- With such functional dependencies, the relation has redundant data
+- For example the teacher's surname is repeated unnecessarily, which can cause consistency issues for example when a teacher's surname is updated
+- Instead, the teacher's information should be in a _separate relation_
 
 ---
 
-# 1:1 (one-to-one) binary relationship
+# Calculated attributes
 
-![width:500px](./athlete-team.png)
+- We _should not include_ attributes in a relation that we can _derive_ from other relations or _calculate_
+- For example, let's suppose that the firm's total budget is the total of department budgets
+- Therefore, _totalbudget_ is a calculated attribute in the _Firm_ relation
+- The value of _totalbudget_ should change whenever any department budget is changed in the firm
+- From the data redundancy and integrity viewpoint, we have a problem here because total budget exists twice in the design:
 
-- In case of _mandatory participation ("1..1") on one side only_, place a copy of the primary key from the relation on the "1..1" side into the relation on the "0..1" side to act as the foreign key
-- In case of _mandatory participation on both sides_ we can usually _combine the two relations_ into one relation
-- In case _optional participation ("0..1") on both sides_ the foreign key can be placed in either relation
-- In the example above, we would get the following relation schema:
-
-  <pre>
-  Athlete (<u>athlete_id</u>, first_name, family_name)
-  Team (<u>team_id</u>, athlete_id, name)
-    FK (athlete_id), REFERENCES Athlete(athlete_id)
-  </pre>
+    <pre>
+    Firm (<u>firmno</u>, firmname, totalbudget ❌)
+    Depertmant (<u>deptno</u>, deptname, deptbudget, firmno)
+        FK (firmno) REFERENCES Firm (firmno)</pre>
 
 ---
 
-# Multi-value attributes
+# Calculated attributes
 
-![width:300px](./multi-value-attributes.png)
-
-- A relation can't have attributes with _multiple values_, such as the _email_ attribute of the _Employee_ entity type above
-- In such case, we must create a _new relation_ to represent the multi-valued attribute
-- We move the attribute from the original relation and place it to the new relation
-- We Place a copy of the parent relation's primary key into the child relation, to act as the foreign key
-
----
-
-# Multi-value attributes
-
-![width:300px](./multi-value-attributes.png)
-
-- In the example above, we would get the following relation schema:
-
-  <pre>
-  Employee (<u>empno</u>, first_name, family_name)
-  Email (<u>email</u>, empno)
-    FK (empno), REFERENCES Employee(empno)
-  </pre>
+- We shouldn't have the _totalbudget_ attribute in the _Firm_ relation, instead we can calculate it with the following query:
+  ```sql
+  SELECT SUM(deptbudget) as totalbudget FROM Department
+  WHERE firmno = 'a1122'
+  ```
 
 ---
 
-# Summary
+# Different kind of functional dependencies
 
-- The objective of logical database design is to translate the conceptual schema into a logical database schema based on a specific data model
-- When we derive relations from entity types, we create a relation for each entity type
-- Many-to-many relationship requires an additional bridge relation
-- There should be exactly one primary key in each relation
-- The foreign key placement depends on the relationship type (many-to-one, many-to-many or one-to-one)
+- Functional dependencies can be categorized in the following categories:
+  - _Non-trivial_ and _trivial_ functional dependencies
+  - _Partial_ and _full_ functional dependencies
+  - _Transitive_ and _non-transitive_ functional dependencies
+
+---
+
+# Non-trivial and trivial functional dependencies
+
+- `A → B` is _trivial functional dependency_ if B is a subset of A
+- `A → B` is _non-trivial functional dependency_ if B is not a subset of A
+- Let's consider the _CourseOffering_ relations:
+    <pre>CourseOffering (<u>coursecode</u>, <u>offeringno</u>, startdate)</pre>
+- In the relation, `{coursecode, offeringno} → startdate` is a _non-trivial functional dependency_, because `startdate` is not a subset of `{coursecode, offeringno}`
+- These, on the other are _trivial functional dependencies_ of the relation:
+  - `{coursecode, offeringno} → coursecode`
+  - `{coursecode, offeringno} → {coursecode, offeringno}`
+- In normalisation considerations we are only focusing on non-trivial functional dependencies
+
+---
+
+# Partial and full functional dependencies
+
+---
+
+# Transitive and non-transitive functional dependencies
+
+---
