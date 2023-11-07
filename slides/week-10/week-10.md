@@ -1,7 +1,7 @@
 # Database normalisation
 
 - The learning objectives for this week are:
-  - Knowing what the purpose of database normalisation
+  - Knowing the purpose of database normalisation
   - Knowing what is a functional dependency, a partial dependency and a transitive dependency
   - Knowing how to identify functional dependencies in a relation or table
   - Knowing the different normal form rules
