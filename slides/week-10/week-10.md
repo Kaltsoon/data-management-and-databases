@@ -1,12 +1,12 @@
 # Database normalisation
 
 - The learning objectives for this week are:
-  - Knowing the purpose of database normalisation
-  - Knowing what is a functional dependency, a partial dependency and a transitive dependency
+  - Knowing the purpose of _database normalisation_
+  - Knowing what is a _functional dependency_, a _partial dependency_ and a _transitive dependency_
   - Knowing how to identify functional dependencies in a relation or table
-  - Knowing the different normal form rules
-  - Knowing how to formally check if a relation is in the Boyce-Codd normal form (BCNF)
-  - Knowing how to decompose a relation into smaller relations if it is not in BCNF
+  - Knowing the different _normal form_ rules
+  - Knowing how to formally check if a relation is in the _Boyce-Codd normal form_ (BCNF)
+  - Knowing how to _decompose a relation_ into smaller relations if it is not in BCNF
 
 ---
 
@@ -289,7 +289,7 @@
 
 - During the course we will cover the most common normal forms: _first normal form_ (1NF), _second normal form_ (2NF), _third normal form_ (3NF) and _Boyce-Codd normal form_ (BCNF)
 - Each normal form from 1NF to BNCF adds more rules to the previous normal form
-- For example, the 2FN includes all rules of the 1NF and additional rules
+- For example, the 2NF includes all rules of the 1NF and additional rules
 
 ---
 

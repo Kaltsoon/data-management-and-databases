@@ -1,9 +1,9 @@
 # Aggregate functions and set operators
 
 - The learning objectives for this week are:
-  - Knowing what kind of query problems can aggregate functions solve
+  - Knowing what kind of query problems can _aggregate functions_ solve
   - Knowing how to use the aggregate functions `COUNT`, `SUM`, `AVG`, `MIN` and `MAX`
-  - Knowing what kind of query problems can set operators solve
+  - Knowing what kind of query problems can _set operators_ solve
   - Knowing how to combine result tables with `UNION`, `EXCEPT` and `INTERSECT` set operators
 
 ---

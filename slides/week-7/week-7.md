@@ -1,7 +1,7 @@
 # Join clauses
 
 - The learning objectives for this week are:
-  - Knowing what join clauses are and what kind of query problems can they solve
+  - Knowing what _join clauses_ are and what kind of query problems can they solve
   - Knowing how to use the `INNER JOIN`, `OUTER JOIN` and `CROSS JOIN` clauses to perform different kind of joins operations
 
 ---

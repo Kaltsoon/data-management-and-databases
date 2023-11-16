@@ -9,6 +9,19 @@ Welcome to the Data Management and Databases course!
 
 ---
 
+# Introduction to databases
+
+- The learning objectives for this week are:
+  - Knowing what kind of topics are covered during the course
+  - Knowing the course schedule and the purpose of the weekly teaching sessions
+  - Knowing how the course is assessed
+  - Knowing the objective of _data management_
+  - Knowing the meaning of the term _database_ and _database management system_ (DBMS)
+  - Knowing wat kind of functions a full-scale DBMS should provide
+  - Knowing and advantages of the _database approach_ over the _file-based approach_ in data management
+
+---
+
 # About the course
 
 - During the course, we will learn among other things:
@@ -23,7 +36,7 @@ Welcome to the Data Management and Databases course!
 
 ---
 
-# Introduction to databases
+# Assesment
 
 ---
 

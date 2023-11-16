@@ -1,11 +1,11 @@
 # Introduction to SQL
 
-- During this week we will learn:
-  - How to use a graphical interface to perform database operations
-  - How to create database tables using SQL
-  - How to define primary and foreign key constraints using SQL
-  - How to insert data into a table
-  - How to write simple database queries using SQL
+- The learning objectives for this week are:
+  - Knowing how to use a graphical interface to perform database operations
+  - Knowing how to to create database tables using SQL
+  - Knowing how to to define primary and foreign key constraints using SQL
+  - Knowing how to to insert data into a table
+  - Knowing how to to write simple database queries using SQL
 
 ---
 

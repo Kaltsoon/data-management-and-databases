@@ -4,6 +4,14 @@
 
 # The relational model
 
+- The learning objectives for this week are:
+  - Knowing what is a _data model_
+  - Knowing what is the _relational data model_
+  - Knowing the core terminology of the relational model
+  - Knowing what are the properties of database _relations_
+  - Knowing what are _domain integrity_, _entity integrity_, and _referential integrity_ rules
+  - Knowing how to identify _candidate keys_, _primary keys_, _alternate keys_, and _foreign keys_
+
 ---
 
 # Data Model

@@ -1,9 +1,9 @@
 # Logical database design
 
 - The learning objectives for this week are:
-  - Knowing what is the objective logical database design
-  - Knowing how to derive relations from simple ER diagrams
-  - Knowing how to determine natural primary keys and foreign keys
+  - Knowing what is the objective _logical database design_
+  - Knowing how to _derive relations_ from simple ER diagrams
+  - Knowing how to determine _natural primary keys_ and _foreign keys_
 
 ---
 
