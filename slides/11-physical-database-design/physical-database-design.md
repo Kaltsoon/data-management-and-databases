@@ -92,8 +92,7 @@ CREATE TABLE Student (
 - _Autonumbering_ allows a unique number to be automatically generated when a new row is inserted into a table
 - This is a useful option for _generating column values for surrogate primary keys_
 - We can create a _autonumber column_ for a table by using an extra option in the column definition
-- In SQL Server, an autonumber column is defined with the `IDENTITY` property and it is allow with `TINYINT`, `SMALLINT`, `INTEGER`, `BIGINT`, `DECIMAL`, and
-  `NUMERIC` data types
+- In SQL Server, an autonumber column is defined with the `IDENTITY` property and it can be used with `TINYINT`, `SMALLINT`, `INTEGER`, `BIGINT`, `DECIMAL`, and `NUMERIC` data types
 
 ---
 
@@ -109,6 +108,8 @@ CREATE TABLE Customer (
 ```
 
 ---
+
+# Example of column autonumbering
 
 - When we insert a new row into the table, the _DBMS assigns automatically a value to the identity column_
 - We _cannot_ insert a value to the `IDENTITY` column explicitly:
@@ -130,7 +131,7 @@ CREATE TABLE Customer (
 - _Database security_ is are the mechanisms that _protect the database against intentional or accidental threats_
 - These threats include for example _loss of confidentiality_ and _loss of privacy_
 - Organizations need to maintain secrecy over the data that is critical to them (confidentiality)
-- At least as important is the need to protect data about individuals (privacy)
+- At least as important is the need to protect data about individuals (privacy). For example individual's private information (such as social security number, email, phone number) should be accessible limitedly
 - Database security is accomplished by _verifying the identity of the database users_ (authentication) and _controlling what these users are permitted to do_ (authorization)
 
 ---
@@ -158,10 +159,10 @@ CREATE TABLE Customer (
 
 - A database commonly has certain _performance requirements_, for example a user don't want to wait for several seconds so that their discussion history is loaded in a messaging application
 - The two main aspects of _database performance_ are _response time_ and _throughput_
-- _Response time_ is the time it takes for a user to receive the result for an SQL query (for example the result table of a `SELECT` query) they send to the DMBS
+- _Response time_ is the time it takes for a user to receive the result for a certain SQL query (for example the result table of a `SELECT` query) they send to the DMBS
 - Response time includes the CPU time, queuing within the operating system, disk access, lock waits in multi-user environment, network traffic and other required operations
 - _Throughput_ describes the overall capacity of the system to process data. It is measured in _database transactions_ per second (TPS)
-- A single database transaction may involve several database queries and updates
+- A single database transaction may involve several database operations
 
 ---
 
