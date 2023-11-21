@@ -24,7 +24,7 @@
 # Creating tables
 
 - In a SQL database the data is stored into _tables_ that have _columns_ with different _data types_, such as `VARCHAR(n)`, `INTEGER`, and `DATE`
-- Different DMBS support mostly the same data types, but many of them also support their own, non-standard data types, such as the PostgreSQL's `JSONB` data type for storing JSON data
+- Different DMBS support mostly the same data types, but many of them also support their own, _non-standard data types_, such as the PostgreSQL's `JSONB` data type for storing JSON data
 - A database table can be created with the `CREATE TABLE` statement:
 
   ```sql
@@ -270,54 +270,6 @@ CREATE TABLE Customer (
   -- we could create an index on the city column
   SELECT first_name, surname FROM Student WHERE city = 'Helsinki'
   ```
-
----
-
-# The order of columns in an index is significant
-
-- ⚠️ If the index includes more than one column, then the _order of columns in the
-  index definition is significant_
-- In addition to searching rows based on the whole key value, it is possible to search rows using the first indexed column alone
-- Let's suppose the `CourseGrade` relation below with a large number of rows:
-
-  <pre>
-  CourseGrade (<u>coursecode, offeringno, studentno</u>, grade)
-    PK (coursecode, offeringno, studentno)
-    FK (coursecode, offeringno) REFERENCES CourseOffering
-    FK (studentno) REFERENCES Studen
-  </pre>
-
----
-
-# The order of columns in an index is significant
-
-- If we mention `studentno` as the first column in the index on the primary key, then we need to create only _two indexes_ to cover the primary key and the both foreign keys:
-
-  ```sql
-  CREATE UNIQUE INDEX PK_CourseGrade
-  ON CourseGrade (studentno, coursecode, offeringno)
-
-  CREATE INDEX FK_CourseGrade_CourseOffering
-  ON CourseGrade (coursecode, offeringno)
-  ```
-
-- The _first index_ can be used both for locating rows based on the _whole primary key_ and based on the `studentno` _alone_
-- Similarly, the _second index_ can be used both for locating rows based on `coursecode` and `offeringno` _together_ and based on the `courscode` _alone_
-
----
-
-# The order of columns in an index is significant
-
-```sql
--- ✅ these queries can use the index on CourseGrade (studentno, coursecode, offeringno)
-SELECT grade WHERE studentno = 'o148'
-SELECT grade WHERE studentno = 'o148' AND coursecode = 'a730' AND offeringno = 1
--- ✅ these queries can use the index on CourseGrade (coursecode offeringno)
-SELECT grade WHERE coursecode = 'a730'
-SELECT grade WHERE coursecode = 'o148' AND offeringno = 1
--- ❌ this query can't use any of the two indexes
-SELECT grade WHERE offeringno = 1
-```
 
 ---
 
