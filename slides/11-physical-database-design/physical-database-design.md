@@ -65,7 +65,7 @@ CREATE TABLE Student (
   CONSTRAINT PK_Student PRIMARY KEY (student_number),
   -- the study_advisor is a foreign key column referencing the Teacher table
   CONSTRAINT FK_TeacherStudent FOREIGN KEY (study_advisor)
-  REFERENCES Teacher(teacher_number)
+  REFERENCES Teacher(teacher_number),
   -- the email column must have a value that is in an email format
   CONSTRAINT CHK_StudentEmail CHECK (email LIKE '%_@_%._%')
 )
@@ -242,8 +242,7 @@ CREATE TABLE Customer (
 
 - But there are also _disadvantages_, such as:
   - More disk space is needed for indexes. Indexes need some maintenance, too
-  - The DBMS has to update all indexes on the table when a new row is inserted or a new
-    row is deleted
+  - The DBMS has to update all indexes on the table when a new row is inserted or a new row is deleted
   - When an existing row is updated the DBMS has to update related indexes accordingly. That is, if there are too many indexes on a table they might start decreasing performance on inserts, updates, and deletes
 
 ---
@@ -251,8 +250,7 @@ CREATE TABLE Customer (
 # When to use indexes?
 
 - In general, indexes are important for tables with a _large number of rows_ and _frequently repeated queries_
-- If the number of rows in a table is very small, then an index does not
-  improve performance
+- If the number of rows in a table is very small, then an index does not improve performance
 - Indexes are not useful for columns that have _large values_ (for example long strings) or a very _low selectivity_ of values (for example a `is_completed` column that has value `'Y'` or `'N'`)
 
 ---

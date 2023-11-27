@@ -48,11 +48,19 @@
 
 # Introduction to database transactions
 
-- In this case, the second statement would never be executed, meaning that the money is deposited to one account but never withdrawed to the other one
+- In this case, the second statement would never be executed, meaning that the money is deposited to one account but never withdrawed from the other one
 - What we would have wanted is that either _both of the statements succeed_ or _in case of a failure the database is restored to its previous state_
 - This behavior can be achieved with _database transactions_
-- A database transaction is a unit of work that is performed on a database
-- All operations within the work unit are completed successfully. Otherwise, the transaction is aborted at the point of failure and all the previous operations are rolled back to their former state
+- A database transaction is a _unit of work_ that is performed on a database
+- All operations within the unit of work are _either completed successfully_ or the _transaction is aborted at the point of failure_ and all the previous operations are rolled back to their former state
+
+--- 
+
+## Purpose of database transactions
+
+- Database transactions have two main purposes:
+  1. To provide reliable units of work that allow _correct recovery_ from failures and keep a database consistent even in cases of system failure. The previous example is an example of such case
+  2. To provide _isolation between programs_ accessing a database concurrently. For example two programs that read and update the same rows at the same time might end up in a situation where the updates aren't applied correctly
 
 ---
 
@@ -366,21 +374,17 @@ WHERE account_id = 1
 # Example of a deadlock
 
 - Both transactions in the deadlock will wait unless the deadlock is broken by the DBMS
-- When the DBMS detects a deadlock it chooses one of the transactions as a victim and
-  terminates it (rollback) with an error message
+- When the DBMS detects a deadlock it chooses one of the transactions as a victim and terminates it (rollback) with an error message
 - This allows the other transaction to continue normally
-- Locks protect our data but _decrease concurrency_. Even without a deadlock a transaction
-  can make others wait for a long time
+- Locks protect our data but _decrease concurrency_. Even without a deadlock a transaction can make others wait for a long time
 
 ---
 
 # Row-level locking in SQL Server
 
-- Depending on the lock type, when one user has a lock on a row, the lock prevents other
-  users from modifying or even reading that row
+- Depending on the lock type, when one user has a lock on a row, the lock prevents other users from modifying or even reading that row
 - The basic lock types are _write lock_ and _read lock_
-- In SQL Server, to avoid a certain type of deadlock, _"intent to update" lock_ is also
-  available
+- In SQL Server, to avoid a certain type of deadlock, _"intent to update" lock_ is also available
 
 ---
 
@@ -396,11 +400,9 @@ WHERE account_id = 1
 # Read lock
 
 - If transaction T1 wants to _select a row_, then it has to acquire a _read lock_ on the row
-- If another transaction has a _write lock_ on the row, then T1 has to wait until the other
-  transaction ends
+- If another transaction has a _write lock_ on the row, then T1 has to wait until the other transaction ends
 - If there is no write lock on the row, then T1 gets a read lock on the row
-- If the transaction isolation level is set to `READ COMMITTED`, then the read lock is
-  _released immediately after the row is retrieved from the database_
+- If the transaction isolation level is set to `READ COMMITTED`, then the read lock is _released immediately after the row is retrieved from the database_
 - If the transaction isolation level is set to `REPEATABLE READ` or `SERIALIZABLE`, then the read lock _is not released before the transaction ends_
 
 ---
