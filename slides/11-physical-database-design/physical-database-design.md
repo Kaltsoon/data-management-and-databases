@@ -140,8 +140,8 @@ CREATE TABLE Customer (
 
 - The typical _user authentication_ approaches are the following:
   - _SQL authentication_: a virtual username is registered in the DBMS instance and protected by a password. Anybody who knows the username and password can log in into the DBMS instance
-  - _Operating System authentication_: selected users or user groups in an operating system domain are allowed to connect to the DBMS instance. That is, the DBMS trusts the authentication service of the operating system
-- Out of these two the Operating System authentication is considered more secure, because it uses more secure security protocol and enforces stricter password policies
+  - _Operating system authentication_: selected users or user groups in an operating system domain are allowed to connect to the DBMS instance. That is, the DBMS trusts the authentication service of the operating system
+- Out of these two the operating system authentication is considered more secure, because it uses more secure security protocol and enforces stricter password policies
 
 ---
 

@@ -54,7 +54,7 @@
 - A database transaction is a _unit of work_ that is performed on a database
 - All operations within the unit of work are _either completed successfully_ or the _transaction is aborted at the point of failure_ and all the previous operations are rolled back to their former state
 
---- 
+---
 
 ## Purpose of database transactions
 
@@ -284,7 +284,7 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
   SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
   BEGIN TRANSACTION
   -- ⏲️ the row is locked, the transaction has to wait until the user A's transaction ends
-  UPDATE Account SET balance = 6000 WHERE accountNumber = 1;
+  UPDATE Account SET balance = 6000 WHERE account_id = 1;
   ```
 
 - The transaction of user B has to wait until the user A transaction ends (`COMMIT` or `ROLLBACK`)
@@ -363,8 +363,8 @@ WHERE account_id = 1
 # Example of a deadlock
 
 - The following things happen in the example:
-  1. Transaction A locks account 1 _exclusively_ and updates it
-  2. Transaction B locks account 2 _exclusively_ and updates it
+  1. Transaction A locks account 1 and updates it
+  2. Transaction B locks account 2 and updates it
   3. Transaction A is trying to lock account 2 (must wait, B has already locked the row)
   4. Transaction B is trying to lock account 1 (must wait, A has already locked the row)
 - Transaction B cannot continue until transaction A completes, but transaction A is blocked by transaction B. This cycle is a deadlock
@@ -382,8 +382,8 @@ WHERE account_id = 1
 
 # Row-level locking in SQL Server
 
-- Depending on the lock type, when one user has a lock on a row, the lock prevents other users from modifying or even reading that row
-- The basic lock types are _write lock_ and _read lock_
+- When a user has a lock on a row, the lock _prevents other users from modifying or even reading that row_
+- The behavior depends on the _lock type_. The basic lock types are _write lock_ and _read lock_
 - In SQL Server, to avoid a certain type of deadlock, _"intent to update" lock_ is also available
 
 ---
@@ -391,7 +391,14 @@ WHERE account_id = 1
 # Write lock
 
 - If transaction T1 wants to _modify a row_ (update, delete, insert), then it has to acquire a _write lock_ on the row
-- Write locks are _exclusive_, meaning that T1 has to wait until the row is free from all other locks
+
+  ```sql
+  BEGIN TRANSACTION
+  -- 🔒 acquire write lock for account 1
+  UPDATE Account SET balance = 6000 WHERE account_id = 1;
+  ```
+
+- ⚠️ T1 has to wait until _the row is free from all other locks_ before acquiring the lock
 - When T1 has a write lock on the row, all other transactions that want to access (select or modify) the row have to wait until T1 ends
 - A write lock is _never released before the transaction ends_
 
@@ -400,7 +407,14 @@ WHERE account_id = 1
 # Read lock
 
 - If transaction T1 wants to _select a row_, then it has to acquire a _read lock_ on the row
-- If another transaction has a _write lock_ on the row, then T1 has to wait until the other transaction ends
+
+   ```sql
+  BEGIN TRANSACTION
+  -- 🔒 acquire read lock for account 1
+  SELECT balance FROM Account WHERE account_id = 1;
+  ```
+
+- ⚠️ If another transaction has a _write lock_ on the row, then T1 has to wait until the other transaction ends
 - If there is no write lock on the row, then T1 gets a read lock on the row
 - If the transaction isolation level is set to `READ COMMITTED`, then the read lock is _released immediately after the row is retrieved from the database_
 - If the transaction isolation level is set to `REPEATABLE READ` or `SERIALIZABLE`, then the read lock _is not released before the transaction ends_
@@ -414,6 +428,7 @@ WHERE account_id = 1
   ```sql
   SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
   BEGIN TRANSACTION
+  -- 🔒 acquire "intent to update" lock for account 1
   SELECT balance FROM Account (UPDLOCK) WHERE account_id = 1
   ```
 
