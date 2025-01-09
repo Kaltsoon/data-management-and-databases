@@ -12,6 +12,7 @@
   "dependencies": {
     "@marp-team/marp-cli": "^3.2.0",
     "@mermaid-js/mermaid-cli": "^10.4.0",
+    "data-management-and-databases": "file:",
     "rimraf": "^5.0.1"
   }
 }

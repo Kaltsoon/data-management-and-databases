@@ -1,8 +1,3 @@
-<!-- 
-- Kesto noin 60min
-- TODO: arviointi ja tehtävät
--->
-
 # Data Management and Databases
 
 Welcome to the Data Management and Databases course!
@@ -38,14 +33,27 @@ Welcome to the Data Management and Databases course!
 
 # Assesment
 
+- ⚠️ To confirm the course participation the following need to be submitted before the second week's session:
+  - The first part of your learning diary
+  - The first week's assignments (orientation exercise and intro assignment)
+- The course assesment is based on the combined points from two exams:
+  - The first exam, half way through the course, will cover SQL operations
+  - The second exam, at the end of the course, will cover rest of the course topics
+- The exercise submission have can have an impact on the final grade in borderline situtations
+- More details about the exam schedule and practicalities can be found in Moodle
+
 ---
 
 # Database
 
-> Data: "A representation of facts or ideas in a formalized manner capable of being
-> communicated or manipulated by some process"
+> _"A representation of facts or ideas in a formalized manner capable of being
+> communicated or manipulated by some process"_
+>
+> ― Definition for the word "Data" in Oxford Languages
 
-> Base: "A permanent structure for housing something"
+> _"A permanent structure for housing something"_
+>
+> ― Definition for the word "Base" in Oxford Languages
 
 - In a digital world we are constantly accessing and manipulating stored information:
   - When we open our favorite messaging app, we can see the previously sent messages and we can send new messages
@@ -56,7 +64,7 @@ Welcome to the Data Management and Databases course!
 
 # Definition of database
 
-- Database is...
+- In general, database can be defined as...
   - a _shared collection_ of
   - _logically related persistent data_ and
   - a _description of this data_,
@@ -134,7 +142,7 @@ Welcome to the Data Management and Databases course!
 - Data dependence
   - Code is tightly coupled with the file structure: if it is modified, all programs that use the file have to be changed accordingly
 - Duplication of data
-  - Storing the same information in multiple files will lead to inconsistency
+  - Storing the same information in multiple files (e.g. the Client files in both sales and contacts teams) will lead to inconsistency
 - Difficulty in accessing data
   - New requirement needs a new program or changes in an existing program
 - No provision for security and shared access to the data
@@ -153,6 +161,27 @@ Welcome to the Data Management and Databases course!
   - Controls all access to the database
   - Allows users to define the database, usually through a _Data Definition Language_ (DDL)
   - Allows users to insert, update, delete, and retrieve data from the database, usually through a _Data Manipulation Language_ (DML)
+
+---
+
+# Data manipulation comparison
+
+```python
+# Fetching data from a DBMS:
+connection = psycopg2.connect(
+  # ...
+)
+cursor = connection.cursor()
+cursor.execute("SELECT clientNo, fName, lName, address, telNo FROM Client")
+clients = cursor.fetchall()
+
+# Fetching data from a file:
+file = open("clients.csv", "r")
+clients = []
+for line in file:
+  columns = line.split(",")
+  clients.append((columns[0], columns[1], columns[2], columns[3], columns[4]))
+```
 
 ---
 
