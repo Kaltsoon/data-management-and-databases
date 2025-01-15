@@ -27,7 +27,7 @@ Welcome to the Data Management and Databases course!
   - Lectures where we go through the theory of the weekly topics
   - Laboratory sessions where we apply what we've learned by working on exercises together
 - The teaching session schedule can be found on the course's Moodle page
-- There are mandatory weekly exercises that need to be submitted in Moodle before the next week's lecture
+- There are weekly exercises that need to be submitted in Moodle before the next week's lecture
 
 ---
 
@@ -39,7 +39,7 @@ Welcome to the Data Management and Databases course!
 - The course assesment is based on the combined points from two exams:
   - The first exam, half way through the course, will cover SQL operations
   - The second exam, at the end of the course, will cover rest of the course topics
-- The exercise submission have can have an impact on the final grade in borderline situtations
+- _At least 70% of the exercises must be submitted to pass the course_, otherwise submissions can only have a positive impact on the final grade
 - More details about the exam schedule and practicalities can be found in Moodle
 
 ---
@@ -64,11 +64,12 @@ Welcome to the Data Management and Databases course!
 
 # Definition of database
 
-- In general, database can be defined as...
-  - a _shared collection_ of
-  - _logically related persistent data_ and
-  - a _description of this data_,
-  - designed to meet the _information needs_
+- There are many different formal defitions for the term "database" and the definition has evolved during the years
+- Based on the definition of Connolly & Begg in year 2005, database is defined as:
+  
+> _"A database is a shared collection of logically related data (and a
+description of this data), designed to meet the information needs
+of an organization."_
 
 ---
 
