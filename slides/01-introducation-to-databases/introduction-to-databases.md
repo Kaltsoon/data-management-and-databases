@@ -67,9 +67,7 @@ Welcome to the Data Management and Databases course!
 - There are many different formal defitions for the term "database" and the definition has evolved during the years
 - Based on the definition of Connolly & Begg in year 2005, database is defined as:
   
-> _"A database is a shared collection of logically related data (and a
-description of this data), designed to meet the information needs
-of an organization."_
+> _"A database is a shared collection of logically related data (and a description of this data), designed to meet the information needs of an organization."_
 
 ---
 
