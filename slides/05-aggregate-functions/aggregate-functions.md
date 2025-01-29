@@ -11,8 +11,8 @@
 # Aggregate functions
 
 - Performing some calculation for multiple rows so that the end result is a _single value_ is a common query problem
-- Example of such query is calculating the count of rows in a certain table
-- For example, how can we calculate the number of courses in the `Course` table?
+- Example of such query is calculating the count of rows, or sum of a column values in a certain table
+- For example, how can we calculate the total number of courses, or the sum of male teachers' salaries?
 - Functions that perform such operations are referred to as _aggregate functions_
 
 ---
@@ -119,7 +119,7 @@ WHERE course_code = 'a730'
 
 # The AVG aggregate function
 
-- We can limit the number of decimal places in the result by using casting the result to a `DECIMAL` type with specific precision and scale:
+- We can limit the number of decimal places in the result by using casting the result to a `DECIMAL` type with specific precision (the total number of decimal digits stored) and scale (the number of decimal digits stored to the right of the decimal point):
 
 ```sql
 -- use scale of 2 in the DECIMAL type to round to two decimals places
@@ -206,6 +206,8 @@ SELECT surname FROM Student
 
 # The UNION operator
 
+> _"What are all the surnames among teachers and students?"_
+
 <div style="display: flex; justify-content: space-around">
   <div>
 
@@ -269,6 +271,8 @@ SELECT city FROM Student
 
 # The EXCEPT operator
 
+> _"What are the campus cities that no student lives in?"_
+
 <div style="display: flex; justify-content: space-around">
   <div>
 
@@ -328,6 +332,8 @@ SELECT city FROM Student
 ---
 
 # The EXCEPT operator
+
+> _"What are the campus cities that have students living in them?"_
 
 <div style="display: flex; justify-content: space-around">
   <div>
