@@ -36,10 +36,15 @@ FROM table_name [ [ AS ] table_alias ]
 ```
 
 ``` sql
---- ❌ wrong syntax for the SELECT statement, "Incorrect syntax near the keyword 'FROM'."
+-- ❌ wrong syntax for the SELECT statement, "Incorrect syntax near the keyword 'FROM'."
 SELECT FROM Student first_name, surname
 -- ✅ correct syntax for the SELECT statement
 SELECT first_name, surname FROM Student
+-- ✅ new lines can be used to improve readability
+SELECT first_name, surname
+FROM Student
+-- ⚠️ uppercase keywords (e.g. SELECT) aren't required but they improve readability
+select first_name, surname from Student
 ```
 
 ---
@@ -51,9 +56,9 @@ SELECT first_name, surname FROM Student
 - The result is a result table containing the rows from the target table with the specified columns
 
 ```sql
---- Select all the students and display every column
+--- select all the students and display every column
 SELECT * FROM Student
---- Select all the students and display only the first_name and surname columns
+--- select all the students and display only the first_name and surname columns
 SELECT first_name, surname FROM Student
 ```
 
@@ -68,6 +73,7 @@ SELECT first_name, surname FROM Student
 - The result table only contains the rows that satisfy the condition
 
 ```sql
+-- list all student's whose first name is Matti
 SELECT first_name, surname FROM Student WHERE first_name = 'Matti'
 ```
 
@@ -432,7 +438,7 @@ SELECT DISTINCT credits FROM Course
 # Select distinct
 
 - We can also define a _group columns_ that needs to distinct in the result table
-- For example, _what are the courses teached by each teacher?_
+- For example, _"what are the courses teached by each teacher?"_
 
 ```sql
 -- group of teacher_number and course_code

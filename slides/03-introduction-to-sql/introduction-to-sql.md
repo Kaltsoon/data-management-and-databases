@@ -25,6 +25,7 @@
 - SQL is used with relational database management systems (RDMS), such as _Microsoft SQL Server_, which we will be using during the course
 - RDMS software can be running on local computer on a server on the internet
 - We can send database queries to a RDMS using e.g. programming interfaces, command line interfaces or graphical interfaces
+- During the course we have the option to either install the SQL Server on our computer or use the SQL server running in Haaga-Helia's servers
 
 ---
 

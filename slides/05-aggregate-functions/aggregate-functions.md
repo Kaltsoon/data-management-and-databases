@@ -12,12 +12,16 @@
 
 - Performing some calculation for multiple rows so that the end result is a _single value_ is a common query problem
 - Example of such query is calculating the count of rows, or sum of a column values in a certain table
-- For example, how can we calculate the total number of courses, or the sum of male teachers' salaries?
+- For example, "what is the total number of courses?", or "what is the sum of male teachers' salaries"?
 - Functions that perform such operations are referred to as _aggregate functions_
 
 ---
 
 # The COUNT aggregate function
+
+```sql
+COUNT ( * | { [ DISTINCT ] column_expression } ) 
+```
 
 - The `COUNT` aggregate function returns the _total number of rows_ that match the specified criteria:
 
@@ -66,6 +70,10 @@ FROM Student
 
 # The SUM aggregate function
 
+```sql
+SUM ( [ DISTINCT ] column_expression )
+```
+
 - The `SUM` aggregate function returns the _sum of all the values_ of a column:
 
 ```sql
@@ -83,6 +91,10 @@ WHERE gender = 'F'
 ---
 
 # The AVG aggregate function
+
+```sql
+AVG ( [ DISTINCT ] column_expression )
+```
 
 - The `AVG` aggregate function returns the _average value_ of a column:
 
@@ -136,6 +148,10 @@ WHERE course_code = 'a730'
 
 # The MIN aggregate function
 
+```sql
+MIN ( column_expression ) 
+```
+
 - The `MIN` function returns the _smallest value_ of a column
 
 ```sql
@@ -153,6 +169,10 @@ WHERE course_code = 'a730'
 ---
 
 # The MAX aggregate function
+
+```sql
+MAX ( column_expression ) 
+```
 
 - The `MAX` function returns the _largest value_ of a column
 
@@ -188,6 +208,48 @@ WHERE course_code = 'a730'
 
 ---
 
+# Only operating on distinct values
+
+- The `COUNT`, `SUM` and `AVG` aggregate functions support the `DISTINCT` keyword for only operating on _distinct values_:
+
+```sql
+-- how many different grades have been given?
+SELECT COUNT(DISTINCT grade) as number_of_different_grades FROM CourseGrade
+```
+
+---
+
+# Combining non-aggregate and aggregate columns
+
+- If we use an aggregate function, we can't include non-aggregate function columns to the `SELECT` statement\*:
+
+```sql
+-- ✅ only aggregate function columns, all good here
+SELECT COUNT(*) as number_of_courses FROM Course
+
+-- ❌ combintation of aggregate function and non-aggregate function columns, this won't work
+SELECT course_name, COUNT(*) as number_of_courses FROM Course
+```
+
+- \* That is, unless the non-aggregate function columns are included in a `GROUP BY` clause, but we will cover that later
+
+---
+
+#  Combining non-aggregate and aggregate columns
+
+- If it would be possible, how would the RDMS know, which `course_name` to display in the result table?
+
+```sql
+-- ❌ combintation of aggregate function and non-aggregate function columns, this won't work
+SELECT course_name, COUNT(*) as number_of_courses FROM Course
+```
+
+| course_name | number_of_courses |
+| ----------- | ----------------- |
+| ?           | 2                 |
+
+---
+
 # Combining results tables with set operators
 
 ![bg fit right:30%](./union.png)
@@ -196,7 +258,7 @@ WHERE course_code = 'a730'
 - For example, the `UNION` operator returns _all_ the rows from two or more result tables _without duplicate values_:
 
 ```sql
--- What are all the surnames among teachers and students?
+-- what are all the surnames among teachers and students?
 SELECT surname FROM Teacher
 UNION
 SELECT surname FROM Student
@@ -261,7 +323,7 @@ SELECT surname FROM Student
 - The `EXCEPT` operator returns only the rows from the first result table that are _not included_ in the second result table _without duplicate values_:
 
 ```sql
--- What are the campus cities that no student lives in?
+-- what are the campus cities that no student lives in?
 SELECT city FROM Campus
 EXCEPT
 SELECT city FROM Student
@@ -323,7 +385,7 @@ SELECT city FROM Student
 - The `INTERSECT` operator returns only the rows that _exist in both_ result tables _without duplicate values_:
 
 ```sql
--- What are the campus cities that have students living in them?
+-- what are the campus cities that have students living in them?
 SELECT city FROM Campus
 INTERSECT
 SELECT city FROM Student
