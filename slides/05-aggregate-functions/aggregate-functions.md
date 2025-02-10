@@ -1,9 +1,9 @@
 # Aggregate functions and set operators
 
 - The learning objectives for this week are:
-  - Knowing what kind of query problems can _aggregate functions_ solve
+  - Knowing what kind of query problems _aggregate functions_ solve
   - Knowing how to use the aggregate functions `COUNT`, `SUM`, `AVG`, `MIN` and `MAX`
-  - Knowing what kind of query problems can _set operators_ solve
+  - Knowing what kind of query problems _set operators_ solve
   - Knowing how to combine result tables with `UNION`, `EXCEPT` and `INTERSECT` set operators
 
 ---
@@ -62,6 +62,26 @@ WHERE credits > 3
 
 ```sql
 -- what's the number of students with an email address?
+SELECT COUNT(email) as number_of_students_with_email
+FROM Student
+```
+
+---
+
+# The COUNT aggregate function
+
+| student_number | email           |
+| -------------- | --------------- |
+| o354           | 0354@takkula.fi |
+| o410           | 0410@takkula.fi |
+| o473           | NULL            |
+
+```sql
+-- count all rows, total_number_of_students is 3
+SELECT COUNT(*) as total_number_of_students
+FROM Student
+
+-- count rows with non-null email column value, number_of_students_with_email is 2
 SELECT COUNT(email) as number_of_students_with_email
 FROM Student
 ```
@@ -219,7 +239,7 @@ SELECT COUNT(DISTINCT grade) as number_of_different_grades FROM CourseGrade
 
 ---
 
-# Combining non-aggregate and aggregate columns
+# Combining aggregate function and non-aggregate function columns
 
 - If we use an aggregate function, we can't include non-aggregate function columns to the `SELECT` statement\*:
 
@@ -235,7 +255,7 @@ SELECT course_name, COUNT(*) as number_of_courses FROM Course
 
 ---
 
-#  Combining non-aggregate and aggregate columns
+# Combining aggregate function and non-aggregate function columns
 
 - If it would be possible, how would the RDMS know, which `course_name` to display in the result table?
 
