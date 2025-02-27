@@ -2,7 +2,9 @@
 
 - The learning objectives for this week are:
   - Knowing how the `GROUP BY` clause operates and how it is related to the aggregate functions
-  - Knowing what are sub queries and how to use them with the `SELECT` clause
+  - Knowing how to use the aggregate functions in filtering with the `HAVING` clause
+  - Knowing what are subqueries and how they can be used in a `SELECT` statement
+  - Knowing different kind of use-cases for subqueries, including row filter criteria, correlated subqueries, in the `SELECT` list, in the `HAVING` clause, and in the `FROM` clause
 
 ---
 
@@ -17,7 +19,7 @@
 
 # The GROUP BY clause
 
-```sql 
+```sql
 GROUP BY column_list [ HAVING group_filtering_condition ]
 ```
 
@@ -118,13 +120,255 @@ ORDER BY deptno
 ```sql
 -- which departments have more than 10 employees?
 -- ❌ can't use aggregate functions with the WHERE clause, this won't work
-SELECT deptno, COUNT(*) AS "number of employees"
+SELECT deptno, COUNT(*) AS number_of_employees
 FROM Employee
 WHERE COUNT(*) > 10
 GROUP BY deptno
 
 -- ✅ we should use the HAVING clause instead
-SELECT deptno, COUNT(*) AS "number of employees"
+SELECT deptno, COUNT(*) AS number_of_employees
 FROM Employee
-GROUP BY deptno HAVING COUNT(*) > 10
+GROUP BY deptno
+HAVING COUNT(*) > 10
 ```
+
+---
+
+# Subqueries
+
+- A _subquery_ is a query within another query, which is used to retrieve data that will be processed by the outer query
+- The most common use case for a subquery is to use subquery result in a filtering condintion in a `WHERE` clause
+- Subqueries can also contain another subquery
+- Most of our examples will cover usage of subqueries with the `SELECT` statement, but they can be used with e.g. `INSERT INTO` and `UPDATE` statements as well
+
+```sql
+--- who are the teachers with a above average salary?
+SELECT first_name, surname, salary
+FROM Teacher
+WHERE salary > (
+  -- subquery for calculating the average salary
+  SELECT AVG(salary) FROM Teacher
+)
+```
+
+---
+
+# Subqueries in a SELECT statement
+
+- The subquery is placed inside brackets `()` and its result will be passed to the outer query
+- In a `SELECT` statement, we can nest a subquery within a:
+  - `WHERE` clause as a row filter criteria to be used in the condition
+  - `WHERE` clause as a correlated subquery
+  - `SELECT` list as a column expression or as a part of a column expression
+  - `HAVING` clause as a group filter criteria within a GROUP BY clause
+  - `FROM` clause to create a temporary derived table
+  - `WITH` clause to create a temporary named result set, known as common table expression (CTE)
+
+---
+
+# Subquery as a row filter criteria
+
+- The most common use of the subquery is to use it as a row filter criteria similarly as e.g. litrals:
+
+```sql
+-- using literal 5000 as a filter criteria
+WHERE salary > 5000
+
+-- using a subquery as a filter criteria (note the brackets wrapping the subquery)
+WHERE salary > (
+  -- the result of the subquery will be used in the comparison
+  SELECT AVG(salary) FROM Teacher
+)
+```
+
+---
+
+# Subquery as a row filter criteria
+
+```sql
+-- which countries have larger population than Australia?
+SELECT country_name, population
+FROM Country
+WHERE population > (
+  -- subquery for getting the population of Australia
+  SELECT population
+  FROM Country
+  WHERE country_name = 'Australia'
+)
+
+-- which country has the highest population?
+SELECT country_name, population
+FROM Country
+-- subquery for getting the highest population
+WHERE population = (SELECT MAX(population) FROM Country)
+
+-- who have not been working in any project?
+SELECT empno, empname
+FROM Employee
+-- subquery for getting the employees who have been working in a project
+WHERE empno NOT IN (SELECT empno FROM Project_Employee)
+```
+
+---
+
+# Correlated subqueries
+
+- A _correlated subquery_ (inner query) uses one or more values from the outer query
+- The correlated subquery is executed once for each row that is selected by the outer query
+
+```sql
+SELECT city, surname, given_name, student_number
+FROM Student
+-- using a correlated subquery
+WHERE EXISTS (
+  -- does any such row EXIST in the Campus table where Campus.city = Student.city
+  SELECT * FROM Campus
+  WHERE Campus.city = Student.city
+)
+```
+
+---
+
+# Performance of correlated subqueries
+
+- 🐌 In the example, the correlated subquery is executed once per each student, which will degrade  the query performance
+- 🚀 Sometimes It might be better to use a non-correlated subquery to improve readability and performance:
+
+```sql
+-- 🚀 same result, with using a non-correlated subquery
+SELECT city, surname, given_name, student_number
+FROM Student
+WHERE city IN (SELECT city FROM Campus) 
+```
+
+---
+
+# Subqueries within a SELECT list
+
+- A subquery can be used in the `SELECT` list to calculate a value for a column that will be displayed in the result table:
+
+```sql
+-- what is the percentage of red  cars?
+SELECT (SELECT 100.0 * COUNT(*) FROM Car WHERE colour = 'red') / COUNT(*)
+ AS percentage_of_red_cars
+FROM Car
+
+-- what is the average grade for each student?
+SELECT 
+student_number, (
+  SELECT AVG(grade) FROM CourseGrade
+  WHERE CourseGrade.student_number = Student.student_number
+) AS average_grade
+FROM Student
+```
+
+---
+
+# Subqueries within a HAVING clause
+
+- Similarly as in the `WHERE` clause, a subquery can be used in the `HAVING` clause to filter the groups based on the aggregate function result:
+
+```sql
+-- in which departments the average salary is higher than the average salary of all employees?
+SELECT deptno, AVG(salary) AS average_salary
+FROM Employee
+GROUP BY deptno HAVING AVG(salary) > (SELECT AVG(salary) FROM Employee) 
+```
+
+---
+
+# Subqueries within a FROM clause
+
+- A subquery can be used in the `FROM` clause to create a temporary derived table that can be used in the outer query
+- The subquery _must have an alias name_ (`FROM (subquery) AS alias_name`)
+- The subquery's result set can be used in the `FROM` clause similarly to a normal table
+- Let's consider the following example:
+
+> _"what is the count, and the minimum and the maximum grade point average (GPA) of such students who have passed more than 20 courses?"_
+
+---
+
+# Subqueries within a FROM clause
+
+- First, we define a query for the grade point average of students who have passed more than 20 courses:
+
+```sql
+SELECT AVG(grade) AS gpa
+FROM CourseGrade
+WHERE grade > 0
+GROUP BY student_number
+HAVING COUNT(*) > 20
+```
+
+---
+
+# Subqueries within a FROM clause
+
+- Then, we use this query as a subquery in the `FROM` clause:
+
+```sql
+SELECT COUNT(*) AS count, MIN(gpa) AS min_gpa, MAX(gpa) AS max_gpa
+FROM (
+  -- our subquery from the previous slide
+  SELECT AVG(grade) AS gpa
+  FROM CourseGrade
+  WHERE grade > 0
+  GROUP BY student_number
+  HAVING COUNT(*) > 20
+) AS GpaTable -- ⚠️ alias name for the subquery is required
+```
+
+---
+
+# Subqueries within a WITH clause
+
+- A subquery can be used in the `WITH` clause to create a temporary named result set, known as common table expression (CTE)
+- CTEs are useful for improving the readability of the query and can be used multiple times in the query
+- Let's consider the following example:
+
+> _"Which department has the highest number of employees"_
+
+---
+
+# Subqueries within a WITH clause
+
+- First, we define a CTE with the `WITH` clause for the number of employees in each department:
+
+```sql
+-- common table expression
+WITH DeptInfo (deptno, employee_count) AS (
+  SELECT deptno, COUNT(*) AS employee_count
+  FROM Employee
+  GROUP BY deptno
+)
+```
+
+---
+
+# Subqueries within a WITH clause
+
+- Then, we use this CTE in the main query to find the department with the highest number of employees:
+
+```sql
+-- common table expression from the previous slide
+WITH DeptInfo (deptno, employee_count) AS (
+  SELECT deptno, COUNT(*) AS employee_count
+  FROM Employee
+  GROUP BY deptno
+)
+
+-- main query
+SELECT deptno, employee_count
+FROM DeptInfo -- using the CTE
+WHERE employee_count = (SELECT MAX(employee_count ) FROM DeptInfo) -- using the CTE again
+```
+
+---
+
+# Summary
+
+- The `GROUP BY` clause is used to group the rows based on a specific column or columns
+- The `HAVING` clause is used to filter the groups based on the aggregate function result
+- Subqueries are queries within another query
+- Subqueries can be used in a `SELECT` statement in the `WHERE` clause, `SELECT` list, `HAVING` clause, `FROM` clause, and `WITH` clause
+- The `WITH` clause is used to create a temporary named result set, known as common table expression (CTE)

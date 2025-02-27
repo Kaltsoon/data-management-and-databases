@@ -3,16 +3,51 @@
 - The learning objectives for this week are:
   - Knowing what _join clauses_ are and what kind of query problems can they solve
   - Knowing how to use the `INNER JOIN`, `OUTER JOIN` and `CROSS JOIN` clauses to perform different kind of joins operations
+  - Knowing the difference between `INNER JOIN` and `OUTER JOIN` clauses
 
 ---
 
 # Join clauses
 
-- Instead of combining rows, like set operators (e.g. `UNION`), a _join clause_ combines _columns_ from one or more tables into a new table
-- There's three different kind of join operations which operate in different ways: _inner join_, _outer join_ and _cross join_
 - In the relational model a table can have a foreign key referencing primary key in another table
-- A common query problem is to combine columns from the primary key table with the columns of the foreign key table
-- For example, _what is the name of each course instance teacher?_
+- A common query problem is to select colums from the referenced table based on the foreign key value
+- For example, _"What is the name of each course instance's teacher?"_
+- We would need to select course instance rows from the `CourseInstance` table and _join_ them with the teacher rows from the `Teacher` table based on the `teacher_number` foreign key column value
+
+---
+
+# Join clauses
+
+- The first table resembles the `CourseInstance` table row, the second table the `Teacher` table row and the third table the desired result table row:
+ 
+| course_code | instance_number | teacher_number |
+| ----------- | --------------- | -------------- |
+| a290        | 1               | 🔑 h430         |
+
+| teacher_number | first_name | surname |
+| -------------- | ---------- | ------- |
+| 🔑 h430         | Emma       | Virta   |
+
+| course_code | instance_number | teacher_number | first_name | surname |
+| ----------- | --------------- | -------------- | ---------- | ------- |
+| a290        | 1               | 🔑 h430         | Emma       | Virta   |
+
+---
+
+# Join clauses
+
+```sql
+SELECT [ DISTINCT ] {
+  -- ...
+}
+FROM table_name [ [ AS ] table_alias ]
+-- JOIN clause
+[ { [ INNER ] JOIN table_name [ [ AS ] table_alias ] ON join_condition }... ] 
+```
+
+- Instead of combining rows, like set operators (e.g. `UNION`), a _join clause_ combines _columns_ from one or more tables into a new table
+- Rows are join based on a condition called _join condition_
+- There's three different kind of join operations which operate in different ways: _inner join_, _outer join_ and _cross join_
 
 ---
 
@@ -21,15 +56,13 @@
 - With a `SELECT` stament we get the `teacher_number` foreign key column value:
 
 ```sql
--- what is the teacher number of each course instance teacher?
 SELECT course_code, instance_number, teacher_number
 FROM CourseInstance
 ```
 
 | course_code | instance_number | teacher_number |
 | ----------- | --------------- | -------------- |
-| a290        | 1               | h430           |
-| ...         | ...             | ...            |
+| a290        | 1               | 🔑 h430         |
 
 ---
 
@@ -47,8 +80,7 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 
 | course_code | instance_number | teacher_number | first_name | surname |
 | ----------- | --------------- | -------------- | ---------- | ------- |
-| a290        | 1               | h430           | Emma       | Virta   |
-| ...         | ...             | ...            | ...        | ...     |
+| a290        | 1               | 🔑 h430         | Emma       | Virta   |
 
 ---
 
@@ -62,13 +94,14 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
 
-- The join condition _doesn't_ have to compare primary key to a foreign key, any kind of condition can be used
+- ⚠️ The join condition _does not_ have to compare primary key to a foreign key, any kind of condition can be used
 
 ---
 
 # Join clauses
 
-- With join clauses, it is a good idea to specify the table name before the column name to avoid _ambiguous column names_:
+- With join clauses we operate on multiple tables, which can have columns with the same name
+- This leads to errors caused by _ambiguous column names_, which can be avoided by specifying the table name before the column name using the `table_name.column_name` syntax:
 
 ```sql
 -- ❌ teacher_number column name is ambiguous because
@@ -76,9 +109,7 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 SELECT teacher_number
 FROM CourseInstance
 INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
-```
 
-```sql
 -- ✅ we specify that the teacher_number column
 -- of the CourseInstance table should be selected
 SELECT CourseInstance.teacher_number
@@ -98,19 +129,15 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 
 # INNER JOIN clause
 
-Let's consider the following rows in `CourseInstance` and `Teacher` tables:
+- Let's consider the following rows in `CourseInstance` and `Teacher` tables:
 
-<div style="display: flex; justify-content: space-around; grid-gap: 20px">
-<div>
+<div style="font-size: 0.9em">
 
 | course_code | instance_number | teacher_number |
 | ----------- | --------------- | -------------- |
 | a290        | 1               | h430           |
-| a290        | 2               | NULL           |
+| a290        | 2               | ⚠️ NULL         |
 | a450        | 1               | h303           |
-
-</div>
-<div>
 
 | teacher_number | first_name | surname |
 | -------------- | ---------- | ------- |
@@ -118,7 +145,6 @@ Let's consider the following rows in `CourseInstance` and `Teacher` tables:
 | h303           | Veli       | Ponteva |
 | h777           | Mauri      | Matikka |
 
-</div>
 </div>
 
 ---
@@ -129,7 +155,8 @@ Let's consider the following rows in `CourseInstance` and `Teacher` tables:
 
 ```sql
 SELECT
-CourseInstance.course_code, CourseInstance.instance_number, Teacher.teacher_number, Teacher.first_name, Teacher.surname
+CourseInstance.course_code, CourseInstance.instance_number,
+Teacher.teacher_number, Teacher.first_name, Teacher.surname
 FROM CourseInstance
 INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
@@ -138,6 +165,25 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 | ----------- | --------------- | -------------- | ---------- | ------- |
 | a290        | 1               | h430           | Emma       | Virta   |
 | a450        | 1               | h303           | Veli       | Ponteva |
+
+---
+
+# INNER JOIN clause
+
+- If the foreign key is a composite key, the join condition must include all columns of the composite key
+- For example, the `CourseInstance` table has a composite key consisting of `course_code` and `instance_number` columns
+
+```sql
+-- how long does it take to grade each course on average?
+SELECT 
+  CourseInstance.course_code,
+  AVG(DATEDIFF(DAY, end_date, grade_date)) AS average_grading_time
+FROM CourseGrade
+-- join condition must include all columns of the composite key
+INNER JOIN CourseInstance ON CourseGrade.course_code = CourseInstance.course_code 
+AND CourseGrade.instance_number = CourseInstance.instance_number
+GROUP BY CourseInstance.course_code
+```
 
 ---
 
@@ -178,7 +224,7 @@ LEFT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_numbe
 | course_code | instance_number | teacher_number | first_name | surname |
 | ----------- | --------------- | -------------- | ---------- | ------- |
 | a290        | 1               | h430           | Emma       | Virta   |
-| a290        | 2               | NULL           | NULL       | NULL    |
+| a290        | 2               | ⚠️ NULL         | ⚠️ NULL     | ⚠️ NULL  |
 | a450        | 1               | h303           | Veli       | Ponteva |
 
 ---
@@ -198,7 +244,7 @@ RIGHT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_numb
 | ----------- | --------------- | -------------- | ---------- | ------- |
 | a290        | 1               | h430           | Emma       | Virta   |
 | a450        | 1               | h303           | Veli       | Ponteva |
-| NULL        | NULL            | h777           | Mauri      | Matikka |
+| ⚠️ NULL      | ⚠️ NULL          | h777           | Mauri      | Matikka |
 
 ---
 
@@ -210,12 +256,80 @@ RIGHT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_numb
 
 ---
 
+# Difference between INNER JOIN and OUTER JOIN
+
+- The difference between `INNER JOIN` and `OUTER JOIN` lies in the way the _non-matching rows are handled_
+
+<div style="font-size: 0.9em">
+
+| course_code | instance_number | teacher_number |
+| ----------- | --------------- | -------------- |
+| a290        | 1               | h430           |
+| a290        | 2               | ⚠️ NULL         |
+| a450        | 1               | h303           |
+
+| teacher_number | first_name | surname |
+| -------------- | ---------- | ------- |
+| h430           | Emma       | Virta   |
+| h303           | Veli       | Ponteva |
+| h777           | Mauri      | Matikka |
+
+</div>
+
+---
+
+# Difference between INNER JOIN and OUTER JOIN
+
+- The `INNER JOIN` clause _omits the rows that don't have a matching row_ in the other table:
+
+<div style="font-size: 0.9em">
+
+```sql
+INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+```
+
+| course_code | instance_number | teacher_number | first_name | surname |
+| ----------- | --------------- | -------------- | ---------- | ------- |
+| a290        | 1               | h430           | Emma       | Virta   |
+| a450        | 1               | h303           | Veli       | Ponteva |
+
+</div>
+
+- ⚠️ The course instance with the `teacher_number` columns value as `NULL` is omitted from the result table because it doesn't have a matching row in the `Teacher` table
+
+---
+
+# Difference between INNER JOIN and OUTER JOIN
+
+- `OUTER JOIN` _includes the rows that don't have a matching row_ in the other table and the corresponding columns values are `NULL`
+
+```sql
+LEFT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+```
+
+| course_code | instance_number | teacher_number | first_name | surname |
+| ----------- | --------------- | -------------- | ---------- | ------- |
+| a290        | 1               | h430           | Emma       | Virta   |
+| a290        | 2               | ⚠️ NULL         | ⚠️ NULL     | ⚠️ NULL  |
+| a450        | 1               | h303           | Veli       | Ponteva |
+
+</div>
+
+---
+
 # CROSS JOIN clause
 
 - The `CROSS JOIN` clause selects rows from _both_ tables _without a join condition_
 - The `CROSS JOIN` clause operates similarly as the _cartesian product_
 - The result table has every possible combination of rows of the first and the second table
-- The result table can potentially have a very large number of rows
+- ⚠️ The result table can potentially have a very large number of rows
+
+```sql
+-- what are all possible shoe color and size combinations?
+SELECT ShoeColor.name, ShoeSize.name
+FROM ShoeColor
+CROSS JOIN ShoeSize
+```
 
 ---
 
@@ -225,4 +339,5 @@ RIGHT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_numb
 - The `INNER JOIN` clause _only_ selects rows that have matching values in _both_ tables based on the join condition
 - The `LEFT OUTER JOIN` clause includes the non-matching rows from the table which is on the _left_ of the join clause and the matching rows from the table on the right
 - The `RIGHT OUTER JOIN` clause includes the non-matching rows from the table which is on the _right_ of the join clause and the matching rows from the table on the left
+- The difference between `INNER JOIN` and `OUTER JOIN` lies in the way the _non-matching rows are handled_
 - The `CROSS JOIN` clause selects rows from _both_ tables _without a join condition_
