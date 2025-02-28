@@ -99,7 +99,7 @@ GROUP BY course_code
 
 # Combining with the WHERE clause
 
-- We can use the `WHERE` clause to apply filtering _before the grouping is done_ by the `GROUP BY` clause: 
+- We can use the `WHERE` clause to apply filtering _before the grouping is done_ by the `GROUP BY` clause:
 
 ```sql
 -- how many employees whose salary is above 10000 there are in each department?
@@ -130,6 +130,26 @@ SELECT deptno, COUNT(*) AS number_of_employees
 FROM Employee
 GROUP BY deptno
 HAVING COUNT(*) > 10
+```
+
+---
+
+# Examples of GROUP BY clause
+
+- What do we get from the following queries?
+
+```sql
+-- ❓ what do we get from this query?
+SELECT campus_code, COUNT(campus_code) AS number_of_teachers
+FROM Teacher
+GROUP BY campus_code
+
+-- ❓ what do we get from this query?
+SELECT course_code, AVG(grade) AS average_grade
+FROM CourseGrade
+WHERE grade_date BETWEEN '2024-01-01' AND '2024-12-31'
+GROUP BY course_code
+HAVING COUNT(grade) > 10 
 ```
 
 ---
@@ -196,16 +216,14 @@ WHERE population > (
   WHERE country_name = 'Australia'
 )
 
--- which country has the highest population?
+-- ❓ what do we get from this query?
 SELECT country_name, population
 FROM Country
--- subquery for getting the highest population
 WHERE population = (SELECT MAX(population) FROM Country)
 
--- who have not been working in any project?
+-- ❓ what do we get from this query?
 SELECT empno, empname
 FROM Employee
--- subquery for getting the employees who have been working in a project
 WHERE empno NOT IN (SELECT empno FROM Project_Employee)
 ```
 
@@ -217,6 +235,7 @@ WHERE empno NOT IN (SELECT empno FROM Project_Employee)
 - The correlated subquery is executed once for each row that is selected by the outer query
 
 ```sql
+-- which students are from a city where there is a campus?
 SELECT city, surname, given_name, student_number
 FROM Student
 -- using a correlated subquery
@@ -248,7 +267,7 @@ WHERE city IN (SELECT city FROM Campus)
 - A subquery can be used in the `SELECT` list to calculate a value for a column that will be displayed in the result table:
 
 ```sql
--- what is the percentage of red  cars?
+-- what is the percentage of red cars?
 SELECT (SELECT 100.0 * COUNT(*) FROM Car WHERE colour = 'red') / COUNT(*)
  AS percentage_of_red_cars
 FROM Car

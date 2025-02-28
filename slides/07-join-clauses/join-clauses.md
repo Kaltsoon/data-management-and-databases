@@ -333,6 +333,29 @@ CROSS JOIN ShoeSize
 
 ---
 
+# Examples of join clauses
+
+- What do we get from the following queries?
+
+```sql
+-- ❓ what do we get from this query?
+SELECT course_code, instance_number
+FROM CourseInstance
+INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+INNER JOIN Campus ON Teacher.campus_code = Campus.campus_code
+WHERE Campus.campus_name = 'Pasila'
+
+-- ❓ what do we get from this query?
+SELECT CourseGrade.course_code, CourseGrade.instance_number, AVG(grade) as average_grade
+FROM CourseGrade
+INNER JOIN CourseInstance ON CourseGrade.course_code = CourseInstance.course_code
+AND CourseGrade.instance_number = CourseInstance.instance_number
+WHERE participants > 15
+GROUP BY CourseGrade.course_code, CourseGrade.instance_number
+```
+
+---
+
 # Summary
 
 - _Join clauses_ combines _columns_ from one or more tables into a new table
