@@ -12,7 +12,8 @@
 - In the relational model a table can have a foreign key referencing primary key in another table
 - A common query problem is to select colums from the referenced table based on the foreign key value
 - For example, _"What is the name of each course instance's teacher?"_
-- We would need to select course instance rows from the `CourseInstance` table and _join_ them with the teacher rows from the `Teacher` table based on the `teacher_number` foreign key column value
+- We would need to select course instance columns from the `CourseInstance` table and _join_ them with the teacher columns from the `Teacher` table based on the `teacher_number` foreign key column value
+- The referential integrity and _join operations_ are the key features which dinstuingish the relational database management systems from other database management systems
 
 ---
 
@@ -47,7 +48,7 @@ FROM table_name [ [ AS ] table_alias ]
 
 - Instead of combining rows, like set operators (e.g. `UNION`), a _join clause_ combines _columns_ from one or more tables into a new table
 - Rows are join based on a condition called _join condition_
-- There's three different kind of join operations which operate in different ways: _inner join_, _outer join_ and _cross join_
+- There's three different kind of _join operations_ which operate in different ways: _inner join_, _outer join_ and _cross join_
 
 ---
 
@@ -115,6 +116,22 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 SELECT CourseInstance.teacher_number
 FROM CourseInstance
 INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+```
+
+---
+
+# Join clauses
+
+- If we want to get columns from more than two table, we can chain multiple join clauses together
+- For example, in the following example we need information from the `CourseGrade`, `Course` and `Teacher` tables:
+
+```sql
+-- display course and student information for each passing grade
+SELECT CourseGrade.course_code, instance_number, CourseGrade.student_number first_name, surname, credits, grade 
+FROM CourseGrade
+INNER JOIN Course ON CourseGrade.course_code = Course.course_code
+INNER JOIN Student ON CourseGrade.student_number = Student.student_number
+WHERE grade > 0
 ```
 
 ---
@@ -317,6 +334,26 @@ LEFT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_numbe
 
 ---
 
+# Join clause shorthands
+
+- We usually prefer the shorthand versions of the join clauses
+- The `INNER JOIN` clause can be written as `JOIN`
+- The `LEFT OUTER JOIN` clause can be written as `LEFT JOIN`
+- The `RIGHT OUTER JOIN` clause can be written as `RIGHT JOIN`
+
+```sql
+INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+
+LEFT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+LEFT JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+
+RIGHT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+RIGHT JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+```
+
+---
+
 # CROSS JOIN clause
 
 - The `CROSS JOIN` clause selects rows from _both_ tables _without a join condition_
@@ -341,14 +378,14 @@ CROSS JOIN ShoeSize
 -- ❓ what do we get from this query?
 SELECT course_code, instance_number
 FROM CourseInstance
-INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
-INNER JOIN Campus ON Teacher.campus_code = Campus.campus_code
+JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+JOIN Campus ON Teacher.campus_code = Campus.campus_code
 WHERE Campus.campus_name = 'Pasila'
 
 -- ❓ what do we get from this query?
 SELECT CourseGrade.course_code, CourseGrade.instance_number, AVG(grade) as average_grade
 FROM CourseGrade
-INNER JOIN CourseInstance ON CourseGrade.course_code = CourseInstance.course_code
+JOIN CourseInstance ON CourseGrade.course_code = CourseInstance.course_code
 AND CourseGrade.instance_number = CourseInstance.instance_number
 WHERE participants > 15
 GROUP BY CourseGrade.course_code, CourseGrade.instance_number
