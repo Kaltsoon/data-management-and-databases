@@ -20,6 +20,32 @@
 
 ---
 
+# Redundancy example
+
+Let's consider _redundancy problems_ with the following `Course_Enrolment` relation rows:
+
+| courseno | studentno | phone | enrolment_date |
+| -------- | --------- | ----- | -------------- |
+| C001     | 10        | 1234  | 2025-04-01     |
+| C001     | 20        | 5555  | 2025-04-02     |
+| C002     | 30        | 8765  | 2025-04-01     |
+| C002     | 40        | 1414  | 2025-04-03     |
+| C002     | 10        | 1234  | 2025-04-07     |
+
+---
+
+# Redundancy example
+
+The student `10` _phone number is duplicated_ causing redundancy in the data. While updating a phone number or inserting a new row, there's a risk of having multiple different phone numbers for the same student (inconsistency):
+
+| courseno | studentno | phone  | enrolment_date |
+| -------- | --------- | ------ | -------------- |
+| C001     | 10        | 1234 ⚠️ | 2025-04-01     |
+| ...      | ...       | ...    | ...            |
+| C002     | 10        | 3338 ⚠️ | 2025-04-07     |
+
+---
+
 # Database normalisation
 
 - In a case of fixing an identified structural problem, normalisation involves _decomposing a relation into less redundant (and smaller) relations_ without losing information
@@ -168,6 +194,8 @@
 
 ---
 
+<!--
+
 # Partial and full functional dependencies
 
 - Let's consider the following relation schema:
@@ -187,20 +215,56 @@
 - In contrast, `empno → surname` is a _non-transitive dependency_, because `surname` is _not a determinant of any functional dependency_ in the relation
 
 ---
+-->
 
-# Boyce-Codd Normal Form (BCNF)
+# Normal forms
 
 - _Normal form_ refers to a set of normalisation rules that a database relation should follow inorder to be considered "normalized" and thus _well-organized_
-- The _Boyce-Codd Normal Form (BCNF)_ is one such normal form
-- We simplify the rules of BCNF we will have the following limitations during the course:
-  - We only focusing on _non-trivial functional depdencies_
-  - Instead of including any superkeys in our analysis, we narrow the analysis to _candidate keys_
-  - We do not allow any attribute that _does not have a determinant_ within the relation
+- During the course we will cover the most common normal forms: _first normal form_ (1NF), _second normal form_ (2NF), _third normal form_ (3NF) and _Boyce-Codd normal form_ (BCNF)
+- Each normal form from 1NF to BNCF adds more rules to the previous normal form
+- For example, the 2NF includes all rules of the 1NF and additional rules
+- The Boyce-Codd Normal Form (BCNF) is the strictest of these normal forms
+
+---
+
+# First normal form (1NF)
+
+- A relation is in the _first normal form_ (1NF) if the following rules apply:
+  - All attributes in a relation _must have atomic values_. No multi-valued attributes are allowed
+  - A relation _must have a primary key_ and all its _attributes must be dependent on the primary key_
+
+---
+
+# Second normal form (2NF)
+
+- A relation is in the _second normal form_ (2NF) if the following rules apply:
+  - Relation is in 1NF
+  - Relation has no _partial functional dependencies_, meaning that there is no _part of a candidate key_ that uniquely determines a _non-candidate-key_ attribute
+- Let's consider the following relation:
+  <pre>ClubMembership (<u>empno</u>, <u>clubno</u>, clubname, joindate)</pre>
+- The relation has a _partial functional dependency_ `{empno, clubno} → clubname`, because the functional dependency `clubno → clubname` exists in the relation
+- That is, the relation _is not in 2NF_
+
+---
+
+# Third normal form
+
+- A relation is in the _third normal form_ (3NF) if the following rules apply:
+  - Relation is in 1NF
+  - Relation has no functional dependency between two _non-candidate-key_ attributes, meaning no _non-candidate-key_ attribute is allowed to be _transitively_ dependent on any _candidate key_ within the relation
+- Let's consider the following relation schema:
+  <pre>Employee (<u>empno</u>, surname, firstname, deptno, deptname)</pre>
+- The relation has functional dependencies `empno → deptno` and `deptno → deptname`, causing `deptname` to be _transitively dependent_ on `empno` via `deptno`
+- That is, the relation _is not in 3NF_
 
 ---
 
 # Boyce-Codd Normal Form (BCNF)
 
+- We simplify the rules of BCNF we will have the following limitations during the course:
+  - We only focusing on _non-trivial functional depdencies_
+  - Instead of including any superkeys in our analysis, we narrow the analysis to _candidate keys_
+  - We do not allow any attribute that _does not have a determinant_ within the relation
 - With these limitations the BCNF has the following rules for a relation:
   - Each determinant is a candidate key
   - All attribute values are atomic (single values)
@@ -282,46 +346,6 @@
 - Finally, we _check the decomposed relations_
 - In each relation above each determinant is a candidate key and each attribute non-candidate-key attribute has a determinant
 - Therefore, the _relations are in BCNF_ and we have successfully removed all the undesired redundancy from the design
-
----
-
-# Normal form rules (1NF, 2NF, 3NF, BCNF)
-
-- During the course we will cover the most common normal forms: _first normal form_ (1NF), _second normal form_ (2NF), _third normal form_ (3NF) and _Boyce-Codd normal form_ (BCNF)
-- Each normal form from 1NF to BNCF adds more rules to the previous normal form
-- For example, the 2NF includes all rules of the 1NF and additional rules
-
----
-
-# First normal form (1NF)
-
-- A relation is in the _first normal form_ (1NF) if the following rules apply:
-  - All attributes in a relation _must have atomic values_. No multi-valued attributes are allowed
-  - A relation _must have a primary key_ and all its _attributes must be dependent on the primary key_
-
----
-
-# Second normal form (2NF)
-
-- A relation is in the _second normal form_ (2NF) if the following rules apply:
-  - Relation is in 1NF
-  - Relation has no _partial functional dependencies_, meaning that there is no _part of a candidate key_ that uniquely determines a _non-candidate-key_ attribute
-- Let's consider the following relation:
-  <pre>ClubMembership (<u>empno</u>, <u>clubno</u>, clubname, joindate)</pre>
-- The relation has a _partial functional dependency_ `{empno, clubno} → clubname`, because the functional dependency `clubno → clubname` exists in the relation
-- That is, the relation _is not in 2NF_
-
----
-
-# Third normal form
-
-- A relation is in the _third normal form_ (3NF) if the following rules apply:
-  - Relation is in 1NF
-  - Relation has no functional dependency between two _non-candidate-key_ attributes, meaning no _non-candidate-key_ attribute is allowed to be _transitively_ dependent on any _candidate key_ within the relation
-- Let's consider the following relation schema:
-  <pre>Employee (<u>empno</u>, surname, firstname, deptno, deptname)</pre>
-- The relation has a functional dependency `deptno → deptname` between two _non-candidate-key_ attributes, causing `deptname` to be _transitively dependent_ on `empno` via `deptno`
-- That is, the relation _is not in 3NF_
 
 ---
 
