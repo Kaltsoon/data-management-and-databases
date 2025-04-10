@@ -254,7 +254,7 @@ The student `10` _phone number is duplicated_ causing redundancy in the data. Wh
   - Relation has no functional dependency between two _non-candidate-key_ attributes, meaning no _non-candidate-key_ attribute is allowed to be _transitively_ dependent on any _candidate key_ within the relation
 - Let's consider the following relation schema:
   <pre>Employee (<u>empno</u>, surname, firstname, deptno, deptname)</pre>
-- The relation has functional dependencies `empno → deptno` and `deptno → deptname`, causing `deptname` to be _transitively dependent_ on `empno` via `deptno`
+- The relation has a transitive functional dependency `deptno → deptname`, causing `deptname` to be _transitively dependent_ on `empno` via `deptno`
 - That is, the relation _is not in 3NF_
 
 ---
