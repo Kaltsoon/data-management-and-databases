@@ -62,12 +62,12 @@ CREATE TABLE Student (
   study_advisor INTEGER,
 
   -- the student_number is the primary key column
-  CONSTRAINT PK_Student PRIMARY KEY (student_number),
+  CONSTRAINT pk_Student PRIMARY KEY (student_number),
   -- the study_advisor is a foreign key column referencing the Teacher table
-  CONSTRAINT FK_TeacherStudent FOREIGN KEY (study_advisor)
+  CONSTRAINT fk_TeacherStudent FOREIGN KEY (study_advisor)
   REFERENCES Teacher(teacher_number),
   -- the email column must have a value that is in an email format
-  CONSTRAINT CHK_StudentEmail CHECK (email LIKE '%_@_%._%')
+  CONSTRAINT chk_email_format CHECK (email LIKE '%_@_%._%')
 )
 ```
 
@@ -194,16 +194,15 @@ CREATE TABLE Customer (
 - For example the following query would benefit from an index on the `title` column:
 
   ```sql
-  SELECT title FROM Book
-  WHERE title = 'Dune'
+  SELECT title FROM Book WHERE title = 'Dune'
   ```
 
 ---
 
 # Database indexes
 
-- _Without an index_, the DBMS has to go through each row in the table, which requires many disk accesses (slow 🐢)
-- _With an index_, the DBMS just has to find the corresponding _index entry_ in the index data structure. In most cases the index entry can be found in the main memory (fast ⚡)
+- _Without an index_, the DBMS has to go through each row in the table, which requires many _disk accesses_ (slow 🐢)
+- _With an index_, the DBMS just has to find the corresponding _index entry_ in the index data structure. In most cases the index entry can be found in the _main memory_ (fast ⚡)
 - The index entry will point to data on the disk, which minimizes the required disk accesses
 
 ---
@@ -213,14 +212,31 @@ CREATE TABLE Customer (
 - We can create an index in the SQL Server using the `CREATE INDEX` statement:
 
   ```sql
-  CREATE INDEX Employee_deptno ON Employee(deptno)
+  CREATE INDEX ix_title ON Book(title)
   ```
 
-- In this example, we create an index with name `Employee_deptno` for the `Employee` table's `deptno` column
+- In this example, we create an index with name `ix_title` for the `Book` table's `title` column
 - We can delete an index with a specific name in a table using the `DROP INDEX` statement:
 
   ```sql
-  DROP INDEX Employee_deptno ON Employee
+  DROP INDEX ix_title ON Book
+  ```
+
+---
+
+# Which queries benefit from the index?
+
+- Index on a column makes it faster to query rows _based on that specific column_
+- However, _other columns don't benefit from the index_
+
+  ```sql
+  -- ⚡ This query is fast, it can use the index on the title column
+  SELECT title FROM Book WHERE title = 'Dune'
+  -- 🐢 This query is slow, it can't use the index on the title column
+  SELECT title FROM Book WHERE publish_year = 1965 
+  -- ⚡ Also UPDATE and DELETE operations benefit from an index
+  UPDATE Book SET publish_year = 1965 WHERE title = 'Dune'
+  DELETE Book WHERE title = 'Dune'
   ```
 
 ---
@@ -241,9 +257,10 @@ CREATE TABLE Customer (
 # Disadvantages of indexes
 
 - But there are also _disadvantages_, such as:
-  - More disk space is needed for indexes. Indexes need some maintenance, too
-  - The DBMS has to update all indexes on the table when a new row is inserted or a new row is deleted
-  - When an existing row is updated the DBMS has to update related indexes accordingly. That is, if there are too many indexes on a table they might start decreasing performance on inserts, updates, and deletes
+  - More disk space is needed for indexes
+  - The DBMS has to update all indexes on the table when a new row is inserted
+  - Also, when an existing row is updated the DBMS has to update related indexes accordingly
+  - That is, if there are _unnecessary indexes_ on a table they might start decreasing performance on inserts, updates, and deletes
 
 ---
 
