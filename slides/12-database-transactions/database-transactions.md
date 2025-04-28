@@ -217,16 +217,14 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 - In the _explicit transactions mode_, a transaction must be started explicitly by executing the `BEGIN TRANSACTION` statement
 - The explicit transactions mode is the default mode in SQL Server
 - In the _implicit transactions mode_, transactions are _not_ started explicitly by executing the `BEGIN TRANSACTION` statement
-- Instead, a transaction begins _implicitly_ with the first executable SQL statement after the database connection is
-  opened or after the previous transaction is terminated
+- Instead, a transaction begins _implicitly_ with the first executable SQL statement after the database connection is opened or after the previous transaction is terminated
 
 ---
 
 # Concurrency control
 
 - To fulfil the business requirements the DBMS should protect database consistency _without sacrificing too much performance_
-- In a multi-user environment the DBMS has to _interleave the actions of several transactions_ but still preserve illusion that each user is
-  executing alone
+- In a multi-user environment the DBMS has to _interleave the actions of several transactions_ but still preserve illusion that each user is executing alone
 - The _concurrency control_ mechanism is responsible to provide the means to guarantee that a transaction is isolated from the effects of concurrently scheduling other transactions
 
 ---
@@ -248,7 +246,7 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 
 - When our transaction changes (`INSERT`, `UPDATE`, `DELETE`) a row in a database, the
   DBMS _locks the row exclusively_ so that _other concurrent transactions are not allowed to access (read or change) the row as long as the transaction is running_
-- That is, the other transactions that want to access the row _must wait_ until the transaction ends. This always applies in pure _lock-based concurrency control_
+- That is, the other transactions that want to access the row _must wait_ until the transaction ends
 
 ---
 
@@ -416,7 +414,7 @@ WHERE account_id = 1
 
 - ⚠️ If another transaction has a _write lock_ on the row, then T1 has to wait until the other transaction ends
 - If there is no write lock on the row, then T1 gets a read lock on the row
-- If the transaction isolation level is set to `READ COMMITTED`, then the read lock is _released immediately after the row is retrieved from the database_
+- If the transaction isolation level is set to `READ COMMITTED` (the default), then the read lock is _released immediately after the row is retrieved from the database_
 - If the transaction isolation level is set to `REPEATABLE READ` or `SERIALIZABLE`, then the read lock _is not released before the transaction ends_
 
 ---
