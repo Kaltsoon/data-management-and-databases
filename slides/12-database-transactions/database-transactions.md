@@ -68,7 +68,7 @@
 
 - From the end user's point of view, for processing a _business transaction_ one or more use cases can be defined for the application and implemented as _user transactions_
 - A single user transaction may involve multiple _database transactions_ (SQL transactions)
-- A database transaction can involve multiple database operations, such as retrieving, creating or updating data in the database
+- A database transaction commonly involves _multiple database operations_, such as retrieving, creating or updating data in the database
 
 ---
 
@@ -135,7 +135,7 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 - The following SQL statements can be used for starting and ending SQL transactions:
   - `BEGIN TRANSACTION`: starts a new transaction (explicit transaction start in SQL Server)
   - `COMMIT`: terminates the transaction and _make all changes permanent_
-  - `ROLLBACK`: terminates the transaction and _rolls back all changes_ (restores the database to the previous state)
+  - `ROLLBACK`: terminates the transaction and _restores the database to the previous state_, undoing all operations in the transaction
 
 ---
 
@@ -238,15 +238,16 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
   SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
   ```
 
-- In this case the isolation level is set as `REPEATABLE READ`. We will soon find out how transactions isolation levels effect the transaction's behavior
+- The isolation level (e.g. `REPEATABLE READ`) limits how other transactions can access shared data, e.g. update a row that other transaction is reading
 
 ---
 
 # Locking
 
-- When our transaction changes (`INSERT`, `UPDATE`, `DELETE`) a row in a database, the
-  DBMS _locks the row exclusively_ so that _other concurrent transactions are not allowed to access (read or change) the row as long as the transaction is running_
-- That is, the other transactions that want to access the row _must wait_ until the transaction ends
+- Data consistency and isolation with transactions is achieved by the _locking mechanism_
+- When our transaction changes (`INSERT`, `UPDATE`, `DELETE`) a row in a database, the DBMS _locks the row_
+- Other concurrent transactions _are not allowed to change the row_ as long as the transaction is running
+- That is, the other transactions that want to change the row _must wait_ until the transaction ends
 
 ---
 
@@ -261,7 +262,6 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
   ```
 
 - The DBMS allows other concurrent transactions to read (`SELECT`) a row that your transaction has already read, but it _prevents the other transactions to change the row as long as your transaction is running_
-- That is, other transactions that want to change the row _must wait_ until your transaction ends
 
 ---
 
@@ -294,7 +294,7 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 - Locking resolves concurrency conflicts by _blocking a transaction_ (like in the previous example) or _forcing a transaction to abort_
 - When transaction is blocked it has to wait for the resource. The default for the maximum waiting time is "forever"
 - When two transactions start to _permanently block each other_, the DBMS _forces either one transaction to abort_ (rollback). This allows the other transaction to continue normally
-- A _deadlock_ occurs when two (or more) transactions permanently block each other by each transaction having a lock on a resource which the other transaction is trying to lock _exclusively_
+- A _deadlock_ occurs when two (or more) transactions permanently block each other by each transaction having a lock on a resource which the other transaction is trying to lock
 
 ---
 
@@ -381,7 +381,8 @@ WHERE account_id = 1
 # Row-level locking in SQL Server
 
 - When a user has a lock on a row, the lock _prevents other users from modifying or even reading that row_
-- The behavior depends on the _lock type_. The basic lock types are _write lock_ and _read lock_
+- The behavior depends on the _lock type_
+- The basic lock types are _write lock_ and _read lock_
 - In SQL Server, to avoid a certain type of deadlock, _"intent to update" lock_ is also available
 
 ---
@@ -418,6 +419,7 @@ WHERE account_id = 1
 - If the transaction isolation level is set to `REPEATABLE READ` or `SERIALIZABLE`, then the read lock _is not released before the transaction ends_
 
 ---
+
 
 # "Intent to update" lock
 
