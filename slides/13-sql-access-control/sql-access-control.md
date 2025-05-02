@@ -1,6 +1,7 @@
 # SQL access control
 
 - The learning objectives for this week are:
+  - Knowing what is the purpose of access control in the database security
   - Knowing what is _discretionary access control_
   - Knowing what is the DBMS access control hierarchy
   - Knowing how to manage users, roles and privileges in the SQL server
