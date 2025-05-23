@@ -1,0 +1,20 @@
+{
+  "name": "data-management-and-databases-lectures",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev --open",
+    "export": "zx ./export.mjs"
+  },
+  "dependencies": {
+    "@slidev/cli": "^51.6.0",
+    "@slidev/theme-default": "latest",
+    "playwright-chromium": "^1.52.0",
+    "vue": "^3.5.14",
+    "zx": "^8.5.4"
+  },
+  "devDependencies": {
+    "@shikijs/transformers": "^3.4.2"
+  }
+}
