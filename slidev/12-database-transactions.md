@@ -1,5 +1,8 @@
 ---
 colorSchema: light
+fonts:
+  sans: Roboto
+  weights: '200,400,600,700'
 ---
 
 ## Database transactions
@@ -455,5 +458,5 @@ SELECT balance FROM Account (UPDLOCK) WHERE account_id = 1
 - Database transactions ensure that the database properly changes states upon a successfully committed transaction
 - Changes of failed database transactions are rolled back by the DBMS
 - The **concurrency control** mechanism is responsible to provide the means to guarantee that a transaction is isolated from the effects of concurrently scheduling other transactions
-- In **lock-based concurrency control** transactions **lock database rows** while reading and modifying a row
-- Other transactions that want to access the lock row **must wait** until the transaction ends
+- Transaction **locks database rows** while reading and modifying a row and other transactions that want to access the lock row **must wait** until the transaction ends
+- **Deadlock** occurs when two (or more) transactions permanently block each other by each transaction having a lock on a resource which the other transaction is trying to lock

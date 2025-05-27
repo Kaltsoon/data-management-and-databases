@@ -1,5 +1,8 @@
 ---
 colorSchema: light
+fonts:
+  sans: Roboto
+  weights: '200,400,600,700'
 ---
 
 # Data Management and Databases
@@ -325,8 +328,8 @@ concurrently using a standard database language with both programmatic and inter
 
 ## Relational database managament system (RDBMS)
 
-- Nowadays, the **relational database management system** (RDBMS) is the de facto standard
-- The word "relational" refers to the structure of the data in such DBMS
+- **Relational database management system** (RDBMS) are among the most popular database management systems
+- The word _"relational"_ refers to the structure of the data in such DBMS
 - **Structured Query Language** (SQL) is the formal and de facto database language standard for RDBMSs
 - SQL offers both **data definition language** (DDL) and **data manipulation language** (DML) features
 - There are multiple RDBMS products, such as SQL Server, MySQL and PostgreSQL
@@ -345,4 +348,6 @@ WHERE clientNo = 259
 - **Database** is a shared collection of logically related persistent data, which is designed to meet specific information needs
 - **Data management** is the development, maintenance and coordination of **database systems**
 - **Database management system** (DBMS) is a software that allows users to insert, update, delete, and retrieve data from the database
+- **Program-data independence**, **effective access to data** and **data integrity** are some of the key benefits of a DBMS approach in data management
 - The most fundamental function of DBMS is **data storage and data retrieval and update operations**
+- **Relational database management system** (RDBMS) are among the most popular database management systems

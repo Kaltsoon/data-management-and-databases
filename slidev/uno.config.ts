@@ -22,16 +22,18 @@ export default defineConfig({
         }
 
         body {
-          color: ${theme.colors.gray["8"]}
+          color: ${theme.colors.gray["8"]};
         }
 
         h1, h2, h3, h4, h5, h6, strong, th {
-          color: ${theme.colors.gray["950"]}
+          color: ${theme.colors.gray["950"]};
+          font-weight: 700 !important;
         }
 
         h2 {
           margin-bottom: 1rem;
         }
+
 
         table {
           border-color: ${theme.colors.gray["3"]};

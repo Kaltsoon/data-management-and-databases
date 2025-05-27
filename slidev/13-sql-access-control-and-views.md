@@ -1,5 +1,8 @@
 ---
 colorSchema: light
+fonts:
+  sans: Roboto
+  weights: '200,400,600,700'
 ---
 
 ## SQL access control and views
@@ -9,7 +12,7 @@ colorSchema: light
   - Knowing what is **discretionary access control**
   - Knowing what is the DBMS access control hierarchy
   - Knowing how to manage users, roles and privileges in the SQL server
-  - Knowing the purpose of **SQL views** and how to define themo
+  - Knowing the purpose of **SQL views** and how to create them
 
 ---
 
@@ -260,13 +263,13 @@ flowchart TB
 
 - View is **updatable**, if it is defined by selecting some
 existing columns and rows from a **single base table**
+- The operations (e.g. deleting a row) reflects to the base table
 
   ```sql
   -- this will delete the corresponding row in the Employee table
   DELETE FROM SalesEmployee WHERE id = 2
   ```
 
-- The operations (e.g. deleting a row) reflects to the base table
 - View is **non-updatable** if its query involves `JOIN` operations, `GROUP BY` operations, aggregate functions or set operations (e.g. `UNION`)
 
   ```sql

@@ -1,5 +1,8 @@
 ---
 colorSchema: light
+fonts:
+  sans: Roboto
+  weights: '200,400,600,700'
 ---
 
 ## Grouping the aggregated rows and using sub queries
