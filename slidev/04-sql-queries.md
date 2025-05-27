@@ -20,7 +20,7 @@ fonts:
 
 ## The SQL syntax
 
-> _"the syntax of a computer language is the rules that define the combinations of symbols that are considered to be correctly structured statements or expressions in that language"_
+> _"The syntax of a computer language is the rules that define the combinations of symbols that are considered to be correctly structured statements or expressions in that language"_
 
 - So that the RDBMS can interpret our queries we need to closely follow a specific set of rules while defining them
 - These rules are defined by the **SQL syntax**

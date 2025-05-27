@@ -261,7 +261,7 @@ flowchart TB
 
 ## Updatable vs. non-updatable views
 
-- View is **updatable**, if it is defined by selecting some
+- View is **updatable** if it is defined by selecting some
 existing columns and rows from a **single base table**
 - The operations (e.g. deleting a row) reflects to the base table
 
