@@ -40,13 +40,15 @@ Welcome to the Data Management and Databases course!
 
 ## Assesment
 
-- ⚠️ To confirm the course participation the following need to be submitted before the second week's session:
+- ⚠️ To confirm the course participation the following need to be submitted **before the second week's session**:
   - The first part of your learning diary
   - The first week's assignments (orientation exercise and intro assignment)
 - The course assesment is based on the combined points from two exams:
   - The first exam, half way through the course, will cover SQL operations
   - The second exam, at the end of the course, will cover rest of the course topics
-- **At least 70% of the exercises must be submitted to pass the course**, otherwise submissions can only have a positive impact on the final grade
+- Passing grade has the following requirements:
+  - Pass both exams with 50% points in each exam
+  - At least 70% of the exercises, case assignment and learning diary must be submitted **before the final exam**
 - More details about the exam schedule and practicalities can be found in Moodle
 
 ---
