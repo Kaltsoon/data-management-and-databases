@@ -30,14 +30,12 @@ fonts:
 
 - The **database development lifecycle** is a step-by-step process of implementing a database for certain set of requirements
 - It consists of the following phases:
-  1. Database planning
-  2. System definition
-  3. Requirements collection and analysis
-  4. Database design
-  5. Database implementation
-  6. Data conversion and loading
-  7. Testing
-  8. Operational maintenance
+  1. **Requirements collection and analysis**: understand and document the data needs of the business or system
+  2. **Database design**: create a design that meets the requirements
+  3. **Database implementation**: use a specific DBMS to create the the actual database
+  4. **Testing**: verify that the actual database works as intended and meets the requirements
+  5. **Deployment**: move the database to an environment (e.g. cloud) which is accessible for its users
+  6. **Maintenance and monitoring**: constantly monitor performance and health of the database and apply updates, security patches, and backups
 
 ---
 
@@ -45,8 +43,11 @@ fonts:
 
 - Once the users' requirements are identified after the **requirements collection and analysis phase**, the **database design** phase can start
 - **Database design** is a the process of creating a design that will meet the **data requirements** of the enterprise and support its operations
-- For example, this is could be one data requirement in the Takkula database:
-  - "University has courses. Each course has multiple course instances which are taught during a certain time period. Each course instance has a teacher"
+- For example, the following could be a part of the data requirements for a university database:
+
+> _"University offers many courses with a name, course code and number of credits. Each course is taught in course instances one or more times during an academic year. Course instance has an instance number and it starts at a specific date. Each course instance is taught by one teacher. Teacher has a employee number and first and last name."_
+
+- The design should provide all the required details for the **database implementation**
 
 ---
 
@@ -186,27 +187,6 @@ CREATE TABLE CourseInstance (
 
 ---
 
-## User views
-
-- Different database users have a different requirements for the database
-- A **user view** defines what is required of a database system from the perspective of a particular job role (such as manager or supervisor) or enterprise application area (such as marketing or human resources)
-- Each user view defines from its own perspective **what data is held in the database** and **what the user will do with the data** (user transactions)
-- We need to able to manage **multiple user views** during the design process
-- There is three main approaches to solve this problem: the **centralised**, the **user view integration** and the **combined approach**
-
----
-
-## Managing multiple user views
-
-- With the **centralised approach**, we first merge requirements for all user views into a
-  **single set of requirements** and then create a **single data model** that represents all
-  user views
-- With the **user view integration approach**, we first create **a separate data model** for each user view and then merge these data models into a **single data model**
-- With the **combined approach**, we first, merge some user views and then continue with user view integration approach
-- Out of these three approaches, the user view integration approach is preferred when the system is more complex and there are significant differences between user views
-
----
-
 ## Entity-relationship modeling
 
 - **Entity-relationship modeling** (ER) is a conceptual database design approach to visually represent the data structures and their relationships within a system
@@ -257,7 +237,7 @@ classDiagram
 
 <div class="flex-1 m-l-2">
 
-- This ER diagram contains four entities: "Course", "CourseInstance", "Teacher" and "Student"
+- This entity-relationship diagram contains four entities: "Course", "CourseInstance", "Teacher" and "Student"
 - Entities are visualized as boxes and entity's attributes are listed inside the box and **primary key is underlined**
 - Relationships are visualized as lines between the entity boxes
 - Relationship specifies the number of instances of one entity that can be associated with instances of another and optionally a description of the relationship
@@ -311,7 +291,73 @@ classDiagram
 ```
 
 - While interpreting the number of instances associated with the entity, we look at the multiplicity constaint on the **opposite side of the relationship**
-- For example, "teacher teaches **zero or more** (0..*) course intances". Here we look at the multiplicity constaint on the opposite side of the "Teacher" entity box
+- For example, "teacher teaches **zero or many** (0..*) course intances". Here we look at the multiplicity constaint on the opposite side of the "Teacher" entity box
 - We always interpret a relationship type in both directions, so, for example the **"teaches"** relationship is interpreted as follows:
   - Each teacher teaches on **zero or more** (0..*) course instances
-  - Each course instance is taught by **one or more** (1..*) teachers
+  - Each course instance is taught by **one or many** (1..*) teachers
+
+---
+
+## User's requirements to conceptual model
+
+- Conceptual data model is derived from users' non-technical requirements and commonly requires active communication with the users during the design process
+- Entity-relationship diagram can be derieved from these requirements by following these steps:
+  1. Identify **entity types**, which are the key concepts in the requirements
+  2. Identify **relationship types**, which describe how entities are related to each other
+  3. Identify and associate **attributes** with entity types, which describe additional properties of the entities
+  4. Determine **unique identifier** for each entity type (if any available)
+
+---
+
+## User's requirements to conceptual model
+
+- Let's consider the following requirements for a hotel booking database:
+
+> _"A hotel offers many rooms for its visitors. A room has a room number, a floor number and area as square meters. Each room has zero or more bookings. A booking has a start and end date. Each booking is made by one visitor. A visitor has a social security number, a first name and a surname."_
+>
+
+- Entity types: **Room**, **Booking**, **Visitor**
+- Attributes and unique identifiers (underlined):
+  - Room: <u>room_number</u>, floor_number, area
+  - Booking: start_date, end_date
+  - Visitor: <u>snn</u>, first_name, surname
+- Relationships: "room has zero or many bookings", "booking has one room", "visitor has zero or many bookings", "booking has one visitor"
+
+---
+
+## User's requirements to conceptual model
+
+> _"A hotel offers many rooms for its visitors. A room has a room number, a floor number and area as square meters. Each room has zero or more bookings. A booking has a start and end date. Each booking is made by one visitor. A visitor has a social security number, a first name and a surname."_
+
+```mermaid
+classDiagram
+    direction LR
+    Room "1..1" -- "0..*" Booking : has ▶
+    Booking "0..*" -- "1..1" Visitor: has ▶ 
+
+    class Room {
+      room_number$
+      floor_number
+      area
+    }
+
+    class Booking {
+      start_date
+      end_date
+    }
+    
+    class Visitor {
+      snn$
+      first_name
+      surname
+    }
+```
+
+---
+
+## Summary
+
+- The **database development lifecycle** is a step-by-step process of implementing a database for certain set of requirements
+- **Database design** is a the process of creating a design that will meet the **data requirements** of the enterprise and support its operations
+- During the **conceptual database design** phase, a high-level conceptual model of the data requirements of the enterprise is constructed
+- **Entity-relationship modeling** (ER) is a conceptual database design approach to visually represent the data structures and their relationships within a system
