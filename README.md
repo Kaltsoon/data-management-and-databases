@@ -1,6 +1,6 @@
 # Data Management and Databases
 
-1. [Introduction to databases](./slides01-introduction-to-databases.pdf)
+1. [Introduction to databases](./slides/01-introduction-to-databases.pdf)
 2. [Relational model](./slides/02-relational-model.pdf)
 3. [Introduction to SQL](./slides/03-introduction-to-sql.pdf)
 4. [SQL queries](./slides/04-sql-queries.pdf)

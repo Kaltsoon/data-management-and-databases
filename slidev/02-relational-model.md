@@ -296,7 +296,7 @@ classDiagram
 - **Null** is a marker for a missing attribute value
 - Null is not the same as e.g. blanks or zero. Null represents **absence of a value**
 - The **not null constraint** is a restriction placed on an attribute, which enforces that in every tuple of data the attribute **must have a value**
-- For example it would make sense that in the "Employee" relation, the "deptno" attribute has a not null constraint, meaning that every employee belongs to a department
+- For example, it would make sense that in the "Employee" relation, the "deptno" attribute has a not null constraint, meaning that every employee belongs to a department
 
 ---
 

@@ -38,14 +38,25 @@ Welcome to the Data Management and Databases course!
 
 ---
 
+## Schedule
+
+- The course takes place in **two periods**
+- During the first period we will some basic concepts of databases and how to operate databases using the SQL query language
+- The first period is followed by the **mid-term exam**, which only covers SQL
+- During the second period we will mostly cover database design and a few SQL related topics
+- Throughout the second period we will also be working on a **case assignment** group work related to database design
+- The second period is followed by the **final exam**, which covers everything except SQL
+
+---
+
 ## Assesment
 
 - ⚠️ To confirm the course participation the following need to be submitted **before the second week's session**:
   - The first part of your learning diary
   - The first week's assignments (orientation exercise and intro assignment)
 - The course assesment is based on the combined points from two exams:
-  - The first exam, half way through the course, will cover SQL operations
-  - The second exam, at the end of the course, will cover rest of the course topics
+  - The mid-term exam, half way through the course, will cover SQL operations
+  - The final exam, at the end of the course, will cover rest of the course topics
 - Passing grade has the following requirements:
   - Pass both exams with 50% points in each exam
   - At least 70% of the exercises, case assignment and learning diary must be submitted **before the final exam**
@@ -55,8 +66,7 @@ Welcome to the Data Management and Databases course!
 
 ## Database
 
-> _"A representation of facts or ideas in a formalized manner capable of being
-> communicated or manipulated by some process"_
+> _"A representation of facts or ideas in a formalized manner capable of being communicated or manipulated by some process."_
 >
 > ― Definition for the word "Data" in Oxford Languages
 
@@ -69,7 +79,7 @@ Welcome to the Data Management and Databases course!
 
 ## Definition of database
 
-- There have been many different formal defitions for the term "database" and the definition has evolved during the years:
+- There have been many different formal defitions for the term _"database"_ and the definition has evolved during the years:
   - Date in 1990: _"A database consists of some collection of persistent data that is used by the application systems of some given enterprise."_
   - Ramakrishnan & Gerhke in 2000: _"A database is a collection of data, typically describing the activities of one or more related organizations."_
 - Based on a recent definition of Connolly & Begg in year 2005, database is defined as:
