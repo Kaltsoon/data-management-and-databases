@@ -93,10 +93,13 @@ SELECT first_name, surname FROM Student WHERE first_name = 'Matti'
 ```sql
 WHERE first_name = 'Matti' -- equal to. ⚠️ Note, just a single = symbol
 WHERE first_name <> 'Matti' -- not equal to
-WHERE age > 18 -- greater than
-WHERE age >= 30 -- greater than or equal
-WHERE age < 18 -- less than
-WHERE age <= 30 -- less than or equal
+WHERE start_year > 2020 -- greater than
+WHERE start_year >= 2020 -- greater than or equal
+WHERE start_year < 2025 -- less than
+WHERE start_year <= 2025 -- less than or equal
+-- 💡 greater than and less than operators work also for e.g. dates and strings
+WHERE birth_date >= '1993-01-01'
+WHERE finnish_proficiency_level <= 'B2' 
 ```
 
 ---
@@ -106,9 +109,9 @@ WHERE age <= 30 -- less than or equal
 - Comparisons can be combined with **logical operators** to achieve conditions such as _"age is greater than 18 and age is less than 30"_
 
 ```sql
-WHERE age > 18 AND age < 30  -- AND operator
+WHERE start_year > 2020 AND start_year < 2025  -- AND operator
 WHERE first_name = 'Matti' OR first_name = 'Kaarina' -- OR operator
-WHERE NOT age < 18 -- NOT operator
+WHERE NOT start_year < 2020 -- NOT operator
 ```
 
 - The `AND` operator **is evaluted first**, before the `OR` operator, similarly as the multiplication operator (*) is evaluted before the sum operator (+)
@@ -122,7 +125,7 @@ skill = 1 OR (skill = 2 AND salary)
 
 ---
 
-## Logical operators
+## Controlling the applying order of logical operators
 
 - If we want to deviate from the default order of evaluation, we can use brackets to determine in which order the logical operators should be applied
 
@@ -131,13 +134,16 @@ skill = 1 OR (skill = 2 AND salary)
 WHERE skill = 1 OR skill = 2 AND salary > 10000
 --- false, when skill is 1 and salary is 500
 WHERE (skill = 1 OR skill = 2) AND salary > 10000
+-- 💡 using brackets can clarify the condition even if they aren't strictly necessary
+WHERE skill = 1 OR (skill = 2 AND salary) > 10000
+-- the condition above would be the same without the brackets
 ```
 
 ---
 
 ## Order by
 
-- The order of result table's row is **unpredictable**, it might not bee the same each time we execute the query
+- The order of result table's rows is **unpredictable**, it might not be the same each time we execute the query
 - We can use the `ORDER BY` clause to define **in which order** we want the rows to be in the result table
 - The sorting is done based on one or many columns in the specified order
 
@@ -147,9 +153,14 @@ FROM Course
 ORDER BY credits -- rows will be sorted by the credits column's value
 ```
 
+- **Sorting works for all kinds of data types**, e.g. numbers, strings, and dates:
+  - Numbers are sorted from smallest to biggest number (e.g. 1, 2, 3)
+  - Strings are sorted alphabetically (e.g. A, D, X)
+  - Dates are sorted from oldest to newest date (e.g. 1990-01-01, 1990-06-13, 2025-08-15)
+
 ---
 
-## Order by
+## Order by with multiple columns
 
 - Table might contain multiple rows with the same value in the column used in the `ORDER BY` clause
 - To determine the order of such rows we can provide **multiple columns** to the `ORDER BY` clause
@@ -161,9 +172,15 @@ FROM Course
 ORDER BY credits, course_name
 ```
 
+| course_name        | credits |
+| ------------------ | ------- |
+| Algorithms         | ⚠️ 4       |
+| Python Programming | ⚠️ 4       |
+| Databases          | 3       |
+
 ---
 
-## Order by
+## Switching the sort order
 
 - The `ORDER BY` sorts the records in **ascending order** (smallest value first) by default
 - We can change the order by using either `ASC` (ascending order) or `DESC` (descending order) keyword
@@ -277,7 +294,9 @@ SELECT CONCAT(first_name, ' ', surname) AS full_name FROM Student
 
 ## String functions
 
-- SQL Server provides built-in functions for handling strings
+- SQL Server provides many built-in **functions**, which can be used e.g. to operate on strings and dates
+- It is a good idea to always check if there is a built-in function for a specific general problem before trying to come up with a more complex solution ourselves
+- Here are a few examples of built-in **string functions** in SQL Server:
 
 ```sql
 -- LEFT and RIGHT return the left or right part of a string
@@ -291,48 +310,25 @@ SELECT first_name, surname FROM Student WHERE LEN(surname) = 4
 SELECT first_name, surname FROM Student WHERE CHARINDEX('ta', surname) <> 0
 ```
 
+- The "SQL DML Quick Reference" document in Moodle contains more such useful functions
+
 ---
 
 ## Example of string functions
 
-> _"List all the students (gender, birth date, surname, first name) whose surname is in the range of (A-K). Display girls after all boys in the list. Boys should be listed in ascending order by birth date."_
+> _"List all the students (gender, birth date, surname, first name) whose surname starts with the letter L or K. Sort the results in descending order by birth date."_
 
-- We'll need to know the _first letter_ of the surname column and check if that is between letters "A" and "K"
+- We'll need to know the _first letter_ of the surname column and check if that is either "L" or "K"
 - We can use the `LEFT` function to get the first letter of the surname column
-- The comparison can be done using the `BETWEEN` or `>` and `<` operators
-
----
-
-## Example of string functions
+- The `OR` logical operator can be used to construct the "starts with the letter L or K" condition
 
 ```sql
 SELECT gender, birth_date, surname, first_name
 FROM Student
-WHERE LEFT(surname, 1) BETWEEN 'A' AND 'K'
--- "Girls after all boys" (i.e. "Boys before girls")
--- means descending order because "F" is alphabetically before "M"
-ORDER BY gender DESC, birth_date ASC;
+-- we use the LEFT function to get the "first one letter from the left"
+WHERE LEFT(surname, 1) = 'L' OR LEFT(surname, 1) = 'K'
+ORDER BY birth_date DESC; -- "sort the results in descending order by birth date"
 ```
-
----
-
-## Example of string functions
-
-- Note that the column used in the `ORDER BY` clause **don't necessarily have to be a number**
-- We can sort by for example strings (alphabetical order) and dates
-- Same goes for comparison operators, we can use for example `>` and `<` operators with strings and dates
-- In the example the `gender` column is of type `VARCHAR` (a string value) so alphabetical order will be used
-
----
-
-## Example of string functions
-
-- A common approach in trying to solve very specific problems, like _"List all the students whose surname is in the range of (A-K)"_ is to **reduce** the problem into some generic problem, like _"how to get a first letter of a string"_
-- These generic problems have a well documented generic solutions, for example using the `LEFT` function
-
-> _"Returns the left part of a character string with the specified number of characters."_
->
-> ― Microsoft learn: SQL Server - LEFT
 
 ---
 
@@ -341,15 +337,15 @@ ORDER BY gender DESC, birth_date ASC;
 - SQL supports similar arithmetic operators for calculations as many programming languages
 
 ```sql
--- The + operator for addition
+-- the + operator for addition
 SELECT credits, credits + 2 AS credits_calculation FROM Course
--- The - operator for substraction
+-- the - operator for substraction
 SELECT credits, credits - 2 AS credits_calculation FROM Course
--- The * operator for multiplication
+-- the * operator for multiplication
 SELECT credits, credits * 2 AS credits_calculation FROM Course
--- The / operator for division
+-- the / operator for division
 SELECT credits, credits / 2 AS credits_calculation FROM Course
--- The % operator for remainder of a division
+-- the % operator for remainder of a division
 SELECT credits, credits % 2 AS credits_calculation FROM Course
 ```
 
@@ -360,7 +356,7 @@ SELECT credits, credits % 2 AS credits_calculation FROM Course
 - We can use brackets to determine the order operations
 
 ```sql
--- First calculate credits * 20, then dive the result with 2
+-- first calculate credits * 20, then dive the result with 2
 SELECT (credits * 20) / 2 AS credits_calculation FROM Course
 ```
 
@@ -463,7 +459,7 @@ SELECT DISTINCT credits FROM Course
 ```sql
 -- group of teacher_number and course_code
 -- needs to be distinct in the result table
-SELECT DISTINCT teacher_number, course_code  FROM CourseInstance
+SELECT DISTINCT teacher_number, course_code FROM CourseInstance
 ORDER BY teacher_number
 ```
 

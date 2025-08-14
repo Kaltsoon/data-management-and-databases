@@ -267,7 +267,7 @@ INSERT INTO Student (student_number, first_name, surname) VALUES (1, 'Kalle', 'I
 
 ## Constraint violations while inserting data
 
-- Constraits are checked once a new row if inserted
+- Constraits are checked once a new row if inserted or updated
 - If there are any constraint violations, **the new row won't be inserted**
 - For example if `NOT NULL` constraint of a column is violated, there will be an error
 
@@ -282,7 +282,7 @@ INSERT INTO Student (student_number, first_name) VALUES (1, 'Kalle')
 
 - The `SELECT` statement is used to select rows from a table
 - With the `SELECT` statement we define a group of columns we want to select the data from and the name of the target table
-- The result is a result table containing the rows from the target table with the specified columns
+- The result is a **result table** containing the rows from the target table with the specified columns
 
 ```sql
 SELECT first_name, surname FROM Student

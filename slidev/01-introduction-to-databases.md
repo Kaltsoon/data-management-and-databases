@@ -188,7 +188,7 @@ flowchart TD
 ## Database Management System (DBMS)
 
 <div class="flex">
-<div class="flex-basis-45% m-r-2">
+<div class="flex-basis-50% m-r-2">
 
 ```mermaid
 flowchart TD
@@ -208,27 +208,6 @@ flowchart TD
 
 </div>
 </div>
-
----
-
-## Data manipulation comparison
-
-```python
-## Fetching data from a DBMS:
-connection = psycopg2.connect(
-  ## ...
-)
-cursor = connection.cursor()
-cursor.execute("SELECT clientnumber, firstname, lastname, address, phone FROM Client")
-clients = cursor.fetchall()
-
-## Fetching data from a file:
-file = open("clients.csv", "r")
-clients = []
-for line in file:
-  columns = line.split(",")
-  clients.append((columns[0], columns[1], columns[2], columns[3], columns[4]))
-```
 
 ---
 
@@ -288,12 +267,12 @@ classDiagram
 
 <div class="flex-1">
 
-- In the database, the structure of sales and contracts details is the following:
+- In the database, the sales and contracts details can be structured into the following **database tables**:
   - _PrivateOwner_ (ownernumber, firstname, lastname, address, phone)
   - _PropetyForRent_ (propertynumber, street, city, postcode, size, rooms, rent, ownernumber)
   - _Client_ (clientNo, firstname, lastname, address, phone, maxrent, sizepreference)
   - _Lease_ (leasenumber, propertynumber, clientnumber, deposit, paid, rentstart, rentfinish)
-- There's a **common structure** for the organization's data without duplication and structural differences
+- Now, there's a **common structure** for the organization's data without duplication and structural differences
 
 </div>
 </div>
@@ -350,8 +329,8 @@ concurrently using a standard database language with both programmatic and inter
 
 ```sql
 -- Example of DML syntax in SQL
-SELECT clientNo, fName, lName, address, FROM Client
-WHERE clientNo = 259
+SELECT clientnumber, firstname, lastname, address FROM Client
+WHERE maxrent < 1500
 ```
 
 ---
