@@ -7,7 +7,7 @@ fonts:
 
 # Data Management and Databases
 
-Welcome to the Data Management and Databases course!
+Welcome to the Data Management and Databases course! 👋
 
 ---
 
@@ -40,7 +40,7 @@ Welcome to the Data Management and Databases course!
 
 ## Schedule
 
-- The course takes place in **two periods**
+- The course takes place in **two teaching periods**
 - During the first period we will some basic concepts of databases and how to operate databases using the SQL query language
 - The first period is followed by the **mid-term exam**, which only covers SQL
 - During the second period we will mostly cover database design and a few SQL related topics
@@ -82,7 +82,7 @@ Welcome to the Data Management and Databases course!
 - There have been many different formal defitions for the term _"database"_ and the definition has evolved during the years:
   - Date in 1990: _"A database consists of some collection of persistent data that is used by the application systems of some given enterprise."_
   - Ramakrishnan & Gerhke in 2000: _"A database is a collection of data, typically describing the activities of one or more related organizations."_
-- Based on a recent definition of Connolly & Begg in year 2005, database is defined as:
+- Based on a bit more recent definition of Connolly & Begg in year 2005, database is defined as:
   
 > _"A database is a shared collection of logically related data (and a description of this data), designed to meet the information needs of an organization."_
 
@@ -131,7 +131,8 @@ Welcome to the Data Management and Databases course!
   - A real estate company is renting properties
   - Each property has a property owner and a lease if the property is rented
   - Each lease has a client who is renting the property from the owner
-  - The company has a sales team responsible for finding clients for the available properties and a contracts team responsible for managing the leases
+  - The company has a **sales team** responsible for finding clients for the available properties and a **contracts team** responsible for managing the leases
+- Next, we will have a look at two possible approaches of managing this data, which are the **file-based** and **data management system** approaches
 
 ---
 
@@ -162,15 +163,15 @@ flowchart TD
 
 ## File-based approach in data management
 
-- In the filesystem, there are the following **sales files**:
-  - _PrivateOwner_ (ownerNo, fName, lName, address, telNo)
-  - ⚠️ _PropetyForRent_ (propertyNo, street, city, postcode, rooms, rent, ownerNo)
-  - ⚠️ _Client_ (clientNo, fName, lName, address, telNo, prefType, maxRent)
-- And the following **contracts files**:
-  - _Lease_ (leaseNo, propertyNo, clientNo, paymentMethod, deposit, paid, rentStart, rentFinish, duration)
-  - ⚠️ _PropetyForRent_ (propertyNo, street, city, postcode, rent)
-  - ⚠️ _Client_ (clientNo, fName, lName, address, telNo)
-- Client and property information is stored in **both sales and contracts files**, which can lead into problems with **inconsistent information** in different files
+- The sales application operates with the following **sales files**:
+  - _private-owner.csv_ (ownernumber, firstname, lastname, address, phone)
+  - ⚠️ _property-for-rent.csv_ (propertynumber, street, city, postcode, size, rooms, rent, ownernumber)
+  - ⚠️ _client.csv_ (clientnumber, firstname, lastname, address, phone, maxrent, sizepreference)
+- And the contracts application with the separate **contracts files**:
+  - _lease.csv_ (leasenumber, propertynumber, clientnumber, deposit, paid, rentstart, rentfinish)
+  - ⚠️ _property-for-rent.csv_ (propertynumber, street, city, postcode, rent)
+  - ⚠️ _client.csv_ (clientnumber, firstname, lastname, address, phone)
+- Slightly different client and property information is stored in **both sales and contracts files**, which can lead into problems with **inconsistent information** in different files
 
 ---
 
@@ -218,7 +219,7 @@ connection = psycopg2.connect(
   ## ...
 )
 cursor = connection.cursor()
-cursor.execute("SELECT clientNo, fName, lName, address, telNo FROM Client")
+cursor.execute("SELECT clientnumber, firstname, lastname, address, phone FROM Client")
 clients = cursor.fetchall()
 
 ## Fetching data from a file:
@@ -288,10 +289,10 @@ classDiagram
 <div class="flex-1">
 
 - In the database, the structure of sales and contracts details is the following:
-  - _PrivateOwner_ (ownerNo, fName, lName, address, telNo)
-  - _PropetyForRent_ (propertyNo, street, city, postcode, rooms, rent, ownerNo)
-  - _Client_ (clientNo, fName, lName, address, telNo, prefType, maxRent)
-  - _Lease_ (leaseNo, propertyNo, clientNo, paymentMethod, deposit, paid, rentStart, rentFinish)
+  - _PrivateOwner_ (ownernumber, firstname, lastname, address, phone)
+  - _PropetyForRent_ (propertynumber, street, city, postcode, size, rooms, rent, ownernumber)
+  - _Client_ (clientNo, firstname, lastname, address, phone, maxrent, sizepreference)
+  - _Lease_ (leasenumber, propertynumber, clientnumber, deposit, paid, rentstart, rentfinish)
 - There's a **common structure** for the organization's data without duplication and structural differences
 
 </div>
