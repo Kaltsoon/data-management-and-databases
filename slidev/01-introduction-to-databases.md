@@ -71,7 +71,7 @@ Welcome to the Data Management and Databases course! 👋
 > ― Definition for the word "Data" in Oxford Languages
 
 - In a digital world we are constantly accessing and manipulating stored information, for example, when we open our favorite messaging application, we can see the previously sent messages and we can send new messages
-- A **database** is an organized collection of data that allows for easy access, management, and updating of information
+- The backbone of basically any information system is a **database**, an organized collection of data that allows for easy access, management, and updating of information
 - Databases help store large amounts of structured data efficiently and enable fast querying and data manipulation
 - There are many different kind of database technologies, such as, PostgreSQL, MySQL and MongoDB
 
@@ -306,7 +306,7 @@ concurrently using a standard database language with both programmatic and inter
 
 ---
 
-## Functions of DBMS
+## Functions of a DBMS
 
 - **Integrity services**: protects data integrity (correctness and consistency of stored data) based on user-specifiable **integrity constraints** (consistency rules)
 - **Transaction support**: protects database integrity by providing reliable units of work (database transactions) that allow correct recovery from failures and providing isolation between users accessing the database concurrently
@@ -318,9 +318,9 @@ concurrently using a standard database language with both programmatic and inter
 
 ---
 
-## Relational database managament system (RDBMS)
+## Relational database managament systems (RDBMS)
 
-- **Relational database management system** (RDBMS) are among the most popular database management systems
+- **Relational database management systems** (RDBMS) are among the most popular database management systems
 - The word _"relational"_ refers to the structure of the data in such DBMS
 - **Structured Query Language** (SQL) is the formal and de facto database language standard for RDBMSs
 - SQL offers both **data definition language** (DDL) and **data manipulation language** (DML) features
@@ -330,7 +330,7 @@ concurrently using a standard database language with both programmatic and inter
 ```sql
 -- Example of DML syntax in SQL
 SELECT clientnumber, firstname, lastname, address FROM Client
-WHERE maxrent < 1500
+WHERE maxrent < 1000
 ```
 
 ---
