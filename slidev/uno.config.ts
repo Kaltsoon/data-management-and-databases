@@ -6,6 +6,7 @@ export default defineConfig({
       getCSS: ({ theme }) => `
         .slidev-code, pre {
           --slidev-code-font-size: 0.75em;
+          font-variant-ligatures: none !important;
         }
 
         pre {
@@ -22,11 +23,11 @@ export default defineConfig({
         }
 
         body {
-          color: ${theme.colors.gray["8"]};
+          color: ${theme.colors?.gray["8"]};
         }
 
         h1, h2, h3, h4, h5, h6, strong, th {
-          color: ${theme.colors.gray["950"]};
+          color: ${theme.colors?.gray["950"]};
           font-weight: 700 !important;
         }
 
@@ -36,19 +37,19 @@ export default defineConfig({
 
 
         table {
-          border-color: ${theme.colors.gray["3"]};
+          border-color: ${theme.colors?.gray["3"]};
           border-width: 1px;
           border-style: solid;
           font-size: 0.75em;
-          margin-bottom: ${theme.spacing.xs};
+          margin-bottom: ${theme.spacing?.xs};
         }
 
         .slidev-layout tr {
-          border-color: ${theme.colors.gray["3"]} !important;
+          border-color: ${theme.colors?.gray["3"]} !important;
         }
 
         .slidev-layout td, th {
-          border-right-color: ${theme.colors.gray["3"]};
+          border-right-color: ${theme.colors?.gray["3"]};
           border-right-width: 1px;
           border-right-style: solid;
           font-size: 1em;
@@ -64,8 +65,8 @@ export default defineConfig({
         .slidev-layout blockquote {
           background: transparent !important;
           border-left-width: 3px !important;
-          border-left-color: ${theme.colors.gray["2"]} !important;
-          color: ${theme.colors.gray["5"]} !important;
+          border-left-color: ${theme.colors?.gray["2"]} !important;
+          color: ${theme.colors?.gray["5"]} !important;
           border-radius: 0px !important;
           font-size: 1em !important;
         } 
