@@ -14,6 +14,7 @@ fonts:
   - Knowing what are the properties of database **relations**
   - Knowing what are **domain integrity**, **entity integrity**, and **referential integrity** rules
   - Knowing how to identify **candidate keys**, **primary keys**, **alternate keys**, and **foreign keys**
+  - Knowing how to formulate **relation schemas** and **relational schemas**
   - Knowing how tables are used to represent data
 
 ---
@@ -60,9 +61,9 @@ classDiagram
 
 - A **data model** is a conceptual model that defines how data is structured, stored, and accessed in a system
 - For example, **entity-relationship model** describes **entities** (things about which data is stored), **attributes** (details about each entity), and **relationships** (how entities are connected)
-- In case of a simple online store, a **customer entity** consists of **attributes** such as name and email
-- Customer entity has a **relationship to the order entity**, describing which orders a specfic customer has placed
-- Data model helps designing the database structure and makes data requirements easier to understand for both technical and non-technical people
+- In case of a simple online store, a "Customer" **entity** consists of **attributes** such as "name" and "email"
+- The "Customer" entity could have a **relationship** with the "Order" entity, describing which orders a specfic customer has placed
+- Data model **helps design the structure** of a database and **makes data requirements easier to understand**, ensuring that both technical and non-technical stakeholders share a common understanding of the data
 
 </div>
 
@@ -74,8 +75,8 @@ classDiagram
 ## Components of a data model
 
 - A data model consists of three components:
-  1. **Structural part**: what types of data exist and how they relate to each other
-  2. **Integrity part**: how the data can be used, validated, and maintained
+  1. **Structural part**: what types of data exist and how they relate to each other. For example data model could consist of "Course implementation" and "Teacher" entities, and "Teacher" entity has a relationship with the "Course implementation" entity (the teacher teaching the course implementation)
+  2. **Integrity part**: how the data can be used, validated, and maintained. For example "credits" attribute of a "Course" entity should be a number between 0 and 10
   3. **Manipulative part**: what can be done with the data (like creating, reading, updating, deleting)
 
 ---
@@ -89,20 +90,21 @@ classDiagram
 - Attributes have a set of allowable values, which is referred to as the attribute's **domain**
   - For example, "Person" relation's "age" attribute could be an integer value larger or equal to zero
 - The actual data is in relations's **tuples** (informally called **rows**)
+- **Relationships** between two relations are established using a **foreign key**, which references other relation's unique **primary key**. For example "Course implementation" relation has a "teacherno" foreign key referencing the "Teacher" relation's "teacherno" attribute
 
 ---
 
 ## The relational model
 
-| code    | name                        | credits |
-| ------- | --------------------------- | ------- |
-| HIS201  | World History               | 5       |
-| MATH201 | Calculus II                 | 3       |
-| ENG150  | Academic Writing            | 2       |
-| CSC102  | Introduction to Programming | 5       |
+| code    | name                        | credits | programmecode |
+| ------- | --------------------------- | ------- | ------------- |
+| HIS201  | World History               | 5       | HIS           |
+| MATH201 | Calculus II                 | 3       | MATH          |
+| ENG150  | Academic Writing            | 2       | LING          |
+| CSC102  | Introduction to Programming | 5       | CS            |
 
 - The following data represents a "Course" **relation**
-- The relation has three **attributes** "code", "name" and "credits"
+- The relation has four **attributes** "code", "name", "credits" and "programmecode"
 - There a four **tuples** containing the actual data
 
 ---
@@ -141,11 +143,11 @@ classDiagram
 - Relation can have multiple superkeys, for example in the "Course" relation the "code" attribute, and group of "code" and "name" attributes (composite key) are superkeys
 - ❓ What other superkeys does the "Course" relation have?
 
-| code    | name                        | credits |
-| ------- | --------------------------- | ------- |
-| CS102   | Introduction to Programming | 5       |
-| MATH201 | Calculus II                 | 4       |
-| ENG150  | Academic Writing            | 2       |
+| code    | name                        | credits | programmecode |
+| ------- | --------------------------- | ------- | ------------- |
+| CS102   | Introduction to Programming | 5       | CS            |
+| MATH201 | Calculus II                 | 4       | MATH          |
+| ENG150  | Academic Writing            | 2       | LING          |
 
 ---
 
@@ -156,11 +158,11 @@ classDiagram
 - In the "Course" relation the group of "code" and "name" attributes doesn't satify minimality, so it isn't a candidate key
 - ❓ What other candidate keys does the "Course" relation have?
 
-| code    | name                        | credits |
-| ------- | --------------------------- | ------- |
-| CS102   | Introduction to Programming | 5       |
-| MATH201 | Calculus II                 | 4       |
-| ENG150  | Academic Writing            | 2       |
+| code    | name                        | credits | programmecode |
+| ------- | --------------------------- | ------- | ------------- |
+| CS102   | Introduction to Programming | 5       | CS            |
+| MATH201 | Calculus II                 | 4       | MATH          |
+| ENG150  | Academic Writing            | 2       | LING          |
 
 ---
 
@@ -212,14 +214,14 @@ classDiagram
 ## Choosing a primary key
 
 - Let's consider a suitable primary key in the following cases:
-  - ❓ Is "Course" relation's "name" attribute a good option for a primary key? Why or why not?
-  - ❓ A "Person" relation has attributes "address", "name" and "social_security_number". What would be suitable primery key for this relation and why?
+  - ❓ Is "Student" relation's "phonenumber" attribute a good option for a primary key? Why or why not?
+  - ❓ A "Customer" relation has attributes "address", "name", "email" and "social_security_number". What would be suitable primery key for this relation and why?
 
-| social_security_number | name          | address                  |
-| ---------------------- | ------------- | ------------------------ |
-| 123-45-6789            | Alice Johnson | 742 Evergreen Terrace    |
-| 987-65-4321            | Bob Smith     | 221B Baker Street        |
-| 555-12-3456            | Carol Nguyen  | 1600 Pennsylvania Avenue |
+| social_security_number | name          | address                  | email                    |
+| ---------------------- | ------------- | ------------------------ | ------------------------ |
+| 123-45-6789            | Alice Johnson | 742 Evergreen Terrace    | alicejohnson@gmail.com   |
+| 987-65-4321            | Bob Smith     | 221B Baker Street        | bobthebot87@hotmail.com  |
+| 555-12-3456            | Carol Nguyen  | 1600 Pennsylvania Avenue | carolnguyen123@gmail.com |
 
 ---
 
@@ -257,7 +259,7 @@ classDiagram
 ## Example of primary and foreign keys
 
 <div class="flex">
-<div class="flex-basis-25% m-r-2">
+<div class="flex-basis-26% m-r-2">
 
 ![](./primary-foreign-key-example.png)
 
@@ -271,6 +273,29 @@ classDiagram
   
 </div>
 </div>
+
+---
+
+# Relation schema and relational schema
+
+- To provide a textual presentation of relation or a collection related relations, we can use **relation schemas** and **relational schemas**
+- **Relation schema** describes a single relation. It includes the name of the relation, the
+names of attributes and the **primary key** attribute underlined
+
+<pre>
+Course (<u>courseCode</u>, courseName, credits)
+</pre>
+
+- **Relational schema** describes a collection of relations (the logical structure of a relational database)
+
+<pre>
+Course (<u>courseCode</u>, courseName, credits)
+Student (<u>studentNumber</u>, familyName, givenName, birthdate)
+
+CourseGrade (<u>courseCode</u>, <u>studentNumber</u>, grade)
+ FOREIGN KEY (courseCode) REFERENCES COURSE (courseCode)
+ FOREIGN KEY (studentNumber) REFERENCES STUDENT (studentNumber)
+</pre>
 
 ---
 
