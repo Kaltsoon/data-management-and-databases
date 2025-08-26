@@ -91,10 +91,10 @@ cursor = connection.cursor()
 cursor.execute("""
 SELECT teacher_number, email, phone
 FROM Teacher
-WHERE first_name = 'John' AND surname = 'Doe';
+WHERE first_name = 'Kalle' AND surname = 'Ilves';
 """)
 
-courses = cursor.fetchall()
+teachers = cursor.fetchall()
 ```
 
 ---

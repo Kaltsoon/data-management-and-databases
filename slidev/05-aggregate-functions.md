@@ -17,10 +17,11 @@ fonts:
 
 ## Aggregate functions
 
-- Performing some calculation for multiple rows so that the end result is a **single value** is a common query problem
-- Example of such query is calculating the count of rows, or sum of a column values in a certain table
+- Basic `SELECT` statement lets us retrieve specific columns from a table and filter rows with a `WHERE` clause
+- However, when working with large datasets, we often need **summary information**, such as counts, averages, or totals, rather than individual rows
+- That is, performing some calculation (such as sum or average) for **multiple rows** so that the end result is a **single summarized value** is a common query problem
 - For example, _"what is the total number of courses?"_, or _"what is the sum of male teachers' salaries?"_
-- Functions that perform such operations are referred to as **aggregate functions**
+- Functions that perform such SQL operations are referred to as **aggregate functions**
 
 ---
 
@@ -30,14 +31,15 @@ fonts:
 COUNT ( * | { [ DISTINCT ] column_expression } ) 
 ```
 
-- The `COUNT` aggregate function returns the **total number of rows** that match the specified criteria:
+- The `COUNT` aggregate function returns the **total number of rows** that match the specified criteria
+- The `COUNT` aggregate function and other aggregate functions are used to compute a value for a column in the `SELECT` statement
 
 ```sql
 -- what's the number of courses in the Course table?
 SELECT COUNT(*) as number_of_courses FROM Course
 ```
 
-- The result table contains a single row:
+- The `COUNT` aggregate function operates on all the target table rows, leaving the result table with a single row:
 
 | number_of_courses |
 | ----------------- |
@@ -45,7 +47,7 @@ SELECT COUNT(*) as number_of_courses FROM Course
 
 ---
 
-## The COUNT aggregate function
+## Using aggregate functions with a WHERE clause
 
 - We can also filter the rows the aggregate function operates on using the `WHERE` clause:
 
@@ -55,7 +57,7 @@ SELECT COUNT(*) as number_of_courses FROM Course
 WHERE credits > 3
 ```
 
-- The result table contains a single row:
+- Now the aggregate function operates on the target table rows, **which match the `WHERE` clause condition**, leaving the result table with a single row:
 
 | number_of_courses |
 | ----------------- |
@@ -63,9 +65,9 @@ WHERE credits > 3
 
 ---
 
-## The COUNT aggregate function
+## Omitting NULL values with COUNT aggregate function
 
-- We can also provide a column name for the `COUNT` aggregate function in which case the function returns the number of the **non-null value** of the given column:
+- We can also provide a column name for the `COUNT` aggregate function in which case the function returns the number of the **non-null values** of the given column:
 
 ```sql
 -- what's the number of students with an email address?
@@ -75,7 +77,7 @@ FROM Student
 
 ---
 
-## The COUNT aggregate function
+## Omitting NULL values with COUNT aggregate function
 
 | student_number | email           |
 | -------------- | --------------- |
@@ -101,7 +103,7 @@ FROM Student
 SUM ( [ DISTINCT ] column_expression )
 ```
 
-- The `SUM` aggregate function returns the **sum of all the values** of a column:
+- The `SUM` aggregate function returns the **sum of all the non-null values** of a column:
 
 ```sql
 -- what's the sum of salaries of female teachers?
@@ -109,7 +111,7 @@ SELECT SUM(salary) as sum_of_salaries FROM Teacher
 WHERE gender = 'F'
 ```
 
-- The result table contains a single row:
+- The `SUM` aggregate function operates on all the target table rows, leaving the result table with a single row:
 
 | sum_of_salaries |
 | --------------- |
@@ -119,11 +121,15 @@ WHERE gender = 'F'
 
 ## The AVG aggregate function
 
+$$
+\text{AVG}(column) = \frac{\text{SUM}(column)}{\text{COUNT}(column)}
+$$
+
 ```sql
 AVG ( [ DISTINCT ] column_expression )
 ```
 
-- The `AVG` aggregate function returns the **average value** of a column:
+- The `AVG` aggregate function returns the **average of non-null values** of a column:
 
 ```sql
 -- what's the average grade from course with code "a730"?
@@ -131,7 +137,7 @@ SELECT AVG(grade) as average_grade FROM CourseGrade
 WHERE course_code = 'a730'
 ```
 
-- The result table contains a single row:
+- The `AVG` aggregate function operates on all the target table rows, leaving the result table with a single row
 
 | average_grade |
 | ------------- |
@@ -139,7 +145,7 @@ WHERE course_code = 'a730'
 
 ---
 
-## The AVG aggregate function
+## Rounding the AVG aggregate function result
 
 - Calculating the average includes a division operation, which can produce decimal numbers
 - To avoid losing the decimal part of the average, we need to cast integer column values to a `DECIMAL` type:
@@ -156,16 +162,22 @@ WHERE course_code = 'a730'
 
 ---
 
-## The AVG aggregate function
+## Rounding the AVG aggregate function result
 
 - We can limit the number of decimal places in the result by using casting the result to a `DECIMAL` type with specific precision (the total number of decimal digits stored) and scale (the number of decimal digits stored to the right of the decimal point):
 
 ```sql
 -- use scale of 2 in the DECIMAL type to round to two decimals places
-SELECT CAST(AVG(grade * 1.0) AS DECIMAL(9, 2)) as average_grade
+SELECT CAST(AVG(grade * 1.0) AS DECIMAL(5, 2)) as average_grade
 FROM CourseGrade
 WHERE course_code = 'a730'
 ```
+
+$$
+\text{DECIMAL}(5, 2) \quad \Rightarrow \quad
+\underbrace{999}_{\text{5 - 2 = 3 digits left}} \;.\;
+\underbrace{99}_{\text{2 digits right}}
+$$
 
 | average_grade |
 | ------------- |
@@ -187,7 +199,7 @@ SELECT MIN(grade) as lowest_grade FROM CourseGrade
 WHERE course_code = 'a730'
 ```
 
-- The result table contains a single row:
+- The `MIN` aggregate function operates on all the target table rows, leaving the result table with a single row
 
 | lowest_grade |
 | ------------ |
@@ -209,7 +221,7 @@ SELECT MAX(grade) as highest_grade FROM CourseGrade
 WHERE course_code = 'a730'
 ```
 
-- The result table contains a single row:
+- The `MAX` aggregate function operates on all the target table rows, leaving the result table with a single row
 
 | highest_grade |
 | ------------- |
