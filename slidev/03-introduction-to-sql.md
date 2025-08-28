@@ -8,7 +8,8 @@ fonts:
 ## Introduction to SQL
 
 - The learning objectives for this week are:
-  - Knowing how to use a **SQL Server Management Studio** to perform database operations
+  - Knowing how to use **SQL Server Management Studio** to connect to the SQL Server RDBMS
+  - Knowing how to use SQL Server Management Studio to execute database queries
   - Knowing how to to create database tables using SQL
   - Knowing how to to insert data into a table using SQL
   - Knowing how to to retrieve data from the database using SQL
@@ -58,7 +59,8 @@ WHERE first_name = 'John' AND surname = 'Doe';
 
 ```mermaid
 flowchart TD
-    application_a[Client application] -->|SQL query| dbms[Database management system] -->|Read and write data| database[(Database)]
+    application_a[Client application A] -->|SQL query| dbms[Database management system] -->|Read and write data| database[(Database)]
+    application_b[Client application B] -->|SQL query| dbms
 ```
 
 </div>
@@ -72,30 +74,6 @@ flowchart TD
 
 </div>
 </div>
-
----
-
-## Communicating with a RDBMS using SQL
-
-- We can also communicate with a RDBMS in our programs using programming language specific **client library**, such as Python's psycopg2 library for the PostgreSQL RDBMS:
-
-```python
-import psycopg2
-
-## Establish connection with the RDBMS
-connection = psycopg2.connect(
-    ## ...
-)
-cursor = connection.cursor()
-## Execute the SQL query
-cursor.execute("""
-SELECT teacher_number, email, phone
-FROM Teacher
-WHERE first_name = 'Kalle' AND surname = 'Ilves';
-""")
-
-teachers = cursor.fetchall()
-```
 
 ---
 
