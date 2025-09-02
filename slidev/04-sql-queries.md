@@ -8,7 +8,7 @@ fonts:
 ## SQL queries
 
 - The learning objectives for this week are:
-  - Knowing how to use the `SELECT` statement
+  - Knowing how to use the `SELECT` statement along with the `WHERE` clause to filter rows using **comparison and logical operators**
   - Knowing how to define **alias names** for selected columns
   - Knowing how to handle string values in queries
   - Knowing how to do **arithmetic operations**
