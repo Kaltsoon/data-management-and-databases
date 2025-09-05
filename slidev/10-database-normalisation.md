@@ -15,6 +15,12 @@ fonts:
   - Knowing how to formally check if a relation is in the **Boyce-Codd normal form** (BCNF)
   - Knowing how to **decompose a relation** into smaller relations if it is not in BCNF
 
+<div class="text-sm text-gray-5" style="position: absolute; left: 16px; bottom: 0px;">
+
+_A substantial portion of these materials is derived from the work of Kari Silpiö. Any use, reproduction, or distribution of this content requires prior written permission from him._
+
+</div>
+
 ---
 
 ## Database normalisation

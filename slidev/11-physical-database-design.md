@@ -15,6 +15,12 @@ fonts:
   - Knowing how to create indexes on database tables in SQL Server
   - Knowing what is meant by **database performance** and **database security**
 
+<div class="text-sm text-gray-5" style="position: absolute; left: 16px; bottom: 0px;">
+
+_A substantial portion of these materials is derived from the work of Kari Silpiö. Any use, reproduction, or distribution of this content requires prior written permission from him._
+
+</div>
+
 ---
 
 ## Physical database design
