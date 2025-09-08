@@ -135,7 +135,7 @@ WHERE skill = 1 OR skill = 2 AND salary > 10000
 --- false, when skill is 1 and salary is 500
 WHERE (skill = 1 OR skill = 2) AND salary > 10000
 -- 💡 using brackets can clarify the condition even if they aren't strictly necessary
-WHERE skill = 1 OR (skill = 2 AND salary) > 10000
+WHERE skill = 1 OR (skill = 2 AND salary > 10000)
 -- the condition above would be the same without the brackets
 ```
 

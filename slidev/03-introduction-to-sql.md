@@ -151,7 +151,7 @@ CREATE TABLE Student (
 
 - Table and column names **should describe the information they store**
   - The "Student" table contains rows that represent students
-  - The "first_name" column contains the family name of the student
+  - The "first_name" column contains the first name of the student
 - Table and column names should consist of letters, digits or underscores. They **should not contain whitespace**
 - In column names, a underscore symbol (_) is commonly used instead of whitespace. For example "first_name" instead of "first name"
 - Table names are commonly in **singular format**, for example "Student"
