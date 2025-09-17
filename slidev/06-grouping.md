@@ -17,9 +17,9 @@ fonts:
 
 ## Grouping the aggregated rows
 
-- So, an aggregate function performs a calculation for multiple rows so that the end result is a single value
-- If the result table always contains just a single row, how can we write a query such as, _"what's the average grade from each course?"_
-- To achieve this, we need to _group_ the rows based on a specific column and perform the aggregate function for each group separately
+- So, an aggregate function (such as `COUNT` and `SUM`) performs a calculation for **multiple rows so that the end result is a single value**
+- However, in many cases we want to get a certain summarized information for specific group of rows, for example _"what's the average grade from each course?"_ or _"what is the average grade of each student"_
+- To achieve this, we need to **group** the rows based on a specific column (such as `course_code` or `student_number`) and **perform the aggregate function for each group separately**
 - This can be done using the `GROUP BY` clause
 
 ---
@@ -30,7 +30,7 @@ fonts:
 GROUP BY column_list [ HAVING group_filtering_condition ]
 ```
 
-- The `GROUP BY` clause uses a column or a group of columns in a `SELECT` statement to form groups of rows which the aggregate function operators on:
+- The `GROUP BY` clause uses a column or a group of columns in a `SELECT` statement to form **groups of rows which the aggregate function operators on**:
 
 ```sql
 -- what's the average grade from each course?
@@ -43,7 +43,7 @@ GROUP BY course_code
 
 ## The GROUP BY clause
 
-- The result table will have a row for _each distinct column value_ of the `GROUP BY` column
+- The result table will have a row for **each distinct column value** of the `GROUP BY` column
 - Each row has the corresponding aggregate function result for that group
 - In the example's case the result table would contain the average grade for each distinct `course_code`:
 
@@ -58,7 +58,7 @@ GROUP BY course_code
 ## The GROUP BY clause
 
 - As mentioned, the `GROUP BY` clause can have multiple columns
-- In this case the result table will have a row for _each distinct combination of column values_ of the `GROUP BY` columns
+- In this case the result table will have a row for **each distinct combination of column values** of the `GROUP BY` columns
 
 ```sql
 -- what's the average grade from each course instance?
@@ -190,7 +190,7 @@ ORDER BY number_of_employees
 
 ## Subqueries
 
-- A _subquery_ is a query within another query, which is used to retrieve data that will be processed by the outer query
+- A **subquery** is a query within another query, which is used to retrieve data that will be processed by the outer query
 - The most common use case for a subquery is to use subquery result in a filtering condintion in a `WHERE` clause
 - Subqueries can also contain another subquery
 - Most of our examples will cover usage of subqueries with the `SELECT` statement, but they can be used with e.g. `INSERT INTO` and `UPDATE` statements as well
@@ -265,7 +265,7 @@ WHERE empno NOT IN (SELECT empno FROM Project_Employee)
 
 ## Correlated subqueries
 
-- A _correlated subquery_ (inner query) uses one or more values from the outer query
+- A **correlated subquery** (inner query) uses one or more values from the outer query
 - The correlated subquery is executed once for each row that is selected by the outer query
 
 ```sql
@@ -333,11 +333,11 @@ GROUP BY deptno HAVING AVG(salary) > (SELECT AVG(salary) FROM Employee)
 ## Subqueries within a FROM clause
 
 - A subquery can be used in the `FROM` clause to create a temporary derived table that can be used in the outer query
-- The subquery _must have an alias name_ (`FROM (subquery) AS alias_name`)
+- The subquery **must have an alias name** (`FROM (subquery) AS alias_name`)
 - The subquery's result set can be used in the `FROM` clause similarly to a normal table
 - Let's consider the following example:
 
-> _"what is the count, and the minimum and the maximum grade point average (GPA) of such students who have passed more than 20 courses?"_
+> _"What is the count, and the minimum and the maximum grade point average (GPA) of such students who have passed more than 20 courses?"_
 
 ---
 
