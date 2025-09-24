@@ -81,7 +81,8 @@ FROM CourseInstance
 ```sql
 -- what is the first name and surname of each course instance teacher?
 SELECT
-CourseInstance.course_code, CourseInstance.instance_number, Teacher.teacher_number, Teacher.first_name, Teacher.surname
+CourseInstance.course_code, CourseInstance.instance_number, 
+Teacher.teacher_number, Teacher.first_name, Teacher.surname
 FROM CourseInstance
 INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
@@ -134,7 +135,8 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 
 ```sql
 -- display course and student information for each passing grade
-SELECT CourseGrade.course_code, instance_number, CourseGrade.student_number first_name, surname, credits, grade 
+SELECT CourseGrade.course_code, instance_number, 
+CourseGrade.student_number, first_name, surname, credits, grade 
 FROM CourseGrade
 INNER JOIN Course ON CourseGrade.course_code = Course.course_code
 INNER JOIN Student ON CourseGrade.student_number = Student.student_number
@@ -236,7 +238,8 @@ ON -- ...
 
 ```sql
 SELECT
-CourseInstance.course_code, CourseInstance.instance_number, Teacher.teacher_number, Teacher.first_name, Teacher.surname
+CourseInstance.course_code, CourseInstance.instance_number, 
+Teacher.teacher_number, Teacher.first_name, Teacher.surname
 FROM CourseInstance
 LEFT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
@@ -255,7 +258,8 @@ LEFT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_numbe
 
 ```sql
 SELECT
-CourseInstance.course_code, CourseInstance.instance_number, Teacher.teacher_number, Teacher.first_name, Teacher.surname
+CourseInstance.course_code, CourseInstance.instance_number, 
+Teacher.teacher_number, Teacher.first_name, Teacher.surname
 FROM CourseInstance
 RIGHT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
