@@ -81,8 +81,9 @@ FROM CourseInstance
 ```sql
 -- what is the first name and surname of each course instance teacher?
 SELECT
-CourseInstance.course_code, CourseInstance.instance_number, 
-Teacher.teacher_number, Teacher.first_name, Teacher.surname
+course_code, instance_number, 
+-- ⚠️ note column name "Teacher.teacher_number", not just "teacher_number"
+Teacher.teacher_number, first_name, surname
 FROM CourseInstance
 INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
@@ -178,7 +179,7 @@ WHERE grade > 0
 ```sql
 SELECT
 CourseInstance.course_code, CourseInstance.instance_number,
-Teacher.teacher_number, Teacher.first_name, Teacher.surname
+Teacher.teacher_number, first_name, surname
 FROM CourseInstance
 INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
@@ -238,8 +239,8 @@ ON -- ...
 
 ```sql
 SELECT
-CourseInstance.course_code, CourseInstance.instance_number, 
-Teacher.teacher_number, Teacher.first_name, Teacher.surname
+course_code, instance_number, 
+Teacher.teacher_number, first_name, surname
 FROM CourseInstance
 LEFT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
@@ -258,8 +259,8 @@ LEFT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_numbe
 
 ```sql
 SELECT
-CourseInstance.course_code, CourseInstance.instance_number, 
-Teacher.teacher_number, Teacher.first_name, Teacher.surname
+course_code, instance_number, 
+Teacher.teacher_number, first_name, surname
 FROM CourseInstance
 RIGHT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
