@@ -145,9 +145,8 @@ classDiagram
 
     class Student {
         student_number$
-        first_name
-        surname
-        email[0..*]
+        full_name
+        emails
     }
 ```
 
@@ -158,7 +157,7 @@ classDiagram
 - In the example we have one **many-to-many relationship** between the _Student_ and _CourseInstance_ entities ("..*" on both sides of the "enrolls" relationship):
   - _"Student enrolls to zero or many course instances and course instance has zero or many students"_
   - In this case we create an additional **bridge relation**, for example _Enrollment_
-- There is a **multi-valued attribute** _email_ in the _Student_ entity
+- There is a **multi-valued attribute** _emails_ in the _Student_ entity
   - In this case we create an additional entity, for example _StudentEmail_
 - This leaves with the following relations: _Student_, _CourseInstance_, _Enrollment_ and _StudentEmail_
 
@@ -400,7 +399,7 @@ classDiagram
         empno$
         family_name
         given_name
-        email[0..*]
+        emails
     }
 ```
 
@@ -408,7 +407,7 @@ classDiagram
 
 <div class="flex-1 m-l-2">
 
-- A relation can't have attributes with **multiple values**, such as the _email_ attribute of the _Employee_ entity type in this example (employee has many emails)
+- A relation can't have attributes with **multiple values**, such as the _emails_ attribute of the _Employee_ entity type in this example (employee has many emails)
 - In such case, we must create a **new relation** to represent the multi-valued attribute, for example _EmployeeEmail_
 - We move the attribute from the original relation and place it to the new relation and place a copy of the parent relation's primary key into the child relation, to act as the foreign key
 
@@ -437,7 +436,7 @@ classDiagram
         empno$
         family_name
         given_name
-        email[0..*]
+        emails
     }
 ```
 

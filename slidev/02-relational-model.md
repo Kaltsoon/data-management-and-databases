@@ -39,26 +39,14 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 ---
 
 classDiagram
-    direction TB
-    class Customer {
-        id
-        name
-        email
+    class Club {
     }
 
-    class Order {
-        id
-        order_date
+    class Employee {
     }
 
-    class Product {
-        id
-        name
-        price
-    }
-
-    Customer "1..1" -- "0..*" Order : places
-    Order "0..*" -- "1..*" Product : contains
+    Club "1" --> "0..*" Employee : employs
+    Employee "0..1" --> "1" Club : member of
 ```
 
 </div>
