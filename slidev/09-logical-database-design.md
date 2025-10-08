@@ -135,7 +135,6 @@ classDiagram
     class Course {
       course_code$
       name
-      credits
     }
 
     class CourseInstance {
@@ -145,7 +144,8 @@ classDiagram
 
     class Student {
         student_number$
-        full_name
+        first_name
+        surname
         emails
     }
 ```
@@ -179,9 +179,9 @@ Student(<u>student_number</u>, first_name, surname)
 </pre>
 
 - There should be **exactly one primary key in each relation**
-- The primary key can be either a **simple key** (single column) or a **composite key** (several columns)
+- The primary key can be either a **simple key** (single column, like `course_code` in the `Course` relation) or a **composite key** (several columns, like `course_code` and `instance_number` in the `CourseInstance` relation)
 - By definition, the primary key should always satisfy the properties of **requiredness** (not `NULL`), **uniqueness** and **minimality**
-- The primary key **should remain stable**. That is, primary key values should not need to be updated later
+- The primary key **should remain stable**. That is, primary key values should not be updated later
 - The primary key should be **reasonably short**
 - The primary key should have **no privacy issues**. For example social security number has privacy issues
 
@@ -202,7 +202,13 @@ Student(<u>student_number</u>, first_name, surname)
 - If there is initially no suitable candidate key for a relation, then we cannot determine a natural primary key
 - We have to take care of the situation by including an extra attribute in the relation to act as the primary key
 - This kind of primary key is a **surrogate key**
-- Surrogate keys are commonly generated values, such as incrementing or random numbers
+- Surrogate keys are commonly generated values, such as incrementing or random numbers, like the `messageid` primary key in the data below
+
+| messageid | from                       | to                         | title    | body         |
+| --------- | -------------------------- | -------------------------- | -------- | ------------ |
+| 1         | kalle.ilves@haaga-helia.fi | john.doe@gmail.com         | Greeting | Hello John!  |
+| 2         | john.doe@gmail.com         | kalle.ilves@haaga-helia.fi | Response | Hello Kalle! |
+| ...       | ...                        | ...                        | ...      | ...          |
 
 ---
 
