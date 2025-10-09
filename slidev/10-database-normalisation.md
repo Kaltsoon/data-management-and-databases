@@ -11,7 +11,7 @@ fonts:
   - Knowing the purpose of **database normalisation**
   - Knowing what is a **functional dependency**, a **partial dependency** and a **transitive dependency**
   - Knowing how to identify functional dependencies in a relation or table
-  - Knowing the different **normal form** rules
+  - Knowing the different **normal form** (1NF, 2NF, 3NF, BCNF) rules
   - Knowing how to formally check if a relation is in the **Boyce-Codd normal form** (BCNF)
   - Knowing how to **decompose a relation** into smaller relations if it is not in BCNF
 
@@ -37,13 +37,13 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 - Let's consider **redundancy problems** with the following `Course_Enrolment` relation rows:
 
-| course_code | instance_number | student_number | phone | enrolment_date |
-| ----------- | --------------- | -------------- | ----- | -------------- |
-| C001        | 1               | 10             | 1234  | 2025-04-01     |
-| C001        | 1               | 20             | 5555  | 2025-04-02     |
-| C002        | 3               | 30             | 8765  | 2025-04-01     |
-| C002        | 3               | 40             | 1414  | 2025-04-03     |
-| C002        | 3               | 10             | 1234  | 2025-04-07     |
+| course_code | course_name | instance_number | student_number | phone | enrolment_date |
+| ----------- | ----------- | --------------- | -------------- | ----- | -------------- |
+| C001        | Java        | 1               | 10             | 1234  | 2025-04-01     |
+| C001        | Java        | 1               | 20             | 5555  | 2025-04-02     |
+| C002        | SQL         | 3               | 30             | 8765  | 2025-04-01     |
+| C002        | SQL         | 3               | 40             | 1414  | 2025-04-03     |
+| C002        | SQL         | 3               | 10             | 1234  | 2025-04-07     |
 
 ---
 
@@ -52,11 +52,13 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 - The student `10` **phone number is duplicated** causing redundancy in the data
 - While updating a phone number or inserting a new row, there's a risk of having **multiple different phone numbers for the same student** (inconsistency):
 
-| courseno | studentno | phone  | enrolment_date |
-| -------- | --------- | ------ | -------------- |
-| C001     | 10        | ⚠️ 1234 | 2025-04-01     |
-| ...      | ...       | ...    | ...            |
-| C002     | 10        | ⚠️ 3338 | 2025-04-07     |
+| courseno | course_name | instance_number | student_number | phone  | enrolment_date |
+| -------- | ----------- | --------------- | -------------- | ------ | -------------- |
+| C001     | Java        | 1               | 10             | ⚠️ 1234 | 2025-04-01     |
+| ...      | ...         | ...             | ...            | ...    |
+| C002     | SQL         | 3               | 10             | ⚠️ 3338 | 2025-04-07     |
+
+- Are there other problems with the relation? 🤔
 
 ---
 
@@ -122,7 +124,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 ## Example of functional dependency
 
 - `{A, B} → C` means that **A and B together uniquely determine C**. For example, `{course_code, implementation_number} → start_date`
-- `A → B, C, D` means that **A uniquely determines B, C, and D**, For example, `course_code → course_name, language, credits`
+- `A → B, C, D` means that **A uniquely determines B, C, and D**. For example, `course_code → course_name, language, credits`
 
 ---
 
