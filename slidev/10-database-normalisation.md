@@ -37,13 +37,13 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 - Let's consider **redundancy problems** with the following `Course_Enrolment` relation rows:
 
-| course_code | course_name | instance_number | student_number | phone | enrolment_date |
-| ----------- | ----------- | --------------- | -------------- | ----- | -------------- |
-| C001        | Java        | 1               | 10             | 1234  | 2025-04-01     |
-| C001        | Java        | 1               | 20             | 5555  | 2025-04-02     |
-| C002        | SQL         | 3               | 30             | 8765  | 2025-04-01     |
-| C002        | SQL         | 3               | 40             | 1414  | 2025-04-03     |
-| C002        | SQL         | 3               | 10             | 1234  | 2025-04-07     |
+| course_code | instance_number | student_number | phone | enrolment_date |
+| ----------- | --------------- | -------------- | ----- | -------------- |
+| C001        | 1               | 10             | 1234  | 2025-04-01     |
+| C001        | 1               | 20             | 5555  | 2025-04-02     |
+| C002        | 3               | 30             | 8765  | 2025-04-01     |
+| C002        | 3               | 40             | 1414  | 2025-04-03     |
+| C002        | 3               | 10             | 1234  | 2025-04-07     |
 
 ---
 
@@ -52,13 +52,11 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 - The student `10` **phone number is duplicated** causing redundancy in the data
 - While updating a phone number or inserting a new row, there's a risk of having **multiple different phone numbers for the same student** (inconsistency):
 
-| courseno | course_name | instance_number | student_number | phone  | enrolment_date |
-| -------- | ----------- | --------------- | -------------- | ------ | -------------- |
-| C001     | Java        | 1               | 10             | ⚠️ 1234 | 2025-04-01     |
-| ...      | ...         | ...             | ...            | ...    |
-| C002     | SQL         | 3               | 10             | ⚠️ 3338 | 2025-04-07     |
-
-- Are there other problems with the relation? 🤔
+| courseno | instance_number | student_number | phone  | enrolment_date |
+| -------- | --------------- | -------------- | ------ | -------------- |
+| C001     | 1               | 10             | ⚠️ 1234 | 2025-04-01     |
+| ...      | ...             | ...            | ...    | ...            |
+| C002     | 3               | 10             | ⚠️ 3338 | 2025-04-07     |
 
 ---
 
