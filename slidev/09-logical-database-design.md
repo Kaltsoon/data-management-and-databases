@@ -405,7 +405,7 @@ classDiagram
         empno$
         family_name
         given_name
-        emails
+        phone_numbers
     }
 ```
 
@@ -413,8 +413,8 @@ classDiagram
 
 <div class="flex-1 m-l-2">
 
-- A relation can't have attributes with **multiple values**, such as the _emails_ attribute of the _Employee_ entity type in this example (employee has many emails)
-- In such case, we must create a **new relation** to represent the multi-valued attribute, for example _EmployeeEmail_
+- A relation can't have attributes with **multiple values**, such as the _phone\_numbers_ attribute of the _Employee_ entity type in this example (employee has many phone numbers)
+- In such case, we must create a **new relation** to represent the multi-valued attribute, for example _EmployeePhone_
 - We move the attribute from the original relation and place it to the new relation and place a copy of the parent relation's primary key into the child relation, to act as the foreign key
 
 </div>
@@ -442,7 +442,7 @@ classDiagram
         empno$
         family_name
         given_name
-        emails
+        phone_numbers
     }
 ```
 
@@ -454,7 +454,7 @@ classDiagram
 
   <pre>
   Employee (<u>empno</u>, first_name, family_name)
-  EmployeeEmail (<u>email</u>, empno)
+  EmployeePhone (<u>phone_number</u>, empno)
     FOREIGN KEY (empno) REFERENCES Employee(empno)
   </pre>
 
