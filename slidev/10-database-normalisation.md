@@ -28,8 +28,8 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 - **Database normalisation** is a formal technique of organizing data in a database in a way that **redundancy** and **incosistency** within the data is eliminated
 - The objective of database normalisation is to ensure that:
   - Attributes with a **close logical relationship** (functional dependency) are found in the **same relation**
-  - The relations do not display **hidden data redundancy**, which can cause update anomalies that violate database integrity
-- The technique involves a set of **normalisation rules** that are defined as **normal forms**
+  - The relations do not display **hidden data redundancy**, which can cause inconsistencies that violate database integrity
+- The technique involves a set of normalisation rules, known as **normal forms**, which serve as criteria for achieving a well-structured database design
 
 ---
 
@@ -128,7 +128,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ## Identifying undesired data redundancy
 
-- Relations that **do not have** undesired data redundancy, **each determinant is a candidate key** (an unique attribute that is suitable for being the primary key)
+- 👍 Relations that **do not have** undesired data redundancy, **each determinant is a candidate key** (an unique attribute that is suitable for being the primary key)
 - In such case **all arrows are arrows out of whole candidate keys** (simple or composite key)
 - Let's consider the following relation **without data redundancy**:
     <pre>CourseOffering (<u>coursecode</u>, <u>offeringnumber</u>, startdate, teachernumber)</pre>
@@ -139,23 +139,24 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ## Identifying undesired data redundancy
 
-- Relations that **have** undesired data redundancy, **there is a determinant that is not a candidate key**
+- 👎 Relations that **have** undesired data redundancy, **there is a determinant that is not a candidate key**
 - In such case **there is on arrow that is not an arrow out of a whole candidate key**
 - Let's consider the following relation **with data redundancy**:
-    <pre>CourseOffering (<u>coursecode</u>, <u>offeringnumber</u>, coursename,
-                  startdate, teachernumber, surname)</pre>
+
+<pre>CourseOffering (<u>coursecode</u>, <u>offeringnumber</u>, coursename, startdate, teachernumber, surname)</pre>
 
 ---
 
 ## Identifying undesired data redundancy
 
+<pre>CourseOffering (<u>coursecode</u>, <u>offeringnumber</u>, coursename, startdate, teachernumber, surname)</pre>
+
 - In this relations there's for example the following functional depedencies:
   - ✅ `{coursecode, offeringnumber} → coursename, startdate, teachernumber, surname`
   - ❌ `coursecode → coursename`
   - ❌ `teachernumber → surname`
-- In functional dependencies `coursecode → coursename` and `teachernumber → surname`, the determinants are not candidate keys
-- With such functional dependencies, the relation has redundant data
-- For example the teacher's surname is repeated unnecessarily, which can cause consistency issues for example when a teacher's surname is updated
+- In functional dependencies `coursecode → coursename` and `teachernumber → surname`, **the determinants are not candidate keys**
+- With such functional dependencies, the relation has redundant data. For example the teacher's surname is repeated unnecessarily
 - Instead, the teacher's information should be in a **separate relation**
 
 ---
@@ -163,48 +164,25 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 ## Calculated attributes
 
 - We **should not include** attributes in a relation that we can **derive** from other relations or **calculate**
-- For example, let's suppose that the firm's total budget is the total of department budgets
-- Therefore, **totalbudget** is a calculated attribute in the _Firm_ relation
-- The value of **totalbudget** should change whenever any department budget is changed in the firm
+- For example, let's suppose that the company's total budget is the total of department budgets
+- Therefore, `totalbudget` is a **calculated attribute** in the `Company` relation and its value should change whenever any department budget is changed in the company
 - From the data redundancy and integrity viewpoint, we have a problem here because total budget exists twice in the design:
 
-    <pre>
-    Firm (<u>firmno</u>, firmname, totalbudget ❌)
-    Depertmant (<u>deptno</u>, deptname, deptbudget, firmno)
-        FK (firmno) REFERENCES Firm (firmno)</pre>
+<pre>
+Company (<u>companyno</u>, companyname, totalbudget ❌)
+Depertmant (<u>deptno</u>, deptname, deptbudget, companyno)
+    FK (companyno) REFERENCES Company (companyno)</pre>
 
 ---
 
 ## Calculated attributes
 
-- We shouldn't have the _totalbudget_ attribute in the _Firm_ relation, instead we can calculate it with the following query:
-  ```sql
-  SELECT SUM(deptbudget) as totalbudget FROM Department
-  WHERE firmno = 'a1122'
-  ```
+- We shouldn't have the `totalbudget` attribute in the `Company` relation, instead we can calculate it with the following query:
 
----
-
-## Different kind of functional dependencies
-
-- Functional dependencies can be categorized in the following categories:
-  - **Non-trivial** and **trivial** functional dependencies
-  - **Partial** and **full** functional dependencies
-  - **Transitive** and **non-transitive** functional dependencies
-
----
-
-## Non-trivial and trivial functional dependencies
-
-- `A → B` is **trivial functional dependency** if B is a subset of A
-- `A → B` is **non-trivial functional dependency** if B is not a subset of A
-- Let's consider the _CourseOffering_ relations:
-    <pre>CourseOffering (<u>coursecode</u>, <u>offeringno</u>, startdate)</pre>
-- In the relation, `{coursecode, offeringno} → startdate` is a **non-trivial functional dependency**, because `startdate` is not a subset of `{coursecode, offeringno}`
-- These, on the other are **trivial functional dependencies** of the relation:
-  - `{coursecode, offeringno} → coursecode`
-  - `{coursecode, offeringno} → {coursecode, offeringno}`
-- In normalisation considerations we are only focusing on **non-trivial functional dependencies**
+```sql
+SELECT SUM(deptbudget) as totalbudget FROM Department
+WHERE firmno = 'a1122'
+```
 
 ---
 
@@ -223,6 +201,7 @@ flowchart LR
 - Each normal form from 1NF to BNCF **adds more rules** to the previous normal form
 - For example, the 2NF **includes all rules** of the 1NF and additional rules
 - The Boyce-Codd Normal Form (BCNF) is the strictest of these normal forms
+- To figure out the normal form of the relation, we start from the rules of first normal form and move on to the following normal forms until some rule is violated or the relation is in BCNF
 
 ---
 
@@ -231,6 +210,12 @@ flowchart LR
 - A relation is in the **first normal form** (1NF) if the following rules apply:
   - All attributes in a relation **must have atomic values**. No multi-valued attributes are allowed
   - A relation **must have a primary key** and all its **attributes must be dependent on the primary key**
+- Let's consider the following relation:
+
+<pre>Student (studetno, surname, firstname, StudentEmail(email, verified))</pre>
+
+- ❌ The relation has a **a multi-valued attribute**, which represents the student's email addresses
+- That is, the relation **is not in 1NF**
 
 ---
 
@@ -240,41 +225,49 @@ flowchart LR
   - Relation is in 1NF
   - Relation has no **partial functional dependencies**, meaning that there is no **part of a candidate key** that uniquely determines a **non-candidate-key** attribute
 - Let's consider the following relation:
-  <pre>ClubMembership (<u>empno</u>, <u>clubno</u>, clubname, joindate)</pre>
-- The relation has a **partial functional dependency** `{empno, clubno} → clubname`, because the functional dependency `clubno → clubname` exists in the relation
+
+<pre>ClubMembership (<u>empno</u>, <u>clubno</u>, clubname, joindate)</pre>
+
+- ❌ The relation has a **partial functional dependency** `{empno, clubno} → clubname`, because the functional dependency `clubno → clubname` exists in the relation
 - That is, the relation **is not in 2NF**
+- ❓ What is the normal form of the relation?
 
 ---
 
-## Third normal form
+## Third normal form (3NF)
 
 - A relation is in the **third normal form** (3NF) if the following rules apply:
-  - Relation is in 1NF
+  - Relation is in 2NF
   - Relation has no functional dependency between two **non-candidate-key** attributes, meaning no **non-candidate-key** attribute is allowed to be **transitively** dependent on any **candidate key** within the relation
 - Let's consider the following relation schema:
-  <pre>Employee (<u>empno</u>, surname, firstname, deptno, deptname)</pre>
-- The relation has a transitive functional dependency `deptno → deptname`, causing `deptname` to be **transitively dependent** on `empno` via `deptno`
+
+<pre>Employee (<u>empno</u>, surname, firstname, deptno, deptname)</pre>
+
+- ❌ The relation has a transitive functional dependency `deptno → deptname`, causing `deptname` to be **transitively dependent** on `empno` via `deptno`
 - That is, the relation **is not in 3NF**
+- ❓ What is the normal form of the relation?
 
 ---
 
 ## Boyce-Codd Normal Form (BCNF)
 
 - We simplify the rules of BCNF we will have the following limitations during the course:
-  - We only focusing on **non-trivial functional depdencies**
+  - We only focusing on **non-trivial functional depdencies**, where dependent (right) is not part of the determinant (left). For example, `{coursecode, offeringno} → coursecode` is a **trivial functional dependency**
   - Instead of including any superkeys in our analysis, we narrow the analysis to **candidate keys**
   - We do not allow any attribute that **does not have a determinant** within the relation
 - With these limitations the BCNF has the following rules for a relation:
-  - Each determinant is a candidate key
+  - Each determinant (left) is a candidate key
   - All attribute values are atomic (single values)
-  - There is a determinant for each attribute that is not contained in a candidate key
+  - There is a determinant (left) for each attribute that is not contained in a candidate key
 
 ---
 
 ## Boyce-Codd Normal Form (BCNF)
 
 - Let's consider the following relation:
-  <pre>Teacher (<u>teacherno</u>, firstname, surname)</pre>
+
+<pre>Teacher (<u>teacherno</u>, firstname, surname)</pre>
+
 - `teacherno → firstname, surname` is the only **functional depedency** in the relation
 - ✅ Each determinant is a candidate key
 - ✅ All attribute values are atomic (single values)
@@ -290,6 +283,7 @@ flowchart LR
 - `studentno → firstname, surname` is one of the **functional depedencies** in the relation
 - ❌ `studentno` is **not a candidate key** in the relation (so each determinant is **not** a candidate key)
 - Thus, **the relation is not in BCNF**
+- ❓ What is the normal form of the relation?
 
 ---
 

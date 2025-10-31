@@ -32,21 +32,27 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 <div class="flex-basis-11% m-r-2">
 
 ```mermaid
----
-  config:
-    class:
-      hideEmptyMembersBox: true
----
-
 classDiagram
-    class Club {
+    direction TB
+    class Customer {
+        id
+        name
+        email
     }
 
-    class Employee {
+    class Order {
+        id
+        order_date
     }
 
-    Club "1" --> "0..*" Employee : employs
-    Employee "0..1" --> "1" Club : member of
+    class Product {
+        id
+        name
+        price
+    }
+
+    Customer "1..1" -- "0..*" Order : places
+    Order "0..*" -- "1..*" Product : contains
 ```
 
 </div>
@@ -63,7 +69,6 @@ classDiagram
 
 </div>
 
-
 ---
 
 ## Components of a data model
@@ -78,11 +83,9 @@ classDiagram
 ## The relational model
 
 - When all data model's data is logically structured within **relations**, the model is a **relational model**
-- These relations are informally referred to as **tables**
-- The data is perceived by the users as tables
-- Relation has named **attributes** (informally called **columns**)
-- Attributes have a set of allowable values, which is referred to as the attribute's **domain**
-  - For example, "Person" relation's "age" attribute could be an integer value larger or equal to zero
+- **Relation** (informally called a **table**) represents a data entity organized in a specific structure, such as "Course"
+- Each relation consists of **attributes** (informally called **columns**) that define its properties, such as "name" and "credits"
+- Attributes have a set of allowable values, which is referred to as the attribute's **domain**. For example, "Course" relation's "credits" attribute could be an integer value between 1 and 10
 - The actual data is in relations's **tuples** (informally called **rows**)
 - **Relationships** between two relations are established using a **foreign key**, which references other relation's unique **primary key**. For example "Course implementation" relation has a "teacherno" foreign key referencing the "Teacher" relation's "teacherno" attribute
 
@@ -100,6 +103,7 @@ classDiagram
 - The following data represents a "Course" **relation**
 - The relation has four **attributes** "code", "name", "credits" and "programmecode"
 - There a four **tuples** containing the actual data
+- The "code" attribute is a **primary key**, which uniquely identifies each tuple (no two tuples have the same value for the attribute)
 
 ---
 
@@ -107,11 +111,9 @@ classDiagram
 
 - Each relation has a name that is **distinct from all other relation names**
 - Each attribute of a relation has a **distinct name within the relation**
-- Each tuple's cell contains exactly one value
-- Values of an attribute are all **from the same domain** (for example, numbers or text)
-- The order of attributes has no significance
-- There are no duplicate tuples
-- The order of tuples has no significance
+- Each relation has a **primary key** attribute, which **unique identifies each tuple** and makes sure, there's no duplicate values. For example "code" primary key for "Course" relation and "studentnumber" primary key for "Student" relation
+- Each attribute is **atomic**, meaning that each tuple's cell contains exactly one value. For example, it is not possible to have a "emails" attribute representing multiple email addresses
+- Values of an attribute are all **from the same domain**. For example, "name" attribute values are only text and "credits" attribute values are only numbers
 
 ---
 
