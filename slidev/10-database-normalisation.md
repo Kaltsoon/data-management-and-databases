@@ -93,7 +93,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 - Let's suppose that each student has a unique student number. In the relation below, _studentnumber_ uniquely determines _surname_ and _firstname_. That is, **studentnumber is the determinant of surname and firstname**:
 
-    <pre>Student (<u>studentnumber</u>, surname, firstname)</pre>
+<pre>Student (<u>studentnumber</u>, surname, firstname)</pre>
 
 - In this example, there are the following two functional dependencies:
   - `studentnumber → surname`
@@ -113,9 +113,9 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 - The **functional dependency** `studentnumber → surname` guarantees that the query below (that uses an existing student number) returns exactly one surname and that holds all the time:
 
-  ```sql
-  SELECT surname FROM Student WHERE studentnumber = 'a12345'
-  ```
+```sql
+SELECT surname FROM Student WHERE studentnumber = 'a12345'
+```
 
 ---
 
@@ -131,7 +131,9 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 - 👍 Relations that **do not have** undesired data redundancy, **each determinant is a candidate key** (an unique attribute that is suitable for being the primary key)
 - In such case **all arrows are arrows out of whole candidate keys** (simple or composite key)
 - Let's consider the following relation **without data redundancy**:
-    <pre>CourseOffering (<u>coursecode</u>, <u>offeringnumber</u>, startdate, teachernumber)</pre>
+
+<pre>CourseOffering (<u>coursecode</u>, <u>offeringnumber</u>, startdate, teachernumber)</pre>
+
 - In this relations there's for example the following functional dependency:
   - ✅ `{coursecode, offeringnumber} → startdate, teachernumber`
 
@@ -144,6 +146,17 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 - Let's consider the following relation **with data redundancy**:
 
 <pre>CourseOffering (<u>coursecode</u>, <u>offeringnumber</u>, coursename, startdate, teachernumber, surname)</pre>
+
+<div class="mt-2">
+
+| coursecode | offeringnumber | coursename         | startdate  | teachernumber | surname |
+| ---------- | -------------- | ------------------ | ---------- | ------------- | ------- |
+| C101       | 1              | ⚠️ Database Systems | 2025-02-10 | T001          | ⚠️ Smith |
+| C101       | 2              | ⚠️ Database Systems | 2025-09-05 | T002          | Jones   |
+| C102       | 1              | Web Development    | 2025-03-12 | T003          | Brown   |
+| C103       | 1              | Data Analytics     | 2025-05-20 | T001          | ⚠️ Smith |
+
+</div>
 
 ---
 
@@ -181,8 +194,18 @@ Depertmant (<u>deptno</u>, deptname, deptbudget, companyno)
 
 ```sql
 SELECT SUM(deptbudget) as totalbudget FROM Department
-WHERE firmno = 'a1122'
+WHERE companyno = 'C100'
 ```
+
+<div class="mt-2">
+
+| deptno | deptname        | deptbudget | companyno |
+| ------ | --------------- | ---------- | --------- |
+| D001   | Research and Development  | 1200000    | C100      |
+| D002   | Marketing       | 850000     | C100      |
+| D003   | Human Resources | 400000     | C100      |
+
+</div>
 
 ---
 
@@ -279,7 +302,9 @@ flowchart LR
 ## Boyce-Codd Normal Form (BCNF)
 
 - Let's consider the following relation:
-  <pre>CourseGrade (<u>course_code</u>, <u>studentno</u>, firstname, surname, grade)</pre>
+
+<pre>CourseGrade (<u>course_code</u>, <u>studentno</u>, firstname, surname, grade)</pre>
+
 - `studentno → firstname, surname` is one of the **functional depedencies** in the relation
 - ❌ `studentno` is **not a candidate key** in the relation (so each determinant is **not** a candidate key)
 - Thus, **the relation is not in BCNF**
@@ -301,8 +326,10 @@ flowchart LR
 ## Turning a relation into Boyce-Codd Normal Form
 
 - Let's consider the following relation candidate:
-  <pre>CourseOffering (<u>coursecode</u>, <u>offeringno</u>, 
+
+<pre>CourseOffering (<u>coursecode</u>, <u>offeringno</u>,
                   coursename, startdate, teacherno,  surname, firstname)</pre>
+
 - In the first step, we identify the **functional dependencies**:
   - `{coursecode, offeringno} → coursename, startdate, teacherno, surname, firstname`
   - `coursecode → coursename`
@@ -317,12 +344,15 @@ flowchart LR
 - In the second step, to solve these two cases we split the original relation two times
 - With `coursecode → coursename` we create a new relation Course with attributes `coursecode` and `coursename`
 - The determinant, the `coursecode` will be the primary key for the relation. We'll get the following relation:
-  <pre>Course (<u>coursecode</u>, coursename)</pre>
+  
+<pre>Course (<u>coursecode</u>, coursename)</pre>
+
 - Finally, we remove the `coursename` from the CourseOffering relation and leave `coursecode` as a foreign key:
-  <pre>CourseOffering (<u>coursecode</u>, <u>offeringno</u>, 
-                  startdate, teacherno,  surname, firstname)
-    FK (coursecode) REFERENCES Course(coursecode)
-  </pre>
+  
+<pre>CourseOffering (<u>coursecode</u>, <u>offeringno</u>, 
+                startdate, teacherno,  surname, firstname)
+  FK (coursecode) REFERENCES Course(coursecode)
+</pre>
 
 ---
 
