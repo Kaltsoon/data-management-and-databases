@@ -328,7 +328,7 @@ flowchart LR
 - Let's consider the following relation candidate:
 
 <pre>CourseOffering (<u>coursecode</u>, <u>offeringno</u>,
-                  coursename, startdate, teacherno,  surname, firstname)</pre>
+                coursename, startdate, teacherno,  surname, firstname)</pre>
 
 - In the first step, we identify the **functional dependencies**:
   - `{coursecode, offeringno} → coursename, startdate, teacherno, surname, firstname`

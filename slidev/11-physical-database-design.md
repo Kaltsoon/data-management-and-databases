@@ -34,6 +34,52 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ---
 
+## Physical database design
+
+- The outcome of the physical database design is the SQL statements for creating the database structures:
+
+<div class="flex">
+
+<div class="flex-1">
+
+<pre>
+Course(<u>course_code</u>, name, credits)
+
+CourseInstance(
+  <u>course_code</u>,
+  <u>instance_number</u>,  
+  start_date
+)
+  FOREIGN KEY (course_code)
+  REFERENCES Course(course_code)
+</pre>
+
+</div>
+
+<div class="flex-1 m-l-2">
+
+```sql
+CREATE TABLE Course (
+  course_code VARCHAR(10) PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  credits INT NOT NULL
+);
+
+CREATE TABLE CourseInstance (
+  course_code VARCHAR(10),
+  instance_number INT,
+  start_date DATE NOT NULL,
+  PRIMARY KEY (course_code, instance_number),
+  FOREIGN KEY (course_code) REFERENCES Course(course_code)
+);
+```
+
+</div>
+
+</div>
+
+---
+
 ## Creating tables
 
 - In a SQL database the data is stored into **tables** that have **columns** with different **data types**, such as `VARCHAR(n)`, `INTEGER`, and `DATE`
