@@ -1,5 +1,9 @@
 # Data Management and Databases
 
+This repository contains the lesson slides for Data Management and Databases course.
+
+## Contents
+
 1. [Introduction to databases](./slides/01-introduction-to-databases.pdf)
 2. [Relational model](./slides/02-relational-model.pdf)
 3. [Introduction to SQL](./slides/03-introduction-to-sql.pdf)
