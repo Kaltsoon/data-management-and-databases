@@ -1,4 +1,4 @@
-# Exam instructions
+# Final exam instructions
 
 - 🛑 **Don't touch the exam papers before the exam begins**
 - 🛑 **Phones and other devices should not be visible during the exam, put them in your bag**
