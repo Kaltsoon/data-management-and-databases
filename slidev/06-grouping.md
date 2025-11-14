@@ -74,6 +74,7 @@ GROUP BY course_code, instance_number
 - In the example's case the result table would contain the average grade for each distinct combination of `course_code` and `instance_number`:
 
 ```sql
+-- what is the average grade of each course instance?
 SELECT course_code, instance_number, AVG(grade) as average_grade FROM CourseGrade
 GROUP BY course_code, instance_number
 ```

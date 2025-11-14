@@ -12,6 +12,6 @@
 - The SQL DML Quick Reference has all the SQL syntax you'll need in the queries. **Do not write anything on this paper**
 - The drafting paper is for you to draft your anwers. **Do not use this paper for the final answers**
 
-The exam ends at XX:XX.
+The exam ends at 16:17.
 
 Good luck!
