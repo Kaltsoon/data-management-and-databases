@@ -13,6 +13,7 @@ This advice will prepare you for the mid-term and final exams.
   - Aggregate functions (e.g. `SUM`, `COUNT`, or `MAX` functions)
   - Grouping (`GROUP BY` clause)
   - Subqueries ([IN and NOT IN](https://www.w3schools.com/sql/sql_in.asp) operators in subqueries might become useful)
+- Recap by redoing the SQL assignments and comparing your solutions to the model solutions     
 - The exam has 7 questions and two bonus questions for additional points
 
 ## Final exam
