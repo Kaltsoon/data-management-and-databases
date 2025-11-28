@@ -1,16 +1,16 @@
 # Exam advice
 
-These advice will prepapre you for the mid-term and final exams.
+This advice will prepare you for the mid-term and final exams.
 
 ## Mid-term exam
 
-- Mid-term exam will **only contains tasks related to SQL queries**, so every answer of the exam task will start with a `SELECT` statement
+- Mid-term exam will **only contain tasks related to SQL queries**, so every answer of the exam task will start with a `SELECT` statement
 - You will be presented with a database consisting of 3-4 tables with some example data for each table
 - You will receive a copy of the SQL DML Quick Reference in the exam
-- In the tasks you will need to be able to write a SQL query that solves the specified query problem, e.g. _"Write a query that displays the movie with the most Oscar awards (movie name, director name, oscar awards)"_
+- In the tasks, you will need to be able to write a SQL query that solves the specified query problem, e.g. _"Write a query that displays the movie with the most Oscar awards (movie name, director name, oscar awards)"_
 - You will definitely need the following SQL topics in the questions:
   - Join operations (`INNER JOIN` or `LEFT JOIN` operations)
-  - Aggreagate functions (e.g. `SUM`, `COUNT` or `MAX` functions)
+  - Aggregate functions (e.g. `SUM`, `COUNT`, or `MAX` functions)
   - Grouping (`GROUP BY` clause)
   - Subqueries ([IN and NOT IN](https://www.w3schools.com/sql/sql_in.asp) operators in subqueries might become useful)
 - The exam has 7 questions and two bonus questions for additional points
@@ -20,13 +20,13 @@ These advice will prepapre you for the mid-term and final exams.
 - It is guaranteed that the final exam **will include the following types of tasks**:
 - Practical tasks (solving a problem)
   - ER diagramming (create an ER diagram based on the given text)
-  - Normalisation (show the FDs, determine the normal form, decompose the relation) this includes solid understanding of superkeys, candidate keys, primary keys, alternate keys and composite keys
-- Theory related tasks
+  - Normalisation (show the FDs, determine the normal form, decompose the relation). This includes a solid understanding of superkeys, candidate keys, primary keys, alternate keys, and composite keys
+- Theory-related tasks
   - Terminology task (explain in your own words a couple of terms) and/or a question related to the theory
-  - One theory related task will be related to database transactions
+  - One theory-related task will be related to database transactions (doesn't require knowing any transaction-related SQL syntax)
 - It is guaranteed that the final exam **won't include the following**:
   - **Writing any SQL**, e.g. related to database transactions
-  - Questions about SQL Server specific details or SQL Server Management Studio
+  - Questions about SQL Server -specific details or SQL Server Management Studio
   - Anything that is not covered by the course handouts and assignments
 - Recap the following topics (see the learning objectives on the first page and lesson slides):
   - Introduction to databases (focus on the Learning objectives)
