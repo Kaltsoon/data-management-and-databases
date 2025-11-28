@@ -9,7 +9,7 @@ This advice will prepare you for the mid-term and final exams.
 - You will receive a copy of the SQL DML Quick Reference in the exam
 - In the tasks, you will need to be able to write a SQL query that solves the specified query problem, e.g. _"Write a query that displays the movie with the most Oscar awards (movie name, director name, oscar awards)"_
 - You will definitely need the following SQL topics in the questions:
-  - Join operations (`INNER JOIN` or `LEFT JOIN` operations)
+  - Join operations (`INNER JOIN` and `LEFT OUTER JOIN` operations)
   - Aggregate functions (e.g. `SUM`, `COUNT`, or `MAX` functions)
   - Grouping (`GROUP BY` clause)
   - Subqueries ([IN and NOT IN](https://www.w3schools.com/sql/sql_in.asp) operators in subqueries might become useful)
