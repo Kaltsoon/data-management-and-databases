@@ -21,9 +21,9 @@ This advice will prepare you for the mid-term and final exams.
   - Practical tasks (solving a problem)
     - ER diagramming (create an ER diagram based on the given text)
     - Normalisation (show the FDs, determine the normal form, decompose the relation). This includes a solid understanding of superkeys, candidate keys, primary keys, alternate keys, and composite keys
-  - Theory-related tasks
+  - Theory-related tasks (e.g. _"What is the purpose of X"_)
     - Terminology task (explain in your own words a couple of terms) and/or a question related to the theory
-  - One theory-related task will be related to database transactions (doesn't require knowing any transaction-related SQL syntax)
+    - One theory-related task will be related to database transactions (doesn't require knowing any transaction-related SQL syntax)
 - It is guaranteed that the final exam **won't include the following**:
   - **Writing any SQL**, e.g. related to database transactions
   - Questions about SQL Server -specific details or SQL Server Management Studio
