@@ -29,7 +29,7 @@ This advice will prepare you for the mid-term and final exams.
   - **Writing any SQL**, e.g. related to database transactions
   - Questions about SQL Server -specific details or SQL Server Management Studio
   - Anything that is not covered by the course handouts and assignments
-- Recap the following topics (see the learning objectives on the first page and lesson slides):
+- Recap the following topics (see the learning objectives on the first slide of the lesson slides):
   - Introduction to databases (focus on the Learning objectives)
   - The Relational Model (very important, some terminology needed in the exam)
   - Conceptual Database Design (there will be a practical task on ER diagramming)
