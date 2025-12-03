@@ -30,10 +30,10 @@ This advice will prepare you for the mid-term and final exams.
   - Questions about SQL Server -specific details or SQL Server Management Studio
   - Anything that is not covered by the course handouts and assignments
 - Recap the following topics (see the learning objectives on the first slide of the lesson slides):
-  - Introduction to databases (focus on the Learning objectives)
+  - Introduction to Databases (focus on the learning objectives)
   - The Relational Model (very important, some terminology needed in the exam)
   - Conceptual Database Design (there will be a practical task on ER diagramming)
-  - Logical Database Design (the Learning objectives guide you here)
+  - Logical Database Design (the learning objectives guide you here)
   - Database Normalisation (there will be a practical task on normalisation)
   - Physical Database Design (focus on integrity constraints and indexes)
   - Database Transactions (the basic concepts, concurrency control)
