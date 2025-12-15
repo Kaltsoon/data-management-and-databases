@@ -7,7 +7,7 @@ This advice will prepare you for the mid-term and final exams.
 - Mid-term exam will **only contain tasks related to SQL queries**, so every answer of the exam task will start with a `SELECT` statement
 - You will be presented with a database consisting of 3-4 tables with some example data for each table
 - You will receive a copy of the SQL DML Quick Reference in the exam
-- In the tasks, you will need to be able to write a SQL query that solves the specified query problem, e.g. _"Write a query that displays the movie with the most Oscar awards (movie name, director name, oscar awards)"_
+- In the tasks, you will need to be able to write a SQL query that solves the specified query problem, e.g. _"Write a query that displays the author with the most Pulitzer prizes (author name, number of pulitzer prizes)"_
 - You will definitely need the following SQL topics in the questions:
   - Join operations (`INNER JOIN` and `LEFT OUTER JOIN` operations)
   - Aggregate functions (e.g. `SUM`, `COUNT`, or `MAX` functions)
