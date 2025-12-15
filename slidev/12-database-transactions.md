@@ -26,7 +26,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 ## Introduction to database transactions
 
 - Let's imagine that we are responsible for designing database that needs to store bank account balances
-- The design should support a basic user transaction of transfering money between two accounts. That is, withdrawing money from one account and depositing it to another
+- The design should support a basic use case of transfering money between two accounts. That is, withdrawing money from one account and depositing it to another
 - We come up with the following `Account` table to match the requirements:
 
   ```sql
@@ -42,14 +42,14 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ## Introduction to database transactions
 
-- Then we consider the user transaction of transfering money between two accounts. We think that we can handle it with just two separete `UPDATE` statements:
+- Then we consider the required database opreations for transfering money between two accounts. We think that we can handle it with just two separete `UPDATE` statements:
 
   ```sql
   UPDATE account SET balance = balance + 100 WHERE account_id = 2
   UPDATE account SET balance = balance - 100 WHERE account_id = 1
   ```
 
-- The DBMS will execute these two statements separately one-by-one. Assuming that _both_ of these statements are executed successfully the transfer is successful
+- The DBMS will execute these two statements separately one-by-one. Assuming that **both** of these statements are executed successfully the transfer is successful
 - But what if there's a failure (for example system failure or disk crash) in the DBMS and the second statement is never executed:
 
   ```sql
@@ -64,7 +64,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 - In this case, the second statement would never be executed, meaning that the money is deposited to one account but never withdrawed from the other one
 - What we would have wanted is that either **both of the statements succeed** or **in case of a failure the database is restored to its previous state**
 - This behavior can be achieved with **database transactions**
-- A database transaction is a **unit of work** that is performed on a database
+- A database transaction is a **unit of work** that is performed on a database consisting of multiple database operations
 - All operations within the unit of work are **either completed successfully** or the **transaction is aborted at the point of failure** and all the previous operations are rolled back to their former state
 
 ---
@@ -74,14 +74,6 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 - Database transactions have two main purposes:
   1. To provide reliable units of work that allow **correct recovery** from failures and keep a database consistent even in cases of system failure. The previous example is an example of such case
   2. To provide **isolation between programs** accessing a database concurrently. For example two programs that read and update the same rows at the same time might end up in a situation where the updates aren't applied correctly
-
----
-
-## Business, user and database transactions
-
-- From the end user's point of view, for processing a **business transaction** one or more use cases can be defined for the application and implemented as **user transactions**
-- A single user transaction may involve multiple **database transactions** (SQL transactions)
-- A database transaction commonly involves **multiple database operations**, such as retrieving, creating or updating data in the database
 
 ---
 
@@ -136,7 +128,7 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 
 - Transactions have four standard properties, usually referred to by the acronym **ACID**
 - **Atomicity** ensures that all operations within the work unit are completed successfully. Otherwise, the transaction is aborted at the point of failure and all the previous operations are rolled back to their former state
-- **Consistency** ensures that the database properly changes states upon a successfully committed transaction
+- **Consistency** ensures that the database properly changes states upon a successfully committed transaction, meaning all operations within the transaction are applied (e.g. multiple updates)
 - **Isolation** enables transactions to operate independently of and transparent to each other
 - **Durability** ensures that the result or effect of a committed transaction persists in case of a system failure
 
