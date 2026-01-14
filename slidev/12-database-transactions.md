@@ -229,21 +229,9 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 ## Concurrency control
 
 - To fulfil the business requirements the DBMS should protect database consistency **without sacrificing too much performance**
-- In a multi-user environment the DBMS has to **interleave the actions of several transactions** but still preserve illusion that each user is executing alone
+- In a multi-user environment the DBMS has to **interleave the actions of several transactions** but still preserve illusion that each user is executing alone. For example, allowing two transactions to read the same row without needing to wait for the other to complete
 - The **concurrency control** mechanism is responsible to provide the means to guarantee that a transaction is isolated from the effects of concurrently scheduling other transactions
-
----
-
-## Concurrently control
-
-- The programmer is responsible of informing the DBMS about the desired **level of isolation**
-- If a transaction both reads and writes data, the **isolation level** of the transaction should usually be set as below to avoid anomalies caused by concurrent updates:
-
-  ```sql
-  SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
-  ```
-
-- The isolation level (e.g. `REPEATABLE READ`) limits how other transactions can access shared data, e.g. update a row that other transaction is reading
+- The developer decides the required level of isolation based on the data requirements. For example, in some cases it is important that certain column value of a row doesn't change within the transaction
 
 ---
 
@@ -252,39 +240,31 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 - Data consistency and isolation with transactions is achieved by the **locking mechanism**
 - When our transaction changes (`INSERT`, `UPDATE`, `DELETE`) a row in a database, the DBMS **locks the row**
 - Other concurrent transactions **are not allowed to change the row** as long as the transaction is running
-- That is, the other transactions that want to change the row **must wait** until the transaction ends
+- That is, the other transactions that want to change the row **must wait** until the transaction ends (it is commited)
+
+```sql
+BEGIN TRANSACTION
+-- 🔒 this will lock the row from changes
+DELETE FROM Account WHERE account_id = 1;
+-- ...
+COMMIT -- commiting releases all the locks
+```
 
 ---
 
 ## Locking
 
-- If we start your transaction as follows:
+- For example, if **user A** starts a transaction which **updates** a row in the `Account` table:
 
   ```sql
-  SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
-  BEGIN TRANSACTION
-  -- ...
-  ```
-
-- The DBMS allows other concurrent transactions to read (`SELECT`) a row that your transaction has already read, but it _prevents the other transactions to change the row as long as your transaction is running_
-
----
-
-## Locking
-
-- For example, if **user A** starts a transaction which **reads** a row in the `Account` table:
-
-  ```sql
-  SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
   BEGIN TRANSACTION
   -- 🔒 this will lock the row from changes
-  SELECT balance FROM Account WHERE account_id = 1
+  UPDATE Account SET balance = 5000 WHERE account_id = 1;
   ```
 
 - Then, **user B** starts a transaction which **updates** the locked row in the `Account` table:
 
   ```sql
-  SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
   BEGIN TRANSACTION
   -- ⏲️ the row is locked, the transaction has to wait until the user A's transaction ends
   UPDATE Account SET balance = 6000 WHERE account_id = 1;
@@ -420,8 +400,48 @@ WHERE account_id = 1
 
 - ⚠️ If another transaction has a **write lock** on the row, then T1 has to wait until the other transaction ends
 - If there is no write lock on the row, then T1 gets a read lock on the row
+- A read lock is released depending on the **isolation level** of the transaction either immediately or after the transaction ends
+
+---
+
+## Locking behavior in different isolation levels
+
+```sql
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
+BEGIN TRANSACTION
+-- 🔒 acquire read lock for account 1
+SELECT balance FROM Account WHERE account_id = 1;
+```
+
+- The transaction **isolation level** controls when the read lock is released
 - If the transaction isolation level is set to `READ COMMITTED` (the default), then the read lock is **released immediately after the row is retrieved from the database**
-- If the transaction isolation level is set to `REPEATABLE READ` or `SERIALIZABLE`, then the read lock **is not released before the transaction ends**
+- If the transaction isolation level is set to `REPEATABLE READ` or `SERIALIZABLE`, then the read lock **is not released before the transaction ends**. This means that within the transaction the row can't change, meaning that the same read operation can be repeated the row changing
+
+---
+
+## Isolation level example
+
+```sql
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+BEGIN TRANSACTION
+
+DECLARE @seats INT
+-- select current number of available seats and lock the row
+SELECT @seats = available_seats FROM events WHERE event_id = 42
+-- update if there are any available seats left
+IF (@seats > 0)
+BEGIN
+    UPDATE events SET available_seats = available_seats - 1
+    WHERE event_id = 42
+    -- there are available seats, let's apply the changes
+    COMMIT
+END
+ELSE
+BEGIN
+    -- no seats left, rollback the transaction
+    ROLLBACK
+END
+```
 
 ---
 
