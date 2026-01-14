@@ -1,5 +1,7 @@
 # Analysis of the primary key for the CourseGrade relation
 
+In this example, we analyze the possible primary key for a CourseGrade relation. This example demonstrates how choosing the wrong primary key for the relation can introduce limitations.
+
 Suppose that the following tuple already exists:
 
 | studentNumber | courseCode | courseOfferingNumber | grade |
