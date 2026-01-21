@@ -289,8 +289,8 @@ Course (<u>courseCode</u>, courseName, credits)
 Student (<u>studentNumber</u>, familyName, givenName, birthdate)
 
 CourseGrade (<u>courseCode</u>, <u>studentNumber</u>, grade)
- FOREIGN KEY (courseCode) REFERENCES COURSE (courseCode)
- FOREIGN KEY (studentNumber) REFERENCES STUDENT (studentNumber)
+ FOREIGN KEY (courseCode) REFERENCES Course (courseCode)
+ FOREIGN KEY (studentNumber) REFERENCES Student (studentNumber)
 </pre>
 
 ---
