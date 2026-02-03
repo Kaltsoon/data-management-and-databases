@@ -118,8 +118,9 @@ WHERE NOT start_year < 2020 -- NOT operator
 
 ```sql
 -- these two conditions are the same
-skill = 1 OR skill = 2 AND salary
-skill = 1 OR (skill = 2 AND salary)
+-- "either first name is Matti or it is Elina in city Helsinki"
+first_name = 'Matti' OR first_name = 'Elina' AND city = 'Helsinki'
+first_name = 'Matti' OR (first_name = 'Elina' AND city = 'Helsinki')
 -- similarly as 1 + 2 * 3 = 1 + (2 * 3) = 7
 ```
 
@@ -130,12 +131,12 @@ skill = 1 OR (skill = 2 AND salary)
 - If we want to deviate from the default order of evaluation, we can use brackets to determine in which order the logical operators should be applied
 
 ```sql
---- true, when skill is 1 and salary is 500
-WHERE skill = 1 OR skill = 2 AND salary > 10000
---- false, when skill is 1 and salary is 500
-WHERE (skill = 1 OR skill = 2) AND salary > 10000
+--- true, when first name is Matti no matter the city
+first_name = 'Matti' OR first_name = 'Elina' AND city = 'Helsinki'
+--- false, when first name is Matti an city is not Helsinki
+(first_name = 'Matti' OR first_name = 'Elina') AND city = 'Helsinki'
 -- 💡 using brackets can clarify the condition even if they aren't strictly necessary
-WHERE skill = 1 OR (skill = 2 AND salary > 10000)
+first_name = 'Matti' OR (first_name = 'Elina' AND city = 'Helsinki')
 -- the condition above would be the same without the brackets
 ```
 
