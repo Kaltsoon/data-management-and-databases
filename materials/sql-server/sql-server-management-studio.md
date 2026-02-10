@@ -40,13 +40,13 @@ We can execute database queries in the following way:
 
 ## Exploring the database structure
 
-Being able to explore the database is structure is extremely useful while constructing a database query. While selecting data from the database we need to figure out which table contains the data and what is the column structure of that table. We can explore the structure of a database using the "Object Explorer" panel. We can collapse the database objects by double-clicking the name or clicking the "+" button next to its name.
+Being able to explore the database's structure is extremely useful while constructing a database query. While, e.g., selecting data from the database, we need to figure out which table contains the data and what is the column structure of that table is. We can explore the structure of a database using the "Object Explorer" panel. We can collapse the database objects by double-clicking the name or clicking the "+" button next to its name.
 
 ![SQL Server Management Studio Object Explorer](./assets/ssms-database-structure.png)
 
 ## IntelliSense: smart code completion and syntax checking
 
-IntelliSense provides smart code completion and syntax checking. It helps you to complete table and column names, etc. IntelliSense underlines syntax errors and potential semantic errors in red. This feature makes it easy to e.g. spot typing errors, like mistyping a table name.
+IntelliSense provides smart code completion and syntax checking. It helps you to complete table and column names, etc. IntelliSense underlines syntax errors and potential semantic errors in red. This feature makes it easy to, e.g., spot typing errors, like mistyping a table name.
 
 > [!IMPORTANT]
 > If there seems to be incorrect red underlining or if objects are missing from IntelliSense features such as completion lists, then you need refresh the cache by pressing the <kbd>CTRL</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> keyboard shortcut.
