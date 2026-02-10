@@ -1,4 +1,4 @@
-# SQL Server Installation
+# SQL Server installation
 
 First, [Download the SQL Server Standard Developer edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads). It is the _SQL Server Database Management System_. In the installer, _choose the "Basic" installation type_ and go through the installation steps.
 
