@@ -1,6 +1,6 @@
 # SQL Server Installation
 
-First, [Download the SQL Server Standard Developer edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads). It is the _SQL Server Database Management System_.In the installer, _choose the "Basic" installation type_ and go through the installation steps.
+First, [Download the SQL Server Standard Developer edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads). It is the _SQL Server Database Management System_. In the installer, _choose the "Basic" installation type_ and go through the installation steps.
 
 Then, [Download SQL Server Management Studio](https://learn.microsoft.com/en-us/ssms/install/install). It is the _graphical user interface for interacting with the SQL Server_, used for e.g. executing database queries.
 
@@ -14,7 +14,7 @@ If SQL Server is in the _"Stopped" state_, then Right-Click on SQL Server (MSSQL
 
 Also, start SQL Server Agent if it is not running yet. Now the required services should be in the "Running" state.
 
-## Connecting the SQL Server with SQL Server Management Studio
+## Connecting SQL Server with SQL Server Management Studio
 
 Next, open the SQL Server Management Studio. You can find it using the Windows search bar. Once the application is open, a "Connect" dialog should pop up. If not, click "Connect" in the "Object Explorer" panel on the left and choose "Database Engine".
 

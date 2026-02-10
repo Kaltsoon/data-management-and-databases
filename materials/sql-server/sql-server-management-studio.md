@@ -5,12 +5,12 @@
 
 SQL Server Management Studio is the graphical user interface for interacting with the SQL Server Database Management System. This guide provides instructions on the basic usage of the SQL Server Management Studio.
 
-## Connecting the SQL Server with SQL Server Management Studio
+## Connecting SQL Server with SQL Server Management Studio
 
 Read the following guides depending on which SQL Server instance you use:
 
-- If you have _installed SQL Server on your on computer_, [follow this guide](./sql-server-installation.md#connecting-the-sql-server-with-sql-server-management-studio).
-- If you are using _Haaga-Helia's SQL Server_, [follow this guide](haaga-helia-sql-server.md#connecting-the-sql-server-with-sql-server-management-studio).
+- If you have _installed SQL Server on your own computer_, [follow this guide](./sql-server-installation.md#connecting-sql-server-with-sql-server-management-studio).
+- If you are using _Haaga-Helia's SQL Server_, [follow this guide](haaga-helia-sql-server.md#connecting-sql-server-with-sql-server-management-studio).
 
 ## Executing database queries
 
@@ -40,7 +40,7 @@ We can execute database queries in the following way:
 
 ## IntelliSense: smart code completion and syntax checking
 
-IntelliSense provides smart code completion and syntax checking. It helps you to complete table and column names, etc. IntelliSense underlines syntax errors and potential semantic errors in red.
+IntelliSense provides smart code completion and syntax checking. It helps you to complete table and column names, etc. IntelliSense underlines syntax errors and potential semantic errors in red. This feature makes it easy to e.g. spot typing errors, like mistyping a table name.
 
 > [!IMPORTANT]
 > If there seems to be incorrect red underlining or if objects are missing from IntelliSense features such as completion lists, then you need refresh the cache by pressing the <kbd>CTRL</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> keyboard shortcut.
