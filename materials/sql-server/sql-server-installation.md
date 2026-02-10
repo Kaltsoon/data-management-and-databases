@@ -1,6 +1,6 @@
 # SQL Server Installation
 
-First, [Download the SQL Server Standard Developer edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads). It is the _SQL Server Database Management System_.In the installer, _choose the "Basic" installation type_ and go trough the installation steps.
+First, [Download the SQL Server Standard Developer edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads). It is the _SQL Server Database Management System_.In the installer, _choose the "Basic" installation type_ and go through the installation steps.
 
 Then, [Download SQL Server Management Studio](https://learn.microsoft.com/en-us/ssms/install/install). It is the _graphical user interface for interacting with the SQL Server_, used for e.g. executing database queries.
 
@@ -12,7 +12,7 @@ If SQL Server is in the _"Stopped" state_, then Right-Click on SQL Server (MSSQL
 
 ![SQL Server Configuration Manager](./assets/configuration-manager-2.png)
 
-Also start SQL Server Agent if it is not running yet. Now the required services should be in the "Running" state.
+Also, start SQL Server Agent if it is not running yet. Now the required services should be in the "Running" state.
 
 ## Connecting the SQL Server with SQL Server Management Studio
 
@@ -22,7 +22,7 @@ In the connection dialog, type in the following properties:
 
 - Server name: localhost
 - Authentication: Windows Authentication
-- Trust Server Certficate: tick the checkbox
+- Trust Server Certificate: tick the checkbox
 
 Then, click the "Connect" button.
 
@@ -43,6 +43,6 @@ CREATE DATABASE BIT_SWD03
 ALTER DATABASE BIT_SWD03 COLLATE Finnish_Swedish_CI_A
 ```
 
-Then, and click the "Execute" button below the "New Query" button. This will create a database named "BIT_SWD03".
+Then, click the "Execute" button below the "New Query" button. This will create a database named "BIT_SWD03".
 
 In the "Object Explorer" panel on the left, right-click the "Databases" folder and click "Refresh". Then, open the "Databases" folder by clicking the "+" button next to it. You should see the "BIT_SWD03" in the list of databases.
