@@ -1,7 +1,7 @@
 # Using Haaga-Helia's SQL Server
 
-> ![IMPORTANT]
-> If you are using the Haaga-Helia's SQL Server, _you don't need to install anything_ (no > SQL Server or SQL Server Management Studio).
+> [!IMPORTANT]  
+> If you are using the Haaga-Helia's SQL Server, _you don't need to install anything_ (no SQL Server or SQL Server Management Studio).
 
 Using Haaga-Helia's SQL Server with SQL Server Management Studio requires using remote access. First, follow the instructions in the [Remote access using VDI](https://www.haaga-helia.fi/en/study/remote-access) guide to establish remote access using the Citrix Workspace App.
 
