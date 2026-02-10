@@ -14,7 +14,7 @@ Read the following guides depending on which SQL Server instance you use:
 
 ## Executing database queries
 
-You can open a new query window by clicking the "New Query" button or right-clicking the "BIT_SWD03" database in the "Object Explorer" panel and clicking "New Query".
+Once connected, you can open a new query window by clicking the "New Query" button or right-clicking the "BIT_SWD03" database in the "Object Explorer" panel and clicking "New Query".
 
 ![SQL Server Management Studio new query](./assets/ssms-new-query.png)
 
