@@ -38,6 +38,12 @@ We can execute database queries in the following way:
 >
 > ![SQL Server Management Studio refresh tables](./assets/ssms-refresh-tables.png)
 
+## Exploring the database structure
+
+Being able to explore the database is structure is extremely useful while constructing a database query. While selecting data from the database we need to figure out which table contains the data and what is the column structure of that table. We can explore the structure of a database using the "Object Explorer" panel. We can collapse the database objects by double-clicking the name or clicking the "+" button next to its name.
+
+![SQL Server Management Studio Object Explorer](./assets/ssms-database-structure.png)
+
 ## IntelliSense: smart code completion and syntax checking
 
 IntelliSense provides smart code completion and syntax checking. It helps you to complete table and column names, etc. IntelliSense underlines syntax errors and potential semantic errors in red. This feature makes it easy to e.g. spot typing errors, like mistyping a table name.
