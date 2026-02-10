@@ -40,7 +40,7 @@ We can execute database queries in the following way:
 
 ## Exploring the database structure
 
-Being able to explore the database's structure is extremely useful while constructing a database query. While, e.g., selecting data from the database, we need to figure out which table contains the data and what is the column structure of that table is. We can explore the structure of a database using the "Object Explorer" panel. We can collapse the database objects by double-clicking the name or clicking the "+" button next to its name.
+Being able to explore the database's structure is extremely useful while constructing a database query. While, e.g., selecting data from the database, we need to figure out which table contains the data and what is the table's column structure. We can explore the structure of a database using the "Object Explorer" panel. We can collapse the database objects by double-clicking the name or clicking the "+" button next to its name.
 
 ![SQL Server Management Studio Object Explorer](./assets/ssms-database-structure.png)
 
