@@ -162,33 +162,6 @@ HAVING COUNT(grade) > 10
 
 ---
 
-## SQL logical query processing order
-
-```mermaid
-flowchart LR
-    A[FROM] --> B[WHERE]
-    B --> C[GROUP BY]
-    C --> D[HAVING]
-    D --> E[SELECT]
-    E --> F[ORDER BY]
-    F --> G[LIMIT / OFFSET]
-```
-
-- The following diagram repsents **the logical query processing order** in SQL
-- We can only use data from **the previous phases**, meaning that, for example a `WHERE` statement can't use data from a `GROUP BY` statement, but `ORDER BY` statement can
-
-```sql
-SELECT deptno, COUNT(*) AS number_of_employees
-FROM Employee
--- ❌ Not ok, WHERE statement is processed before GROUP BY statement
-WHERE COUNT(*) > 10
-GROUP BY deptno
---✅ Ok, GROUP BY statement is processed before ORDER BY statement
-ORDER BY number_of_employees
-```
-
----
-
 ## Subqueries
 
 - A **subquery** is a query within another query, which is used to retrieve data that will be processed by the outer query

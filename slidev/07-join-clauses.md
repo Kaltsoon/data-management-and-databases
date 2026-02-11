@@ -16,11 +16,11 @@ fonts:
 
 ## Join clauses
 
-- In the relational model a table can have a foreign key referencing primary key in another table
-- A common query problem is to select colums from the referenced table based on the foreign key value
+- To link rows between two tables, one table includes a **foreign key** column that references **primary key** in another table.
+- A common query requirement is to fetch data from the referenced table by matching the foreign key in one table to the primary key in another
 - For example, _"What is the name of each course instance's teacher?"_
-- We would need to select course instance columns from the `CourseInstance` table and **join** them with the teacher columns from the `Teacher` table based on the `teacher_number` foreign key column value
-- The referential integrity and **join operations** are the key features which dinstuingish the relational database management systems from other database management systems
+- We need to select course instance columns from the `CourseInstance` table and **join** them with the teacher columns from the `Teacher` table based on the `teacher_number` foreign key column value
+- The referential integrity and such **join operations** are the key features which dinstuingish the relational database management systems from other database management systems
 
 ---
 
@@ -53,7 +53,7 @@ FROM table_name [ [ AS ] table_alias ]
 [ { [ INNER ] JOIN table_name [ [ AS ] table_alias ] ON join_condition }... ] 
 ```
 
-- Instead of combining rows, like set operators (e.g. `UNION`), a **join clause** combines **columns** from one or more tables into a new table
+- **Join clause** combines **columns** from one or more tables into a new table
 - Rows are join based on a condition called **join condition**
 - There's three different kind of **join operations** which operate in different ways: **inner join**, **outer join** and **cross join**
 
@@ -131,7 +131,7 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 
 ## Join clauses
 
-- If we want to get columns from more than two table, we can chain multiple join clauses together
+- If we want to get columns from more than two tables, we can **chain multiple join clauses** together
 - For example, in the following example we need information from the `CourseGrade`, `Course` and `Teacher` tables:
 
 ```sql
