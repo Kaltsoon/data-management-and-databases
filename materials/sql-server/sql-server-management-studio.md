@@ -38,11 +38,11 @@ We can execute database queries in the following way:
 
 ## Saving and opening database queries
 
-The contents of the query window can be saved into a `.sql` file by clicking "File" > "Save" or using the <kbd>CTRL</kbd> + <kbd>S</kbd> keyboard shortcut. Similarly, we can open existing `.sql` file by clicking "File" > "Open" > "File".
+The contents of the query window can be saved into a `.sql` file by clicking "File" > "Save" or using the <kbd>CTRL</kbd> + <kbd>S</kbd> keyboard shortcut. Similarly, we can open an existing `.sql` file by clicking "File" > "Open" > "File".
 
 ## Exploring the database structure
 
-Being able to explore the database's structure is extremely useful while constructing a database query. While, e.g., selecting data from the database, we need to figure out which table contains the data and what is the table's column structure. We can explore the structure of a database using the "Object Explorer" panel. We can collapse the database objects by double-clicking the name or clicking the "+" button next to its name.
+Being able to explore the database's structure is extremely useful while constructing a database query. When, e.g., selecting data from the database, we need to determine which table contains the data and what its column structure is. We can explore the structure of a database using the "Object Explorer" panel. We can collapse the database objects by double-clicking the name or by clicking the "+" button next to it.
 
 ![SQL Server Management Studio Object Explorer](./assets/ssms-database-structure.png)
 
@@ -52,7 +52,7 @@ Being able to explore the database's structure is extremely useful while constru
 > ![SQL Server Management Studio refresh tables](./assets/ssms-refresh-tables.png)
 
 > [!TIP]
-> Database diagram is a way to visualize database tables, their columns and relationships (between foreign and primary keys). There's a "Database Diagram" link in Moodle's "Course outline" tab in the "Materials" column of each SQL-related week. This diagram visualizes the structure of the "Takkula" database used during this course.
+> A database diagram is a way to visualize database tables, their columns, and relationships (between foreign and primary keys). There's a "Database Diagram" link in Moodle's "Course outline" tab in the "Materials" column of each SQL-related week. This diagram visualizes the structure of the "Takkula" database used during this course.
 
 ## IntelliSense: smart code completion and syntax checking
 
