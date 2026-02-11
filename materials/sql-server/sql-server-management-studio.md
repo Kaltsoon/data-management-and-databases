@@ -31,18 +31,28 @@ We can execute database queries in the following way:
 2. Click the "Execute" button to execute the database query. If we highlight a part in our query, only the highlighted statements are executed (like in the screenshot below). If nothing is highlighted, every statement in the query window will be executed.
 3. In the results tab at the bottom of the query window, the query result will be displayed. This can, e.g., be a result table of the selected data, or an error message.
 
+> [!TIP]
+> We can have multiple query windows open simultaneously.
+
 ![SQL Server Management Studio executing database query](./assets/ssms-execute-query.png)
 
-> [!IMPORTANT]
-> When we create or drop a database table by executing an SQL statement, we have to refresh the "Tables" folder in the "Object Explorer" to see the changes (which are actually applied at the database level).
->
-> ![SQL Server Management Studio refresh tables](./assets/ssms-refresh-tables.png)
+## Saving and opening database queries
+
+The contents of the query window can be saved into a `.sql` file by clicking "File" > "Save" or using the <kbd>CTRL</kbd> + <kbd>S</kbd> keyboard shortcut. Similarly, we can open existing `.sql` file by clicking "File" > "Open" > "File".
 
 ## Exploring the database structure
 
 Being able to explore the database's structure is extremely useful while constructing a database query. While, e.g., selecting data from the database, we need to figure out which table contains the data and what is the table's column structure. We can explore the structure of a database using the "Object Explorer" panel. We can collapse the database objects by double-clicking the name or clicking the "+" button next to its name.
 
 ![SQL Server Management Studio Object Explorer](./assets/ssms-database-structure.png)
+
+> [!IMPORTANT]
+> When we create or drop a database table by executing an SQL statement, we have to refresh the "Tables" folder in the "Object Explorer" to see the changes (which are actually applied at the database level).
+>
+> ![SQL Server Management Studio refresh tables](./assets/ssms-refresh-tables.png)
+
+> [!TIP]
+> Database diagram is a way to visualize database tables, their columns and relationships (between foreign and primary keys). There's a "Database Diagram" link in Moodle's "Course outline" tab in the "Materials" column of each SQL-related week. This diagram visualizes the structure of the "Takkula" database used during this course.
 
 ## IntelliSense: smart code completion and syntax checking
 
