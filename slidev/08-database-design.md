@@ -28,7 +28,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 - What we might not have thought is that **why** the Takkula database structured as it is
   - Why does it have these specific tables and columns?
   - Why does it have these relationships between tables?
-- The end result is an output of the **database development lifecycle**
+- The end result is an outcome of the **database development lifecycle**
 
 ---
 
@@ -300,7 +300,7 @@ classDiagram
 - While interpreting the number of instances associated with the entity, we look at the multiplicity constaint on the **opposite side of the relationship**
 - For example, "teacher teaches **zero or many** (0..*) course intances". Here we look at the multiplicity constaint on the opposite side of the "Teacher" entity box
 - We always interpret a relationship type in both directions, so, for example the **"teaches"** relationship is interpreted as follows:
-  - Each teacher teaches on **zero or more** (0..*) course instances
+  - Each teacher teaches **zero or more** (0..*) course instances
   - Each course instance is taught by **one or many** (1..*) teachers
 
 ---
@@ -308,7 +308,7 @@ classDiagram
 ## User's requirements to conceptual model
 
 - Conceptual data model is derived from users' non-technical requirements and commonly requires active communication with the users during the design process
-- Entity-relationship diagram can be derieved from these requirements by following these steps:
+- Entity-relationship diagram can be derived from these requirements by following these steps:
   1. Identify **entity types**, which are the key concepts in the requirements
   2. Identify **relationship types**, which describe how entities are related to each other
   3. Identify and associate **attributes** with entity types, which describe additional properties of the entities

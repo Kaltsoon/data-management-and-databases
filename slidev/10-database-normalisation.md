@@ -134,7 +134,7 @@ SELECT surname FROM Student WHERE studentnumber = 'a12345'
 
 <pre>CourseOffering (<u>coursecode</u>, <u>offeringnumber</u>, startdate, teachernumber)</pre>
 
-- In this relations there's for example the following functional dependency:
+- In this relation, there are, for example, the following functional dependencies:
   - ✅ `{coursecode, offeringnumber} → startdate, teachernumber`
 
 ---
@@ -164,7 +164,7 @@ SELECT surname FROM Student WHERE studentnumber = 'a12345'
 
 <pre>CourseOffering (<u>coursecode</u>, <u>offeringnumber</u>, coursename, startdate, teachernumber, surname)</pre>
 
-- In this relations there's for example the following functional depedencies:
+- In this relation, there are, for example, the following functional dependencies:
   - ✅ `{coursecode, offeringnumber} → coursename, startdate, teachernumber, surname`
   - ❌ `coursecode → coursename`
   - ❌ `teachernumber → surname`
@@ -183,7 +183,7 @@ SELECT surname FROM Student WHERE studentnumber = 'a12345'
 
 <pre>
 Company (<u>companyno</u>, companyname, totalbudget ❌)
-Depertmant (<u>deptno</u>, deptname, deptbudget, companyno)
+Department (<u>deptno</u>, deptname, deptbudget, companyno)
     FK (companyno) REFERENCES Company (companyno)</pre>
 
 ---
@@ -335,7 +335,7 @@ flowchart LR
   - `coursecode → coursename`
   - `teacherno → surname, firstname`
 - Then, we identify functional dependencies where the determinant is **not a candidate key**
-- There's two such cases: `coursecode → coursename` and `teacherno → surname, firstname`
+- There are two such cases: `coursecode → coursename` and `teacherno → surname, firstname`
 
 ---
 
@@ -358,7 +358,7 @@ flowchart LR
 
 ## Turning a relation into Boyce-Codd Normal Form
 
-- We will repeat the same process with `teacherno → surname, firstname` and the final relations are the following:
+- We will repeat the same process with `teacherno → surname, firstname`, and the final relations are the following:
   <pre>
   Course (<u>coursecode</u>, coursename)
   Teacher (<u>teacherno</u>, surname, firstname)

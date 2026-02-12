@@ -27,7 +27,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
   2. Logical database design
   3. Physical database design
 - Each phase from top to bottom adds more detail to the design
-- We have familiarized ourselves with the **concetual database design** by defining entities and their attributes and relationships based on the requirements
+- We have familiarized ourselves with the **conceptual database design** by defining entities and their attributes and relationships based on the requirements
 - The **logical database design** is the process of refining and translating the conceptual schema into a **logical database schema** based on a specific data model, for example the relational model
 
 ---
@@ -107,8 +107,8 @@ Enrollment(<u>course_code</u>, <u>instance_number</u>, <u>student_number</u>)
 - The process starts by **deriving relations for the logical data model**, which includes:
   1. Creating the relations
   2. Refining the attributes
-  3. Determing primary and foreign keys
-  4. Determing other types of integrity constraints
+  3. Determining primary and foreign keys
+  4. Determining other types of integrity constraints
 
 ---
 
@@ -165,14 +165,14 @@ classDiagram
 
 ## Refining the attributes
 
-- Once we have created the relations we need to refine the attributes in the following manner:
+- Once we have created the relations, we need to refine the attributes in the following manner:
   - We divide a non-atomic attribute into smaller (atomic) attributes. For example student's home address can be divided into, city, postal code and street_address attributes
   - We define general (not DBMS-specific) attribute data-types, for example "string" or "integer"
   - We define which attributes can have `NULL` values. We should allow `NULL` in an attribute only based on **strong arguments**
 
 ---
 
-## Determing primary keys
+## Determining primary keys
 
 <pre>
 Student(<u>student_number</u>, first_name, surname)
@@ -187,7 +187,7 @@ Student(<u>student_number</u>, first_name, surname)
 
 ---
 
-## Determing primary key for a weak entity type
+## Determining primary key for a weak entity type
 
 - A **weak entity type** is an entity type that is dependent on the existence of another entity type
 - For example _CourseGrade_ is existence-dependent on _Student_ and _CourseInstance_
@@ -359,7 +359,7 @@ classDiagram
 
 ## One-to-one relationship (1:1)
 
-> "Team has exaclty one athlete leader"
+> "Team has exactly one athlete leader"
 
 ```mermaid
 ---

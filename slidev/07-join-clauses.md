@@ -20,7 +20,7 @@ fonts:
 - A common query requirement is to fetch data from the referenced table by matching the foreign key in one table to the primary key in another
 - For example, _"What is the name of each course instance's teacher?"_
 - We need to select course instance columns from the `CourseInstance` table and **join** them with the teacher columns from the `Teacher` table based on the `teacher_number` foreign key column value
-- The referential integrity and such **join operations** are the key features which dinstuingish the relational database management systems from other database management systems
+- The referential integrity and such **join operations** are the key features which distinguish the relational database management systems from other database management systems
 
 ---
 
@@ -61,7 +61,7 @@ FROM table_name [ [ AS ] table_alias ]
 
 ## Join clauses
 
-- With a `SELECT` stament we get the `teacher_number` foreign key column value:
+- With a `SELECT` statement we get the `teacher_number` foreign key column value:
 
 ```sql
 SELECT course_code, instance_number, teacher_number

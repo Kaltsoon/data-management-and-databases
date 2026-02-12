@@ -55,12 +55,12 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ---
 
-## Assesment
+## Assessment
 
 - ⚠️ To confirm the course participation the following need to be submitted **before the second week's session**:
   - The first part of your learning diary
   - The first week's assignments (orientation exercise and intro assignment)
-- The course assesment is based on the combined points from two exams:
+- The course assessment is based on the combined points from two exams:
   - The mid-term exam, half way through the course, will cover SQL operations
   - The final exam, at the end of the course, will cover rest of the course topics
 - Passing grade has the following requirements:
@@ -85,7 +85,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ## Definition of database
 
-- There have been many different formal defitions for the term _"database"_ and the definition has evolved during the years:
+- There have been many different formal definitions for the term _"database"_ and the definition has evolved during the years:
   - Date in 1990: _"A database consists of some collection of persistent data that is used by the application systems of some given enterprise."_
   - Ramakrishnan & Gerhke in 2000: _"A database is a collection of data, typically describing the activities of one or more related organizations."_
 - Based on a bit more recent definition of Connolly & Begg in year 2005, database is defined as:
@@ -100,7 +100,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 - _"shared collection"_: database is **accessible** to specific applications, users, and organizations
 - _"logically related data"_: the different pieces of **information has logical relations**, e.g. messages in a messaging app are related to the sender and the receiver users
-- _"persistent data"_: data is in **permanent storage** and doesn't unexpectantly vanish
+- _"persistent data"_: data is in **permanent storage** and doesn't unexpectedly vanish
 - _"description of this data"_: on top of the actual data such as the user's name, the database contains **metadata** like table and column names
 - _"information needs"_: the kind of information stored in the database is **use-case specific**. For example, a messaging application needs to store information about users and messages
 
@@ -125,7 +125,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
   - Up to date
   - Available in the required format
   - Available when needed
-  - Fetrievable fast enough
+  - Retrievable fast enough
   - Safe from different types of technical failures and accidents
   - Protected from unauthorized access and other types of misuse
 
@@ -288,7 +288,7 @@ classDiagram
 ## Advantages of database approach
 
 - **Program-data independence**: improved data accessibility, maintainability of application programs and reusability of existing data
-- **Effective access to data**: multiple userscano access the data
+- **Effective access to data**: multiple users can access the data
 concurrently using a standard database language with both programmatic and interactive interfaces
 - **Data integrity**: integrity can be maintained by using user-defined integrity constraints
 - **Data security**: security restrictions can be applied on detailed level

@@ -10,9 +10,9 @@ fonts:
 - The learning objectives for this week are:
   - Knowing how to use **SQL Server Management Studio** to connect to the SQL Server RDBMS
   - Knowing how to use SQL Server Management Studio to execute database queries
-  - Knowing how to to create database tables using SQL
-  - Knowing how to to insert data into a table using SQL
-  - Knowing how to to retrieve data from the database using SQL
+  - Knowing how to create database tables using SQL
+  - Knowing how to insert data into a table using SQL
+  - Knowing how to retrieve data from the database using SQL
 
 ---
 
@@ -222,8 +222,8 @@ CREATE TABLE Laptop (
     serial_number VARCHAR(10) NOT NULL,
     student_number INTEGER NOT NULL,
     -- he primary key is the serial_number column
-    CONStTRAINT Pk_Laptop PRIMARY KEY (serial_number),
-    --  the foreign key student_number references the student_number in the Student table
+    CONSTRAINT Pk_Laptop PRIMARY KEY (serial_number),
+    -- the foreign key student_number references the student_number in the Student table
     CONSTRAINT Fk_Student FOREIGN KEY (student_number)
     REFERENCES Student(student_number)
 )

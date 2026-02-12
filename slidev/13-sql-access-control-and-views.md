@@ -192,7 +192,7 @@ flowchart TB
 
 - **SQL view** is a virtual table based on a SQL query, which doesn't store data itself but displays data from one or more underlying tables
 - Views act as an external schema, which applications can access with exactly same kind of `SELECT` syntax as with tables
-- Views can simplify complex queries, restrict access to sensitive data (e.g., hide certain columns) and present a consistent interface to changing schema
+- Views can simplify complex queries, restrict access to sensitive data (e.g., hide certain columns) and present a consistent interface to a changing schema
 
 </div>
 

@@ -42,7 +42,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ## Introduction to database transactions
 
-- Then we consider the required database opreations for transfering money between two accounts. We think that we can handle it with just two separete `UPDATE` statements:
+- Then we consider the required database operations for transferring money between two accounts. We think that we can handle it with just two separate `UPDATE` statements:
 
   ```sql
   UPDATE account SET balance = balance + 100 WHERE account_id = 2
@@ -83,7 +83,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 - If a statement **completes successfully**, it is **committed**
 - If a statement **encounters any error**, it is **rolled back**
 - That is, no changes can be rolled back after the statement has been successfully executed
-- This is the default transaction management mode in SQL Server, MariaDB, and PostgreSQL
+- This is the default transaction management mode in SQL Server, MariaDB, and PostgreSQL.
 
 ```sql
 INSERT INTO Account (balance) VALUES (0) -- automatically committed

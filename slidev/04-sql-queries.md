@@ -114,7 +114,7 @@ WHERE first_name = 'Matti' OR first_name = 'Kaarina' -- OR operator
 WHERE NOT start_year < 2020 -- NOT operator
 ```
 
-- The `AND` operator **is evaluted first**, before the `OR` operator, similarly as the multiplication operator (*) is evaluted before the sum operator (+)
+- The `AND` operator **is evaluated first**, before the `OR` operator, similarly as the multiplication operator (*) is evaluated before the sum operator (+)
 
 ```sql
 -- these two conditions are the same

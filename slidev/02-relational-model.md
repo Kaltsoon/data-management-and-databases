@@ -62,7 +62,7 @@ classDiagram
 - A **data model** is a conceptual model that defines how data is structured, stored, and accessed in a system
 - For example, **entity-relationship model** describes **entities** (things about which data is stored), **attributes** (details about each entity), and **relationships** (how entities are connected)
 - In case of a simple online store, a "Customer" **entity** consists of **attributes** such as "name" and "email"
-- The "Customer" entity could have a **relationship** with the "Order" entity, describing which orders a specfic customer has placed
+- The "Customer" entity could have a **relationship** with the "Order" entity, describing which orders a specific customer has placed
 - Data model **helps design the structure** of a database and **makes data requirements easier to understand**, ensuring that both technical and non-technical stakeholders share a common understanding of the data
 
 </div>

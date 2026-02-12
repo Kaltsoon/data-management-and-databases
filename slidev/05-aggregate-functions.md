@@ -260,7 +260,7 @@ SELECT COUNT(DISTINCT grade) as number_of_different_grades FROM CourseGrade
 
 ## Combining aggregate function and non-aggregate function columns
 
-- If we use an aggregate function, we **can't include non-aggregate function columns** to the `SELECT` statement\*:
+- If we use an aggregate function, we **can't include non-aggregate function columns** in the `SELECT` statement\*:
 
 ```sql
 -- ✅ only aggregate function columns, all good here

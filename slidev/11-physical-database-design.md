@@ -98,7 +98,7 @@ CREATE TABLE CourseInstance (
 ## Database integrity
 
 - When we create a table with the `CREATE TABLE` stamement, we can define different **constraints** for the table
-- Constraint enforce the database integrity in different ways:
+- Constraints enforce the database integrity in different ways:
   - The `PRIMARY KEY` constraint enforces uniqueness of values of a primary key
   - The `UNIQUE` constraint enforces uniqueness of values of an alternate key
   - The `FOREIGN KEY` constraint enforces referential integrity
@@ -120,7 +120,7 @@ CREATE TABLE Student (
   email VARCHAR(50),
   study_advisor INTEGER,
 
-  -- the student_number is the primary key columnc
+  -- the student_number is the primary key column
   CONSTRAINT pk_Student PRIMARY KEY (student_number),
   -- the study_advisor is a foreign key column referencing the Teacher table
   CONSTRAINT fk_TeacherStudent FOREIGN KEY (study_advisor)
