@@ -8,12 +8,12 @@
 > - **Database Diagram**: this shows the database structure (tables, columns, primary keys, foreign keys).
 > - **Query Results**: compare the result of your own query to the given query result.
 
-Write task numbers to your SQL query window as follows:
+Write the task numbers in the query window as follows:
 
 ```sql
--- 3.1
+-- 1
 SELECT ...
--- 3.2
+-- 2
 SELECT ...
 ```
 
