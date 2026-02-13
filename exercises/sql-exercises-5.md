@@ -8,15 +8,6 @@
 > - **Database Diagram**: this shows the database structure (tables, columns, primary keys, foreign keys).
 > - **Query Results**: compare the result of your own query to the given query result.
 
-Write task numbers to your SQL query window as follows:
-
-```sql
--- 4.1
-SELECT ...
--- 4.2
-SELECT ...
-```
-
 ## 1.
 
 Find out the total number of course participants per each course. Display "Number of participants" and course code. Sort the result by (number of participants in descending order, course code in ascending order).
