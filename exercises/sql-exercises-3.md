@@ -17,7 +17,7 @@ SELECT ...
 
 ## 1.
 
-How many rows there are in the CourseGrade table?
+How many rows there are in the `CourseGrade` table?
 
 <details>
 
@@ -33,7 +33,7 @@ How many rows there are in the CourseGrade table?
 
 ## 2.
 
-What is the total number of grades in the CourseGrade table?
+What is the total number of grades in the `CourseGrade` table?
 
 <details>
 
