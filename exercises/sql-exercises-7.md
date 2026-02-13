@@ -4,7 +4,7 @@
 > Create a Word document named `sql-exercises-7-YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result (e.g., as a [screenshot](https://www.take-a-screenshot.org/))** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
 
 > [!TIP]
-> To understand the database structure, use the **Database Diagram** in in this week's "Materials" section on the course outline page. It shows the database tables, columns, primary keys and foreign key.
+> To understand the database structure, use the **Database Diagram** in this week's "Materials" section on the course outline page. It shows the database tables, columns, primary keys and foreign keys.
 
 ## 1.
 
@@ -14,14 +14,12 @@ List all the courses (surname, first name, teacher number, course name) that hav
 
 <summary>Expected result table</summary>
 
-```
-surname  first_name teacher_number course_name
--------- ---------- -------------- --------------------
-Ponteva  Veli       h303           Cloud Computing
-Ponteva  Veli       h303           E-business
+| surname | first_name | teacher_number | course_name |
+|---------|------------|----------------|-------------|
+| Ponteva | Veli | h303 | Cloud Computing |
+| Ponteva | Veli | h303 | E-business |
 
 (2 row(s) affected)
-```
 
 </details>
 
@@ -33,23 +31,21 @@ List all the teachers (surname, first name, teacher number, course name). If a t
 
 <summary>Expected result table</summary>
 
-```
-surname  first_name teacher_number course_name
--------- ---------- -------------- --------------------
-Kiisseli Marja      h999           NULL
-Kokki    Seppo      h180           NULL
-Matikka  Mauri      h777           Finnish 1
-Ponteva  Veli       h303           Database Design
-Ponteva  Veli       h303           Database Developer
-Saari    Sisko      h290           E-business
-Tahko    Olka       h560           NULL
-Tahko    Olka       h714           NULL
-Vainio   Veera      h784           Data Management
-Virta    Emma       h430           Cloud Computing
-Virta    Emma       h430           Java Basics
+| surname | first_name | teacher_number | course_name |
+|---------|------------|----------------|-------------|
+| Kiisseli | Marja | h999 | NULL |
+| Kokki | Seppo | h180 | NULL |
+| Matikka | Mauri | h777 | Finnish 1 |
+| Ponteva | Veli | h303 | Database Design |
+| Ponteva | Veli | h303 | Database Developer |
+| Saari | Sisko | h290 | E-business |
+| Tahko | Olka | h560 | NULL |
+| Tahko | Olka | h714 | NULL |
+| Vainio | Veera | h784 | Data Management |
+| Virta | Emma | h430 | Cloud Computing |
+| Virta | Emma | h430 | Java Basics |
 
 (11 row(s) affected)
-```
 
 </details>
 
@@ -61,15 +57,13 @@ List all the course instances (course code, instance number, start date, surname
 
 <summary>Expected result table</summary>
 
-```
-course_code instance_number start_date Teacher            teacher_number
------------ --------------- ---------- ------------------ --------------
-a290        2               2008-02-02 NULL               NULL
-a450        3               2008-01-01 Ponteva, Veli      h303
-a480        2               2008-01-15 Vainio, Veera      h784
+| course_code | instance_number | start_date | Teacher | teacher_number |
+|-------------|-----------------|------------|---------|----------------|
+| a290 | 2 | 2008-02-02 | NULL | NULL |
+| a450 | 3 | 2008-01-01 | Ponteva, Veli | h303 |
+| a480 | 2 | 2008-01-15 | Vainio, Veera | h784 |
 
 (3 row(s) affected)
-```
 
 </details>
 
@@ -81,23 +75,21 @@ List all the teachers (campus name, surname, first name, teacher number, course 
 
 <summary>Expected result table</summary>
 
-```
-campus_name surname  first_name teacher_number course_name
------------ -------- ---------- -------------- --------------------
-NULL        Kiisseli Marja      h999           NULL
-NULL        Tahko    Olka       h560           NULL
-NULL        Tahko    Olka       h714           NULL
-Malmi       Matikka  Mauri      h777           Finnish 1
-Malmi       Saari    Sisko      h290           E-business
-Pasila      Kokki    Seppo      h180           NULL
-Pasila      Ponteva  Veli       h303           Database Design
-Pasila      Ponteva  Veli       h303           Database Developer
-Pasila      Virta    Emma       h430           Cloud Computing
-Pasila      Virta    Emma       h430           Java Basics
-Vierumäki   Vainio   Veera      h784           Data Management
+| campus_name | surname | first_name | teacher_number | course_name |
+|-------------|---------|------------|----------------|-------------|
+| NULL | Kiisseli | Marja | h999 | NULL |
+| NULL | Tahko | Olka | h560 | NULL |
+| NULL | Tahko | Olka | h714 | NULL |
+| Malmi | Matikka | Mauri | h777 | Finnish 1 |
+| Malmi | Saari | Sisko | h290 | E-business |
+| Pasila | Kokki | Seppo | h180 | NULL |
+| Pasila | Ponteva | Veli | h303 | Database Design |
+| Pasila | Ponteva | Veli | h303 | Database Developer |
+| Pasila | Virta | Emma | h430 | Cloud Computing |
+| Pasila | Virta | Emma | h430 | Java Basics |
+| Vierumäki | Vainio | Veera | h784 | Data Management |
 
 (11 row(s) affected)
-```
 
 </details>
 
@@ -109,16 +101,14 @@ List the number of teachers per each campus (campus name, "Number of teachers").
 
 <summary>Expected result table</summary>
 
-```
-campus_name Number of teachers
------------ ------------------
-Malmi       2
-Pasila      3
-Porvoo      0
-Vierumäki   1
+| campus_name | Number of teachers |
+|-------------|--------------------|
+| Malmi | 2 |
+| Pasila | 3 |
+| Porvoo | 0 |
+| Vierumäki | 1 |
 
 (4 row(s) affected)
-```
 
 </details>
 
@@ -130,13 +120,11 @@ Time dimension considerations: List all the teachers (surname, first name, teach
 
 <summary>Expected result table</summary>
 
-```
-surname  first_name teacher_number start_date end_date
--------- ---------- -------------- ---------- ----------
-Ponteva  Veli       h303           2010-01-15 2011-06-30
+| surname | first_name | teacher_number | start_date | end_date |
+|---------|------------|----------------|------------|----------|
+| Ponteva | Veli | h303 | 2010-01-15 | 2011-06-30 |
 
 (1 row(s) affected)
-```
 
 </details>
 
@@ -156,23 +144,21 @@ List all the teachers (surname, first name, teacher number, course name). If the
 
 <summary>Expected result table</summary>
 
-```
-surname  first_name teacher_number course_name
--------- ---------- -------------- --------------------
-Kiisseli Marja      h999            
-Kokki    Seppo      h180            
-Matikka  Mauri      h777           Finnish 1
-Ponteva  Veli       h303           Database Design
-Ponteva  Veli       h303           Database Developer
-Saari    Sisko      h290           E-business
-Tahko    Olka       h560            
-Tahko    Olka       h714            
-Vainio   Veera      h784           Data Management
-Virta    Emma       h430           Cloud Computing
-Virta    Emma       h430           Java Basics
+| surname | first_name | teacher_number | course_name |
+|---------|------------|----------------|-------------|
+| Kiisseli | Marja | h999 | |
+| Kokki | Seppo | h180 | |
+| Matikka | Mauri | h777 | Finnish 1 |
+| Ponteva | Veli | h303 | Database Design |
+| Ponteva | Veli | h303 | Database Developer |
+| Saari | Sisko | h290 | E-business |
+| Tahko | Olka | h560 | |
+| Tahko | Olka | h714 | |
+| Vainio | Veera | h784 | Data Management |
+| Virta | Emma | h430 | Cloud Computing |
+| Virta | Emma | h430 | Java Basics |
 
 (11 row(s) affected)
-```
 
 </details>
 
@@ -184,21 +170,19 @@ List all the teachers (surname, first name, teacher number, "Comment") without a
 
 <summary>Expected result table</summary>
 
-```
-surname  first_name teacher_number Comment
--------- ---------- -------------- ----------------
-Kiisseli Marja      h999           academic advisor
-Kokki    Seppo      h180           academic advisor
-Matikka  Mauri      h777            
-Ponteva  Veli       h303           academic advisor
-Saari    Sisko      h290           academic advisor
-Tahko    Olka       h560            
-Tahko    Olka       h714            
-Vainio   Veera      h784            
-Virta    Emma       h430           academic advisor
+| surname | first_name | teacher_number | Comment |
+|---------|------------|----------------|------------------|
+| Kiisseli | Marja | h999 | academic advisor |
+| Kokki | Seppo | h180 | academic advisor |
+| Matikka | Mauri | h777 | |
+| Ponteva | Veli | h303 | academic advisor |
+| Saari | Sisko | h290 | academic advisor |
+| Tahko | Olka | h560 | |
+| Tahko | Olka | h714 | |
+| Vainio | Veera | h784 | |
+| Virta | Emma | h430 | academic advisor |
 
 (9 row(s) affected)
-```
 
 </details>
 
@@ -213,15 +197,13 @@ How many teachers in charge of a course there are at each campus? Display campus
 
 <summary>Expected result table</summary>
 
-```
-campus_name Number of teachers in charge of a course
------------ ----------------------------------------
-Malmi       2
-Pasila      2
-Porvoo      0
-Vierumäki   1
+| campus_name | Number of teachers in charge of a course |
+|-------------|------------------------------------------|
+| Malmi | 2 |
+| Pasila | 2 |
+| Porvoo | 0 |
+| Vierumäki | 1 |
 
 (4 row(s) affected)
-```
 
 </details>
