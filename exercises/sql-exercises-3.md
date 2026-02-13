@@ -118,7 +118,7 @@ Calculate the age in years for each student. Rename age as "Age". Display age, s
 
 List all the students (student number, surname, first name, email) whose email server's domain name is not 'takkula.fi'. Do not use LIKE. Sort the result by student number in ascending order.
 
-## ⭐ Bonus task 19.
+## ⭐ Bonus task 20.
 
 List all the different domain names from students' email addresses. Rename the column as "Domain name". Sort the result by "Domain name" in ascending order.
 
