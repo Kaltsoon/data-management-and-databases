@@ -40,7 +40,8 @@ List all the teachers who have given more than one course instance. Display teac
 
 List for each student the student number, average grade, highest grade, and lowest grade. In the query, rename the columns as "Average grade", "Highest grade", and "Lowest grade". Sort the result by (average grade, student number).
 
-NOTE: Display the correct average grade with two decimal places.
+> [!NOTE]
+> Display the correct average grade with two decimal places.
 
 ## 8.
 
@@ -57,7 +58,8 @@ In which course instances is the number of participants above the average? Displ
 
 List all the students (surname, first name, student number) who have not passed any courses. Sort the result in ascending order by (surname, first name, student number).
 
-Hint: The table CourseGrade contains facts on all the passing grades. The table Student contains facts on all the students.
+> [!TIP]
+> The table `CourseGrade` contains facts on all the passing grades. The table Student contains facts on all the students.
 
 ## 11.
 
@@ -83,7 +85,12 @@ List all the teachers (teacher number, surname, first name) who have not given a
 
 ## ⭐ Bonus task 15.
 
-List all courses (course name) that have been given by different teachers who are working at different campuses. Example of such course: There exists two course instances of the course. The first one is given by teacher A who is working at campus 1. The second one is given by teacher B who is working at campus 2. Hint: here you might need a JOIN operation, a subquery, grouping, aggregate function etc.
+List all courses (course name) that have been given by different teachers who are working at different campuses. 
+
+Example of such course: There exists two course instances of the course. The first one is given by teacher A who is working at campus 1. The second one is given by teacher B who is working at campus 2. 
+
+> [!TIP]
+> Here you might need a `JOIN` operation, a subquery, grouping, aggregate function etc.
 
 ## ⭐ Bonus task 16.
 
@@ -94,7 +101,8 @@ gender | %
 M | 53.8
 F | 46.2
 
-Hint: You can use a scalar subquery as an operand of an arithmetic operation in the column list.
+> [!TIP]
+> You can use a scalar subquery as an operand of an arithmetic operation in the column list.
 
 ## ⭐ Bonus task 17.
 
