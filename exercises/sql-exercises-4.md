@@ -8,16 +8,7 @@
 > - **Database Diagram**: this shows the database structure (tables, columns, primary keys, foreign keys).
 > - **Query Results**: compare the result of your own query to the given query result.
 
-Write task numbers to your SQL query window as follows:
-
-```sql
--- 8.1
-SELECT ...
--- 8.2
-SELECT ...
-```
-
-> [!IMPORTANT]
+> [!NOTE]
 > You'll need to use the set operations in these tasks: `EXCEPT`, `INTERSECT`, or `UNION`.
 
 ## 1.
