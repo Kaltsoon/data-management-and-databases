@@ -95,7 +95,10 @@ How many students were born on Sunday?
 
 ## 16.
 
-Display the current date and weekday. Rename the date as "Current date" and weekday as "Weekday". Hint: Use SYSDATETIME() and the LEFT function to show the date with 10 characters only.
+Display the current date and weekday. Rename the date as "Current date" and weekday as "Weekday". 
+
+> [!TIP]
+> Use `SYSDATETIME()` and the `LEFT` function to show the date with 10 characters only.
 
 ## 17.
 
@@ -105,7 +108,8 @@ Use the appropriate function to compute the length of each course in days. List 
 
 Calculate the age in years for each student. Rename age as "Age". Display age, surname, first name, and student number. Sort the result by ("Age" in descending order, surname ASC, first name ASC, student number ASC).
 
-NB! Please notice that today the ages of students are higher than what is shown in the 'Query results' pdf-file.
+> [!IMPORTANT]
+> Please notice that today the ages of students are higher than what is shown in the 'Query results' pdf-file.
 
 > [!IMPORTANT]
 > The next tasks are optional.
