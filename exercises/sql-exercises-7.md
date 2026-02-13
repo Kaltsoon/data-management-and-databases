@@ -8,15 +8,6 @@
 > - **Database Diagram**: this shows the database structure (tables, columns, primary keys, foreign keys).
 > - **Query Results**: compare the result of your own query to the given query result.
 
-Write task numbers to your SQL query window as follows:
-
-```sql
--- 6.1
-SELECT ...
--- 6.2
-SELECT ...
-```
-
 ## 1.
 
 List all the courses (surname, first name, teacher number, course name) that have been given by the teacher whose teacher number is 'h303'. Sort the result by course name in ascending order.
