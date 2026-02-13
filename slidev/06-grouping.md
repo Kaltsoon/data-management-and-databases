@@ -312,7 +312,7 @@ GROUP BY deptno HAVING AVG(salary) > (SELECT AVG(salary) FROM Employee)
 - The subquery's result set can be used in the `FROM` clause similarly to a normal table
 - Let's consider the following example:
 
-> _"What is the count, and the minimum and the maximum grade point average (GPA) of such students who have passed more than 20 courses?"_
+> _"What is the minimum and the maximum grade point average (GPA) of such students who have passed more than 20 courses?"_
 
 ---
 
@@ -321,7 +321,7 @@ GROUP BY deptno HAVING AVG(salary) > (SELECT AVG(salary) FROM Employee)
 - First, we define a query for the grade point average of students who have passed more than 20 courses:
 
 ```sql
-SELECT AVG(grade) AS gpa
+SELECT student_number, AVG(grade) AS gpa
 FROM CourseGrade
 WHERE grade > 0
 GROUP BY student_number
@@ -335,17 +335,17 @@ HAVING COUNT(*) > 20
 - Then, we use this query as a subquery in the `FROM` clause:
 
 ```sql
--- what is the count, and the minimum and the maximum grade point average (GPA)
+-- what is the minimum and the maximum grade point average (GPA)
 -- of such students who have passed more than 20 courses?
-SELECT COUNT(*) AS count, MIN(gpa) AS min_gpa, MAX(gpa) AS max_gpa
+SELECT MIN(gpa) AS min_gpa, MAX(gpa) AS max_gpa
 FROM (
   -- our subquery from the previous slide
-  SELECT AVG(grade) AS gpa
+  SELECT student_number, AVG(grade) AS gpa
   FROM CourseGrade
   WHERE grade > 0
   GROUP BY student_number
   HAVING COUNT(*) > 20
-) AS GpaTable -- ⚠️ alias name for the subquery is required
+) AS StudentGpa -- ⚠️ alias name for the subquery is required
 ```
 
 ---
@@ -369,39 +369,26 @@ SELECT MAX(grade_count) AS most_grades FROM CourseGradeCount
 
 ---
 
-## Subqueries within a WITH clause
+## WITH clause example
 
-- Let's consider an example query, _"which department has the highest number of employees?"_
-- First, we define a CTE with the `WITH` clause for the number of employees in each department:
-
-```sql
--- CTE containing the number of employees in each department
-WITH DeptInfo (deptno, employee_count) AS (
-  SELECT deptno, COUNT(*) AS employee_count
-  FROM Employee
-  GROUP BY deptno
-)
-```
-
----
-
-## Subqueries within a WITH clause
-
-- Then, we use the `DeptInfo` CTE in the main query to find the department with the highest number of employees:
+- Let's consider the previous `StudentGpa` example using a common table expression: 
 
 ```sql
--- common table expression from the previous slide
-WITH DeptInfo (deptno, employee_count) AS (
-  SELECT deptno, COUNT(*) AS employee_count
-  FROM Employee
-  GROUP BY deptno
+-- common table expression containing 
+-- the GPA of each student who has passed more than 20 courses
+WITH StudentGpa (student_number, gpa) AS (
+  SELECT student_number, AVG(grade) AS gpa
+  FROM CourseGrade
+  WHERE grade > 0
+  GROUP BY student_number
+  HAVING COUNT(*) > 20
 )
 
--- which department has the highest number of employees?
-SELECT deptno, employee_count
--- DeptInfo can be queried just like a regular table
-FROM DeptInfo
-WHERE employee_count = (SELECT MAX(employee_count) FROM DeptInfo) -- using the CTE again
+-- which students have passed more than 20 courses with above 4.5 GPA?
+SELECT student_number, first_name, surname
+FROM Student
+-- here we use StudentGpa just like a "regular" table
+WHERE student_number IN (SELECT student_number FROM StudentGpa WHERE gpa > 4.5)
 ```
 
 ---
