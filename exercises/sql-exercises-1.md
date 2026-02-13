@@ -67,7 +67,7 @@ List all the students (gender, birth date, surname, first name) whose surname is
 > [!IMPORTANT]
 > In SQL, `DATE` values are written in the ISO date format `'yyyy-mm-dd'`. That is, a `DATE` value is always exactly 10 characters enclosed within single quotes, for example `'2012-02-25'`.
 
-## 13.
+## 12.
 
 Execute the following query to find out what tables you have created this far:
 
@@ -75,7 +75,7 @@ Execute the following query to find out what tables you have created this far:
 SELECT table_name FROM information_schema.tables ORDER BY table_name
 ```
 
-## 14.
+## 13.
 
 Execute the following query to find out what columns there are in the table Teacher:
 
@@ -83,7 +83,7 @@ Execute the following query to find out what columns there are in the table Teac
 SELECT table_name, column_name, data_type, character_maximum_length, numeric_precision, numeric_scale, is_nullable FROM information_schema.columns WHERE table_name = 'Teacher'
 ```
 
-## 15.
+## 14.
 
 Execute the following query to find out what constraints (primary key, foreign key, check, ...) there are:
 
