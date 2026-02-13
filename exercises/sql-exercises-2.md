@@ -86,7 +86,7 @@ Display surname, first name, new salary, and old salary. In the query, rename th
 
 List all the students (surname, first name, student number, gender). Display either 'male' or 'female' as the gender. Sort the result by (surname, first name, student number) in ascending order.
 
-> [!IMPORTANT]
+> [!TIP]
 > Use the `CASE` expression to choose what to display in the column `gender`.
 
 ## 17.
