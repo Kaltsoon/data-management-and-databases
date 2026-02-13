@@ -59,7 +59,8 @@ List all the students (surname, first name, student number) of those students, w
 
 List all the teachers (teacher number, surname, first name, month name of the grade date) who have evaluated a course in May. Rename the last column as "Grade month". Sort the result by teacher number in ascending order.
 
-NOTICE: Make sure that the result of your query is not dependent of the local language (English, Finnish, ...).
+> [!IMPORTANT]
+> Make sure that the result of your query is not dependent of the local language (English, Finnish, ...).
 
 ## 12.
 
