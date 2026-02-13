@@ -1,10 +1,10 @@
 # SQL Exercises 2: More advanced SELECT statements
 
 > [!IMPORTANT]
-> Create a Word document named `sql-exercises-2-YOURFAMILYNAME.docx`. For all your SQL queries, please copy and paste both **the SQL statement and the result** to your Word document. Do not worry about any formatting. Finally, submit the Word document to Moodle.
+> Create a Word document named `sql-exercises-2-YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result (e.g., as a [screenshot](https://www.take-a-screenshot.org/))** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
 
 > [!IMPORTANT]
-> See the following under this week's 'Materials' section on the course outline page:
+> See the following in this week's "Materials" section on the course outline page:
 > - **Database Diagram**: this shows the database structure (tables, columns, primary keys, foreign keys).
 > - **Query Results**: compare the result of your own query to the given query result.
 

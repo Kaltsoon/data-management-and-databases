@@ -1,5 +1,13 @@
 # SQL Exercises 3: Aggregate functions, handling strings & dates, type casting
 
+> [!IMPORTANT]
+> Create a Word document named `sql-exercises-3-YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result (e.g., as a [screenshot](https://www.take-a-screenshot.org/))** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
+
+> [!IMPORTANT]
+> See the following in this week's "Materials" section on the course outline page:
+> - **Database Diagram**: this shows the database structure (tables, columns, primary keys, foreign keys).
+> - **Query Results**: compare the result of your own query to the given query result.
+
 Write task numbers to your SQL query window as follows:
 
 ```sql
@@ -41,8 +49,14 @@ What is the average grade for all the students? Write the following three versio
 > - `AVG(x * 1.0)` gives the result as **a decimal numbers without any rounding**: `(9 * 1.0 + 10 * 1.0 + 10 * 1.0) / 3 = 29.0 / 3 = 9.666666...` .
 > - `CAST(AVG(x * 1.0) AS DECIMAL(4,2))` gives the result as **a decimal number with two decimal places**: `9.67`.
 > 
-> The second number of `DECIMAL(4,2)` determines how many decimals places are used while rounding.
-> 
+> The first number of `DECIMAL(4,2)` determines **the maximum number of digits in the decimal number** (before and after the decimal point). The second number determines **how many decimals places are used while rounding**.
+>
+> $$
+> \text{DECIMAL}(4, 2) \quad \Rightarrow \quad
+> \underbrace{99}_{\text{4 - 2 = 2 digits left}} .
+> \underbrace{99}_{\text{2 digits right}}
+> $$ 
+>
 > ```sql
 > SELECT CAST(AVG(x * 1.0) AS DECIMAL(4,2)) AS "Average of x" FROM MyTable
 > ```
@@ -110,6 +124,8 @@ Calculate the age in years for each student. Rename age as "Age". Display age, s
 
 > [!IMPORTANT]
 > Please notice that today the ages of students are higher than what is shown in the 'Query results' pdf-file.
+
+---
 
 > [!IMPORTANT]
 > The next tasks are optional.

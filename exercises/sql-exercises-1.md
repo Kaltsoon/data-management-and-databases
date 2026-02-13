@@ -1,10 +1,10 @@
 # SQL Exercises 1: Simple SELECT statements
 
 > [!IMPORTANT]
-> Create a Word document named `sql-exercises-1-YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
+> Create a Word document named `sql-exercises-1-YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result (e.g., as a [screenshot](https://www.take-a-screenshot.org/))** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
 
 > [!IMPORTANT]
-> See the following under this week's 'Materials' section on the course outline page:
+> See the following in this week's "Materials" section on the course outline page:
 > - **Database Diagram**: this shows the database structure (tables, columns, primary keys, foreign keys).
 > - **Query Results**: compare the result of your own query to the given query result.
 
@@ -67,12 +67,17 @@ List all the students (gender, birth date, surname, first name) whose surname is
 > [!IMPORTANT]
 > In SQL, `DATE` values are written in the ISO date format `'yyyy-mm-dd'`. That is, a `DATE` value is always exactly 10 characters enclosed within single quotes, for example `'2012-02-25'`.
 
+> [!NOTE]
+> These remaining tasks are metadata queries, which retrieve metadata information related to the database. Execute them, see the result and include both query and the result to the submission.
+
 ## 12.
 
 Execute the following query to find out what tables you have created this far:
 
 ```sql
-SELECT table_name FROM information_schema.tables ORDER BY table_name
+SELECT table_name 
+FROM information_schema.tables 
+ORDER BY table_name
 ```
 
 ## 13.
@@ -80,7 +85,9 @@ SELECT table_name FROM information_schema.tables ORDER BY table_name
 Execute the following query to find out what columns there are in the table Teacher:
 
 ```sql
-SELECT table_name, column_name, data_type, character_maximum_length, numeric_precision, numeric_scale, is_nullable FROM information_schema.columns WHERE table_name = 'Teacher'
+SELECT table_name, column_name, data_type, character_maximum_length, numeric_precision, numeric_scale, is_nullable
+FROM information_schema.columns 
+WHERE table_name = 'Teacher'
 ```
 
 ## 14.
@@ -88,5 +95,7 @@ SELECT table_name, column_name, data_type, character_maximum_length, numeric_pre
 Execute the following query to find out what constraints (primary key, foreign key, check, ...) there are:
 
 ```sql
-SELECT table_catalog, table_name, constraint_name, constraint_type FROM information_schema.table_constraints ORDER BY table_name, constraint_name
+SELECT table_catalog, table_name, constraint_name, constraint_type
+FROM information_schema.table_constraints
+ORDER BY table_name, constraint_name
 ```

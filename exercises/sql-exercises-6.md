@@ -1,55 +1,118 @@
-# SQL Exercises 6: More joins
+# SQL Exercises 6: Joins
+
+> [!IMPORTANT]
+> Create a Word document named `sql-exercises-6-YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result (e.g., as a [screenshot](https://www.take-a-screenshot.org/))** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
+
+> [!IMPORTANT]
+> See the following in this week's "Materials" section on the course outline page:
+> - **Database Diagram**: this shows the database structure (tables, columns, primary keys, foreign keys).
+> - **Query Results**: compare the result of your own query to the given query result.
 
 Write task numbers to your SQL query window as follows:
 
 ```sql
--- 6.1
+-- 5.1
 SELECT ...
--- 6.2
+-- 5.2
 SELECT ...
 ```
 
 ## 1.
 
-List all the courses (surname, first name, teacher number, course name) that have been given by the teacher whose teacher number is 'h303'. Sort the result by course name in ascending order.
+What course instances does each teacher teach? Display surname, first name, teacher number, course code, and instance number. Sort the result by (surname, first name, course code, instance number).
 
 ## 2.
 
-List all the teachers (surname, first name, teacher number, course name). If a teacher is in charge of a course, then also the course name should be shown. Sort the result by (surname, first name, teacher number, course name) in ascending order.
+Who is the person in charge of each course? Display course code, course name, and name of the person in charge. Concatenate surname and first name as "Person in charge". Sort the result by course code in ascending order.
 
 ## 3.
 
-List all the course instances (course code, instance number, start date, surname, first name, teacher number) that have started in 2008. Concatenate surname and first name as "Teacher". Sort the result by (course code, instance number) in ascending order.
+What is the grade point average (= average grade) for each student? Display surname, first name, student number, and average grade (with two decimal places, named as "Grade point average"). Sort the result by (surname, first name, student number).
 
 ## 4.
 
-List all the teachers (campus name, surname, first name, teacher number, course name). If the teacher is in charge of a course, then also the course name should be shown. Sort the result by (campus name, surname, first name, teacher number, course name) in ascending order.
+Time dimension considerations
+
+1. List all the current academic advisors (surname, first name, teacher number, start date, end date). Sort the result by (surname, first name, teacher number) in ascending order.
+2. List all the current and past academic advisors (surname, first name, teacher number, start date, end date). Sort the result by (surname, first name, teacher number) in ascending order.
 
 ## 5.
 
-List the number of teachers per each campus (campus name, "Number of teachers"). Sort the result by campus name in ascending order.
+What types of academic misconduct have occurred at Takkula University this far? List misconduct description. Sort the result by misconduct type in ascending order. This time, use a join, not any subquery.
 
 ## 6.
 
-Time dimension considerations: List all the teachers (surname, first name, teacher number, start date, end date) who have been working as academic advisors in 2010 (at least for one day). Sort the result by (surname, first name, teacher number) in ascending order.
+List all the students (surname, first name, student number, course code, grade) who live in Helsinki and have at least one course grade greater than 2. Sort the result by (surname, first name, student number, course code). 
+
+> [!IMPORTANT]
+> You are required to show only such rows where grade is > 2.
+
+## 7.
+
+List all the teachers (course code, course name, teacher number, surname, first name) who have given the course that has the course code 'a730'. Sort the result by teacher number in ascending order.
+
+## 8.
+
+List all the passing grades (course name, grade, surname, first name, student number) for female students. Sort by the result by (course name, grade in descending order, surname, first name, student number in ascending order).
+
+## 9.
+
+In which courses have female students achieved grade 5? Display course code, course name, and the number of grade 5's achieved by female students. Rename the last column as "Grade five". Sort the result by course code in ascending order.
+
+## 10.
+
+List all the students (surname, first name, student number) of those students, who have grade 3 from any course. Do not allow any duplicate entries in the result. Sort by (surname, first name, student number) in ascending order.
+
+## 11.
+
+List all the teachers (teacher number, surname, first name, month name of the grade date) who have evaluated a course in May. Rename the last column as "Grade month". Sort the result by teacher number in ascending order.
+
+> [!IMPORTANT]
+> Make sure that the result of your query is not dependent of the local language (English, Finnish, ...).
+
+## 12.
+
+How are the average grade and the total number of grades distributed between female and male students? Display gender, average grade (with 2 decimal places) and the number of grades. Rename the last two columns as "Average grade" and "Number of grades". Sort by "Average grade" in descending order.
+
+## 13.
+
+Create a Cartesian product using the tables Campus and AcademicAdvisor, without any duplicate entries. Display campus name and teacher number. Sort the result by (campus name, teacher number) in ascending order.
+
+## 14.
+
+List the courses that students have failed due to an academic misconduct incident. Display course code, instance number, course name, student number, surname, first name, and misconduct description.
+
+## 15.
+
+List all the students (student number, surname, first name, disciplinary sanction, misconduct description) who have got a written warning due to an academic misconduct incident.
+
+## 16.
+
+What is the prevalence of academic misconduct at Takkula University? Find out the percentage of students who have been penalized due to an academic misconduct incident. Display the percentage with one decimal place. Rename the column as "Misconduct %".
+
+> [!TIP] 
+> When you need to use the total of students as an operand in the percentage calculation, write a subquery in the formula.
+
+---
 
 > [!IMPORTANT]
 > The next tasks are optional.
 
-## ⭐ Bonus task 7.
+## ⭐ Bonus task 17.
 
-List all the teachers (surname, first name, teacher number, course name). If the teacher is in charge of a course, display also the name of the course; otherwise leave the course name column totally empty. Sort the result by (surname, first name, teacher number) in ascending order.
+List all the courses (course name, teacher number, teacher name) where the person in charge has also been the teacher of an instance of the course. Concatenate surname and first name "Person in charge teaching". Sort the result by (surname, first name, teacher number) in ascending order.
+
+## ⭐ Bonus task 18.
+
+List all the prerequisite courses for the course 'a500'. Display course code and course name for the course 'a500', and course code and course name for all the prerequisite courses. Concatenate prerequisite course code and name as "Prerequisite". Sort the result by "Prerequisite" in ascending order.
 
 > [!TIP]
-> `CASE` expression is probably needed here.
+> You can define an alias name for the course table for joining the same table twice in the query.
 
-## ⭐ Bonus task 8.
+## ⭐ Bonus task 19.
 
-List all the teachers (surname, first name, teacher number, "Comment") without any duplicate entries. If the teacher is also an academic advisor, show the text 'academic advisor' in the "Comment" column, otherwise leave the column totally empty. Sort the result by (surname, first name, teacher number) in ascending order.
+List all the courses and their prerequisite courses. Display the columns as before. Sort the result by course code, prerequisite course code in ascending order.
 
-## ⭐ Bonus task 9.
+## ⭐ Bonus task 20.
 
-> [!NOTE]
-> This can be a bit difficult, you may try to solve this one only at your own risk... ☠️
-
-How many teachers in charge of a course there are at each campus? Display campus name and the number of teachers in charge of a course. Rename the second column as "Number of teachers in charge of a course". Sort the result by campus name in ascending order.
+List all the courses (course code, instance number, course name, teacher, person in charge). Concatenate teacher's number, surname, and first name as "Teacher". Concatenate number, surname, and first name of the person in charge as "Person in charge". Sort the result by (course code, instance number) in ascending order.
