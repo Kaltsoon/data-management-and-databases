@@ -34,7 +34,10 @@ What types of academic misconduct have occurred at Takkula University this far? 
 
 ## 6.
 
-List all the students (surname, first name, student number, course code, grade) who live in Helsinki and have at least one course grade greater than 2. Sort the result by (surname, first name, student number, course code). NB! You are required to show only such rows where grade is > 2.
+List all the students (surname, first name, student number, course code, grade) who live in Helsinki and have at least one course grade greater than 2. Sort the result by (surname, first name, student number, course code). 
+
+> [!IMPORTANT]
+> You are required to show only such rows where grade is > 2.
 
 ## 7.
 
