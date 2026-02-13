@@ -38,9 +38,11 @@ What is the average grade for all the students? Write the following three versio
 > [!TIP]
 > Suppose three rows with the following integer values in the column x: 9, 10, 10.
 > - `AVG(x)` gives the result as **an integer without any rounding**: `(9 + 10 + 10) / 3 = 29 / 3 = 9`.
-> - `AVG(x * 1.0)` gives the result as **a decimal numbers without any rounding**: `(9 * 1.0 + 10 * 1.0 + 10 * 1.0) / 3 = 29.0 / 3 = 9.666666...` 
-> - `CAST(AVG(x * 1.0) AS DECIMAL(4,2))` gives the result as **a decimal number with two decimal places**: `9.67`
+> - `AVG(x * 1.0)` gives the result as **a decimal numbers without any rounding**: `(9 * 1.0 + 10 * 1.0 + 10 * 1.0) / 3 = 29.0 / 3 = 9.666666...` .
+> - `CAST(AVG(x * 1.0) AS DECIMAL(4,2))` gives the result as **a decimal number with two decimal places**: `9.67`.
+> 
 > The second number of `DECIMAL(4,2)` determines how many decimals places are used while rounding.
+> 
 > ```sql
 > SELECT CAST(AVG(x * 1.0) AS DECIMAL(4,2)) AS "Average of x" FROM MyTable
 > ```
