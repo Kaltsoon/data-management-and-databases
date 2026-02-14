@@ -2,7 +2,7 @@
 
 The Takkula tables will be used in the SQL exercises during the course. Follow carefully the instructions below to create the tables and data for testing.
 
-## Task 1. Download the Takkula database scripts
+## Task 1: Download the Takkula database scripts
 
 In this week's "Exercises" section on the course outline page, click on the "Takkula scripts (create, insert, drop)" link. The link takes you to the following script files:
 
