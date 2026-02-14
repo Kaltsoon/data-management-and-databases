@@ -3,9 +3,6 @@
 > [!IMPORTANT]
 > Create a Word document named `sql-exercises-7-YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result (e.g., as a [screenshot](https://www.take-a-screenshot.org/))** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
 
-> [!TIP]
-> To understand the database structure, use the **Database Diagram** in this week's "Materials" section on the course outline page. It shows the database tables, columns, primary keys and foreign keys.
-
 ## 1.
 
 List all the courses (surname, first name, teacher number, course name) that have been given by the teacher whose teacher number is 'h303'. Sort the result by course name in ascending order.

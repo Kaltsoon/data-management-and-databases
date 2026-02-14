@@ -1,5 +1,8 @@
 # SQL Exercises 3: Aggregate functions, handling strings & dates, type casting
 
+> [!CAUTION]
+> Using generative AI tools to directly generate task answers is strictly forbidden and considered plagiarism. You won't be able to use such tools in the exam and without a lot of practice, your exam and learning results won't be good.
+
 > [!IMPORTANT]
 > Create a Word document named `sql-exercises-3-YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result (e.g., as a [screenshot](https://www.take-a-screenshot.org/))** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
 
@@ -17,7 +20,7 @@ SELECT ...
 
 ## 1.
 
-How many rows there are in the CourseGrade table?
+How many rows there are in the `CourseGrade` table?
 
 <details>
 
@@ -33,7 +36,7 @@ How many rows there are in the CourseGrade table?
 
 ## 2.
 
-What is the total number of grades in the CourseGrade table?
+What is the total number of grades in the `CourseGrade` table?
 
 <details>
 
@@ -396,12 +399,12 @@ Use the appropriate function to compute the length of each course in days. List 
 
 Calculate the age in years for each student. Rename age as "Age". Display age, surname, first name, and student number. Sort the result by ("Age" in descending order, surname ASC, first name ASC, student number ASC).
 
+> [!NOTE]
+> Please notice that today the ages of students are higher than what is shown in this result table.
+
 <details>
 
 <summary>Expected result table</summary>
-
-> [!IMPORTANT]
-> Please notice that today the ages of students are higher than what is shown this result table.
 
 | Age | surname | first_name | student_number |
 |-----|---------|------------|----------------|
