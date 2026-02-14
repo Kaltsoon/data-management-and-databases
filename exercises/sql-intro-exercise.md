@@ -138,3 +138,6 @@ Open a new query window, in which write the following statements:
 > [!TIP]
 > - If you have already created the tables and want to change their columns, drop the tables first by executing the `DROP TABLE Cyclist, Team` statement and then re-executing the `CREATE TABLE` statements.
 > - While inserting data, **if a row has a foreing key, you need to first insert the row that is referenced**. E.g., you need to insert an `Department` row first, before inserting a `Employee` row referencing it with a foreign key.
+
+> [!IMPORTANT]
+> Remember to save the contents of each query window into their corresponding `.sql` files.
