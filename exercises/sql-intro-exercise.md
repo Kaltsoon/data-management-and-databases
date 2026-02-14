@@ -83,7 +83,7 @@ SELECT TABLE_NAME, CONSTRAINT_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.CONSTRAI
 > [!IMPORTANT]
 > Nothing is required to be submitted on this task.
 
-1. In the "Object Explorer" panel in SQL Server Management Studio, double-click on "databases" folder and under it, dobule-click the "BIT_SWD03" database. Under the database, right-click the "Database Diagrams" folder and click "New Database Diagram".
+1. In the "Object Explorer" panel in SQL Server Management Studio, double-click on the "Databases" folder and under it, double-click the "BIT_SWD03" database. Under the database, right-click the "Database Diagrams" folder and click "New Database Diagram".
 2. In the dialog, select the tables that you want to add to the diagram and click "Add". 
 3. Right-click on the canvas and select "Show Relationship Labels" and right-click on the canvas and select "Arrange Tables". When you save the diagram SSMS asks you to enter a name for the diagram. Save the diagram as "Employee_Department_diagram".
 
@@ -124,7 +124,7 @@ Team (<ins>teamnumber</ins>, teamname)
 > Primary keys are underlined.
 
 1. Create `Cyclist` and `Team` tables. Determine column data types yourself. Create the required primary key and foreign key constraints. NB! There will be exactly one foreign key constraint.
-2. Create a new database diagram "Team_Cyclist_diagram" that shows the `Cyclist` table, `Team` table and the relationship between these two tables.
+2. Create a new database diagram "Team_Cyclist_diagram" that shows the `Cyclist` table, `Team` table and the relationship between these two tables. No need to submit this diagram.
 3. Write and execute `INSERT` statements that populate the `Cyclist` table with at least 3 rows and `Team` table at least with 2 rows. You can create the data (cyclist names etc.) yourself.
 4. Test that the primary key and foreign key constraints work as required. That is, try to insert some rows that the DBMS should not accept.
 5. Write and execute a `SELECT` statement that lists all teams in alphabetical order. Display team name only.
