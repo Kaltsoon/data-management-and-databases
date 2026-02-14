@@ -400,7 +400,7 @@ Use the appropriate function to compute the length of each course in days. List 
 Calculate the age in years for each student. Rename age as "Age". Display age, surname, first name, and student number. Sort the result by ("Age" in descending order, surname ASC, first name ASC, student number ASC).
 
 > [!NOTE]
-> Please notice that today the ages of students are higher than what is shown this result table.
+> Please notice that today the ages of students are higher than what is shown in this result table.
 
 <details>
 
