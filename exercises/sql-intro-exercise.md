@@ -94,7 +94,7 @@ Finally, the database diagram should look like the one below. Congratulations! Y
 ## Task 3: SQL Queries
 
 > [!IMPORTANT]
-> Save your work on task 1 to a file named `sql_intro_3_YOURFAMILYNAME.sql`.
+> Save your work on task 3 to a file named `sql_intro_3_YOURFAMILYNAME.sql`.
 
 > [!TIP]
 > See task 1 for examples.
@@ -110,7 +110,7 @@ Open a new query window, in which write the following statements:
 ## Task 4: Creating tables
 
 > [!IMPORTANT]
-> Save your work on task 1 to a file named `sql_intro_4_YOURFAMILYNAME.sql`.
+> Save your work on task 4 to a file named `sql_intro_4_YOURFAMILYNAME.sql`.
 
 > [!TIP]
 > See task 1 for examples.
