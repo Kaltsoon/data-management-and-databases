@@ -6,7 +6,7 @@
 > [!TIP]
 > To understand the database structure, use the **Database Diagram** in this week's "Materials" section on the course outline page. It shows the database tables, columns, primary keys and foreign keys.
 
-Write task numbers to your SQL query window as follows:
+Write the task numbers to your query window as follows:
 
 ```sql
 -- 1
