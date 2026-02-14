@@ -64,7 +64,7 @@ SELECT deptname FROM Department ORDER BY deptname
 SELECT empname, deptname FROM Employee JOIN Department ON (Department.deptno = Employee.deptno) ORDER BY empname
 ```
 
-Execute the following `SELECT` statements one by one to see some of the metadata that the DBMS has saved in the database:
+Execute the following `SELECT` statements **one by one** to see some of the metadata that the DBMS has saved in the database:
 
 ```sql
 SELECT * FROM INFORMATION_SCHEMA.TABLES
@@ -99,6 +99,8 @@ Finally, the database diagram should look like the one below. Congratulations! Y
 > [!TIP]
 > See task 1 for examples.
 
+Open a new query window, in which write the following statements:
+
 1. Write and execute an `INSERT` statement that inserts a new department into the database. The department number is 30 and department name is 'Management'.
 2. Write and execute an `INSERT` statement that inserts a new employee into the database. The employee number is 4 and employee name is 'Athena'. She works for the Management department.
 3. Write and execute a `SELECT` statement that lists names of all employees . Do not display anything else but employee name.
@@ -122,6 +124,8 @@ Team (<ins>teamnumber</ins>, teamname)
 
 > [!NOTE]
 > Primary keys are underlined.
+
+Open a new query window, in which write the following statements:
 
 1. Create `Cyclist` and `Team` tables. Determine column data types yourself. Create the required primary key and foreign key constraints. NB! There will be exactly one foreign key constraint.
 2. Create a new database diagram "Team_Cyclist_diagram" that shows the `Cyclist` table, `Team` table and the relationship between these two tables. No need to submit this diagram.
