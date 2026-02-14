@@ -1,7 +1,7 @@
 # SQL Exercises 7: More joins
 
 > [!IMPORTANT]
-> Create a Word document named `sql-exercises-7-YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result (e.g., as a [screenshot](https://www.take-a-screenshot.org/))** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
+> Create a Word document named `sql_exercises_7_YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result (e.g., as a [screenshot](https://www.take-a-screenshot.org/))** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
 
 ## 1.
 

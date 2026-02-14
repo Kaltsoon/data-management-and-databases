@@ -11,7 +11,7 @@ In this exercise, always **execute the given SQL statements one by one**. Copy a
 ## Task 1: Introduction
 
 > [!IMPORTANT]
-> Save your work on task 1 to a file named `sql_intro_1_YOURSURNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md) guide to learn how to save your queries.
+> Save your work on task 1 to a file named `sql_intro_1_YOURFAMILYNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md) guide to learn how to save your queries.
 
 Open a new query window in SQL Server Management Studio in which you'll put these statements. Create tables `Department` and `Employee` by executing the following two `CREATE TABLE` statements:
 
@@ -94,7 +94,7 @@ Finally, the database diagram should look like the one below. Congratulations! Y
 ## Task 3: SQL Queries
 
 > [!IMPORTANT]
-> Save your work on task 1 to a file named `sql_intro_3_YOURSURNAME.sql`.
+> Save your work on task 1 to a file named `sql_intro_3_YOURFAMILYNAME.sql`.
 
 > [!TIP]
 > See task 1 for examples.
@@ -108,20 +108,20 @@ Finally, the database diagram should look like the one below. Congratulations! Y
 ## Task 4: Creating tables
 
 > [!IMPORTANT]
-> Save your work on task 1 to a file named `sql_intro_4_YOURSURNAME.sql`.
+> Save your work on task 1 to a file named `sql_intro_4_YOURFAMILYNAME.sql`.
 
 > [!TIP]
 > See task 1 for examples.
 
 Suppose the following relations:
 
+<pre>
+Cyclist (<ins>cyclistnumber</ins>, familyname, givenname, teamnumber)
+Team (<ins>teamnumber</ins>, teamname)
+</pre>
+
 > [!NOTE]
 > Primary keys are underlined.
-
-```
-Cyclist (<u>cyclistNumber</u>, familyName, givenName, teamNumber)
-Team (<u>teamNumber</u>, teamName)
-```
 
 1. Create `Cyclist` and `Team` tables. Determine column data types yourself. Create the required primary key and foreign key constraints. NB! There will be exactly one foreign key constraint.
 2. Create a new database diagram "Team_Cyclist_diagram" that shows the `Cyclist` table, `Team` table and the relationship between these two tables.
@@ -130,3 +130,7 @@ Team (<u>teamNumber</u>, teamName)
 5. Write and execute a `SELECT` statement that lists all teams in alphabetical order. Display team name only.
 6. Write and execute a `SELECT` statement that lists all cyclists. Display family name and given name only.
 7. Write and execute a `SELECT` statement that lists all cyclists with team names. Display family name, given name, and team name for each cyclist.
+
+> [!TIP]
+> - If you have already created the tables and want to change their columns, drop the tables first by executing the `DROP TABLE Cyclist, Team` statement and then re-executing the `CREATE TABLE` statements.
+> - While inserting data, **if a row has a foreing key, you need to first insert the row that is referenced**. E.g., you need to insert an `Department` row first, before inserting a `Employee` row referencing it with a foreign key.
