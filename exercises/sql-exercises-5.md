@@ -1,7 +1,7 @@
 # SQL Exercises 5: Grouping and subqueries
 
 > [!IMPORTANT]
-> Create a Word document named `sql_exercises_5_YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result (e.g., as a [screenshot](https://www.take-a-screenshot.org/))** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
+> Create a Word document named `sql_exercises_5_YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and a [screenshot](https://www.take-a-screenshot.org/) of the result** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
 
 ## 1.
 

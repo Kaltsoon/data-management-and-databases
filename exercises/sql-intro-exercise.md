@@ -6,7 +6,7 @@
 > [!IMPORTANT]
 > Please submit all your `.sql` files to Moodle.
 
-In this exercise, always **execute the given SQL statements one by one**. Copy and paste a statement to the query window in SQL Server Management Studio, **highlight the statement**, execute it by cliking the "Execute" button, and finally take a look at the query result. Then, move on to the next statement.
+In this exercise, always _execute the given SQL statements one by one_. Copy and paste a statement to the query window in SQL Server Management Studio, _highlight the statement_, execute it by clicking the "Execute" button, and finally take a look at the query result. Then, move on to the next statement.
 
 ## Task 1: Introduction
 
@@ -46,7 +46,7 @@ INSERT INTO Department(deptno, deptname) VALUES (20, 'Marketing')
 INSERT INTO Employee(empno, empname, deptno) VALUES (1, 'John',  10), (2, 'Susan', 20), (3, 'Mary',  10)
 ```
 
-Execute the following `SELECT` statements **one by one** to see some of the data that is saved in the database:
+Execute the following `SELECT` statements _one by one_ to see some of the data that is saved in the database:
 
 ```sql
 SELECT deptno, deptname FROM Department
@@ -64,7 +64,7 @@ SELECT deptname FROM Department ORDER BY deptname
 SELECT empname, deptname FROM Employee JOIN Department ON (Department.deptno = Employee.deptno) ORDER BY empname
 ```
 
-Execute the following `SELECT` statements one by one to see some of the metadata that the DBMS has saved in the database:
+Execute the following `SELECT` statements _one by one_ to see some of the metadata that the DBMS has saved in the database:
 
 ```sql
 SELECT * FROM INFORMATION_SCHEMA.TABLES
@@ -83,48 +83,51 @@ SELECT TABLE_NAME, CONSTRAINT_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.CONSTRAI
 > [!IMPORTANT]
 > Nothing is required to be submitted on this task.
 
-1. In the "Object Explorer" panel in SQL Server Management Studio, double-click on "databases" folder and under it, dobule-click the "BIT_SWD03" database. Under the database, right-click the "Database Diagrams" folder and click "New Database Diagram".
+1. In the "Object Explorer" panel in SQL Server Management Studio, double-click on the "Databases" folder and under it, double-click the "BIT_SWD03" database. Under the database, right-click the "Database Diagrams" folder and click "New Database Diagram".
 2. In the dialog, select the tables that you want to add to the diagram and click "Add". 
 3. Right-click on the canvas and select "Show Relationship Labels" and right-click on the canvas and select "Arrange Tables". When you save the diagram SSMS asks you to enter a name for the diagram. Save the diagram as "Employee_Department_diagram".
 
-Finally, the database diagram should look like the one below. Congratulations! You have created your first database tables and a database diagram that documents the structure. 
+Finally, the database diagram should look like the one below. 
 
 ![Diagram](./assets/intro-final-diagram.jpeg)
+
+Congratulations! You have created your first database tables and a database diagram that documents the structure. 🎉
 
 ## Task 3: SQL Queries
 
 > [!IMPORTANT]
-> Save your work on task 1 to a file named `sql_intro_3_YOURFAMILYNAME.sql`.
+> Save your work on task 3 to a file named `sql_intro_3_YOURFAMILYNAME.sql`.
 
 > [!TIP]
 > See task 1 for examples.
 
+Open a new query window, in which write the following statements:
+
 1. Write and execute an `INSERT` statement that inserts a new department into the database. The department number is 30 and department name is 'Management'.
 2. Write and execute an `INSERT` statement that inserts a new employee into the database. The employee number is 4 and employee name is 'Athena'. She works for the Management department.
-3. Write and execute a `SELECT` statement that lists names of all employees . Do not display anything else but employee name.
+3. Write and execute a `SELECT` statement that lists names of all employees. Do not display anything else but employee name.
 4. Write and execute a `SELECT` statement that displays the name of the employee whose employee number is 2.
 5. Write and execute a `SELECT` statement that lists names of those employees who work for department 10. Display employee name and department number.
 
 ## Task 4: Creating tables
 
 > [!IMPORTANT]
-> Save your work on task 1 to a file named `sql_intro_4_YOURFAMILYNAME.sql`.
+> Save your work on task 4 to a file named `sql_intro_4_YOURFAMILYNAME.sql`.
 
 > [!TIP]
 > See task 1 for examples.
 
-Suppose the following relations:
+Suppose the following two relations (primary keys are underlined):
 
 <pre>
 Cyclist (<ins>cyclistnumber</ins>, familyname, givenname, teamnumber)
 Team (<ins>teamnumber</ins>, teamname)
 </pre>
 
-> [!NOTE]
-> Primary keys are underlined.
+Open a new query window, in which write the following statements:
 
 1. Create `Cyclist` and `Team` tables. Determine column data types yourself. Create the required primary key and foreign key constraints. NB! There will be exactly one foreign key constraint.
-2. Create a new database diagram "Team_Cyclist_diagram" that shows the `Cyclist` table, `Team` table and the relationship between these two tables.
+2. Create a new database diagram "Team_Cyclist_diagram" that shows the `Cyclist` table, `Team` table and the relationship between these two tables. No need to submit this diagram.
 3. Write and execute `INSERT` statements that populate the `Cyclist` table with at least 3 rows and `Team` table at least with 2 rows. You can create the data (cyclist names etc.) yourself.
 4. Test that the primary key and foreign key constraints work as required. That is, try to insert some rows that the DBMS should not accept.
 5. Write and execute a `SELECT` statement that lists all teams in alphabetical order. Display team name only.
@@ -133,4 +136,7 @@ Team (<ins>teamnumber</ins>, teamname)
 
 > [!TIP]
 > - If you have already created the tables and want to change their columns, drop the tables first by executing the `DROP TABLE Cyclist, Team` statement and then re-executing the `CREATE TABLE` statements.
-> - While inserting data, **if a row has a foreing key, you need to first insert the row that is referenced**. E.g., you need to insert an `Department` row first, before inserting a `Employee` row referencing it with a foreign key.
+> - While inserting data, _if a row has a foreing key, you need to first insert the row that is referenced_. E.g., you need to insert an `Department` row first, before inserting a `Employee` row referencing it with a foreign key.
+
+> [!IMPORTANT]
+> Remember to save the contents of each query window into their corresponding `.sql` files.

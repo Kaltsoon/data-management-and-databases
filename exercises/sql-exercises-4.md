@@ -1,7 +1,7 @@
 # SQL Exercises 4: Set operations
 
 > [!IMPORTANT]
-> Create a Word document named `sql_exercises_4_YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result (e.g., as a [screenshot](https://www.take-a-screenshot.org/))** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
+> Create a Word document named `sql_exercises_4_YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and a [screenshot](https://www.take-a-screenshot.org/) of the result** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
 
 > [!NOTE]
 > You'll need to use the set operations in these tasks: `EXCEPT`, `INTERSECT`, or `UNION`.

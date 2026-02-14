@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > Submit this exercise as a single Word document in Moodle.
 
-## Task 1. SQL Syntax
+## Task 1: SQL Syntax
 
 Open the SQL DML Quick Reference in this week's "Materials" section in Moodle's "Course outline" tab. The first page describes the `SELECT` statement syntax in SQL.
 
@@ -99,7 +99,7 @@ First, familiarise yourself with the truth tables and evaluation order. Then, tr
 - `x OR y AND z` is the same as `x OR (y AND z)` (think `OR` as `+` and `AND` as `*`)
 - `x AND y OR z` is the same as `(x AND y) OR z`
 
-## Task 2. WHERE conditions
+## Task 2: WHERE conditions
 
 Which ids do the queries below retrieve from the `Product` table?
 
