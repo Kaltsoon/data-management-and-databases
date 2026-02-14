@@ -3,9 +3,6 @@
 > [!IMPORTANT]
 > Create a Word document named `sql-exercises-5-YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and the result (e.g., as a [screenshot](https://www.take-a-screenshot.org/))** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
 
-> [!TIP]
-> To understand the database structure, use the **Database Diagram** in this week's "Materials" section on the course outline page. It shows the database tables, columns, primary keys and foreign keys.
-
 ## 1.
 
 Find out the total number of course participants per each course. Display "Number of participants" and course code. Sort the result by (number of participants in descending order, course code in ascending order).
