@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > Write your answers to a Word document named `transaction_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. You can also submit documents in the PDF format. If you have worked with a pair, mention the the name of your peer in the document.
 
-## Objectives
+The objectives of this exercise are to:
 
 - To have hands-on experiences on database transactions.
 - To observe the effects of `COMMIT` and `ROLLBACK`.
@@ -266,7 +266,7 @@ Questions to answer:
 
 > _"A deadlock occurs when two or more tasks permanently block each other by each task having a lock on a resource that the other tasks are trying to lock."_ - [SQL Server documentation](https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-deadlocks-guide?view=sql-server-ver17)
 
-Let's have a look at situation where a _deadlock_ occurs and how the DMBS solves it.
+Let's have a look at situation where a _deadlock_ occurs and how the DBMS solves it.
 
 Start by doing the following:
 
@@ -338,7 +338,7 @@ Questions to answer:
 
 > _"The Repeatable Read isolation level only sees data committed before the transaction began; it never sees either uncommitted data or changes committed by concurrent transactions during the transaction's execution."_ - [PostgreSQL documentation](https://www.postgresql.org/docs/current/transaction-iso.html)
 
-The `REPEATABLE READ` holds the read-lock on a row until the transaction completes. This means that no other transaction can update the row until the transaction completes. Meaning, if we read a row once inside a transaction, _you can repeat that same read and get the same result_. Let's have a look how this works in practice.
+Transaction with the `REPEATABLE READ` isolation level holds the read-lock on a row until the transaction completes. This means that no other transaction can update the row until the transaction completes. Meaning, if we read a row once inside a transaction, _we can repeat that same read and get the same result_. Let's have a look how this works in practice.
 
 Start by doing the following:
 

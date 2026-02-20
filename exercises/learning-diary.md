@@ -37,7 +37,7 @@ Then, answer the following questions:
 3. Where do you find the weekly learning materials and exercises?
 4. Explain in your own words what do the "Study Instructions" section on the Moodle's "General" page say about using AI in this course?
 
-## Part 1
+## Part 2
 
 > [!IMPORTANT]
 > The deadline for part 2 is at the start of the second period of the semester.
@@ -54,7 +54,7 @@ Add content to your learning diary based on the following questions:
 3. What kinds of studying techniques have I been using on this course so far?
 4. How active were my learning efforts on the first part of the course? Is there room for any improvement? Would I do something differently if I could start the course again?
 
-## Part3
+## Part 3
 
 > [!IMPORTANT]
 > The deadline for part 3 is before the last week of the course starts.

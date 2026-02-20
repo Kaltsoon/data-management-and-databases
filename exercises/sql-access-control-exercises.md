@@ -1,11 +1,9 @@
-## SQL access control exercises
+# SQL access control exercises
 
 > [!IMPORTANT]
-> Please submit this exercise as a `access-control-exercise-YOURFAMILYNAME.sql` file to Moodle. If pair work, then both students submit the file with two family names in the file name.
+> Please submit this exercise as a `access_control_exercises_YOURFAMILYNAME.sql` file to Moodle. If pair work, then both students submit the file with two family names in the file name.
 
-## Objectives
-
-To familiarize yourself with the basics of SQL access control with database users, database roles and privileges.
+The objective of this exercise is to familiarize yourself with the basics of SQL access control with database users, database roles and privileges. Use this week's lesson slides as materials.
 
 ## Instructions
 
@@ -17,7 +15,7 @@ It is highly recommended that you complete these tasks with another student as p
 _Alternatively_, you can do complete the tasks alone, _if you have installed SQL Server on your own computer_. Then you'll do the following:
 
 1. Connect to the SQL Server on your own computer (like you have done in the exercise before) in SQL Server Management Studio.
-2. Create a new SQL Server login name and new username in your database. Then, grant the `CONNECT` privilege to the new username. You can do these steps by executing the following statements:
+2. Create a new SQL Server login name and username in your database. Then, grant the `CONNECT` privilege to the new username. You can do these steps by executing the following statements:
 
    ```sql
    -- feel free to change login name or password
@@ -34,7 +32,7 @@ _Alternatively_, you can do complete the tasks alone, _if you have installed SQL
 ## Task 1
 
 > [!TIP]
-> This week's lesson slides have useful examples for SQL's access control statements.
+> This week's lesson slides have useful examples for SQL access control.
 
 1. Create a new table as below (replace '...' with a table name of your own choice).
 
@@ -60,7 +58,7 @@ _Alternatively_, you can do complete the tasks alone, _if you have installed SQL
 > [!IMPORTANT]
 > If you are working alone in your own SQL Server environment, then you can use the role name `friends`.
 
-1. Create a new database role called `friends_of_XX`. IMPORTANT: replace `XX` with last two digits from your Haaga-Helia's SQL Server username. For example, if your SQL Server username is `DM_USER_99`,the role name is `friends_of_99`.
+1. Create a new database role called `friends_of_XX`. IMPORTANT: replace `XX` with last two digits from your Haaga-Helia's SQL Server username. For example, if your SQL Server username is `DM_USER_99`, the role name is `friends_of_99`.
 2. Give the `SELECT` and `INSERT` privileges on your table to the role `friends_of_XX`. The table is the table that you created in the previous task.
 3. Add the other student as a member to the role `friends_of_XX`.
 4. Ask the other student to try to select all rows from your table.
