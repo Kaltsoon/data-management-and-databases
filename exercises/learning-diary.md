@@ -5,13 +5,13 @@ Keeping a learning diary will guide you to:
 1. _Reflect_ and _self-evaluate_ your own _studying and learning processes_.
 2. Help you in _developing your studying skills_.
 
-In addition, your teachers will get useful information for running the current course implementation and for the further development of the course.
+In addition, your teacher will get useful information for running the current course implementation and for the further development of the course.
 
 _The completion of a proper learning diary is mandatory_ (no diary, no passing grade) and it is included in your activity points in course assessment. Deadlines must be observed carefully. Learning diaries are 100% confidential. Please feel free to ask your teacher for more advice.
 
 ## How to submit your diary
 
-Please submit each part of your diary (parts 1 and 2) as a separate Word or PDF document to Moodle. The submission is on the Moodle's "Learning diary" page.
+Please submit each part of your diary as a separate Word or PDF document to Moodle. The submission is on the Moodle's "Learning diary" page.
 
 > [!NOTE]
 > You should follow the [Haaga-Helia Reporting Guidelines](https://www.haaga-helia.fi/en/guidelines-writing-reports) and use the assignments format in your learning diary.
