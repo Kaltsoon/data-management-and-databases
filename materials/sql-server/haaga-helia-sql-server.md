@@ -9,7 +9,7 @@ Using Haaga-Helia's SQL Server with SQL Server Management Studio requires using 
 
 Once you have established the remote connection using the Citrix Workspace App, open the SQL Server Management Studio application. You can find it using the Windows search bar. Once the application is open, a "Connect" dialog should pop up. If not, click "Connect" in the "Object Explorer" panel on the left and choose "Database Engine".
 
-In Moodle's "General" tab, you'll find a "SQL Server usernames" link which takes you to a page containing the properties you need to use. Once you have typed in the correct connection properties, click the "Connect" button.
+On Moodle's "General" page, you'll find a "SQL Server usernames" link which takes you to a page containing the properties you need to use. Once you have typed in the correct connection properties, click the "Connect" button.
 
 ![SQL Server Management Studio "Connect" dialog](./assets/ssms-connect-haaga-helia.png)
 

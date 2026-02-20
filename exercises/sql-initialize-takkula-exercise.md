@@ -4,7 +4,7 @@ The Takkula tables construct a database of university-related data, with tables 
 
 ## Task 1: Download the Takkula database scripts
 
-In this week's "Exercises" section on the course outline page, click on the "Takkula scripts (create, insert, drop)" link. The link takes you to the following script files:
+In this week's "Exercises" section on the Moodle's "Course outline" page, click on the "Takkula scripts (create, insert, drop)" link. The link takes you to the following script files:
 
 | File                      | Description                                                                                                                                                               |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

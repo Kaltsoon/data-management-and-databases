@@ -7,7 +7,7 @@
 > Create a Word document named `sql_exercises_2_YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and a [screenshot](https://www.take-a-screenshot.org/) of the result** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
 
 > [!TIP]
-> To understand the database structure, use the **Database Diagram** in this week's "Materials" section on the course outline page. It shows the database tables, columns, primary keys and foreign keys.
+> To understand the database structure, use the **Database Diagram** in this week's "Materials" section on the Moodle's "Course outline" page. It shows the database tables, columns, primary keys and foreign keys.
 
 Write the task numbers to your query window as follows:
 

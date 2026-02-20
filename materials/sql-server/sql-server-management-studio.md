@@ -52,7 +52,7 @@ Being able to explore the database's structure is extremely useful while constru
 > ![SQL Server Management Studio refresh tables](./assets/ssms-refresh-tables.png)
 
 > [!TIP]
-> A database diagram is a way to visualize database tables, their columns, and relationships (between foreign and primary keys). There's a "Database Diagram" link in Moodle's "Course outline" tab in the "Materials" column of each SQL-related week. This diagram visualizes the structure of the "Takkula" database used during this course.
+> A database diagram is a way to visualize database tables, their columns, and relationships (between foreign and primary keys). There's a "Database Diagram" link in the "Materials" section on the Moodle's "Course outline" page of each SQL-related week. This diagram visualizes the structure of the "Takkula" database used during this course.
 
 ## IntelliSense: smart code completion and syntax checking
 

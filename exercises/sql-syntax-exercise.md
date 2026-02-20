@@ -5,7 +5,7 @@
 
 ## Task 1: SQL Syntax
 
-Open the SQL DML Quick Reference in this week's "Materials" section in Moodle's "Course outline" tab. The first page describes the `SELECT` statement syntax in SQL.
+Open the "SQL DML Quick Reference" in this week's "Materials" section on the Moodle's "Course outline" page. The first page describes the `SELECT` statement syntax in SQL.
 
 Are the SQL statements below syntactically correct according the SELECT statement syntax? **Please give arguments!**
 
