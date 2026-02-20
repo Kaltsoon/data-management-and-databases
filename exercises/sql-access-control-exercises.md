@@ -34,14 +34,16 @@ _Alternatively_, you can do complete the tasks alone, _if you have installed SQL
 > [!TIP]
 > This week's lesson slides have useful examples for SQL access control.
 
-1. Create a new table as below (replace '...' with a table name of your own choice).
+> [!IMPORTANT]
+> In _Haaga Helia's SQL Server_ (not on SQL Server your own computer), you should refer to the table as `schemaName.TableName`. The `schemaName` is the username of the user who created the table, for example `DM_USER_99.TableName`. So, in your queries include the other student's username as the schema name, for example `SELECT * FROM DM_USER_99.Student`.
+
+1. Create a new table as below (replace "XX" with a table name of your own choice).
 
     ```sql
-    CREATE TABLE ...
-    (
+    CREATE TABLE XX (
       id INTEGER NOT NULL,
       data VARCHAR(50) NOT NULL,
-      CONSTRAINT pk PRIMARY KEY(id)
+      CONSTRAINT PK_XX PRIMARY KEY(id)
     )
     ```
 

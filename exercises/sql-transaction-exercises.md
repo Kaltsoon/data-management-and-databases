@@ -23,8 +23,7 @@ Copy and paste the following to the query window and execute all the statements:
 
 ```sql
 -- Create the Account table
-CREATE TABLE Account
-(
+CREATE TABLE Account (
  accountNumber INT NOT NULL,
  balance INT NOT NULL DEFAULT 0,
  CONSTRAINT PK_Account PRIMARY KEY (accountNumber)
@@ -51,7 +50,7 @@ Finally, you should see details of two accounts as follows:
 Let's have a look how to begin a transaction and complete it by either committing the changes or reverting them.
 
 > [!TIP]
-> If you accidentally miss any statements in any of the tasks, you have to redo the whole task. Before you redo the task, you have to make sure that no transaction is still running. To be on the safe, execute the following statements one at a time before you start over:
+> If you accidentally miss any statements in any of the tasks, you have to redo the whole task. Before you redo the task, you have to make sure that no transaction is still running. To be safe, execute the following statements one at a time before you start over:
 >
 > ```sql
 > ROLLBACK;
@@ -195,7 +194,7 @@ You should proceed in the following way in this kind of situation:
 1. Let's say that user B executes an SQL statement in their own transaction and then finds out that their transaction is blocked.
 2. In this situation, user A should continue by executing all the SQL statements in their own transaction's next step.
 3. If user B's transaction is still blocked, then user A should continue by executing all the SQL statements in their own transaction's next step.
-4. Finally, ( fter user A's transaction is terminated) user B should continue executing SQL statements in their own transaction.
+4. Finally, (after user A's transaction is terminated) user B should continue executing SQL statements in their own transaction.
 
 > [!NOTE]
 > Sometimes the DBMS aborts either transaction. That is, then the aborted transaction cannot be continued any more.
@@ -218,13 +217,13 @@ Start by doing the following:
 Then, execute the following statements like you did in the previous task:
 
 ```sql
--- 1) User A 🟢:
+-- 1. User A 🟢:
 BEGIN TRANSACTION;
 SELECT balance FROM Account WHERE accountNumber = 1;
 ```
 
 ```sql
--- 2) User B 🔵:
+-- 2. User B 🔵:
 BEGIN TRANSACTION;
 SELECT balance FROM Account WHERE accountNumber = 1;
 ```
