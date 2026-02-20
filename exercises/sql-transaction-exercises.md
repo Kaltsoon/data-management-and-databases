@@ -14,7 +14,7 @@ The objectives of this exercise are to:
 
 ## Instructions
 
-- You can copy andpaste the SQL statements from this material to a query window in SQL Server Management Studio.
+- You can copy and paste the SQL statements from this material to a query window in SQL Server Management Studio.
 - _You have to be very careful not to miss any details when you execute the given SQL statements_. If you accidentally miss some detail, start the task again.
 
 ## Task 1: Creating a table for testing
