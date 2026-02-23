@@ -694,7 +694,7 @@ Questions to answer:
 
 ## Task 13: Important Transaction Concepts
 
-Study and describe the following concepts in your own words.
+Study and explain the following concepts in your own words.
 
 1. Explain shortly why a DBMS should provide proper transaction management services.
 2. What are the ACID properties? Provide two examples illustrating problems that could occur if one or more of these properties were not enforced.
