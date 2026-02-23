@@ -24,9 +24,12 @@ You can copy and paste the query window contents to your submission Word documen
 
 List all the male students (student number, surname, first name, gender). Sort the result by student number in ascending order.
 
+> [!IMPORTANT]
+> Compare the result tables of your own queries to the expected result tables to see if your queries are correct.
+
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | student_number | surname | first_name | gender |
 |----------------|---------|------------|--------|
