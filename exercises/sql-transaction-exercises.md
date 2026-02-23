@@ -710,4 +710,4 @@ You are a Database Developer implementing a feature to your company's online sto
 4. Process the customer's payment.
 5. Generate an invoice and confirmation number.
 
-Your fellow Database Developer is convinced that the feature doesn't require a database transaction. Convince your colleague otherwise by providing possible problems that can accour in this case without proper use of database transactions.
+Your fellow Database Developer is convinced that the feature doesn't require a database transaction. Convince your colleague otherwise by providing possible problems that can occur in this case without the proper use of database transactions.
