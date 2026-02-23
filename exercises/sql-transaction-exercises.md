@@ -691,3 +691,23 @@ Questions to answer:
 
 1. What is the total balance now?
 2. Are you happy with the results?
+
+## Task 13: Important Transaction Concepts
+
+Study and describe the following concepts in your own words.
+
+1. Explain shortly why a DBMS should provide proper transaction management services.
+2. What are the _ACID properties_? Provide two examples illustrating problems that could occur if one or more of these properties were not enforced.
+3. How do the transaction isolation levels `READ COMMITTED` and `REPEATABLE READ` differ from each other? Refer to your experiences on the previous tasks.
+
+## Task 14
+
+You are a Database Developer implementing a feature to your company's online store, which allows customers to place order on products. Placing an order should perform the following steps:
+
+1. Check that the product is in stock.
+2. Reduce the inventory count by 1.
+3. Create a new order record.
+4. Process the customer's payment.
+5. Generate an invoice and confirmation number.
+
+Your fellow Database Developer is convinced that the feature doesn't require a database transaction. Convince your colleague otherwise by providing possible problems that can accour in this case without proper use of database transactions.
