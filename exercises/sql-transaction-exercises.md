@@ -1,7 +1,7 @@
 # Database transaction exercises
 
 > [!IMPORTANT]
-> Write your answers to a Word document named `transaction_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. You can also submit documents in the PDF format. If you have worked with a pair, mention the the name of your peer in the document.
+> Write your answers to a Word document named `transaction_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle.
 
 The objectives of this exercise are to:
 
