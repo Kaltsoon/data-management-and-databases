@@ -697,12 +697,12 @@ Questions to answer:
 Study and describe the following concepts in your own words.
 
 1. Explain shortly why a DBMS should provide proper transaction management services.
-2. What are the _ACID properties_? Provide two examples illustrating problems that could occur if one or more of these properties were not enforced.
+2. What are the ACID properties? Provide two examples illustrating problems that could occur if one or more of these properties were not enforced.
 3. How do the transaction isolation levels `READ COMMITTED` and `REPEATABLE READ` differ from each other? Refer to your experiences on the previous tasks.
 
 ## Task 14
 
-You are a Database Developer implementing a feature to your company's online store, which allows customers to place order on products. Placing an order should perform the following steps:
+You are a Database Developer implementing a feature to an online store, which allows a customer to place an order on a product. Placing an order requires the following steps:
 
 1. Check that the product is in stock.
 2. Reduce the inventory count by 1.
