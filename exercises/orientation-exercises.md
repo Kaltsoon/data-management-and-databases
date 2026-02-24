@@ -122,7 +122,7 @@ The candidate file is as before. What is the candidate name the program displays
 
 #### Part D
 
-Another program has updated the original election file The new content of the election file is as below. The candidate file is as before.
+Another program has updated the original election file. The new content of the election file is as below. The candidate file is as before.
 
 | 27  | 30  | 28  | 29  | 28  | 30  | 27  | 28  | 29  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
