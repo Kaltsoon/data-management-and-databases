@@ -153,7 +153,7 @@ The `Degree Program` table:
 | Business Information Technology | 🔑 BIT2020   | 2020-08-01 |
 | International Business          | 🔑 GLOBBA19  | 2019-01-01 |
 
-In the following `Course` table, the `program code` column establishes a "link" to the the `Degree Program` table, specifying the degree of a course. For example, by following such link, we now that "Database Developer" course's program name is "Business Information Technolog". This means that `program code` is a _foreign key_ in the `Course` table, referencing the `Degree Program` table's primary key. The primary key of the `Course` table is `course code`.
+In the following `Course` table, the `program code` column establishes a "link" to the the `Degree Program` table, specifying the degree of a course. For example, by following such link, we know that "Database Developer" course's program name is "Business Information Technology". This means that `program code` is a _foreign key_ in the `Course` table, referencing the `Degree Program` table's primary key. The primary key of the `Course` table is `course code`.
 
 The `Course` table:
 
