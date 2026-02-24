@@ -78,7 +78,7 @@ What is the grade point average (= average grade) for each student? Display surn
 
 ## 4.
 
-Time dimension considerations
+Time dimension considerations:
 
 1. List all the current academic advisors (surname, first name, teacher number, start date, end date). Sort the result by (surname, first name, teacher number) in ascending order.
 2. List all the current and past academic advisors (surname, first name, teacher number, start date, end date). Sort the result by (surname, first name, teacher number) in ascending order.
@@ -87,7 +87,7 @@ Time dimension considerations
 
 <summary>Expected result table</summary>
 
-**Part a):**
+**Part 1:**
 
 | surname | first_name | teacher_number | start_date | end_date |
 |---------|------------|----------------|------------|----------|
@@ -98,7 +98,7 @@ Time dimension considerations
 
 (4 row(s) affected)
 
-**Part b):**
+**Part 2:**
 
 | surname | first_name | teacher_number | start_date | end_date |
 |---------|------------|----------------|------------|----------|
