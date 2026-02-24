@@ -16,7 +16,7 @@ You can freely choose how to draw the ER diagrams for the tasks. Here are a few 
 
 - Do not add any additional features or details to your design.
 - Make sure that you do not include any redundancy in the model, e.g., redundant attributes or relationship types.
-- Determine multiplicity constraints (e.g., `1..*`).
+- Determine multiplicity constraints (e.g., `1..*`) for the relationship types.
 - If the _minimum number_ of occurrences is not clear from the text or the context (and the teacher is not available for any clarification), you can specify zero as the minimum.
 - If the _maximum number_ of occurrences is not clear from the text or the context (and the teacher is not available for any clarification), you can use your own judgement to select a sensible maximum.
 
