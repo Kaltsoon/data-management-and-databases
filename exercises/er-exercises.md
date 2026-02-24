@@ -1,7 +1,7 @@
 # ER Exercises
 
 > [!IMPORTANT]
-> Write your answers to a Word document named `er_exercises_1_YOURFAMILYNAME.docx` and submit the document to Moodle. Include ER diagrams as images in the document.
+> Write your answers to a Word document named `er_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. Include ER diagrams as images in the document.
 
 The objective of this exercise is to familiarize yourself with the basics of conceptual modeling, have some hands-on practicing in data modeling, and learn to create simple ER diagrams based on a closed small set of requirements. Refer to this week's lesson slides and the ER refresher task as materials.
 
