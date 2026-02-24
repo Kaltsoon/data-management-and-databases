@@ -1,4 +1,4 @@
-# SQL Syntax & WHERE Conditions Exercise
+# SQL Syntax & WHERE Conditions Exercises
 
 > [!IMPORTANT]
 > Submit this exercise as a single Word document in Moodle.

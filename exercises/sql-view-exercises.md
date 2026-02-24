@@ -1,4 +1,4 @@
-# SQL view exercises
+# SQL View Exercises
 
 > [!IMPORTANT]
 > Please submit this exercise as a `view_exercises_YOURFAMILYNAME.sql` file to Moodle.

@@ -1,4 +1,4 @@
-# Database transaction exercises
+# Database Transaction Exercises
 
 > [!IMPORTANT]
 > Write your answers to a Word document named `transaction_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle.
@@ -333,7 +333,7 @@ Questions to answer:
 2. Is the database in a consistent state now?
 3. Explain what has happened.
 
-## Task 8. Explicit transactions in the transaction isolation level REPEATABLE READ
+## Task 8: Explicit transactions in the transaction isolation level REPEATABLE READ
 
 > _"The Repeatable Read isolation level only sees data committed before the transaction began; it never sees either uncommitted data or changes committed by concurrent transactions during the transaction's execution."_ - [PostgreSQL documentation](https://www.postgresql.org/docs/current/transaction-iso.html)
 

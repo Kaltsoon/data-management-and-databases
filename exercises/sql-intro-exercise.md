@@ -1,4 +1,4 @@
-# SQL Intro Assignment
+# SQL Introduction Exercises
 
 > [!IMPORTANT]
 > Before starting with the tasks, read through the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md) guide.

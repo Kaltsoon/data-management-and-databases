@@ -1,4 +1,4 @@
-# Orientation exercises
+# Orientation Exercises
 
 > [!IMPORTANT]
 > Write your answers to a Word document named `orientation_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. Submissions can be found on Moodle's "Coursework submissions" page.
@@ -102,15 +102,15 @@ The whole content of the _election file_ is as follows:
 
 ### Questions
 
-#### 1.
+#### Part A
 
 Does the candidate file contain _data_ or _metadata_?
 
-#### 2.
+#### Part B
 
 What is the name of the candidate who won the election?
 
-#### 3.
+#### Part C
 
 A Software Developer wrote a program that should display the name of the candidate who won the election. Unfortunately, the Software Developer made a mistake and the program thinks that the following data per each candidate is saved in the election file:
 
@@ -120,7 +120,7 @@ A Software Developer wrote a program that should display the name of the candida
 
 The candidate file is as before. What is the candidate name the program displays now?
 
-#### 4.
+#### Part D
 
 Another program has updated the original election file The new content of the election file is as below. The candidate file is as before.
 
@@ -134,7 +134,7 @@ Another program has updated the original election file The new content of the el
 
 In a table, the _primary key_ is a single column or a group of columns that uniquely identifies each row in the table.
 
-- The database designer defines the primary key constraint in each table. The DBMS takes care of not allowing duplicate or missing primary key values (entity integrity)
+- The database designer defines the primary key constraint in each table. The DBMS takes care of not allowing duplicate or missing primary key values (entity integrity).
 - Only one primary key in a table is allowed. It can consist of more than one column.
 - A primary key should not include columns beyond those required to ensure uniqueness.
 
