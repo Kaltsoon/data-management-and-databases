@@ -14,11 +14,11 @@ You can freely choose how to draw the ER diagrams for the tasks. Here are a few 
 
 ## General instructions
 
-1. Do not add any additional features or details to your design.
-2. Make sure that you do not include any redundancy in the model, e.g., redundant attributes or relationship types.
-3. Determine multiplicity constraints (e.g., `1..*`).
-4. If the _minimum number_ of occurrences is not clear from the text or the context (and the teacher is not available for any clarification), you can specify zero as the minimum.
-5. If the _maximum number_ of occurrences is not clear from the text or the context (and the teacher is not available for any clarification), you can use your own judgement to select a sensible maximum.
+- Do not add any additional features or details to your design.
+- Make sure that you do not include any redundancy in the model, e.g., redundant attributes or relationship types.
+- Determine multiplicity constraints (e.g., `1..*`).
+- If the _minimum number_ of occurrences is not clear from the text or the context (and the teacher is not available for any clarification), you can specify zero as the minimum.
+- If the _maximum number_ of occurrences is not clear from the text or the context (and the teacher is not available for any clarification), you can use your own judgement to select a sensible maximum.
 
 ## Task 1: Warm-up by interpreting an ER diagram
 
