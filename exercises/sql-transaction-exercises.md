@@ -692,7 +692,7 @@ Questions to answer:
 1. What is the total balance now?
 2. Are you happy with the results?
 
-## Task 13: Important Transaction Concepts
+## Task 13: Important transaction concepts
 
 Study and explain the following concepts in your own words.
 

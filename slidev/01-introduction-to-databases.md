@@ -111,7 +111,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 - **Data management** is the development, maintenance and coordination of **database systems**
 - A database system consists of five major components:
   - **Hardware** consists of the physical devices (for example, servers and hard drives) and infrastructure that support the database system
-  - **Software** consists of the set of programs used to manage and interact with the database
+  - **Software** consists of the set of applications used to manage and interact with the database
   - **Data** (the database) constitutes of the actual stored information that the database system manages
   - **Procedures** consists of the documented instructions and rules for using and managing the database system
   - **Users** who are the people or applications who interact with the database system
@@ -177,17 +177,17 @@ flowchart TD
   - _lease.csv_ (leasenumber, propertynumber, clientnumber, deposit, paid, rentstart, rentfinish)
   - ⚠️ _property-for-rent.csv_ (propertynumber, street, city, postcode, rent)
   - ⚠️ _client.csv_ (clientnumber, firstname, lastname, address, phone)
-- Slightly different client and property information is stored in **both sales and contracts files**, which can lead into problems with **inconsistent information** in different files
+- The same client and property information is stored in **both sales and contracts files**. Such **data reduncancy** will lead to inconsistent information, e.g. the same client having a different phone number in different files
 
 ---
 
 ## Problems of file-based approach
 
-- **Data dependence**: code is being tightly coupled with the file structure and if it is modified, all programs that use the file have to be changed accordingly
-- **Duplication of data**: the same information is stored in multiple files (e.g. the client files in both sales and contacts teams), which will lead to inconsistency
-- **Difficulty in accessing data**: programs are written to satisfy particular functions and any new requirement needs a new program or changes in an existing program
+- **Data dependence**: code is being tightly coupled with the file structure and if it is modified, all applications that use the file have to be changed accordingly
+- **Data redundancy**: the same information is stored in multiple files (e.g. the client files in both sales and contacts teams), which will lead to inconsistency
+- **Difficulty in accessing data**: applications are written to satisfy particular functions and any new requirement needs a new application or changes in an existing one
 - **No provision for security and shared access to the data**: there is no service for providing user access to some, but not all, data
-- **Lack of coordination and standardisation**: there is no centralised control of enterprise data, which makes it difficult to enforce standards and share data structures between programs
+- **Lack of coordination and standardisation**: there is no centralised control of enterprise data, which makes it difficult to enforce standards and share data structures between applications
 
 ---
 
@@ -234,7 +234,7 @@ flowchart TD
 
 <div class="flex-1">
 
-- Data for both sales and contracts team is in the **same database**
+- Data for both sales and contracts team is in the **same database**, without data redundancies
 - Each team uses a separate application that communicates with the **same DBMS** using a data manipulation language
 - The DBMS retrieves and manipulates data in the database on behalf of the application
 - The key difference is that **the applications don't access the data directly**, but trough the DBMS
@@ -287,20 +287,20 @@ classDiagram
 
 ## Advantages of database approach
 
-- **Program-data independence**: improved data accessibility, maintainability of application programs and reusability of existing data
+- **Data independence**: applications don't need to know about the physical level storage structures, which improves data accessibility, maintainability of the applications and reusability of existing data
 - **Effective access to data**: multiple users can access the data
 concurrently using a standard database language with both programmatic and interactive interfaces
 - **Data integrity**: integrity can be maintained by using user-defined integrity constraints
 - **Data security**: security restrictions can be applied on detailed level
 - **Coordination and standardisation**: centralised data administration eliminates redundancy and enforces standards
-- **Increased application development productivity**: standard database language simplifies programming and provides portability
+- **Increased application development productivity**: standard database language simplifies the development of applications and provides portability
 
 ---
 
 ## Functions of a DBMS
 
 - The most fundamental function of DBMS is **data storage and data retrieval and update operations**
-- This function should be provided in such a way that the physical level storage structures are completely hidden from the user, which enables program-data independence
+- This function should be provided in such a way that the physical level storage structures are completely hidden from the user, which enables data independence
 - Other important functions of a DBMS are:
   - Integrity services
   - Transaction support
@@ -328,7 +328,7 @@ concurrently using a standard database language with both programmatic and inter
 
 - **Relational database management systems** (RDBMS) are among the most popular database management systems
 - The word _"relational"_ refers to the structure of the data in such DBMS
-- **Structured Query Language** (SQL) is the formal and de facto database language standard for RDBMSs
+- **Structured Query Language** (SQL) is the formal and most widely used database language standard for RDBMSs
 - SQL offers both **data definition language** (DDL) and **data manipulation language** (DML) features
 - There are multiple RDBMS products, such as SQL Server, MySQL and PostgreSQL
 - During this course we will be using the **SQL Server** RDBMS
@@ -346,6 +346,6 @@ WHERE maxrent < 1000
 - **Database** is a shared collection of logically related persistent data, which is designed to meet specific information needs
 - **Data management** is the development, maintenance and coordination of **database systems**
 - **Database management system** (DBMS) is a software that allows users to insert, update, delete, and retrieve data from the database
-- **Program-data independence**, **effective access to data** and **data integrity** are some of the key benefits of a DBMS approach in data management
+- **Data independence**, **effective access to data** and **data integrity** are some of the key benefits of a DBMS approach in data management
 - The most fundamental function of DBMS is **data storage and data retrieval and update operations**
 - **Relational database management system** (RDBMS) are among the most popular database management systems
