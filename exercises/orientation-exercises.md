@@ -77,7 +77,7 @@ Answer the following questions based on the database's data:
 > [!NOTE]
 > The following representation of a file here is a simplification; logically, a file consists of a group of sequential slots. All the slots are of the same size and they are not typed. That is, they can contain any type of data; a single number or a single character.
 
-Election are being held and the Database Developer decided to store the information on canditates and their votes in two seperate files with specific formats.
+An election is being held and the Database Developer decided to store the information on canditates and their votes in two seperate files with specific formats.
 
 The following data per each candidate is saved in the _candidate file_:
 
