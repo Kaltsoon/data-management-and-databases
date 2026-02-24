@@ -15,9 +15,7 @@ You can freely choose how to draw the ER diagrams for the tasks. Here are a few 
 ## General instructions
 
 1. Do not add any additional features or details to your design.
-2. Make sure that you do NOT include any redundancy in the model.
-3. No redundant attributes!
-4. No redundant relationship types!
+2. Make sure that you do not include any redundancy in the model, e.g., redundant attributes or relationship types.
 3. Determine multiplicity constraints (e.g., `1..*`).
 
 > [!NOTE]
