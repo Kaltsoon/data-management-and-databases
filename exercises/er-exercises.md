@@ -21,10 +21,7 @@ You can freely choose how to draw the ER diagrams for the tasks. Here are a few 
 3. Determine multiplicity constraints (e.g., `1..*`).
 
 > [!NOTE]
-> If the _minimum number_ of occurrences is not clear from the text (and the customer is not yet available for any clarification), you normally specify zero as the minimum in the first version of the diagram (and later find out the exact business rule). If the _maximum number_ of occurrences is not clear from the text (and the customer is not yet available for any clarification), you should use your common sense for the first version of the diagram (and later find out the exact business rule).
-
-> [!NOTE]
-> If something is not clear enough from the text, then document this by writing a question below your diagram. For example, if the minimum number of occurrences is not clear from the text, you use zero as the minimum and write a question below the diagram.
+> If the _minimum number_ of occurrences is not clear from the text or the context (and the teacher is not available for any clarification), you can specify zero as the minimum. If the _maximum number_ of occurrences is not clear from the text or the context (and the teacher is not available for any clarification), you can use your own judgement to select a sensible maximum.
 
 > [!TIP]
 > - Common nouns (e.g., "Customer", "Guide", or "Tour") in the text are potential entity types
