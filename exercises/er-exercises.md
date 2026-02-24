@@ -1,13 +1,13 @@
 # ER Exercises
 
 > [!IMPORTANT]
-> Write your answers to a Word document named `er_exercises_1_YOURFAMILYNAME.docx` and submit the document to Moodle. Include ER diagrams as images to the document.
+> Write your answers to a Word document named `er_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. Include ER diagrams as images in the document.
 
 The objective of this exercise is to familiarize yourself with the basics of conceptual modeling, have some hands-on practicing in data modeling, and learn to create simple ER diagrams based on a closed small set of requirements. Refer to this week's lesson slides and the ER refresher task as materials.
 
 ## Drawing ER diagrams
 
-You can freely choose how to draw the ER diagrams for the tasks. Here's a few suggestions:
+You can freely choose how to draw the ER diagrams for the tasks. Here are a few suggestions:
 
 - The fastest way to do simple drawings is by pencil and paper (you probably need an eraser, too). Then you can take a picture of your drawing and insert it into the Word document.
 - Using the [Draw.io](https://app.diagrams.net/#Uhttps%3A%2F%2Fraw.githubusercontent.com%2FKaltsoon%2Fdata-management-and-databases%2Frefs%2Fheads%2Fmain%2Fmisc%2Fer-diagram-template.drawio#%7B%22pageId%22%3A%22QuxI1ohhswkWBOuuOeb1%22%7D) online tool. You can draw all the ER diagrams in a single diagram file and take a screenshot of each diagram for the submission.
@@ -18,7 +18,7 @@ You can freely choose how to draw the ER diagrams for the tasks. Here's a few su
 2. Make sure that you do NOT include any redundancy in the model.
 3. No redundant attributes!
 4. No redundant relationship types!
-3. Determine multiplicity constraints (e.g. `1..*`).
+3. Determine multiplicity constraints (e.g., `1..*`).
 
 > [!NOTE]
 > If the _minimum number_ of occurrences is not clear from the text (and the customer is not yet available for any clarification), you normally specify zero as the minimum in the first version of the diagram (and later find out the exact business rule). If the _maximum number_ of occurrences is not clear from the text (and the customer is not yet available for any clarification), you should use your common sense for the first version of the diagram (and later find out the exact business rule).
@@ -27,14 +27,14 @@ You can freely choose how to draw the ER diagrams for the tasks. Here's a few su
 > If something is not clear enough from the text, then document this by writing a question below your diagram. For example, if the minimum number of occurrences is not clear from the text, you use zero as the minimum and write a question below the diagram.
 
 > [!TIP]
-> - Common nouns (e.g. "Customer", "Guide", or "Tour") in the text are potential entity types
+> - Common nouns (e.g., "Customer", "Guide", or "Tour") in the text are potential entity types
 > - Verbs in the text are potential relationship types
 > - There can be any number of relationship types between the same two entity types.
 > - Each entity belongs to exactly one entity set (entity type).
 
 ## Task 1: Warm-up by interpreting an ER diagram
 
-Suppose we are organising one-day boat cruises. We have one boat and there are plenty of parttime sailors available. The conceptual model is visualised as the ER diagram below.
+Suppose we are organising one-day boat cruises. We have one boat, and there are plenty of part-time sailors available. The conceptual model is visualised as the ER diagram below.
 
 ![Image](./assets/er-1-task-1.png)
 
@@ -50,8 +50,8 @@ Are the statements below true or false? _Give arguments!_
 2. The minimum size of a crew is one.
 3. "John Smith" (snn: "123") cannot be a captain in two different crews.
 4. There can be a crew of 6 sailors that consists of the captain and 5 crew members.
-5. There can be a sailor who has not joined to any crew yet.
-6. "John Smith" (snn: "123") can be a member in two different crews that sail on 20.3.2016.
+5. There can be a sailor who has not joined any crew yet.
+6. "John Smith" (snn: "123") can be a member of two different crews that sail on 20.3.2016.
 
 ## Task 2: More warm-up with multiplicity constraints
 
@@ -63,11 +63,11 @@ Determine multiplicity constraints for the relationship types below. Mark the co
 
 ## Task 3: Clubs
 
-> _"A company organizes a lot of activities for its employees. There are many clubs (tennis club, cycling club, theatre club etc.) in the company. Each employee may join to any club, but they are not allowed to belong to more than one club."_
+> _"A company organizes a lot of activities for its employees. There are many clubs (tennis club, cycling club, theatre club, etc.) in the company. Each employee may join any club, but they are not allowed to belong to more than one club."_
 
-The company wants to have a database for registering club memberships. Based on the data in the database it should be possible to answer to the following types of questions:
+The company wants to have a database for registering club memberships. Based on the data in the database, it should be possible to answer the following types of questions:
 
-- What clubs there are?
+- What clubs are there?
 - Who are the members of a certain club (e.g., tennis club)?
 
 Summarize the data requirements in an ER diagram. That is, create an ER diagram based on the case description above.
@@ -94,35 +94,35 @@ Create an ER diagram that captures all the information below. This time, no attr
 
 ## Task 6: Simple library
 
-Create an ER diagram that captures all the given information. Identify all entity types, attributes and relationship types. Underline the unique identifier (if any exists). Do not add any attributes that cannot be derived directly from the given text.
+Create an ER diagram that captures all the given information. Identify all entity types, attributes, and relationship types. Underline the unique identifier (if any exists). Do not add any attributes that cannot be derived directly from the given text.
 
-> _"In the university library there is a single copy of every recommended course textbook. All students are allowed to borrow textbooks. The loan period is two days. Textbooks out on loan can be reserved."_
+> _"In the university library, there is a single copy of every recommended course textbook. All students are allowed to borrow textbooks. The loan period is two days. Textbooks out on loan can be reserved."_
 
-Examples of important user transactions include the following listings:
+Examples of important user transactions include the following:
 
-- List of textbooks (name, author, ISBN)
-- List of overdue loans (due date, textbook name, student number, student name, email)
-- List of reservations for a certain textbook (textbook name, reservation date and time, student number, student name, email)
+- List of textbooks (name, author, ISBN).
+- List of overdue loans (due date, textbook name, student number, student name, email).
+- List of reservations for a certain textbook (textbook name, reservation date and time, student number, student name, email).
 
 ## Task 7: Bicycle manufacturing
 
-Create an ER diagram that captures all the given information. Identify all entity types, attributes and relationship types. Underline the unique identifier (if any exists). Do not add any attributes that cannot be derived directly from the given text.
+Create an ER diagram that captures all the given information. Identify all entity types, attributes, and relationship types. Underline the unique identifier (if any exists). Do not add any attributes that cannot be derived directly from the given text.
 
-> _"A company manufactures many models of road racing bicycles. Each bicycle model is characterized by a model name and frame size. Each model is made up from many parts and each part may be used in the manufacture of more than one model. Each part has a unique part number and a description. Each bicycle model is manufactured at just one of the company's factories, which are located in Helsinki, Turku and Tampere - one factory in each city. Each factory manufactures many many types of part. Each type of part is manufactured at one factory only."_
+> _"A company manufactures many models of road racing bicycles. Each bicycle model is characterized by a model name and frame size. Each model is made up of many parts, and each part may be used in the manufacture of more than one model. Each part has a unique part number and a description. Each bicycle model is manufactured at just one of the company's factories, which are located in Helsinki, Turku, and Tampere - one factory in each city. Each factory manufactures many types of parts. Each type of part is manufactured at one factory only."_
 
 ## Task 8: Record company
 
-Create an ER diagram that captures all the given information. Identify all entity types, attributes and relationship types. Underline the unique identifier (if any exists). Do not add any attributes that cannot be derived directly from the given text.
+Create an ER diagram that captures all the given information. Identify all entity types, attributes, and relationship types. Underline the unique identifier (if any exists). Do not add any attributes that cannot be derived directly from the given text.
 
 > _"A record company has decided to store information about musicians who perform on its albums. Each track on an album is performed by one or more musicians, and a musician may perform on a number of tracks. Each track is composed by one or more musicians. No track can appear on more than one album. Each album is produced by a musician."_
 
-Examples of important user transactions include the following listings:
+Examples of important user transactions include the following:
 
-- List of musicians (ssn, name, email) ssn = social security number
-- Top 10 list of musicians who have been performing on the biggest number of albums
-- List of producers (ssn, name, email, number of albums produced)
-- List of albums (album title, producer, date when released, number of tracks)
-- List of tracks on an album  (track name, track length, names of musicians who perform on the track)
+- List of musicians (ssn, name, email). ssn = social security number.
+- Top 10 list of musicians who have been performing on the biggest number of albums.
+- List of producers (ssn, name, email, number of albums produced).
+- List of albums (album title, producer, date when released, number of tracks).
+- List of tracks on an album  (track name, track length, names of musicians who perform on the track).
 
 ---
 
@@ -131,34 +131,34 @@ Examples of important user transactions include the following listings:
 
 ## ⭐ Bonus task 9: Thesis
 
-Create an ER diagram that captures all the given information. Identify all entity types, attributes and relationship types. Underline the unique identifier (if any exists). Do not add any attributes that cannot be derived directly from the given text.
+Create an ER diagram that captures all the given information. Identify all entity types, attributes, and relationship types. Underline the unique identifier (if any exists). Do not add any attributes that cannot be derived directly from the given text.
 
-> _"In BIT each student should complete one thesis (thesis project). Each thesis is supervised by one teacher and evaluated by another teacher. Some teachers might have supervised and/or evaluated theses even 50 or more times, whereas some new teachers haven't supervised/evaluated any thesis yet. The thesis gets its final grade in an evaluation meeting where there are usually many theses evaluated. Though it could be so that no BIT theses have been completed for a certain evaluation meeting and thus none evaluated there. To be able to run an evaluation meeting, at least one teacher who acts as a chair of the evaluation meeting and two other teachers should be present in the meeting."_
+> _"In the university, each student should complete one thesis (thesis project). Each thesis is supervised by one teacher and evaluated by another teacher. Some teachers might have supervised and/or evaluated these even 50 or more times, whereas some new teachers haven't supervised/evaluated any thesis yet. The thesis gets its final grade in an evaluation meeting where there are usually many theses evaluated. Though it could be so that no BIT theses have been completed for a certain evaluation meeting, and thus none were evaluated there. To be able to run an evaluation meeting, at least one teacher who acts as the chair of the evaluation meeting and two other teachers should be present in the meeting."_
 
 Examples of important user transactions include the following queries:
 
-- Has a certain student a thesis (thesis project) already or not yet?
-- Who is the supervisor of certain student's thesis?
+- Does a certain student have a thesis (thesis project) already or not yet?
+- Who is the supervisor of a certain student's thesis?
 - Has a thesis evaluator for a certain thesis been assigned already?
 - When have the evaluation meetings been held?
 - Who was present as a member when a certain student's thesis was evaluated?
 - Who was present as the chair when a certain student's thesis was evaluated?
 - Which theses were evaluated in a certain meeting?
 
-Here is Mr John Doe. He has been involved with many thesis-related activities as follows:
+Here is Mr. John Doe. He has been involved with many thesis-related activities as follows:
 
-- Supervisor of five thesis
-- Evaluator of seven thesis
-- Attended as a member to ten thesis evaluation meetings
+- Supervisor of five theses.
+- Evaluator of seven theses.
+- Attended as a member of ten thesis evaluation meetings.
 - Acted as a chair in two thesis evaluation meetings.
 
 ## ⭐ Bonus task 10: Dentistry
 
-Create an ER diagram that captures all the given information. Identify all entity types, attributes and relationship types. Underline the unique identifier (if any exists). Do not add any attributes that cannot be derived directly from the given text.
+Create an ER diagram that captures all the given information. Identify all entity types, attributes, and relationship types. Underline the unique identifier (if any exists). Do not add any attributes that cannot be derived directly from the given text.
 
-> _"A dentistry maintains dentist/patient appointment data. A patient is given an appointment at a specific date and time with a dentist located at a particular reception room. On each day of patient appointments, a dentist is allocated to a specific reception room for that day. A dentist can work in different reception rooms on different days. A patient can have an appointment with any dentist. Each patient has a personal dentist who is responsible to send the patient invitations for regular dental check-ups."_
+> _"A dentistry maintains dentist/patient appointment data. A patient is given an appointment at a specific date and time with a dentist located at a particular reception room. On each day of patient appointments, a dentist is allocated to a specific reception room for that day. A dentist can work in different reception rooms on different days. A patient can have an appointment with any dentist. Each patient has a personal dentist who is responsible for sending the patient invitations for regular dental check-ups."_
 
 Examples of important user transactions include the following queries:
 
-- List of patients (patient number, name)
-- List of reception rooms that are booked for a given date (room number, dentist number, dentist name)
+- List of patients (patient number, name).
+- List of reception rooms that are booked for a given date (room number, dentist number, dentist name).
