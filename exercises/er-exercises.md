@@ -38,11 +38,26 @@ Suppose we are organising one-day boat cruises. We have one boat, and there are 
 
 ![Image](./assets/er-1-task-1.png)
 
-First, read the following carefully:
+> [!NOTE]
+> - In the diagram, `{ XOR }` means "eXclusive OR" and it is used for modeling the following business rule: "A sailor can be only in a single role in the same crew".
+> - "Captain", "engineer", and "crew member" are role names.
+> - Unique identifiers are underlined.
 
-- In the diagram, `{ XOR }` means "eXclusive OR" and it is used for modeling the following business rule: "A sailor can be only in a single role in the same crew".
-- "Captain", "engineer", and "crew member" are role names.
-- Unique identifiers are underlined.
+> [!TIP]
+> 
+> While interpreting the number of instances associated with the entity, we look at the multiplicity constaint on the _opposite side of the relationship_. For example in the ER diagram below, teacher teaches _zero or more_ (`0..*`) course instances and course instance is teached by _at least one_ (`1..*`) teacher.
+>
+> ```mermaid
+> ---
+>  config:
+>    class:
+>      hideEmptyMembersBox: true
+> ---
+>
+> classDiagram 
+>    direction LR
+>    Teacher "1..*" -- "0..*" CourseInstance : teaches ▶
+> ```
 
 Are the statements below true or false? _Give arguments!_
 
