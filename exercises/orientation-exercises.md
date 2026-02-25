@@ -64,27 +64,27 @@ The University Database contains the following:
 
 Answer the following questions based on the database's data:
 
-1. What are the names of the teachers who have taught on the course 'Databases'?
-2. What are the names of the students who have got a grade from the course 'Databases'?
+1. What are the names of the teachers who have taught the course 'Databases'?
+2. What are the names of the students who have received a grade from the course 'Databases'?
 3. What are the names of the courses Joe Pass has completed successfully?
-4. What are names of the teachers who have taught Frank Zappa?
+4. What are the names of the teachers who have taught Frank Zappa?
 5. How many students have grades from courses given by Albert Collins?
-6. What are the names of the students that have been taught by the teachers whose room number is 101?
-7. What are the names of the teachers who haven't given any course yet?
+6. What are the names of the students who have been taught by the teachers whose room number is 101?
+7. What are the names of the teachers who haven't given any courses yet?
 
 ## Task 2: Problems of the file-based data management approach
 
 > [!NOTE]
-> The following representation of a file here is a simplification; logically, a file consists of a group of sequential slots. All the slots are of the same size and they are not typed. That is, they can contain any type of data; a single number or a single character.
+> The following representation of a file here is a simplification; logically, a file consists of a group of sequential slots. All the slots are of the same size, and they are not typed. That is, they can contain any data: a single number or a single character.
 
-An election is being held and the Database Developer decided to store the information on canditates and their votes in two seperate files with specific formats.
+An election is being held, and the Database Developer decided to store the information on candidates and their votes in two separate files with specific formats.
 
-The following data per each candidate is saved in the _candidate file_:
+The following data for each candidate is saved in the _candidate file_:
 
 - Candidate name: 5 slots
 - Candidate number: 1 slot
 
-The following data per each candidate is saved in the _election file_:
+The following data for each candidate is saved in the _election file_:
 
 - Number of votes: 1 slot
 - Candidate age: 1 slot
@@ -112,35 +112,35 @@ What is the name of the candidate who won the election?
 
 #### Part C
 
-A Software Developer wrote a program that should display the name of the candidate who won the election. Unfortunately, the Software Developer made a mistake and the program thinks that the following data per each candidate is saved in the election file:
+A Software Developer wrote a program that should display the name of the candidate who won the election. Unfortunately, the Software Developer made a mistake, and the program thinks that the following data for each candidate is saved in the election file:
 
 - Candidate number: 1 slot
 - Number of votes: 1 slot
 - Candidate age: 1 slot
 
-The candidate file is as before. What is the candidate name the program displays now?
+The candidate file is as before. What is the candidate's name that the program displays now?
 
 #### Part D
 
-Another program has updated the original election file. The new content of the election file is as below. The candidate file is as before.
+Another program has updated the original election file. The new content of the election file is as follows. The candidate file is as before.
 
 | 27  | 30  | 28  | 29  | 28  | 30  | 27  | 28  | 29  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 - What can you say about the consistency of the data in this situation?
-- How could we prevent this type of a problem? Think about a situation when a new entry (number of votes, candidate age, candidate number) is to be inserted into the election file.
+- How could we prevent this type of problem? Think about a situation when a new entry (number of votes, candidate age, candidate number) is to be inserted into the election file.
 
 ## Task 3: Keys
 
-In a table, the _primary key_ is a single column or a group of columns that uniquely identifies each row in the table.
+In a table, the _primary key_ is a single column or a _group of columns_ that uniquely identifies each row in the table.
 
 - The database designer defines the primary key constraint in each table. The DBMS takes care of not allowing duplicate or missing primary key values (entity integrity).
 - Only one primary key in a table is allowed. It can consist of more than one column.
 - A primary key should not include columns beyond those required to ensure uniqueness.
 
-In a table, a _foreign key_ is a column or group of columns that we use to link a row to another row.
+In a table, a _foreign key_ is a column or _group of columns_ that we use to link a row to another row.
 
-- A foreign key is a column or group of columns, whose values are required to match those of the primary key of the referenced table.
+- A foreign key is a column or group of columns whose values are required to match those of the primary key of the referenced table.
 - The database designer defines foreign key constraints. The DBMS takes care of not allowing invalid foreign key references (referential integrity).
 
 For example, in the following `Degree Program` table, the `program code` column uniquely identifies each row in the table. There aren't two rows with the same value for this column. This means that the `program code` is the table's _primary key_.
@@ -153,7 +153,7 @@ The `Degree Program` table:
 | Business Information Technology | 🔑 BIT2020   | 2020-08-01 |
 | International Business          | 🔑 GLOBBA19  | 2019-01-01 |
 
-In the following `Course` table, the `program code` column establishes a "link" to the the `Degree Program` table, specifying the degree of a course. For example, by following such link, we know that "Database Developer" course's program name is "Business Information Technology". This means that `program code` is a _foreign key_ in the `Course` table, referencing the `Degree Program` table's primary key. The primary key of the `Course` table is `course code`.
+In the following `Course` table, the `program code` column establishes a "link" to the `Degree Program` table, specifying the degree program of a course. For example, by following such a link, we know that the "Database Developer" course's degree program name is "Business Information Technology". This means that `program code` is a _foreign key_ in the `Course` table, referencing the `Degree Program` table's primary key. The primary key of the `Course` table is `course code`.
 
 The `Course` table:
 
@@ -166,7 +166,7 @@ The `Course` table:
 
 ### Questions
 
-Look at the University Database example in the task 1 and determine the primary key and foreign keys per each table.
+Look at the University Database example in task 1 and determine the primary key and foreign keys for each table.
 
 > [!IMPORTANT]
 > In this example, some tables have 2 foreign keys. Some tables have one foreign key. Some tables have no foreign key.
@@ -184,6 +184,11 @@ Fill in the primary keys and foreign keys in a table such as the following:
 | Course grade          |             |              |
 | Course implementation |             |              |
 
-In the "Primary key" column, write the name of the column (orgroup of column names) that uniquely identifies each row in the table.
+In the "Primary key" column, write the name of the column (or a group of column names) that uniquely identifies each row in the table.
 
-In the "Foreign key" column, wirte name of the column (or group of column names) that links a row in this table to a row in another table. Mention also the name of the referenced table. NB! There are also tables without any foreign key
+In the "Foreign key" column, wirte name of the column (or group of column names) that links a row in this table to a row in another table. Mention also the name of the referenced table. NB! There are also tables without any foreign keys.
+
+> [!TIP]
+> - Start by figuring out the primary keys, because only after that can you figure out foreign keys referencing those.
+> - For example, in the `Course implementation` table, does the `Course ID` column alone uniquely identify each row, or might the primary key be a group of two columns that together uniquely identify each row?
+> - Foreign key has to always reference a primary key. So, if you are wondering if a column or a group of columns is a foreign key, think about which table's primary key it references.

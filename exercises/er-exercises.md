@@ -14,23 +14,11 @@ You can freely choose how to draw the ER diagrams for the tasks. Here are a few 
 
 ## General instructions
 
-1. Do not add any additional features or details to your design.
-2. Make sure that you do NOT include any redundancy in the model.
-3. No redundant attributes!
-4. No redundant relationship types!
-3. Determine multiplicity constraints (e.g., `1..*`).
-
-> [!NOTE]
-> If the _minimum number_ of occurrences is not clear from the text (and the customer is not yet available for any clarification), you normally specify zero as the minimum in the first version of the diagram (and later find out the exact business rule). If the _maximum number_ of occurrences is not clear from the text (and the customer is not yet available for any clarification), you should use your common sense for the first version of the diagram (and later find out the exact business rule).
-
-> [!NOTE]
-> If something is not clear enough from the text, then document this by writing a question below your diagram. For example, if the minimum number of occurrences is not clear from the text, you use zero as the minimum and write a question below the diagram.
-
-> [!TIP]
-> - Common nouns (e.g., "Customer", "Guide", or "Tour") in the text are potential entity types
-> - Verbs in the text are potential relationship types
-> - There can be any number of relationship types between the same two entity types.
-> - Each entity belongs to exactly one entity set (entity type).
+- Do not add any additional features or details to your design.
+- Make sure that you do not include any redundancy in the model, e.g., redundant attributes or relationship types.
+- Determine multiplicity constraints (e.g., `1..*`) for the relationship types.
+- If the _minimum number_ of occurrences is not clear from the text or the context (and the teacher is not available for any clarification), you can specify zero as the minimum.
+- If the _maximum number_ of occurrences is not clear from the text or the context (and the teacher is not available for any clarification), you can use your own judgement to select a sensible maximum.
 
 ## Task 1: Warm-up by interpreting an ER diagram
 
@@ -42,6 +30,15 @@ Suppose we are organising one-day boat cruises. We have one boat, and there are 
 > - In the diagram, `{ XOR }` means "eXclusive OR" and it is used for modeling the following business rule: "A sailor can be only in a single role in the same crew".
 > - "Captain", "engineer", and "crew member" are role names.
 > - Unique identifiers are underlined.
+
+Are the statements below true or false? _Give arguments!_
+
+1. There can be a crew of 10 sailors.
+2. The minimum size of a crew is one.
+3. "John Smith" (snn: "123") cannot be a captain in two different crews.
+4. There can be a crew of 6 sailors that consists of the captain and 5 crew members.
+5. There can be a sailor who has not joined any crew yet.
+6. "John Smith" (snn: "123") can be a member of two different crews that sail on 20.3.2016.
 
 > [!TIP]
 > 
@@ -59,15 +56,6 @@ Suppose we are organising one-day boat cruises. We have one boat, and there are 
 >    Teacher "1..*" -- "0..*" CourseInstance : teaches ▶
 > ```
 
-Are the statements below true or false? _Give arguments!_
-
-1. There can be a crew of 10 sailors.
-2. The minimum size of a crew is one.
-3. "John Smith" (snn: "123") cannot be a captain in two different crews.
-4. There can be a crew of 6 sailors that consists of the captain and 5 crew members.
-5. There can be a sailor who has not joined any crew yet.
-6. "John Smith" (snn: "123") can be a member of two different crews that sail on 20.3.2016.
-
 ## Task 2: More warm-up with multiplicity constraints
 
 Determine multiplicity constraints for the relationship types below. Mark the constraints (min..max) to the diagrams.
@@ -75,6 +63,9 @@ Determine multiplicity constraints for the relationship types below. Mark the co
 ![Image](./assets/er-1-task-2-1.png)
 
 ![Image](./assets/er-1-task-2-2.png)
+
+> [!NOTE]
+> There's room for interpretation. For example, are there any orphan dogs?
 
 ## Task 3: Clubs
 
@@ -87,13 +78,17 @@ The company wants to have a database for registering club memberships. Based on 
 
 Summarize the data requirements in an ER diagram. That is, create an ER diagram based on the case description above.
 
-Instructions:
+> [!IMPORTANT]
+> - Read the description above very carefully.
+> - Do not add any additional features or details to your design.
+> - Use the notation used in this week's lesson slides in your diagram.
+> - This time, do not include any attributes in your diagram.
+> - If there exists a single entity occurrence that seems to be logically related to the other entity occurrences, but there are no data requirements on that entity occurrence, you do not have to include the entity type in the diagram.
 
-- Read the description above very carefully!
-- Do not add any additional features or details to your design.
-- Use the UML notation in your diagram.
-- This time, do not include any attributes in your diagram.
-- If there exists a single entity occurrence that seems to be logically related to the other entity occurrences, but there are no data requirements on that entity occurrence, you do not have to include the entity type in the diagram.
+> [!TIP]
+> - Common nouns (e.g., "Customer", "Guide", or "Tour") in the text are potential entity types.
+> - Verbs in the text are potential relationship types.
+> - There can be any number of relationship types between the same two entity types. For example, a footballer can be both a captain and a player in a team.
 
 ## Task 4: Company
 
