@@ -137,7 +137,7 @@ Examples of important user transactions include the following:
 ---
 
 > [!IMPORTANT]
-> The remaining tasks are optional.
+> The next tasks are optional.
 
 ## ⭐ Bonus task 9: Thesis
 
