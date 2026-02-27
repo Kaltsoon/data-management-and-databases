@@ -39,8 +39,8 @@ Step 1 has its own deadline, otherwise there's a final deadline at the end of th
 
 ### Physical design and implementation
 
-1. Write an SQL script to create the database structure in SQL Server. Save this script to a `.sql` file.
-2. Create the database in SQL Server.
+1. Write an SQL script to create the database tables in SQL Server. Save this script to a `.sql` file.
+2. Create the database tables in SQL Server.
 3. In SMSS, create a database diagram that shows your tables and relationships, etc.
 4. Design a minimal set of indexes on your tables and write an SQL script to create them. Save this script to a `.sql` file.
 
@@ -74,6 +74,10 @@ Please submit all deliverables (from all the stepa) to Moodle's "Case assignment
 
 - `case_assignment_database_design.pdf` containing everything from step 1.
 - All the `.sql` files from step 2.
+  - Creating the database tables.
+  - Creating the indexes.
+  - Inserting the test data.
+  - Statements for the required operations and queries.
 - `case_assignment_database_diagram.pdf` containing the database diagram generated in step 2.
 - `case_assignment_closing_report.pdf` containing the closing report.
 
