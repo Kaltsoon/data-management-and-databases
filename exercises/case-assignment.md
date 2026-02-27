@@ -35,7 +35,7 @@ The case assignment is carried out in two steps, with its own requirements and d
 ## Step 2: Physical design, implementation in SQL Server, and testing
 
 > [!IMPORTANT]
-> It is normal that the database design changes during the development process. If need to changes arise, just make the necessary changes to the previous step's design documents.
+> It is normal that the database design changes during the development process. If changes are needed, make the necessary updates to the previous step's design documents.
 
 ### Physical design and implementation
 
