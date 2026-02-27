@@ -3,7 +3,9 @@
 > [!IMPORTANT]
 > Case assignment is mandatory to receive a passing grade in the course.
 
-During this case assignment, your team will be designing and implementing a database based on the customer's requirements. The case assignment is carried out in two steps, with its own requirements and deadlines.
+During this case assignment, your team will be designing and implementing a database based on the customer's requirements. The case assignment is carried out in three steps, with their own requirements.
+
+Step 1 has its own deadline, otherwise there's a final deadline at the end of the course. See the deadlines on Moodle's "Course outline" page.
 
 ## Step 1: Database modelling and logical design
 
