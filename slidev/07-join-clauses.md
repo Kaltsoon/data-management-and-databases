@@ -19,18 +19,20 @@ fonts:
 - To link rows between two tables, one table includes a **foreign key** column that references **primary key** in another table.
 - A common query requirement is to fetch data from the referenced table by matching the foreign key in one table to the primary key in another
 - For example, _"What is the name of each course instance's teacher?"_
-- We need to select course instance columns from the `CourseInstance` table and **join** them with the teacher columns from the `Teacher` table based on the `teacher_number` foreign key column value
+- We need to select course instance rows from the `CourseInstance` table and **join** them with the teacher rows from the `Teacher` table based on the `teacher_number` foreign key column value
 - The referential integrity and such **join operations** are the key features which distinguish the relational database management systems from other database management systems
 
 ---
 
 ## Join clauses
 
+> _"What is the name of each course instance's teacher?"_
+
 - The first table resembles the `CourseInstance` table row, the second table the `Teacher` table row and the third table the desired result table row:
 
 | course_code | instance_number | teacher_number |
 | ----------- | --------------- | -------------- |
-| a290        | 1               | 🔑 h430         |
+| a290        | 1               | 🔗 h430         |
 
 | teacher_number | first_name | surname |
 | -------------- | ---------- | ------- |
@@ -38,7 +40,7 @@ fonts:
 
 | course_code | instance_number | teacher_number | first_name | surname |
 | ----------- | --------------- | -------------- | ---------- | ------- |
-| a290        | 1               | 🔑 h430         | Emma       | Virta   |
+| a290        | 1               | h430           | Emma       | Virta   |
 
 ---
 
@@ -53,8 +55,8 @@ FROM table_name [ [ AS ] table_alias ]
 [ { [ INNER ] JOIN table_name [ [ AS ] table_alias ] ON join_condition }... ] 
 ```
 
-- **Join clause** combines **columns** from one or more tables into a new table
-- Rows are join based on a condition called **join condition**
+- **Join clause** combines **row** from one or more tables into a new table
+- Rows are join based on a condition called **join condition**, which is commonly formulated to match the foreign with a primary key
 - There's three different kind of **join operations** which operate in different ways: **inner join**, **outer join** and **cross join**
 
 ---
@@ -70,13 +72,16 @@ FROM CourseInstance
 
 | course_code | instance_number | teacher_number |
 | ----------- | --------------- | -------------- |
-| a290        | 1               | 🔑 h430         |
+| a290        | 1               | 🔗 h430         |
+
+- If we want to include information, such as the name of the teacher (`first_name` and `surname` columns), we need to **join** the matching row from the `Teacher` table
+- While constructing joins we need to be aware of the relationships between tables which makes the database diagram extremely useful
 
 ---
 
 ## Join clauses
 
-- We can use the `INNER JOIN` clause to combine the matching columns from the `Teacher` table:
+- We can use the `INNER JOIN` clause to combine the rows from the `Teacher` table:
 
 ```sql
 -- what is the first name and surname of each course instance teacher?
@@ -85,16 +90,17 @@ course_code, instance_number,
 -- ⚠️ note column name "Teacher.teacher_number", not just "teacher_number"
 Teacher.teacher_number, first_name, surname
 FROM CourseInstance
+-- the join condition specifies which rows are combined
 INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
 
 | course_code | instance_number | teacher_number | first_name | surname |
 | ----------- | --------------- | -------------- | ---------- | ------- |
-| a290        | 1               | 🔑 h430         | Emma       | Virta   |
+| a290        | 1               | h430           | Emma       | Virta   |
 
 ---
 
-## Join clauses
+## Join condition
 
 - In the example each row of the `CourseInstance` table is combined with a row from the `Teacher` table based on the **join condition**:
 
@@ -105,6 +111,27 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
 
 - ⚠️ The join condition **does not** have to compare primary key to a foreign key, any kind of condition can be used
+
+---
+
+## Join condition with a composite foreign key
+
+- If the foreign key is a composite key, the join condition must **include all columns of the composite key**
+- For example, the `CourseInstance` table has a composite key consisting of `course_code` and `instance_number` columns
+
+```sql
+-- how long has it taken to grade each student?
+SELECT 
+  CourseInstance.course_code,
+  instance_number,
+  student_number,
+  -- the end_date column comes from the CourseInstance table
+  DATEDIFF(DAY, end_date, grade_date) AS grading_time
+FROM CourseGrade
+-- join condition must include all columns of the composite key
+INNER JOIN CourseInstance ON CourseGrade.course_code = CourseInstance.course_code 
+AND CourseGrade.instance_number = CourseInstance.instance_number
+```
 
 ---
 
@@ -132,12 +159,17 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ## Join clauses
 
 - If we want to get columns from more than two tables, we can **chain multiple join clauses** together
-- For example, in the following example we need information from the `CourseGrade`, `Course` and `Teacher` tables:
+- For example, in the following example we need information from the `CourseGrade`, `Course` and `Student` tables:
 
 ```sql
--- display course and student information for each passing grade
-SELECT CourseGrade.course_code, instance_number, 
-CourseGrade.student_number, first_name, surname, credits, grade 
+-- display name of the student and name of the course for each passing grade
+SELECT 
+  Course.course_name
+  CourseGrade.course_code,
+  instance_number,
+  CourseGrade.student_number, 
+  first_name,
+  surname
 FROM CourseGrade
 INNER JOIN Course ON CourseGrade.course_code = Course.course_code
 INNER JOIN Student ON CourseGrade.student_number = Student.student_number
@@ -150,7 +182,12 @@ WHERE grade > 0
 
 - The `INNER JOIN` clause (or `JOIN` in short) **only** selects rows that have matching values in **both** tables based on the join condition
 - If we consider the previous example, this means that course instances without teacher number (`teach_number` column value is `NULL`) won't be included in the result table
-- This is because we can't match `teacher_number` of value `NULL` with a row in the `Teacher` table because the primary key value can't be `NULL`
+- This is because we can't match `teacher_number` of value `NULL` with a row in the `Teacher` table
+
+| course_code | instance_number | teacher_number |
+| ----------- | --------------- | -------------- |
+| a290        | 1               | 🔗 h430         |
+| a290        | 2               | ⚠️ NULL         |
 
 ---
 
@@ -160,15 +197,15 @@ WHERE grade > 0
 
 | course_code | instance_number | teacher_number |
 | ----------- | --------------- | -------------- |
-| a290        | 1               | h430           |
+| a290        | 1               | 🔗 h430         |
 | a290        | 2               | ⚠️ NULL         |
-| a450        | 1               | h303           |
+| a450        | 1               | 🔗 h303         |
 
 | teacher_number | first_name | surname |
 | -------------- | ---------- | ------- |
-| h430           | Emma       | Virta   |
-| h303           | Veli       | Ponteva |
-| h777           | Mauri      | Matikka |
+| 🔑 h430         | Emma       | Virta   |
+| 🔑 h303         | Veli       | Ponteva |
+| 🔑 h777         | Mauri      | Matikka |
 
 ---
 
@@ -189,60 +226,32 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 | a290        | 1               | h430           | Emma       | Virta   |
 | a450        | 1               | h303           | Veli       | Ponteva |
 
----
-
-## INNER JOIN clause
-
-- If the foreign key is a composite key, the join condition must include all columns of the composite key
-- For example, the `CourseInstance` table has a composite key consisting of `course_code` and `instance_number` columns
-
-```sql
--- how long does it take to grade each course on average?
-SELECT 
-  CourseInstance.course_code,
-  AVG(DATEDIFF(DAY, end_date, grade_date)) AS average_grading_time
-FROM CourseGrade
--- join condition must include all columns of the composite key
-INNER JOIN CourseInstance ON CourseGrade.course_code = CourseInstance.course_code 
-AND CourseGrade.instance_number = CourseInstance.instance_number
-GROUP BY CourseInstance.course_code
-```
+- ℹ️ With the `INNER JOIN` clause the order of tables in `FROM TableA INNER JOIN TableB` doesn't matter
 
 ---
 
 ## OUTER JOIN clause
 
-- The `OUTER JOIN` clause selects **matching** and **non-matching rows** from either or both tables
+- The `OUTER JOIN` clause returns all matching rows between tables, **along with non-matching rows from the specified table**, filling unmatched columns with `NULL` values
+- This is useful, if we want to select **all course instances** (including the ones with missing `teacher_number`) and the name of their teacher
 - The `OUTER JOIN` clause has two variations: `LEFT OUTER JOIN` and `RIGHT OUTER JOIN`
-- The difference between these two lies in the inclusion of non-matching rows
-- The `LEFT OUTER JOIN` clause (or `LEFT JOIN` in short) includes the non-matching rows from the table which is on the **left** of the join clause
-- The `RIGHT OUTER JOIN` clause (or `RIGHT JOIN` in short) includes the non-matching rows from the table which is on the **right** of the join clause
-
----
-
-## OUTER JOIN clause
-
-- The "left table" is before the join clause and the "right table" after it:
-
-```sql
-SELECT -- ...
-FROM LeftTable
-LEFT OUTER JOIN RightTable
-ON -- ...
-```
+- The difference between `INNER JOIN` and `OUTER JOIN` join opreations two lies in the **inclusion of non-matching rows**
+- ❗ With the `OUTER JOIN` clauses the order of tables in `FROM TableA LEFT OUTER JOIN TableB` does matter
 
 ---
 
 ## LEFT OUTER JOIN clause
 
-- With the `LEFT OUTER JOIN` clause the result table has **all** rows from the `CourseInstance` table **and the matching rows** from the `Teacher` table
+- With the `LEFT OUTER JOIN` clause the result table has **all rows from the left table**, and the **matching rows from the right table**:
 
 ```sql
 SELECT
 course_code, instance_number, 
 Teacher.teacher_number, first_name, surname
-FROM CourseInstance
-LEFT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+-- ❗ order of tables matter!
+FROM CourseInstance -- "left table"
+LEFT OUTER JOIN Teacher -- "right table"
+ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
 
 | course_code | instance_number | teacher_number | first_name | surname |
@@ -255,29 +264,21 @@ LEFT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_numbe
 
 ## RIGHT OUTER JOIN clause
 
-- With the `RIGHT OUTER JOIN` clause the result table has **all** rows from the `Teacher` table **and the matching rows** from the `CourseIntance` table
+- The `RIGHT OUTER JOIN` clause operates exactly the same as the `LEFT OUTER JOIN` but **all rows from the right table** (the `RIGHT OUTER JOIN TableName` table) are included
+- The following queries will have the same result:
 
 ```sql
-SELECT
-course_code, instance_number, 
-Teacher.teacher_number, first_name, surname
-FROM CourseInstance
-RIGHT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+SELECT teacher_number, campus_name
+FROM Teacher -- "left table"
+LEFT OUTER JOIN Campus -- "right table"
+ON Teacher.campus_code = Campus.campus_code
+
+-- same as RIGHT OUTER JOIN after flipping the order of tables
+SELECT teacher_number, campus_name
+FROM Campus -- "left table"
+RIGHT OUTER JOIN Teacher -- "right table"
+ON Teacher.campus_code = Campus.campus_code
 ```
-
-| course_code | instance_number | teacher_number | first_name | surname |
-| ----------- | --------------- | -------------- | ---------- | ------- |
-| a290        | 1               | h430           | Emma       | Virta   |
-| a450        | 1               | h303           | Veli       | Ponteva |
-| ⚠️ NULL      | ⚠️ NULL          | h777           | Mauri      | Matikka |
-
----
-
-## OUTER JOIN clause
-
-- Technically, every `RIGHT OUTER JOIN` clause can be handled with a `LEFT OUTER JOIN` clause
-- This is because `TableA RIGHT OUTER JOIN TableB` is the same as `TableB LEFT OUTER JOIN TableA`
-- It might be easier to think every outer join operation as a `LEFT OUTER JOIN` clause and not to use `RIGHT OUTER JOIN` clause
 
 ---
 
@@ -289,15 +290,15 @@ RIGHT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_numb
 
 | course_code | instance_number | teacher_number |
 | ----------- | --------------- | -------------- |
-| a290        | 1               | h430           |
+| a290        | 1               | 🔗 h430         |
 | a290        | 2               | ⚠️ NULL         |
-| a450        | 1               | h303           |
+| a450        | 1               | 🔗 h303         |
 
 | teacher_number | first_name | surname |
 | -------------- | ---------- | ------- |
-| h430           | Emma       | Virta   |
-| h303           | Veli       | Ponteva |
-| h777           | Mauri      | Matikka |
+| 🔑 h430         | Emma       | Virta   |
+| 🔑 h303         | Veli       | Ponteva |
+| 🔑 h777         | Mauri      | Matikka |
 
 </div>
 
@@ -369,10 +370,16 @@ RIGHT JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 
 ```sql
 -- what are all possible shoe color and size combinations?
-SELECT ShoeColor.name, ShoeSize.name
+SELECT ShoeColor.color_name, ShoeSize.size_name
 FROM ShoeColor
 CROSS JOIN ShoeSize
 ```
+
+| color_name | size_name |
+| ---------- | --------- |
+| red        | Medium    |
+| red        | Large     |
+| ...        | ...       |
 
 ---
 

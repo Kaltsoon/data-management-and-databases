@@ -36,7 +36,7 @@ The case assignment is carried out in two steps with their own requirements and 
 
 ### Step 1: Database modelling and logical design
 
-> [!IMPORANT]
+> [!IMPORTANT]
 > Please, record and report the working time, categorized by person(s) and task. You can for example record the working time in a table like this:
 > | Team member | Task | Working time |
 > | --- | --- | --- |
@@ -48,19 +48,18 @@ The case assignment is carried out in two steps with their own requirements and 
 1. Create a conceptual model of the database and visualise it as an ER diagram.
 2. Write entity type definitions to the repository. Please see the separate repository template in the Moodle's "Case assignment" page.
 
-### Logical database design
+#### Logical database design
 
 1. Derive a relational schema from your ER diagram.
 2. Validate the relations with the BCNF rule. Fix the relations if they are not in BCNF.
-3. Define integrity constraints for your relations. Document them in the repository .
-4. Please submit all step 1 results to Moodle in a single ZIP file. The file should be named as follows:
+3. Define integrity constraints for your relations. Document them in the repository.
 
 > [!IMPORTANT]
 > Please submit all step 1 results to Moodle's "Case assignment" page in a single ZIP file named `case_assignment_step_1_YOURFAMILYNAME.zip`. **Every team member should do this submission**.
 
 ### Step 2: Physical design, implementation in SQL Server, and testing
 
-> [!IMPORANT]
+> [!IMPORTANT]
 > Please, record and report the working time, categorized by person(s) and task.
 
 #### Physical design and implementation
@@ -80,8 +79,8 @@ The case assignment is carried out in two steps with their own requirements and 
 
 1. Design test data and write an SQL script to insert the test data into the database.
 2. Insert the test data into your database.
-3. Write an SQL script for all the user transactions listed at the end of this document.
-4. Test your implementation by executing the SQL statements
+3. Write an SQL script for all the 16 operations and queries listed at the end of this material.
+4. Test your implementation by executing the SQL statements.
 5. Write a short test report.
 
 ## Step 3: Evaluate your work
@@ -99,18 +98,18 @@ Write a project closing report addressing the following points:
 
 Please submit all deliverables (step 1 and step 2) to Moodle in a single ZIP file. The file should be named as `case_assignment_final_YOURFAMILYNAME.zip`.
 
-## Greenwood Cultural Association
+## The requirements from Greenwood Cultural Association
 
 > [!NOTE]
 > This case assignment pertains to a simplified prototype of a real database system. The scope of this assignment has been deliberately narrowed down to include only a minimal set of features. This ensures that the task is manageable and appropriate for our current purposes. In addition, this document is a free-form assignment description. It is not a formal requirements specification.
 
 The teacher represents the customer from the _The Greenwood Cultural Association_. Here's how the customer is describing their requirements:
 
-> _"The Greenwood Cultural Association, a small non-profit organization, hosts a variety of cultural events, including concerts, theatre, dance performances, and more. Traditionally, tickets for these events have been sold in person at the Greenwood tourist office."_
+> _"The Greenwood Cultural Association, a small non-profit organization, hosts a variety of cultural events, including concerts, theatre, dance performances, and more. Traditionally, tickets for these events have been sold in person at the Greenwood tourist office._
 > 
-> _"The Association is now looking to modernize its operations by launching a website where clients can view upcoming events and book tickets. Due to budget constraints, a full-scale system is not feasible at this time. Therefore, this case assignment focuses on the initial phase of development."_
+> _The Association is now looking to modernize its operations by launching a website where clients can view upcoming events and book tickets. Due to budget constraints, a full-scale system is not feasible at this time. Therefore, this case assignment focuses on the initial phase of development._
 >
-> _"In this first phase, tickets can be booked online, but online payment is not yet available. Upon booking, clients will receive a unique booking number. Clients must purchase their booked tickets within four days from the booking date at the Greenwood tourist office."_
+> _In this first phase, tickets can be booked online, but online payment is not yet available. Upon booking, clients will receive a unique booking number. Clients must purchase their booked tickets within four days from the booking date at the Greenwood tourist office."_
 
 ### Further details
 
@@ -132,17 +131,12 @@ The teacher represents the customer from the _The Greenwood Cultural Association
 
 ### Validating the design of the database and testing the database implementation
 
-In this case assignment, you are required to use the user transactions mentioned below to:
-
-- Validate the design of the database
-- Test the physical implementation of the database.
+Validate and test your database structure by writing and executing SQL statements for all 16 operations and queries mentioned below.
 
 > [!NOTE]
 > During the design phase, you can use the below as a checklist when you are conducting conceptual data modelling.
 
-Please validate and test your database structure by writing and executing SQL statements for all 16 user transactions mentioned above.
-
-The database prototype should be designed to allow the following operations:
+The database implementation should be designed to allow the following operations:
 
 1. Booking tickets.
 2. Changing the number of tickets in a booking.
@@ -153,9 +147,9 @@ The database prototype should be designed to allow the following operations:
 7. Refunding a client in a case of a cancelled event.
 
 > [!NOTE]
-> You are not required to write any procedural code to perform these operations. It is enough that the table structure allows these operations to be performed. 
+> These operations should be performed using e.g. `INSERT INTO` or `UPDATE` statements. You are not required to write any procedural code or triggers perform the operations.
 
-Examples of the queries the database prototype should support are the following:
+Examples of the queries the database implementation should support are the following:
 
 1. What is Taylor Swift's contact email?
 2. Which artists are scheduled to perform in the Jazz Night event on 30.11.2025?
