@@ -1,11 +1,9 @@
 # Case assignment
 
-During this case assignment, your team will be designing and implementing a database based on the customer's requirements.
-
 > [!IMPORTANT]
 > Case assignment is mandatory to receive a passing grade in the course.
 
-The case assignment is carried out in two steps, with its own requirements and deadlines.
+During this case assignment, your team will be designing and implementing a database based on the customer's requirements. The case assignment is carried out in two steps, with its own requirements and deadlines.
 
 ## Step 1: Database modelling and logical design
 
@@ -75,7 +73,7 @@ Please submit all deliverables (step 1 and step 2) to Moodle's "Case assignment"
 
 - `case_assignment_database_design.pdf` containing everything from step 1.
 - All the `.sql` files from step 2.
-- `case_assignment_database_diagram.pdf` containing the database diagram from step 2.
+- `case_assignment_database_diagram.pdf` containing the database diagram generated in step 2.
 - `case_assignment_closing_report.pdf` containing the closing report.
 
 The file should be named as `case_assignment_final_YOURFAMILYNAME.zip`. **Every team member should submit this**.
@@ -97,6 +95,8 @@ As database designers, it is your responsibility to communicate with the custome
 
 ### Further details
 
+Design your database structure based on these requirement details:
+
 1. The Greenwood Cultural Association currently has three venues for its events. The smallest venue can accommodate 60 people, while the other venues can hold 250 and 600 people. Additional venues may become available in the future.
 2. Seats are not assigned or numbered.
 3. Ticket numbers are not recorded in the database.
@@ -111,7 +111,7 @@ As database designers, it is your responsibility to communicate with the custome
 12. All tickets within a single booking must be purchased simultaneously.
 13. A booking can be cancelled unless it has already been paid for.
 14. Once purchased, tickets cannot be changed or refunded unless the event is cancelled.
-15. In the event of a cancellation, clients can receive a refund for the purchased tickets, which must be collected in person at the Elliston tourist office.
+15. In the event of a cancellation, clients can receive a refund for the purchased tickets, which must be collected in person.
 
 ### Validating the design of the database and testing the database implementation
 
