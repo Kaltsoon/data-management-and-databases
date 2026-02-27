@@ -70,14 +70,14 @@ Write a project closing report addressing the following points:
 
 ## Finally, submit all deliverables to Moodle
 
-Please submit all deliverables (step 1 and step 2) to Moodle's "Case assignment" page in a single zip file containing the following files:
+Please submit all deliverables (from all the stepa) to Moodle's "Case assignment" page in a single zip file containing the following files:
 
 - `case_assignment_database_design.pdf` containing everything from step 1.
 - All the `.sql` files from step 2.
 - `case_assignment_database_diagram.pdf` containing the database diagram generated in step 2.
 - `case_assignment_closing_report.pdf` containing the closing report.
 
-The file should be named as `case_assignment_final_YOURFAMILYNAME.zip`. **Every team member should submit this**.
+The zip file should be named as `case_assignment_final_YOURFAMILYNAME.zip`. **Every team member should submit this**.
 
 ## Requirements from the Greenwood Cultural Association
 
