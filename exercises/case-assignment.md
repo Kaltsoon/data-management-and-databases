@@ -37,10 +37,10 @@ During this case assignment, your team will be designing and implementing a data
 
 ### Physical design and implementation
 
-1. Write an SQL script to create the database structure in SQL Server.
+1. Write an SQL script to create the database structure in SQL Server. Save this script to a `.sql` file.
 2. Create the database in SQL Server.
 3. In SMSS, create a database diagram that shows your tables and relationships, etc.
-4. Design a minimal set of indexes on your tables and write an SQL script to create them.
+4. Design a minimal set of indexes on your tables and write an SQL script to create them. Save this script to a `.sql` file.
 
 > [!NOTE]
 > Please note that SQL Server will automatically create unique indexes on primary keys.
@@ -50,11 +50,10 @@ During this case assignment, your team will be designing and implementing a data
 > [!IMPORTANT]
 > Your test data should look authentic, and there should be a reasonable number of rows in each table.
 
-1. Design test data and write an SQL script to insert the test data into the database.
+1. Design test data and write an SQL script to insert the test data into the database. Save this script to a `.sql` file.
 2. Insert the test data into your database.
-3. Write an SQL script for all the 16 operations and queries listed at the end of this material.
+3. Write an SQL script for all the 16 operations and queries listed at the end of this material. Save this script to a `.sql` file.
 4. Test your implementation by executing the SQL statements.
-5. Write a short test report.
 
 ## Step 3: Evaluate your work
 
