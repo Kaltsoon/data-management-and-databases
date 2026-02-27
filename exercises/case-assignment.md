@@ -1,81 +1,56 @@
 # Case assignment
 
-During this case assignment your team will be designing and implementing a database based on the customer's requirements.
+During this case assignment, your team will be designing and implementing a database based on the customer's requirements.
 
 > [!IMPORTANT]
-> Case assignment is mandatory to receive a passing grade from the course.
+> Case assignment is mandatory to receive a passing grade in the course.
 
-## Required deliverables
+The case assignment is carried out in two steps, with its own requirements and deadlines.
 
-### 1. Database design documentation
-
-One `case_assignment_database_design.pdf` PDF document, including:
-
-1. ER diagram.
-2. Relational schema.
-3. Repository.
-4. Database diagram (this will be created in step 2 and then added to the final submission).
-
-### 2. SQL scripts (four `.sql` files)
-
-1. An SQL script to create the database in SQL Server.
-2. An SQL script to create the basic set of indexes.
-3. An SQL script to populate the database with a reasonable amount of proper data for testing.
-4. An SQL script to test the database (this includes 16 SQL statements).
-
-### 3. Project closing report
-
-One `case_assignment_closing_report.pdf` PDF document, including:
-
-1. An evaluation of both the product and the process.
-2. Working time records categorized by person and task.
-
-## The development process
-
-The case assignment is carried out in two steps with their own requirements and deadlines.
-
-### Step 1: Database modelling and logical design
+## Step 1: Database modelling and logical design
 
 > [!IMPORTANT]
-> Please, record and report the working time, categorized by person(s) and task. You can for example record the working time in a table like this:
+> Record and report the working time, categorized by person(s) and task throughout the case assignment. You can, for example, record the working time in a table like this:
 > | Team member | Task | Working time |
 > | --- | --- | --- |
 > | John Doe | Design and implement ER diagram | 3 hours |
 > | ... | ... | ... |
+>
+> The working time record will be included in the closing report in step 3.
 
-#### Conceptual data modelling
+### Conceptual data modelling
 
 1. Create a conceptual model of the database and visualise it as an ER diagram.
-2. Write entity type definitions to the repository. Please see the separate repository template in the Moodle's "Case assignment" page.
+2. Write entity type definitions to the repository. Use the repository template in Moodle's "Case assignment" page.
 
-#### Logical database design
+### Logical database design
 
 1. Derive a relational schema from your ER diagram.
 2. Validate the relations with the BCNF rule. Fix the relations if they are not in BCNF.
 3. Define integrity constraints for your relations. Document them in the repository.
 
 > [!IMPORTANT]
-> Please submit all step 1 results to Moodle's "Case assignment" page in a single ZIP file named `case_assignment_step_1_YOURFAMILYNAME.zip`. **Every team member should do this submission**.
+> Submit all step 1 results to Moodle's "Case assignment" page in a single `case_assignment_database_design.pdf` PDF document. **Every team member should submit this**.
 
-### Step 2: Physical design, implementation in SQL Server, and testing
+## Step 2: Physical design, implementation in SQL Server, and testing
 
 > [!IMPORTANT]
-> Please, record and report the working time, categorized by person(s) and task.
+> It is normal that the database design changes during the development process. If need to changes arise, just make the necessary changes to the previous step's design documents.
 
-#### Physical design and implementation
+### Physical design and implementation
 
 1. Write an SQL script to create the database structure in SQL Server.
 2. Create the database in SQL Server.
-3. In SMSS, create a database diagram that shows your tables and relationships etc.
+3. In SMSS, create a database diagram that shows your tables and relationships, etc.
 4. Design a minimal set of indexes on your tables and write an SQL script to create them.
 
 > [!NOTE]
 > Please note that SQL Server will automatically create unique indexes on primary keys.
 
-#### Testing
+### Testing
 
 > [!IMPORTANT]
-> Your test data should look authentic and there should be a reasonable number of rows in each table.
+> Your test data should look authentic, and there should be a reasonable number of rows in each table.
 
 1. Design test data and write an SQL script to insert the test data into the database.
 2. Insert the test data into your database.
@@ -87,23 +62,30 @@ The case assignment is carried out in two steps with their own requirements and 
 
 Write a project closing report addressing the following points:
 
-1.  To what extent does the product fulfil the given requirements? Please indicate if any component is missing or if any tests are not functioning properly.
-2.  What aspects of the project were successful? What challenges were encountered?
-3.  What lessons were learned from this project? What will we do better next time?
+1. To what extent does the product fulfil the given requirements? Please indicate if any component is missing or if any tests are not functioning properly.
+2. What aspects of the project were successful? What challenges were encountered?
+3. What lessons were learned from this project? What will we do better next time?
 
 > [!IMPORTANT]
-> In your report, ensure to include the working time records categorized by person(s) and task.
+> In your closing report, ensure to include the working time records categorized by person(s) and task.
 
 ## Finally, submit all deliverables to Moodle
 
-Please submit all deliverables (step 1 and step 2) to Moodle in a single ZIP file. The file should be named as `case_assignment_final_YOURFAMILYNAME.zip`.
+Please submit all deliverables (step 1 and step 2) to Moodle's "Case assignment" page in a single zip file containing the following files:
 
-## The requirements from Greenwood Cultural Association
+- `case_assignment_database_design.pdf` containing everything from step 1.
+- All the `.sql` files from step 2.
+- `case_assignment_database_diagram.pdf` containing the database diagram from step 2.
+- `case_assignment_closing_report.pdf` containing the closing report.
+
+The file should be named as `case_assignment_final_YOURFAMILYNAME.zip`. **Every team member should submit this**.
+
+## Requirements from the Greenwood Cultural Association
 
 > [!NOTE]
 > This case assignment pertains to a simplified prototype of a real database system. The scope of this assignment has been deliberately narrowed down to include only a minimal set of features. This ensures that the task is manageable and appropriate for our current purposes. In addition, this document is a free-form assignment description. It is not a formal requirements specification.
 
-The teacher represents the customer from the _The Greenwood Cultural Association_. Here's how the customer is describing their requirements:
+The teacher represents the customer from the _Greenwood Cultural Association_. Here's how the customer is describing their requirements:
 
 > _"The Greenwood Cultural Association, a small non-profit organization, hosts a variety of cultural events, including concerts, theatre, dance performances, and more. Traditionally, tickets for these events have been sold in person at the Greenwood tourist office._
 > 
@@ -134,7 +116,7 @@ The teacher represents the customer from the _The Greenwood Cultural Association
 Validate and test your database structure by writing and executing SQL statements for all 16 operations and queries mentioned below.
 
 > [!NOTE]
-> During the design phase, you can use the below as a checklist when you are conducting conceptual data modelling.
+> During the design phase, you can use the following as a checklist when you are conducting conceptual data modelling.
 
 The database implementation should be designed to allow the following operations:
 
