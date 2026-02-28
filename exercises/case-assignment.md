@@ -79,7 +79,7 @@ Please submit all deliverables (from all the stepa) to Moodle's "Case assignment
   - Inserting the test data.
   - Statements for the required operations and queries.
 - `case_assignment_database_diagram.pdf` containing the database diagram generated in step 2.
-- `case_assignment_closing_report.pdf` containing the closing report.
+- `case_assignment_closing_report.pdf` containing the closing report from step 3.
 
 The zip file should be named as `case_assignment_final_YOURFAMILYNAME.zip`. **Every team member should submit this**.
 
