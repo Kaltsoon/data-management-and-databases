@@ -1,8 +1,8 @@
 # SQL Server installation
 
-First, [Download the SQL Server Standard Developer edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads). It is the _SQL Server Database Management System_. In the installer, _choose the "Basic" installation type_ and go through the installation steps.
+First, [Download the SQL Server Standard Developer edition](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) and install it. This is the _SQL Server Database Management System_. In the installer, _choose the "Basic" installation type_ and go through the installation steps.
 
-Then, [Download SQL Server Management Studio](https://learn.microsoft.com/en-us/ssms/install/install). It is the _graphical user interface for interacting with the SQL Server_, used for e.g. executing database queries.
+Then, [Download SQL Server Management Studio](https://learn.microsoft.com/en-us/ssms/install/install) and install it. This is the _graphical user interface for interacting with the SQL Server_, used for e.g. executing database queries.
 
 After both installations are ready, open the _SQL Server Configuration Manager_ application to check and set SQL Server Network Configuration. You can find the application using the Windows search bar. _If TCP/IP is not enabled, then right-click on TCP/IP and choose "Enable"_.
 
