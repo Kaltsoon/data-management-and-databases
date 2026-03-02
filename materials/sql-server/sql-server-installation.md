@@ -40,7 +40,7 @@ In the query window, type in the following query (both lines):
 
 ```sql
 CREATE DATABASE BIT_SWD03
-ALTER DATABASE BIT_SWD03 COLLATE Finnish_Swedish_CI_A
+ALTER DATABASE BIT_SWD03 COLLATE Finnish_Swedish_CI_AS
 ```
 
 Then, click the "Execute" button below the "New Query" button. This will create a database named "BIT_SWD03".
