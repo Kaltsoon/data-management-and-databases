@@ -32,10 +32,9 @@ Then, answer the following questions:
 > [!NOTE]
 > You'll find the answers in the first week's lesson slides on the Moodle's "Course outline" page and the "Study Instructions" section on the "General" page.
 
-1. How should you confirm your participation in the Data Management and Databases course?
+1. How do you confirm your participation in the Data Management and Databases course?
 2. What are the minimum requirements for passing the course?
-3. Where do you find the weekly learning materials and exercises?
-4. Explain in your own words what do the "Study Instructions" section on the Moodle's "General" page say about using AI in this course?
+3. Explain in your own words what do the "Study Instructions" section on the Moodle's "General" page say about using AI in this course?
 
 ## Part 2
 
