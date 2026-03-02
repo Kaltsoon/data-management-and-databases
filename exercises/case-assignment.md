@@ -3,9 +3,9 @@
 > [!IMPORTANT]
 > Case assignment is mandatory to receive a passing grade in the course.
 
-During this case assignment, your team will be designing and implementing a database based on the customer's requirements. The case assignment is carried out in three steps, with their own requirements.
+During this case assignment, your team will be designing and implementing a database based on the customer's requirements. The case assignment is carried out in three steps, with its own requirements.
 
-Step 1 has its own deadline, otherwise there's a final deadline at the end of the course. See the deadlines on Moodle's "Course outline" page.
+Step 1 has its own deadline. There's also a final deadline at the end of the course for the complete case assignment. See the deadlines on Moodle's "Course outline" page.
 
 ## Step 1: Database modelling and logical design
 
@@ -70,14 +70,14 @@ Write a project closing report addressing the following points:
 
 ## Finally, submit all deliverables to Moodle
 
-Please submit all deliverables (from all the stepa) to Moodle's "Case assignment" page in a single zip file containing the following files:
+Please submit all deliverables (from all the steps) to Moodle's "Case assignment" page in a single zip file containing the following files:
 
 - `case_assignment_database_design.pdf` containing everything from step 1.
 - All the `.sql` files from step 2.
   - Creating the database tables.
   - Creating the indexes.
   - Inserting the test data.
-  - Statements for the required operations and queries.
+  - Statements for the 16 required operations and queries (see at the end of this material).
 - `case_assignment_database_diagram.pdf` containing the database diagram generated in step 2.
 - `case_assignment_closing_report.pdf` containing the closing report from step 3.
 
