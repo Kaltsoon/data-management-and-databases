@@ -1,6 +1,6 @@
 # Exam advice
 
-The course assessment is based on the points from the mid-term and final exams. The final grade is calculated from the percentage of exam points from **both exams**:
+The course assessment is mostly based on the points from the mid-term and final exams. The final grade is calculated from the percentage of exam points from **both exams**:
 
 | % of exam points | Final grade |
 | ---------------- | ---------- |
