@@ -86,6 +86,9 @@ Time dimension considerations:
 > [!TIP]
 > The _"current"_ means that the start date is in the past AND either end date is missing or it is in the future. 
 
+> [!NOTE]
+> The result table rows are dependent on the current date, so you'll probably get different rows.
+
 <details>
 
 <summary>Expected result table</summary>
