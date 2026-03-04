@@ -3,6 +3,9 @@
 > [!IMPORTANT]
 > Create a Word document named `sql_exercises_6_YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and a [screenshot](https://www.take-a-screenshot.org/) of the result** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
 
+> [!TIP]
+> Especially with the join operations, we need to understand the relationships between the tables. Use the **Database Diagram** in this week's "Materials" section on the course outline page to understand the primary and foreign key relationships of the tables.
+
 ## 1.
 
 What course instances does each teacher teach? Display surname, first name, teacher number, course code, and instance number. Sort the result by (surname, first name, course code, instance number).
