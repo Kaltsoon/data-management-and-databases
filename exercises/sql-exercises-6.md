@@ -83,6 +83,9 @@ Time dimension considerations:
 1. List all the current academic advisors (surname, first name, teacher number, start date, end date). Sort the result by (surname, first name, teacher number) in ascending order.
 2. List all the current and past academic advisors (surname, first name, teacher number, start date, end date). Sort the result by (surname, first name, teacher number) in ascending order.
 
+> [!TIP]
+> The _"current"_ means that the start date is in the past AND either end date is missing or it is in the future. 
+
 <details>
 
 <summary>Expected result table</summary>
