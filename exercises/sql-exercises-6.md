@@ -84,7 +84,7 @@ Time dimension considerations:
 2. List all the current and past academic advisors (surname, first name, teacher number, start date, end date). Sort the result by (surname, first name, teacher number) in ascending order.
 
 > [!TIP]
-> The _"current"_ means that the start date is in the past AND either end date is missing or it is in the future. 
+> The _"current"_ means that the start date is in the past AND either end date is missing or it is in the future. Find a suitable function to get the current date.
 
 > [!NOTE]
 > The result table rows are dependent on the current date, so you'll probably get different rows.
