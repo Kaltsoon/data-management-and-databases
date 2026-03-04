@@ -15,7 +15,7 @@ Read the following guides depending on which SQL Server instance you use:
 ## Using the generative AI tools
 
 > [!CAUTION]
-> You won't learn anything from the course by directly generating answers using generative AI tools (e.g, ChatGPT or Copilot). Also, such tools **won't be available to you during the exam**. However, using AI tools for advice, such as _"Which function gets the current date in SQL Server?"_ is highly encouraged.
+> You won't learn anything from the course by directly generating answers using generative AI tools (e.g, ChatGPT or Copilot). Also, such tools **won't be available to you during the exam**. However, using these tools for advice, such as _"Which function gets the current date in SQL Server?"_ is highly encouraged.
 
 Your SQL Server Management Studio installation might include the Copilot integration. If so, it is available in the top-right corner of the window. The chat can provide useful, **but don't use it (or other generative AI tools) to generate answers directly**. Especially, disable the next edit suggestions and completions as shown below (uncheck those settings).
 
