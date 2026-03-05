@@ -171,26 +171,7 @@ Time dimension considerations:
 
 ## 7.
 
-List the number of teachers per each campus (campus name, "Number of teachers"). Sort the result by campus name in ascending order.
-
-<details>
-
-<summary>Expected result table</summary>
-
-| campus_name | Number of teachers |
-| ----------- | ------------------ |
-| Malmi       | 2                  |
-| Pasila      | 3                  |
-| Porvoo      | 0                  |
-| Vierumäki   | 1                  |
-
-(4 row(s) affected)
-
-</details>
-
-## 8.
-
-What types of academic misconduct have occurred at Takkula University this far? List misconduct description. Sort the result by misconduct type in ascending order. This time, use a join, not any subquery.
+What types of academic misconduct have occurred at the university this far? List misconduct description. Sort the result by misconduct type in ascending order. This time, use a join, not any subquery.
 
 <details>
 
@@ -205,7 +186,7 @@ What types of academic misconduct have occurred at Takkula University this far? 
 
 </details>
 
-## 9.
+## 8.
 
 List all the students (surname, first name, student number, course code, grade) who live in Helsinki and have at least one course grade greater than 2. Sort the result by (surname, first name, student number, course code).
 
@@ -229,7 +210,7 @@ List all the students (surname, first name, student number, course code, grade) 
 
 </details>
 
-## 10.
+## 9.
 
 List all the teachers (course code, course name, teacher number, surname, first name) who have given the course that has the course code 'a730'. Sort the result by teacher number in ascending order.
 
@@ -246,7 +227,7 @@ List all the teachers (course code, course name, teacher number, surname, first 
 
 </details>
 
-## 11.
+## 10.
 
 List all the passing grades (course name, grade, surname, first name, student number) for female students. Sort by the result by (course name, grade in descending order, surname, first name, student number in ascending order).
 
@@ -264,6 +245,25 @@ List all the passing grades (course name, grade, surname, first name, student nu
 | Java Basics     | 2     | Vuori    | Valma      | o548           |
 
 (6 row(s) affected)
+
+</details>
+
+## 11.
+
+List the number of teachers per each campus (campus name, "Number of teachers"). Sort the result by campus name in ascending order.
+
+<details>
+
+<summary>Expected result table</summary>
+
+| campus_name | Number of teachers |
+| ----------- | ------------------ |
+| Malmi       | 2                  |
+| Pasila      | 3                  |
+| Porvoo      | 0                  |
+| Vierumäki   | 1                  |
+
+(4 row(s) affected)
 
 </details>
 
@@ -410,7 +410,7 @@ List all the students (student number, surname, first name, disciplinary sanctio
 
 ## 19.
 
-What is the prevalence of academic misconduct at Takkula University? Find out the percentage of students who have been penalized due to an academic misconduct incident. Display the percentage with one decimal place. Rename the column as "Misconduct %".
+What is the prevalence of academic misconduct at the university? Find out the percentage of students who have been penalized due to an academic misconduct incident. Display the percentage with one decimal place. Rename the column as "Misconduct %".
 
 > [!TIP]
 > When you need to use the total of students as an operand in the percentage calculation, write a subquery in the formula.
