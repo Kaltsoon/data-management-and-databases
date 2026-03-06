@@ -302,6 +302,7 @@ classDiagram
 - We always interpret a relationship type in both directions, so, for example the **"teaches"** relationship is interpreted as follows:
   - Each teacher teaches **zero or more** (0..*) course instances
   - Each course instance is taught by **one or many** (1..*) teachers
+- This notation is one of the variations specified by the **Unified Modeling Language** (UML), but there are others as well
 
 ---
 
@@ -368,3 +369,5 @@ classDiagram
 - **Database design** is a the process of creating a design that will meet the **data requirements** of the enterprise and support its operations
 - During the **conceptual database design** phase, a high-level conceptual model of the data requirements of the enterprise is constructed
 - **Entity-relationship modeling** (ER) is a conceptual database design approach to visually represent the data structures and their relationships within a system
+- Entity-relationship model is commonly visualized as a **entity-relationship diagram** consisting of **entities**, **attributes** and **relationships** between different entities
+
