@@ -12,6 +12,15 @@ Read the following guides depending on which SQL Server instance you use:
 - If you have _installed SQL Server on your own computer_, [follow this guide](./sql-server-installation.md#connecting-sql-server-with-sql-server-management-studio).
 - If you are using _Haaga-Helia's SQL Server_, [follow this guide](haaga-helia-sql-server.md#connecting-sql-server-with-sql-server-management-studio).
 
+## Using the generative AI tools
+
+> [!CAUTION]
+> You won't learn anything from the course by directly generating answers using generative AI tools (e.g, ChatGPT or Copilot). Also, such tools **won't be available to you during the exam**. However, using these tools for advice, such as _"Which function gets the current date in SQL Server?"_ is highly encouraged.
+
+Your SQL Server Management Studio installation might include the Copilot integration. If so, it is available in the top-right corner of the window. The chat can provide useful, **but don't use it (or other generative AI tools) to generate answers directly**. Especially, disable the next edit suggestions and completions as shown below (uncheck those settings).
+
+![Copilot settings](./assets/copilot-settings.png)
+
 ## Executing database queries
 
 Once connected, you can open a new query window by clicking the "New Query" button or right-clicking the "BIT_SWD03" database in the "Object Explorer" panel and clicking "New Query".

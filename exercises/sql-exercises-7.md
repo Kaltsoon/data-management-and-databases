@@ -24,6 +24,9 @@ List all the courses (surname, first name, teacher number, course name) that hav
 
 List all the teachers (surname, first name, teacher number, course name). If a teacher is in charge of a course, then also the course name should be shown. Sort the result by (surname, first name, teacher number, course name) in ascending order.
 
+> [!TIP]
+> Consider the difference between `INNER JOIN` and `OUTER JOIN` with this query. Which join operation suits this case?
+
 <details>
 
 <summary>Expected result table</summary>

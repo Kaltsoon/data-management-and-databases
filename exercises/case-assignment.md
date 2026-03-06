@@ -3,7 +3,9 @@
 > [!IMPORTANT]
 > Case assignment is mandatory to receive a passing grade in the course.
 
-During this case assignment, your team will be designing and implementing a database based on the customer's requirements. The case assignment is carried out in two steps, with its own requirements and deadlines.
+During this case assignment, your team will be designing and implementing a database based on the customer's requirements. The case assignment is carried out in three steps, with its own requirements.
+
+Step 1 has its own deadline. There's also a final deadline at the end of the course for the complete case assignment. See the deadlines on Moodle's "Course outline" page.
 
 ## Step 1: Database modelling and logical design
 
@@ -32,15 +34,15 @@ During this case assignment, your team will be designing and implementing a data
 
 ## Step 2: Physical design, implementation in SQL Server, and testing
 
-> [!IMPORTANT]
+> [!NOTE]
 > It is normal that the database design changes during the development process. If changes are needed, make the necessary updates to the previous step's design documents.
 
 ### Physical design and implementation
 
-1. Write an SQL script to create the database structure in SQL Server.
-2. Create the database in SQL Server.
+1. Write an SQL script to create the database tables in SQL Server. Save this script to a `.sql` file.
+2. Create the database tables in SQL Server.
 3. In SMSS, create a database diagram that shows your tables and relationships, etc.
-4. Design a minimal set of indexes on your tables and write an SQL script to create them.
+4. Design a minimal set of indexes on your tables and write an SQL script to create them. Save this script to a `.sql` file.
 
 > [!NOTE]
 > Please note that SQL Server will automatically create unique indexes on primary keys.
@@ -50,11 +52,10 @@ During this case assignment, your team will be designing and implementing a data
 > [!IMPORTANT]
 > Your test data should look authentic, and there should be a reasonable number of rows in each table.
 
-1. Design test data and write an SQL script to insert the test data into the database.
+1. Design test data and write an SQL script to insert the test data into the database. Save this script to a `.sql` file.
 2. Insert the test data into your database.
-3. Write an SQL script for all the 16 operations and queries listed at the end of this material.
+3. Write an SQL script for all the 16 operations and queries listed at the end of this material. Save this script to a `.sql` file.
 4. Test your implementation by executing the SQL statements.
-5. Write a short test report.
 
 ## Step 3: Evaluate your work
 
@@ -69,14 +70,18 @@ Write a project closing report addressing the following points:
 
 ## Finally, submit all deliverables to Moodle
 
-Please submit all deliverables (step 1 and step 2) to Moodle's "Case assignment" page in a single zip file containing the following files:
+Please submit all deliverables (from all the steps) to Moodle's "Case assignment" page in a single zip file containing the following files:
 
 - `case_assignment_database_design.pdf` containing everything from step 1.
 - All the `.sql` files from step 2.
+  - Creating the database tables.
+  - Creating the indexes.
+  - Inserting the test data.
+  - Statements for the 16 required operations and queries (see at the end of this material).
 - `case_assignment_database_diagram.pdf` containing the database diagram generated in step 2.
-- `case_assignment_closing_report.pdf` containing the closing report.
+- `case_assignment_closing_report.pdf` containing the closing report from step 3.
 
-The file should be named as `case_assignment_final_YOURFAMILYNAME.zip`. **Every team member should submit this**.
+The zip file should be named as `case_assignment_final_YOURFAMILYNAME.zip`. **Every team member should submit this**.
 
 ## Requirements from the Greenwood Cultural Association
 

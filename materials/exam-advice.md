@@ -1,6 +1,17 @@
 # Exam advice
 
-This advice will prepare you for the mid-term and final exams.
+The course assessment is mostly based on the points from the mid-term and final exams. The final grade is calculated from the percentage of exam points from **both exams**:
+
+| % of exam points | Final grade |
+| ---------------- | ---------- |
+| 90% - 100%       | 5          |
+| 80% - 89%        | 4          |
+| 70% - 79%        | 3          |
+| 60%- 69%         | 2          |
+| 50%- 59%         | 1          |
+| 0% - 49%         | 0          |
+
+50% of exam points from **both exams** is required for a passing grade.
 
 ## Mid-term exam
 
