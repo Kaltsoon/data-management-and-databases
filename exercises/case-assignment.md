@@ -1,7 +1,7 @@
 # Case assignment
 
 > [!IMPORTANT]
-> Case assignment is mandatory to receive a passing grade in the course.
+> **Case assignment is a team effort**, each team produces one case assignment as teamwork. Case assignment is mandatory to receive a passing grade in the course.
 
 During this case assignment, your team will be designing and implementing a database based on the customer's requirements. The case assignment is carried out in three steps, with its own requirements.
 
