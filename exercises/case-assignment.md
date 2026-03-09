@@ -83,6 +83,9 @@ Please submit all deliverables (from all the steps) to Moodle's "Case assignment
 
 The zip file should be named as `case_assignment_final_YOURFAMILYNAME.zip`. **Every team member should submit this**.
 
+> [!TIP]
+> If you are using [GitHub](https://github.com/), consider publishing the case assignment on GitHub, because it will be a good portfolio piece.
+
 ## Requirements from the Greenwood Cultural Association
 
 > [!NOTE]
