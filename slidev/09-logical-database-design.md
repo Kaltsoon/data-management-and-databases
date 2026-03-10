@@ -2,7 +2,7 @@
 colorSchema: light
 fonts:
   sans: Roboto
-  weights: '200,400,600,700'
+  weights: "200,400,600,700"
 ---
 
 ## Logical database design
@@ -44,7 +44,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 classDiagram
     direction LR
     Course "1..1" -- "1..*" CourseInstance : has ▶
-    Student "0..*" -- "0..*" CourseInstance: enrolls ▶ 
+    Student "0..*" -- "0..*" CourseInstance: enrolls ▶
 
     class Course {
       course_code$
@@ -87,18 +87,16 @@ Enrollment(<u>course_code</u>, <u>instance_number</u>, <u>student_number</u>)
 
 </div>
 
-
 ---
 
 ## Logical database design
 
-- Entity types, attributes, and relationship types can be directly transformed into relations with some simple rules
 - Typically, the logical database design process includes the following types of activities:
-  1. Deriving relations for the logical data model
-  2. Validating relations using normalisation
-  3. Validating relations against user transaction
-  4. Double-checking integrity constraints
-  5. Reviewing logical data model with user
+  1. Derive relations for the logical data model. Entity types, attributes, and relationship types from a conceptual schema can be directly transformed into relations with some simple rules
+  2. Validate that the relations don't have redundancies using normalization techniques
+  3. Validate relations against users' requirements. For example, _"list all course names a student has enrolled to"_ could be a user's requirement for a schema
+  4. Verify integrity constraints, e.g., primary keys, foreign keys and not null contraints
+  5. Review the model with users
 
 ---
 
@@ -106,9 +104,9 @@ Enrollment(<u>course_code</u>, <u>instance_number</u>, <u>student_number</u>)
 
 - The process starts by **deriving relations for the logical data model**, which includes:
   1. Creating the relations
-  2. Refining the attributes
+  2. Refining the attributes. For example, a non-atomic `full_name` attribute could be refined to `first_name` and `surname` attributes
   3. Determining primary and foreign keys
-  4. Determining other types of integrity constraints
+  4. Determining other types of integrity constraints. For example `Course` relation's `name` attribute should have a not null constraint
 
 ---
 
@@ -117,8 +115,8 @@ Enrollment(<u>course_code</u>, <u>instance_number</u>, <u>student_number</u>)
 - To transform a conceptual schema into a relational database schema, we might need **additional relations** to establish specific relationships
 - We create the relations in the following manner:
   - For **each entity type**, we create a relation that includes all simple (single-value) attributes of the entity
-  - For **many-to-many relationship types** ("..*" on both sides of the relationship), we create a **"bridge relation"** to represent the relationship
-  - For **multi-valued attributes**, we create a new relation to represent the multi-valued attribute. For example, a person may have several phone numbers, but multi-valued attributes are not allow in relations
+  - For **many-to-many relationship types** ("..\*" on both sides of the relationship), we create a **"bridge relation"** to represent the relationship
+  - For **multi-valued attributes**, we create a new relation to represent the multi-valued attribute. For example, a person may have several phone numbers, but multi-valued attributes are not allowed in relations
 
 ---
 
@@ -130,7 +128,7 @@ Enrollment(<u>course_code</u>, <u>instance_number</u>, <u>student_number</u>)
 classDiagram
     direction LR
     Course "1..1" -- "1..*" CourseInstance : has ▶
-    Student "0..*" -- "0..*" CourseInstance: enrolls ▶ 
+    Student "0..*" -- "0..*" CourseInstance: enrolls ▶
 
     class Course {
       course_code$
@@ -154,21 +152,21 @@ classDiagram
 
 ## Example of creating relations
 
-- In the example we have one **many-to-many relationship** between the _Student_ and _CourseInstance_ entities ("..*" on both sides of the "enrolls" relationship):
+- In the example we have one **many-to-many relationship** between the `Student` and `CourseInstance` entities ("..\*" on both sides of the "enrolls" relationship):
   - _"Student enrolls to zero or many course instances and course instance has zero or many students"_
-  - In this case we create an additional **bridge relation**, for example _Enrollment_
-- There is a **multi-valued attribute** _emails_ in the _Student_ entity
-  - In this case we create an additional entity, for example _StudentEmail_
-- This leaves with the following relations: _Student_, _CourseInstance_, _Enrollment_ and _StudentEmail_
+  - In this case we create an additional **bridge relation**, for example `Enrollment`
+- There is a **multi-valued attribute** `emails` in the `Student` entity
+  - In this case we create an additional entity, for example `StudentEmail`
+- This leaves with the following relations: `Student`, `CourseInstance`, `Enrollment` and `StudentEmail`
 
 ---
 
 ## Refining the attributes
 
 - Once we have created the relations, we need to refine the attributes in the following manner:
-  - We divide a non-atomic attribute into smaller (atomic) attributes. For example student's home address can be divided into, city, postal code and street_address attributes
-  - We define general (not DBMS-specific) attribute data-types, for example "string" or "integer"
-  - We define which attributes can have `NULL` values. We should allow `NULL` in an attribute only based on **strong arguments**
+  - Divide non-atomic attributes into smaller, atomic attributes. For example, a student's home address can be split into `city`, `postal_code`, and `street_address`
+  - Define general (not DBMS-specific) attribute data types, such as "text", "integer" or "date"
+  - Decide which attributes can have a `NULL` (missing) value. Allow a `NULL` value only when there is a clear and valid reason, because inappropriate `NULL` values degrade data quality
 
 ---
 
@@ -182,26 +180,24 @@ Student(<u>student_number</u>, first_name, surname)
 - The primary key can be either a **simple key** (single column, like `course_code` in the `Course` relation) or a **composite key** (several columns, like `course_code` and `instance_number` in the `CourseInstance` relation)
 - By definition, the primary key should always satisfy the properties of **requiredness** (not `NULL`), **uniqueness** and **minimality**
 - The primary key **should remain stable**. That is, primary key values should not be updated later
-- The primary key should be **reasonably short**
-- The primary key should have **no privacy issues**. For example social security number has privacy issues
+- The primary key should be **reasonably compact** (e.g. a short string or an integer), to improve performance and minimize storage
 
 ---
 
-## Determining primary key for a weak entity type
+## Primary key of a weak entity type
 
-- A **weak entity type** is an entity type that is dependent on the existence of another entity type
-- For example _CourseGrade_ is existence-dependent on _Student_ and _CourseInstance_
-- When a relation derived from a weak entity type, the natural primary key is partially or fully derived from the weak entity type's owner entity type
-- For example, the natural primary key of the _CourseGrade_ relation is a composite key that **includes columns from two foreign keys**, one referencing _Student_ and other referencing _CourseInstance_
-- The primary key of the weak entity's relation cannot be made until after the foreign keys have been determined for the relation
+- A **weak entity type** is an entity type that is dependent on the existence of another entity type and cannot be uniquely identified by its own attributes alone
+- For example, `CourseGrade` cannot exist without a `Student` and a `CourseInstance`
+- When a relation is derived from a weak entity type, its natural primary key is usually derived partly or fully from the owner entity type(s)
+- In practice, `CourseGrade` can use a composite primary key such as (`student_number`, `course_code`, `instance_number`), where the columns come from foreign keys to `Student` and `CourseInstance`
+- Because of this, we determine the foreign keys first and then define the weak entity relation's primary key
 
 ---
 
 ## Surrogate keys
 
 - If there is initially no suitable candidate key for a relation, then we cannot determine a natural primary key
-- We have to take care of the situation by including an extra attribute in the relation to act as the primary key
-- This kind of primary key is a **surrogate key**
+- We have to take care of the situation by including an extra attribute in the relation to act as the primary key, which is called a **surrogate key**
 - Surrogate keys are commonly generated values, such as incrementing or random numbers, like the `messageid` primary key in the data below
 
 | messageid | from                       | to                         | title    | body         |
@@ -215,7 +211,7 @@ Student(<u>student_number</u>, first_name, surname)
 ## Alternate keys
 
 - Candidate keys that are not selected to be primary the key are called **alternate keys**
-- We should consider the use of the **unique constraint** on alternate keys to make sure that their values remain unique:
+- Alternate keys are unique by nature, so we should consider the use of the **unique constraint** on alternate keys to enforce their uniqueness:
 
   <pre>
   Student (<u>studentnumber</u>, ssn, familyname, givenname)
@@ -226,11 +222,11 @@ Student(<u>student_number</u>, first_name, surname)
 
 ---
 
-## Determing foreign keys
+## Determining foreign keys
 
-- In a relational database, **relationships** are represented by the **primary key/foreign key mechanism**
-- To know in which relation be need to place the foreign key, we need to identify the **relationship type** between the two entities
-- During the course, we will use the following syntax to define the relation's foreign keys in the **relation schema**:
+- In the relational model, relationships are represented by a **foreign key that references a primary key**
+- To decide where the foreign key should be placed, we first identify the **relationship type** between the entities
+- In this course, we describe foreign keys in the **relation schema** using the following notation:
 
 <pre>
 Course(<u>course_code</u>, name, credits)
@@ -241,10 +237,10 @@ CourseInstance(<u>course_code</u>, <u>instance_number</u>, start_date)
 
 ---
 
-## Determing foreign keys
+## Relationship types
 
 - Most often the relationship type between two entities falls in **many-to-one**, **many-to-many** and **one-to-one** categories
-- Example of **many-to-one relationship** with "..*" on one side and "..1" on another:
+- Example of **many-to-one relationship** with "..\*" on one side and "..1" on another:
 
 ```mermaid
 ---
@@ -266,7 +262,7 @@ classDiagram
     Division "1..*" -- "1..1" Company : is part of ▶
 ```
 
-- Example of **many-to-many relationship** with "..*" on both sides:
+- Example of **many-to-many relationship** with "..\*" on both sides:
 
 ```mermaid
 ---
@@ -413,8 +409,8 @@ classDiagram
 
 <div class="flex-1 m-l-2">
 
-- A relation can't have attributes with **multiple values**, such as the _phone\_numbers_ attribute of the _Employee_ entity type in this example (employee has many phone numbers)
-- In such case, we must create a **new relation** to represent the multi-valued attribute, for example _EmployeePhone_
+- A relation can't have attributes with **multiple values**, such as the _phone_numbers_ attribute of the `Employee` entity type in this example (employee has many phone numbers)
+- In such case, we must create a **new relation** to represent the multi-valued attribute, for example a `EmployeePhone` relation
 - We move the attribute from the original relation and place it to the new relation and place a copy of the parent relation's primary key into the child relation, to act as the foreign key
 
 </div>
