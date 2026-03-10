@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > **Case assignment is a team effort**, each team produces one case assignment as teamwork. Case assignment is mandatory to receive a passing grade in the course.
 
-During this case assignment, your team will be designing and implementing a database based on the customer's requirements. The case assignment is carried out in three steps, with its own requirements. You'll find the customer's requirements at the end of this material and the case assignment should be implemented based on those requirements.
+In this case assignment, your team will design and implement a database based on the customer's requirements. The case assignment is carried out in three steps, with its own requirements. You'll find the customer's requirements at the end of this material, and the case assignment should be implemented accordingly.
 
 Step 1 has its own deadline. There's also a final deadline at the end of the course for the complete case assignment. See the deadlines on Moodle's "Course outline" page.
 
