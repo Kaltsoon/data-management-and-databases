@@ -22,6 +22,9 @@ Remember to **underline primary keys** and write a **foreign key definition for 
 
 Which one of the below reflects correctly the ER diagram above?
 
+> [!TIP]
+> Start by identifying the relationship type (one-to-one, many-to-one, or many-to-many). Then, refer to the examples on lesson slides on how the relations are derieved with different relationship types.
+
 ### a.
 
 <pre>
@@ -103,7 +106,13 @@ Derive relations from the ER diagram below.
 > We do this as a simple practice. That is, derive the relations straightforwardly without thinking any further practical business issues. You do not have to worry about the 'XOR' thing.
 
 > [!TIP]
-> The name of the primary key in the parent table and the name of the foreign key in the child table can be different. The foreign key definition "binds" a foreign key to a primary key.
+> The name of the primary key in the parent table and the name of the foreign key in the child table can be different. The foreign key definition "binds" a foreign key to a primary key. For example, let's consider that a football team has both a captain and vice captain player:
+> <pre>
+> Player (<ins>player_id</ins>, first_name, surname)
+> Team (<ins>name</ins>, captain_id, vice_captain_id)
+>     FK (captain_id) REFERENCES Player (player_id)
+>     FK (vice_captain_id) REFERENCES Player (player_id)
+> </pre>
 
 ## 5. University
 
