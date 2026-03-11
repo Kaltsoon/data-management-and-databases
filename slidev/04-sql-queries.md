@@ -1,5 +1,7 @@
 ---
 colorSchema: light
+clicks: false
+transition: none
 fonts:
   sans: Roboto
   weights: '200,400,600,700'
@@ -175,8 +177,8 @@ ORDER BY credits, course_name
 
 | course_name        | credits |
 | ------------------ | ------- |
-| Algorithms         | ⚠️ 4       |
-| Python Programming | ⚠️ 4       |
+| Algorithms         | <span v-mark.circle.red>4</span>      |
+| Python Programming | <span v-mark.circle.red>4</span>       |
 | Databases          | 3       |
 
 ---
