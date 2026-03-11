@@ -84,7 +84,7 @@ Translate the ER diagrams below to relation schemas. **Underline primary keys** 
 ![ER diagram](./assets/ld-task-2-e.png)
 
 > [!TIP]
-> Even if the `Employee` relationship has a relationship with itself, derive the relations just the same, based on the relationship type.
+> Even if the `Employee` entity has a relationship with itself, derive the relations just the same, based on the relationship type.
 
 ## Task 3: Translating ER diagrams to relation schemas
 
