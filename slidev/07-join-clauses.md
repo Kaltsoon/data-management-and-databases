@@ -187,7 +187,7 @@ WHERE grade > 0
 | course_code | instance_number | teacher_number |
 | ----------- | --------------- | -------------- |
 | a290        | 1               | 🔗 h430         |
-| a290        | 2               | ⚠️ NULL         |
+| a290        | 2               | <span v-mark.circle.red>NULL</span>         |
 
 ---
 
@@ -198,7 +198,7 @@ WHERE grade > 0
 | course_code | instance_number | teacher_number |
 | ----------- | --------------- | -------------- |
 | a290        | 1               | 🔗 h430         |
-| a290        | 2               | ⚠️ NULL         |
+| a290        | 2               | <span v-mark.circle.red>NULL</span>        |
 | a450        | 1               | 🔗 h303         |
 
 | teacher_number | first_name | surname |
@@ -257,7 +257,7 @@ ON CourseInstance.teacher_number = Teacher.teacher_number
 | course_code | instance_number | teacher_number | first_name | surname |
 | ----------- | --------------- | -------------- | ---------- | ------- |
 | a290        | 1               | h430           | Emma       | Virta   |
-| a290        | 2               | ⚠️ NULL         | ⚠️ NULL     | ⚠️ NULL  |
+| a290        | 2               | <span v-mark.circle.red>NULL</span>       | <span v-mark.circle.red>NULL</span>     | <span v-mark.circle.red>NULL</span>  |
 | a450        | 1               | h303           | Veli       | Ponteva |
 
 ---
@@ -291,7 +291,7 @@ ON Teacher.campus_code = Campus.campus_code
 | course_code | instance_number | teacher_number |
 | ----------- | --------------- | -------------- |
 | a290        | 1               | 🔗 h430         |
-| a290        | 2               | ⚠️ NULL         |
+| a290        | 2               | <span v-mark.circle.red>NULL</span>        |
 | a450        | 1               | 🔗 h303         |
 
 | teacher_number | first_name | surname |
@@ -336,7 +336,7 @@ LEFT OUTER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_numbe
 | course_code | instance_number | teacher_number | first_name | surname |
 | ----------- | --------------- | -------------- | ---------- | ------- |
 | a290        | 1               | h430           | Emma       | Virta   |
-| a290        | 2               | ⚠️ NULL         | ⚠️ NULL     | ⚠️ NULL  |
+| a290        | 2               | <span v-mark.circle.red>NULL</span>         | <span v-mark.circle.red>NULL</span>     | <span v-mark.circle.red>NULL</span>  |
 | a450        | 1               | h303           | Veli       | Ponteva |
 
 ---

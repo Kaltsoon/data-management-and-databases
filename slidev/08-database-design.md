@@ -66,7 +66,7 @@ flowchart LR
 ```
 
 - A common approach in database design, is the **top-down** approach
-- We start from the "top", with the development of high-level **conceptual data model** with few high-level entity types (for example "Course", "Course instance" and "Teacher")
+- We start from the "top", with the development of high-level **conceptual data model** with few high-level entity types (for example `Course`, `CourseInstance` and `Teacher`)
 - Then we move down to the "bottom" by adding details step-by-step until we have developed the **physical data model** with all the tables, columns and other details about the database schema
 - The typical main phases in a systematic top-down database design process are:
   1. Conceptual database design
@@ -198,9 +198,9 @@ CREATE TABLE CourseInstance (
 
 - **Entity-relationship modeling** (ER) is a conceptual database design approach to visually represent the data structures and their relationships within a system
 - Entity-relationship model is commonly visualized as a **entity-relationship diagram** consisting of **entities**, **attributes** and **relationships** between different entities
-- **Entities** are real-world objects or concepts that can be distinctly identified. For example "Course", "CourseInstance" and "Student"
-- **Attributes** are characteristics or properties of an entity. For example "Course" entity has attributes "name" and "credits"
-- **Relationships** are connection or association between entities. For example "Teacher teaches CourseInstance" and "Student enrolls CourseInstance"
+- **Entities** are real-world objects or concepts that can be distinctly identified. For example `Course`, `CourseInstance` and `Student`
+- **Attributes** are characteristics or properties of an entity. For example `Course` entity has attributes `name` and `credits`
+- **Relationships** are connection or association between entities. For example _"teacher teaches course instance"_ and _"student enrolls course instance"_
 
 ---
 
@@ -244,7 +244,7 @@ classDiagram
 
 <div class="flex-1 m-l-2">
 
-- This entity-relationship diagram contains four entities: "Course", "CourseInstance", "Teacher" and "Student"
+- This entity-relationship diagram contains four entities: `Course`, `CourseInstance`, `Teacher` and `Student`
 - Entities are visualized as boxes and entity's attributes are listed inside the box and **primary key is underlined**
 - Relationships are visualized as lines between the entity boxes
 - Relationship specifies the number of instances of one entity that can be associated with instances of another and optionally a description of the relationship
@@ -321,7 +321,7 @@ classDiagram
 
 - Let's consider the following requirements for a hotel booking database:
 
-> _"A hotel offers many rooms for its visitors. A room has a room number, a floor number and area as square meters. Each room has zero or more bookings. A booking has a start and end date. Each booking is made by one visitor. A visitor has a social security number, a first name and a surname."_
+> _"A hotel offers many rooms for its visitors. A <span v-mark.circle.red>room</span> has a room number, a floor number and area as square meters. Each room has zero or more bookings. A <span v-mark.circle.red>booking</span> has a start and end date. Each booking is made by one <span v-mark.circle.red>visitor</span>. A visitor has a social security number, a first name and a surname."_
 >
 
 - Entity types: **Room**, **Booking**, **Visitor**

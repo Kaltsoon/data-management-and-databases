@@ -35,6 +35,9 @@ What course instances does each teacher teach? Display surname, first name, teac
 
 Who is the person in charge of each course? Display course code, course name, and name of the person in charge. Concatenate surname and first name as "Person in charge". Sort the result by course code in ascending order.
 
+> [!TIP]
+> The name of the foreign key column doesn't need to be the same as the name of the primary key column. For example, `captain_id` foreign key column in a `Team` table could be referencing the `player_id` primary key column in the `Player` table.
+
 <details>
 
 <summary>Expected result table</summary>
@@ -55,10 +58,10 @@ Who is the person in charge of each course? Display course code, course name, an
 
 ## 3.
 
-List all the teachers (surname, first name, teacher number, course name). If a teacher is in charge of a course, then also the course name should be shown. Sort the result by (surname, first name, teacher number, course name) in ascending order.
+List all the teachers (surname, first name, teacher number, course name). If a teacher is in charge of a course, then the course name should also be shown. Sort the result by (surname, first name, teacher number, course name) in ascending order.
 
 > [!TIP]
-> Consider the difference between `INNER JOIN` and `OUTER JOIN` with this query. Which join operation suits this case?
+> Consider the difference between `INNER JOIN` and `OUTER JOIN` with this query, and what happens with the teachers who are not in charge of any course with these different operations.
 
 <details>
 

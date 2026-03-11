@@ -54,9 +54,9 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 | courseno | instance_number | student_number | phone  | enrolment_date |
 | -------- | --------------- | -------------- | ------ | -------------- |
-| C001     | 1               | 10             | ⚠️ 1234 | 2025-04-01     |
+| C001     | 1               | 10             | <span v-mark.circle.red>1234</span> | 2025-04-01     |
 | ...      | ...             | ...            | ...    | ...            |
-| C002     | 3               | 10             | ⚠️ 3338 | 2025-04-07     |
+| C002     | 3               | 10             | <span v-mark.circle.red>3338</span> | 2025-04-07     |
 
 ---
 
@@ -151,10 +151,10 @@ SELECT surname FROM Student WHERE studentnumber = 'a12345'
 
 | coursecode | offeringnumber | coursename         | startdate  | teachernumber | surname |
 | ---------- | -------------- | ------------------ | ---------- | ------------- | ------- |
-| C101       | 1              | ⚠️ Database Systems | 2025-02-10 | T001          | ⚠️ Smith |
-| C101       | 2              | ⚠️ Database Systems | 2025-09-05 | T002          | Jones   |
+| C101       | 1              | <span v-mark.circle.red>Database Systems</span> | 2025-02-10 | T001          | <span v-mark.circle.red>Smith</span> |
+| C101       | 2              | <span v-mark.circle.red>Database Systems</span> | 2025-09-05 | T002          | Jones   |
 | C102       | 1              | Web Development    | 2025-03-12 | T003          | Brown   |
-| C103       | 1              | Data Analytics     | 2025-05-20 | T001          | ⚠️ Smith |
+| C103       | 1              | Data Analytics     | 2025-05-20 | T001          | <span v-mark.circle.red>Smith</span> |
 
 </div>
 
@@ -182,7 +182,7 @@ SELECT surname FROM Student WHERE studentnumber = 'a12345'
 - From the data redundancy and integrity viewpoint, we have a problem here because total budget exists twice in the design:
 
 <pre>
-Company (<u>companyno</u>, companyname, totalbudget ❌)
+Company (<u>companyno</u>, companyname,  <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">totalbudget</span>)
 Department (<u>deptno</u>, deptname, deptbudget, companyno)
     FK (companyno) REFERENCES Company (companyno)</pre>
 

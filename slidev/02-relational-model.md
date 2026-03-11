@@ -1,5 +1,7 @@
 ---
 colorSchema: light
+clicks: false
+transition: none
 fonts:
   sans: Roboto
   weights: '200,400,600,700'
@@ -61,8 +63,8 @@ classDiagram
 
 - A **data model** is a conceptual model that defines how data is structured, stored, and accessed in a system
 - For example, **entity-relationship model** describes **entities** (things about which data is stored), **attributes** (details about each entity), and **relationships** (how entities are connected)
-- In case of a simple online store, a "Customer" **entity** consists of **attributes** such as "name" and "email"
-- The "Customer" entity could have a **relationship** with the "Order" entity, describing which orders a specific customer has placed
+- In case of a simple online store, a `Customer` **entity** consists of **attributes** such as `name` and `email`
+- The `Customer` entity could have a **relationship** with the `Order` entity, describing which orders a specific customer has placed
 - Data model **helps design the structure** of a database and **makes data requirements easier to understand**, ensuring that both technical and non-technical stakeholders share a common understanding of the data
 
 </div>
@@ -74,8 +76,8 @@ classDiagram
 ## Components of a data model
 
 - A data model consists of three components:
-  1. **Structural part**: what types of data exist and how they relate to each other. For example data model could consist of "Course implementation" and "Teacher" entities, and "Teacher" entity has a relationship with the "Course implementation" entity (the teacher teaching the course implementation)
-  2. **Integrity part**: how the data can be used, validated, and maintained. For example "credits" attribute of a "Course" entity should be a number between 0 and 10
+  1. **Structural part**: what types of data exist and how they relate to each other. For example data model could consist of `CourseImplementation` and `Teacher` entities, and `Teacher` entity has a relationship with the `CourseImplementation` entity (the teacher teaching the course implementation)
+  2. **Integrity part**: how the data can be used, validated, and maintained. For example `credits` attribute of a `Course` entity should be a number between 0 and 10
   3. **Manipulative part**: what can be done with the data (like creating, reading, updating, deleting)
 
 ---
@@ -83,11 +85,11 @@ classDiagram
 ## The relational model
 
 - When all data model's data is logically structured within **relations**, the model is a **relational model**
-- **Relation** (informally called a **table**) represents a data entity organized in a specific structure, such as "Course"
-- Each relation consists of **attributes** (informally called **columns**) that define its properties, such as "name" and "credits"
-- Attributes have a set of allowable values, which is referred to as the attribute's **domain**. For example, "Course" relation's "credits" attribute could be an integer value between 1 and 10
+- **Relation** (informally called a **table**) represents a data entity organized in a specific structure, such as `Course`
+- Each relation consists of **attributes** (informally called **columns**) that define its properties, such as `name` and `credits`
+- Attributes have a set of allowable values, which is referred to as the attribute's **domain**. For example, `Course` relation's `credits` attribute could be an integer value between 1 and 10
 - The actual data is in relations's **tuples** (informally called **rows**)
-- **Relationships** between two relations are established using a **foreign key**, which references other relation's unique **primary key**. For example "Course implementation" relation has a "teacherno" foreign key referencing the "Teacher" relation's "teacherno" attribute
+- **Relationships** between two relations are established using a **foreign key**, which references other relation's unique **primary key**. For example `CourseImplementation` relation has a `teacherno` foreign key referencing the `Teacher` relation's `teacherno` attribute
 
 ---
 
@@ -100,10 +102,10 @@ classDiagram
 | ENG150  | Academic Writing            | 2       | LING          |
 | CSC102  | Introduction to Programming | 5       | CS            |
 
-- The following data represents a "Course" **relation**
-- The relation has four **attributes** "code", "name", "credits" and "programmecode"
+- The following data represents a `Course` **relation**
+- The relation has four **attributes** `code`, `name`, `credits` and `programmecode`
 - There a four **tuples** containing the actual data
-- The "code" attribute is a **primary key**, which uniquely identifies each tuple (no two tuples have the same value for the attribute)
+- The `code` attribute is a **primary key**, which uniquely identifies each tuple (no two tuples have the same value for the attribute)
 
 ---
 
@@ -111,9 +113,9 @@ classDiagram
 
 - Each relation has a name that is **distinct from all other relation names**
 - Each attribute of a relation has a **distinct name within the relation**
-- Each relation has a **primary key** attribute, which **unique identifies each tuple** and makes sure, there's no duplicate values. For example "code" primary key for "Course" relation and "studentnumber" primary key for "Student" relation
-- Each attribute is **atomic**, meaning that each tuple's cell contains exactly one value. For example, it is not possible to have a "emails" attribute representing multiple email addresses
-- Values of an attribute are all **from the same domain**. For example, "name" attribute values are only text and "credits" attribute values are only numbers
+- Each relation has a **primary key** attribute, which **unique identifies each tuple** and makes sure, there's no duplicate values. For example `code` primary key for `Course` relation and `studentnumber` primary key for `Student` relation
+- Each attribute is **atomic**, meaning that each tuple's cell contains exactly one value. For example, it is not possible to have a `emails` attribute representing multiple email addresses
+- Values of an attribute are all **from the same domain**. For example, `name` attribute values are only text and `credits` attribute values are only numbers
 
 ---
 
@@ -121,9 +123,9 @@ classDiagram
 
 | order_id | customer_id | order_date   | total_amount |
 | -------- | ----------- | ------------ | ------------ |
-| ❌ 1      | 102         | 2025-01-13   | ❌ -50.00     |
-| ❌ 1      | ❌ NULL      | 2025-01-14   | 150.00       |
-| 6        | 104         | ❌ 02.02.2025 | 200.00       |
+| <span v-mark.circle.red>1</span>    | 102         | 2025-01-13   | <span v-mark.circle.red>-50.00</span>     |
+| <span v-mark.circle.red>1</span>    | <span v-mark.circle.red>NULL</span>     | 2025-01-14   | 150.00       |
+| 6        | 104         | <span v-mark.circle.red>02.02.2025</span> | 200.00       |
 
 - The quality of the data directly determines the quality of the whole database
 - Therefore preventing entry of incorrect data is one of the most important functions of a DBMS
@@ -136,8 +138,8 @@ classDiagram
 
 - A **superkey** is an attribute or group of attributes that **uniquely identifies** each tuple of a relation
 - Superkey consisting of a group of attributes is called a **composite key**
-- Relation can have multiple superkeys, for example in the "Course" relation the "code" attribute, and group of "code" and "name" attributes (composite key) are superkeys
-- ❓ What other superkeys does the "Course" relation have?
+- Relation can have multiple superkeys, for example in the `Course` relation the `code` attribute, and group of `code` and `name` attributes (composite key) are superkeys
+- ❓ What other superkeys does the `Course` relation have?
 
 | code    | name                        | credits | programmecode |
 | ------- | --------------------------- | ------- | ------------- |
@@ -151,8 +153,8 @@ classDiagram
 
 - A composite **candidate key** is a superkey that satisfies the property of **minimality**
 - Minimality is satisfied if an attribute can't be removed from the composite key without breaking the uniqueness property
-- In the "Course" relation the group of "code" and "name" attributes doesn't satify minimality, so it isn't a candidate key
-- ❓ What other candidate keys does the "Course" relation have?
+- In the `Course` relation the group of `code` and `name` attributes doesn't satify minimality, so it isn't a candidate key
+- ❓ What other candidate keys does the `Course` relation have?
 
 | code    | name                        | credits | programmecode |
 | ------- | --------------------------- | ------- | ------------- |
@@ -176,7 +178,7 @@ classDiagram
 ## Surrogate keys
 
 - If there is initially no candidate key for a relation, then we cannot determine a **natural primary key**
-- For example, the relation "Messages", representing email messages:
+- For example, the relation `Message`, representing email messages:
 
 | from                       | to                         | title    | body         |
 | -------------------------- | -------------------------- | -------- | ------------ |
@@ -188,9 +190,9 @@ classDiagram
 ## Surrogate keys
 
 - We have to take care of the situation by including an extra attribute in the relation to act as the primary key
-- For example a "messageid" column that holds a unique number for each tuple:
+- For example a `messageid` column that holds a unique number for each tuple:
 
-| messageid | from                       | to                         | title    | body         |
+| <span v-mark.circle.red>messageid</span> | from                       | to                         | title    | body         |
 | --------- | -------------------------- | -------------------------- | -------- | ------------ |
 | 1         | kalle.ilves@haaga-helia.fi | john.doe@gmail.com         | Greeting | Hello John!  |
 | 2         | john.doe@gmail.com         | kalle.ilves@haaga-helia.fi | Response | Hello Kalle! |
@@ -210,8 +212,8 @@ classDiagram
 ## Choosing a primary key
 
 - Let's consider a suitable primary key in the following cases:
-  - ❓ Is "Student" relation's "phonenumber" attribute a good option for a primary key? Why or why not?
-  - ❓ A "Customer" relation has attributes "address", "name", "email" and "social_security_number". What would be suitable primery key for this relation and why?
+  - ❓ Is `Student` relation's `phonenumber` attribute a good option for a primary key? Why or why not?
+  - ❓ A `Customer` relation has attributes `address`, `name`, `email` and `social_security_number`. What would be suitable primery key for this relation and why?
 
 | social_security_number | name          | address                  | email                    |
 | ---------------------- | ------------- | ------------------------ | ------------------------ |
@@ -242,9 +244,9 @@ classDiagram
 
 <div class="flex-1">
 
-- In this example we have two relations: "Employee" and "Department"
+- In this example we have two relations: `Employee` and `Department`
 - Each employee belongs to one department, where they work in
-- This relationship is established between entities by using a **foreign key** attribute "deptno" in the "Employee" relation, which is linked to the "Department" relation's **primary key** attribute "deptno"
+- This relationship is established between entities by using a **foreign key** attribute `deptno` in the `Employee` relation, which is linked to the `Department` relation's **primary key** attribute `deptno`
 - ⚠️ A general rule is, that foreign key **always references a primary key**
   
 </div>
@@ -263,7 +265,7 @@ classDiagram
 
 <div class="flex-1">
 
-- Let's consider the following question related to these "Team", "Artist" and "Team_Artist" relations:
+- Let's consider the following question related to these `Team`, `Artist` and `Team_Artist` relations:
   - ❓ What are the **primary keys** for each table?
   - ❓ What are the **foreign keys** for each table?
   
@@ -311,13 +313,13 @@ CourseGrade (<u>courseCode</u>, <u>studentNumber</u>, grade)
 | studentid | name          | phonenumber    | major            |
 | --------- | ------------- | -------------- | ---------------- |
 | 2001      | Emma Thompson | (415) 555-0198 | Computer Science |
-| 2002      | Liam Martinez | ⚠️ NULL         | Computer Science |
+| 2002      | Liam Martinez | <span v-mark.circle.red>NULL</span>       | Computer Science |
 | 2003      | Sophia Chen   | (212) 555-0843 | Psychology       |
 
 - **Null** is a marker for a missing attribute value
 - Null is not the same as e.g. blanks or zero. Null represents **absence of a value**
 - The **not null constraint** is a restriction placed on an attribute, which enforces that in every tuple of data the attribute **must have a value**
-- For example, it would make sense that in the "Employee" relation, the "deptno" attribute has a not null constraint, meaning that every employee belongs to a department
+- For example, it would make sense that in the `Employee` relation, the `deptno` attribute has a not null constraint, meaning that every employee belongs to a department
 
 ---
 

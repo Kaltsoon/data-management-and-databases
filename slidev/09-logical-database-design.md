@@ -1,5 +1,7 @@
 ---
 colorSchema: light
+clicks: false
+transition: none
 fonts:
   sans: Roboto
   weights: "200,400,600,700"
@@ -165,7 +167,7 @@ classDiagram
 
 - Once we have created the relations, we need to refine the attributes in the following manner:
   - Divide non-atomic attributes into smaller, atomic attributes. For example, a student's home address can be split into `city`, `postal_code`, and `street_address`
-  - Define general (not DBMS-specific) attribute data types, such as "text", "integer" or "date"
+  - Define general (not DBMS-specific) attribute data types, such as `text`, `integer` or `date`
   - Decide which attributes can have a `NULL` (missing) value. Allow a `NULL` value only when there is a clear and valid reason, because inappropriate `NULL` values degrade data quality
 
 ---
@@ -200,7 +202,7 @@ Student(<u>student_number</u>, first_name, surname)
 - We have to take care of the situation by including an extra attribute in the relation to act as the primary key, which is called a **surrogate key**
 - Surrogate keys are commonly generated values, such as incrementing or random numbers, like the `messageid` primary key in the data below
 
-| messageid | from                       | to                         | title    | body         |
+| <span v-mark.circle.red>messageid</span> | from                       | to                         | title    | body         |
 | --------- | -------------------------- | -------------------------- | -------- | ------------ |
 | 1         | kalle.ilves@haaga-helia.fi | john.doe@gmail.com         | Greeting | Hello John!  |
 | 2         | john.doe@gmail.com         | kalle.ilves@haaga-helia.fi | Response | Hello Kalle! |
@@ -215,7 +217,7 @@ Student(<u>student_number</u>, first_name, surname)
 
   <pre>
   Student (<u>studentnumber</u>, ssn, familyname, givenname)
-    UNIQUE (ssn)
+    <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">UNIQUE (ssn)</span>
   </pre>
 
 - Especially, when we are using a surrogate primary key, a unique constraint on at least one natural alternate key improves data quality
@@ -232,7 +234,7 @@ Student(<u>student_number</u>, first_name, surname)
 Course(<u>course_code</u>, name, credits)
 
 CourseInstance(<u>course_code</u>, <u>instance_number</u>, start_date)
-  FOREIGN KEY (course_code) REFERENCES Course(course_code)
+  <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">FOREIGN KEY (course_code) REFERENCES Course(course_code)</span>
 </pre>
 
 ---
@@ -318,7 +320,7 @@ classDiagram
   Company (<u>company_id</u>, name)
   
   Division (<u>division_id</u>, company_id, name)
-    FOREIGN KEY (company_id) REFERENCES Company(company_id)
+    <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">FOREIGN KEY (company_id) REFERENCES Company(company_id)</span>
   </pre>
 
 ---
@@ -346,9 +348,9 @@ classDiagram
   <pre>
   Athlete (<u>athlete_id</u>, first_name, family_name)
   Race (<u>race_id</u>, name, date)
-  RaceParticipation(<u>athlete_id</u>, <u>race_id</u>)
+  <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">RaceParticipation(<u>athlete_id</u>, <u>race_id</u>)
     FOREIGN KEY (athlete_id) REFERENCES Athlete(athlete_id),
-    FOREIGN KEY (race_id) REFERENCES Race(race_id)
+    FOREIGN KEY (race_id) REFERENCES Race(race_id)</span>
   </pre>
 
 ---
@@ -377,7 +379,7 @@ classDiagram
   <pre>
   Athlete (<u>athlete_id</u>, first_name, family_name)
   Team (<u>team_id</u>, athlete_id, name)
-    FOREIGN KEY (athlete_id) REFERENCES Athlete(athlete_id)
+    <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">FOREIGN KEY (athlete_id) REFERENCES Athlete(athlete_id)</span>
   </pre>
 
 ---
@@ -409,7 +411,7 @@ classDiagram
 
 <div class="flex-1 m-l-2">
 
-- A relation can't have attributes with **multiple values**, such as the _phone_numbers_ attribute of the `Employee` entity type in this example (employee has many phone numbers)
+- A relation can't have attributes with **multiple values**, such as the `phone_numbers` attribute of the `Employee` entity type in this example (employee has many phone numbers)
 - In such case, we must create a **new relation** to represent the multi-valued attribute, for example a `EmployeePhone` relation
 - We move the attribute from the original relation and place it to the new relation and place a copy of the parent relation's primary key into the child relation, to act as the foreign key
 
@@ -450,8 +452,8 @@ classDiagram
 
   <pre>
   Employee (<u>empno</u>, first_name, family_name)
-  EmployeePhone (<u>phone_number</u>, empno)
-    FOREIGN KEY (empno) REFERENCES Employee(empno)
+  <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">EmployeePhone (<u>phone_number</u>, empno)
+    FOREIGN KEY (empno) REFERENCES Employee(empno)</span>
   </pre>
 
 </div>
