@@ -411,7 +411,7 @@ classDiagram
 
 <div class="flex-1 m-l-2">
 
-- A relation can't have attributes with **multiple values**, such as the _phone_numbers_ attribute of the `Employee` entity type in this example (employee has many phone numbers)
+- A relation can't have attributes with **multiple values**, such as the `phone_numbers` attribute of the `Employee` entity type in this example (employee has many phone numbers)
 - In such case, we must create a **new relation** to represent the multi-valued attribute, for example a `EmployeePhone` relation
 - We move the attribute from the original relation and place it to the new relation and place a copy of the parent relation's primary key into the child relation, to act as the foreign key
 
