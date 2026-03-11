@@ -36,7 +36,7 @@ What course instances does each teacher teach? Display surname, first name, teac
 Who is the person in charge of each course? Display course code, course name, and name of the person in charge. Concatenate surname and first name as "Person in charge". Sort the result by course code in ascending order.
 
 > [!TIP]
-> The name of the foreign key column doesn't need to be the same as the name of the primary key column. For example, `captain_id` foreign key column in a `Team` table could be referencing the `player_id` primary key column in the `Player` table.
+> The name of the foreign key column doesn't need to be the same as the name of the primary key column. For example, `captain_id` foreign key column in a `Team` table could be referencing the `player_id` primary key column in the `Player` table. Use the Database Diagram in this week's "Materials" section on Moodle's "Course outline" page to identify the the primary and foreign keys.
 
 <details>
 
