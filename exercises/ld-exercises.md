@@ -1,9 +1,9 @@
-# Logical database design exercises
+# Logical Database Design Exercises
 
 > [!IMPORTANT]
 > Write your answers to a Word document named `ld_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle.
 
-The objective of this exercise is to familiarize yourself with the basics of logical design, have hands-on practising in primary key and foreign key considerations, and learn to derive relations for simple ER diagrams. Refer to this week's lesson slides as materials.
+The objective of this exercise is to familiarize yourself with the basics of logical design, have hands-on practice in primary key and foreign key considerations, and learn to derive relations for simple ER diagrams. Refer to this week's lesson slides as materials.
 
 In this exercise set, we work with natural primary keys only. In all tasks, show your answers as relation schemas as below:
 
@@ -23,7 +23,7 @@ Remember to **underline primary keys** and write a **foreign key definition for 
 Which one of the below reflects correctly the ER diagram above?
 
 > [!TIP]
-> Start by identifying the relationship type (one-to-one, many-to-one, or many-to-many). Then, refer to the examples on lesson slides on how the relations are derieved with different relationship types.
+> Start by identifying the relationship type (one-to-one, many-to-one, or many-to-many). Then, refer to the examples on the lesson slides on how the relations are derieved with different relationship types.
 
 ### a.
 
@@ -60,6 +60,9 @@ Factory (<ins>factoryname</ins>, email, serialnumber)
 
 Translate the ER diagrams below to relation schemas. **Underline primary keys** and write a **foreign key definition for each foreign key (below the relation schema)**.
 
+> [!TIP]
+> Again, start by identifying the relationship type (one-to-one, many-to-one, or many-to-many). Then, figure out how to derive the relations for that specific relationship type.
+
 ### a.
 
 ![ER diagram](./assets/ld-task-2-a.png)
@@ -78,7 +81,10 @@ Translate the ER diagrams below to relation schemas. **Underline primary keys** 
 
 ### e.
 
-![ER diagram](./assets/ld-task-2-d.png)
+![ER diagram](./assets/ld-task-2-e.png)
+
+> [!TIP]
+> Even if the `Employee` relationship has a relationship with itself, derive the relations just the same, based on the relationship type.
 
 ## Task 3: Translating ER diagrams to relation schemas
 
@@ -96,17 +102,17 @@ Translate the ER diagrams below to relation schemas. **Underline primary keys** 
 
 ![ER diagram](./assets/ld-task-3-c.png)
 
-## 4. Boat Crews
+## Task 4: Boat crews
 
 Derive relations from the ER diagram below.
 
 ![ER diagram](./assets/ld-task-4.png)
 
 > [!NOTE]
-> We do this as a simple practice. That is, derive the relations straightforwardly without thinking any further practical business issues. You do not have to worry about the 'XOR' thing.
+> We do this as a simple practice. That is, derive the relations straightforwardly without thinking about any further practical business issues. You do not have to worry about the "XOR" thing.
 
 > [!TIP]
-> The name of the primary key in the parent table and the name of the foreign key in the child table can be different. The foreign key definition "binds" a foreign key to a primary key. For example, let's consider that a football team has both a captain and vice captain player:
+> The name of the primary key in the parent table and the name of the foreign key in the child table can be different. The foreign key definition "binds" a foreign key to a primary key. For example, let's consider that a football team has both a captain and a vice captain:
 > <pre>
 > Player (<ins>player_id</ins>, first_name, surname)
 > Team (<ins>name</ins>, captain_id, vice_captain_id)
@@ -114,11 +120,11 @@ Derive relations from the ER diagram below.
 >     FK (vice_captain_id) REFERENCES Player (player_id)
 > </pre>
 
-## 5. University
+## Task 5: University
 
 Derive relations from the ER diagram below.
 
 ![ER diagram](./assets/ld-task-5.png)
 
 > [!NOTE] 
-> We do this as a simple practice. That is, derive the relations straightforwardly without thinking any further practical issues.
+> We do this as a simple practice. That is, derive the relations straightforwardly without thinking about any further practical issues.

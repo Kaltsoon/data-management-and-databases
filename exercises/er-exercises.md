@@ -1,4 +1,4 @@
-# ER Exercises
+# Entity-relationship Model Exercises
 
 > [!IMPORTANT]
 > Write your answers to a Word document named `er_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. Include ER diagrams as images in the document.
