@@ -115,7 +115,7 @@ Derive relations from the ER diagram below.
 > The name of the primary key in the parent table and the name of the foreign key in the child table can be different. The foreign key definition "binds" a foreign key to a primary key. For example, let's consider that a department has a manager:
 > <pre>
 > Department (<ins>deptno</ins>, deptname, <strong>managerno</strong>)
->     <strong>FK (managerno) REFERENCES Employee (employee_id)</strong>
+>     <strong>FK (managerno) REFERENCES Employee (empno)</strong>
 > Employee (<ins>empno</ins>, familyname, givenname, deptno)
 >     FK (deptno) REFERENCES Department (deptno)
 > </pre>
