@@ -112,12 +112,11 @@ Derive relations from the ER diagram below.
 > We do this as a simple practice. That is, derive the relations straightforwardly without thinking about any further practical business issues. You do not have to worry about the "XOR" thing.
 
 > [!TIP]
-> The name of the primary key in the parent table and the name of the foreign key in the child table can be different. The foreign key definition "binds" a foreign key to a primary key. For example, let's consider that a football team has both a captain and a vice captain:
+> The name of the primary key in the parent table and the name of the foreign key in the child table can be different. The foreign key definition "binds" a foreign key to a primary key. For example, let's consider that a department has a manager employee:
 > <pre>
-> Player (<ins>player_id</ins>, first_name, surname)
-> Team (<ins>name</ins>, captain_id, vice_captain_id)
->     FK (captain_id) REFERENCES Player (player_id)
->     FK (vice_captain_id) REFERENCES Player (player_id)
+> Employee (<ins>employee_id</ins>, first_name, surname)
+> Department (<ins>department_id</ins>, name, manager_id)
+>     FK (manager_id) REFERENCES Employee (employee_id)
 > </pre>
 
 ## Task 5: University
