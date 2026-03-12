@@ -8,10 +8,10 @@ The objective of this exercise is to familiarize yourself with the basics of log
 In this exercise set, we work with natural primary keys only. In all tasks, show your answers as relation schemas as below:
 
 <pre>
-Department (<ins>deptno</ins>, deptname)
+Department (<strong><ins>deptno</ins></strong>, deptname)
 
-Employee (<ins>empno</ins>, familyname, givenname, deptno)
-    FK (deptno) REFERENCES Department (deptno)
+Employee (<strong><ins>empno</ins></strong>, familyname, givenname, deptno)
+    <strong>FK (deptno) REFERENCES Department (deptno)</strong>
 </pre>
 
 Remember to **underline primary keys** and write a **foreign key definition for each foreign key (below the relation schema)**.
@@ -112,11 +112,12 @@ Derive relations from the ER diagram below.
 > We do this as a simple practice. That is, derive the relations straightforwardly without thinking about any further practical business issues. You do not have to worry about the "XOR" thing.
 
 > [!TIP]
-> The name of the primary key in the parent table and the name of the foreign key in the child table can be different. The foreign key definition "binds" a foreign key to a primary key. For example, let's consider that a department has a manager employee:
+> The name of the primary key in the parent table and the name of the foreign key in the child table can be different. The foreign key definition "binds" a foreign key to a primary key. For example, let's consider that a department has a manager:
 > <pre>
-> Employee (<ins>employee_id</ins>, first_name, surname)
-> Department (<ins>department_id</ins>, name, manager_id)
->     FK (manager_id) REFERENCES Employee (employee_id)
+> Department (<ins>deptno</ins>, deptname, <strong>managerno</strong>)
+>     <strong>FK (managerno) REFERENCES Employee (empno)</strong>
+> Employee (<ins>empno</ins>, familyname, givenname, deptno)
+>     FK (deptno) REFERENCES Department (deptno)
 > </pre>
 
 ## Task 5: University
