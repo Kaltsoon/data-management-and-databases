@@ -2,7 +2,7 @@
 colorSchema: light
 fonts:
   sans: Roboto
-  weights: '200,400,600,700'
+  weights: "200,400,600,700"
 ---
 
 ## Database design
@@ -92,7 +92,7 @@ flowchart LR
 ```mermaid
 classDiagram
     Course "1..1" -- "1..*" CourseInstance : has ▶
-    Student "0..*" -- "0..*" CourseInstance: enrolls ▶ 
+    Student "0..*" -- "0..*" CourseInstance: enrolls ▶
     Teacher "1..*" -- "0..*" CourseInstance : teaches ▶
 
     class Course {
@@ -105,7 +105,7 @@ classDiagram
       instance_number
       start_date
     }
-    
+
     class Teacher {
       employee_number$
       first_name
@@ -213,7 +213,7 @@ CREATE TABLE CourseInstance (
 ```mermaid
 classDiagram
     Course "1..1" -- "1..*" CourseInstance : has ▶
-    Student "0..*" -- "0..*" CourseInstance: enrolls ▶ 
+    Student "0..*" -- "0..*" CourseInstance: enrolls ▶
     Teacher "1..*" -- "0..*" CourseInstance : teaches ▶
 
     class Course {
@@ -226,7 +226,7 @@ classDiagram
       instance_number
       start_date
     }
-    
+
     class Teacher {
       employee_number$
       first_name
@@ -264,7 +264,7 @@ classDiagram
       hideEmptyMembersBox: true
 ---
 
-classDiagram 
+classDiagram
     direction LR
     Teacher "1..*" -- "0..*" CourseInstance : teaches ▶
 ```
@@ -276,10 +276,10 @@ classDiagram
 | ----------------------- | ------------ |
 | 0..1                    | zero or one  |
 | 1..1                    | exactly one  |
-| 0..*                    | zero or many |
-| 1..*                    | one or many  |
+| 0..\*                   | zero or many |
+| 1..\*                   | one or many  |
 
-- We can also define more specific numbers, for example "5..*" would mean "at least 5"
+- We can also define more specific numbers, for example "5..\*" would mean "at least 5"
 
 ---
 
@@ -292,16 +292,16 @@ classDiagram
       hideEmptyMembersBox: true
 ---
 
-classDiagram 
+classDiagram
     direction LR
     Teacher "1..*" -- "0..*" CourseInstance : teaches ▶
 ```
 
 - While interpreting the number of instances associated with the entity, we look at the multiplicity constaint on the **opposite side of the relationship**
-- For example, "teacher teaches **zero or many** (0..*) course intances". Here we look at the multiplicity constaint on the opposite side of the "Teacher" entity box
+- For example, "teacher teaches **zero or many** (0..\*) course intances". Here we look at the multiplicity constaint on the opposite side of the "Teacher" entity box
 - We always interpret a relationship type in both directions, so, for example the **"teaches"** relationship is interpreted as follows:
-  - Each teacher teaches **zero or more** (0..*) course instances
-  - Each course instance is taught by **one or many** (1..*) teachers
+  - Each teacher teaches **zero or more** (0..\*) course instances
+  - Each course instance is taught by **one or many** (1..\*) teachers
 - This notation is one of the variations specified by the **Unified Modeling Language** (UML), but there are others as well
 
 ---
@@ -322,26 +322,25 @@ classDiagram
 - Let's consider the following requirements for a hotel booking database:
 
 > _"A hotel offers many rooms for its visitors. A <span v-mark.circle.red>room</span> has a room number, a floor number and area as square meters. Each room has zero or more bookings. A <span v-mark.circle.red>booking</span> has a start and end date. Each booking is made by one <span v-mark.circle.red>visitor</span>. A visitor has a social security number, a first name and a surname."_
->
 
 - Entity types: **Room**, **Booking**, **Visitor**
 - Attributes and unique identifiers (underlined):
   - Room: <u>room_number</u>, floor_number, area
   - Booking: start_date, end_date
   - Visitor: <u>snn</u>, first_name, surname
-- Relationships: "room has zero or many bookings", "booking has one room", "visitor has zero or many bookings", "booking has one visitor"
+- Relationships: "room has zero or many bookings" (0..\*), "booking has one room" (1..1), "visitor has zero or many bookings" (0..\*), "booking has one visitor" (1..1)
 
 ---
 
 ## User's requirements to conceptual model
 
-> _"A hotel offers many rooms for its visitors. A room has a room number, a floor number and area as square meters. Each room has zero or more bookings. A booking has a start and end date. Each booking is made by one visitor. A visitor has a social security number, a first name and a surname."_
+> _"A hotel offers many rooms for its visitors. A <span v-mark.circle.red>room</span> has a room number, a floor number and area as square meters. Each room has zero or more bookings. A <span v-mark.circle.red>booking</span> has a start and end date. Each booking is made by one <span v-mark.circle.red>visitor</span>. A visitor has a social security number, a first name and a surname."_
 
 ```mermaid
 classDiagram
     direction LR
     Room "1..1" -- "0..*" Booking : has ▶
-    Booking "0..*" -- "1..1" Visitor: has ▶ 
+    Booking "0..*" -- "1..1" Visitor: has ▶
 
     class Room {
       room_number$
@@ -353,7 +352,7 @@ classDiagram
       start_date
       end_date
     }
-    
+
     class Visitor {
       snn$
       first_name
@@ -370,4 +369,3 @@ classDiagram
 - During the **conceptual database design** phase, a high-level conceptual model of the data requirements of the enterprise is constructed
 - **Entity-relationship modeling** (ER) is a conceptual database design approach to visually represent the data structures and their relationships within a system
 - Entity-relationship model is commonly visualized as a **entity-relationship diagram** consisting of **entities**, **attributes** and **relationships** between different entities
-
