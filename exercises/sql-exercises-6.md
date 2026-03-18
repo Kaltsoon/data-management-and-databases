@@ -133,11 +133,11 @@ List all the course instances (course code, instance number, start date, surname
 
 Time dimension considerations:
 
-1. List all the current academic advisors (surname, first name, teacher number, start date, end date). Sort the result by (surname, first name, teacher number) in ascending order.
-2. List all the current and past academic advisors (surname, first name, teacher number, start date, end date). Sort the result by (surname, first name, teacher number) in ascending order.
+1. List all the _current_ academic advisors (surname, first name, teacher number, start date, end date). Sort the result by (surname, first name, teacher number) in ascending order.
+2. List all the _current and past_ academic advisors (surname, first name, teacher number, start date, end date). Sort the result by (surname, first name, teacher number) in ascending order.
 
 > [!TIP]
-> The _"current"_ means that the start date is in the past AND either end date is missing or it is in the future. Find a suitable function to get the current date.
+> The _"current"_ means that the start date is in the past and either end date is missing or it is in the future. Find a suitable function to get the current date.
 
 > [!NOTE]
 > The result table rows are dependent on the current date, so you'll probably get different rows.
@@ -437,6 +437,22 @@ What is the prevalence of academic misconduct at the university? Find out the pe
 
 ## ⭐ Bonus task 20.
 
+Time dimension considerations: List all the teachers (surname, first name, teacher number, start date, end date) who have been working as academic advisors in 2010 (at least for one day). Sort the result by (surname, first name, teacher number) in ascending order.
+
+<details>
+
+<summary>Expected result table</summary>
+
+| surname | first_name | teacher_number | start_date | end_date |
+|---------|------------|----------------|------------|----------|
+| Ponteva | Veli | h303 | 2010-01-15 | 2011-06-30 |
+
+(1 row(s) affected)
+
+</details>
+
+## ⭐ Bonus task 21.
+
 List all the courses (course name, teacher number, teacher name) where the person in charge has also been the teacher of an instance of the course. Concatenate surname and first name "Person in charge teaching". Sort the result by (surname, first name, teacher number) in ascending order.
 
 <details>
@@ -453,7 +469,7 @@ List all the courses (course name, teacher number, teacher name) where the perso
 
 </details>
 
-## ⭐ Bonus task 21.
+## ⭐ Bonus task 22.
 
 List all the prerequisite courses for the course 'a500'. Display course code and course name for the course 'a500', and course code and course name for all the prerequisite courses. Concatenate prerequisite course code and name as "Prerequisite". Sort the result by "Prerequisite" in ascending order.
 
@@ -472,7 +488,7 @@ List all the prerequisite courses for the course 'a500'. Display course code and
 
 </details>
 
-## ⭐ Bonus task 22.
+## ⭐ Bonus task 23.
 
 List all the courses and their prerequisite courses. Display the columns as before. Sort the result by course code, prerequisite course code in ascending order.
 
@@ -495,7 +511,7 @@ List all the courses and their prerequisite courses. Display the columns as befo
 
 </details>
 
-## ⭐ Bonus task 23.
+## ⭐ Bonus task 24.
 
 List all the courses (course code, instance number, course name, teacher, person in charge). Concatenate teacher's number, surname, and first name as "Teacher". Concatenate number, surname, and first name of the person in charge as "Person in charge". Sort the result by (course code, instance number) in ascending order.
 
@@ -522,7 +538,7 @@ List all the courses (course code, instance number, course name, teacher, person
 
 </details>
 
-## ⭐ Bonus task 24.
+## ⭐ Bonus task 25.
 
 List all the teachers (surname, first name, teacher number, "Comment") without any duplicate entries. If the teacher is also an academic advisor, show the text 'academic advisor' in the "Comment" column, otherwise leave the column totally empty. Sort the result by (surname, first name, teacher number) in ascending order.
 
@@ -546,7 +562,7 @@ List all the teachers (surname, first name, teacher number, "Comment") without a
 
 </details>
 
-## ⭐ Bonus task 25.
+## ⭐ Bonus task 26.
 
 > [!NOTE]
 > This can be a bit difficult, you may try to solve this one only at your own risk... ☠️

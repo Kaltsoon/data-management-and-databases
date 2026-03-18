@@ -20,11 +20,8 @@ This repository contains materials and exercises for Data Management and Databas
 
 ## Exercises
 
-- [Learning Diary](./exercises/learning-diary.md)
-- [Orientation Exercises](./exercises/orientation-exercises.md)
-- [Introduction Exercises](./exercises/introduction-exercises.md)
-- [Relational Model Exercises 1](./exercises/relational-model-exercises-1.md)
-- [Relational Model Exercises 2](./exercises/relational-model-exercises-2.md)
+### SQL exercises
+
 - [SQL Introduction Exercises](./exercises/sql-intro-exercise.md)
 - [Initialize Takkula Tables](./exercises/sql-initialize-takkula-exercise.md)
 - [SQL Exercises 1](./exercises/sql-exercises-1.md)
@@ -34,10 +31,20 @@ This repository contains materials and exercises for Data Management and Databas
 - [SQL Exercises 4](./exercises/sql-exercises-4.md)
 - [SQL Exercises 5](./exercises/sql-exercises-5.md)
 - [SQL Exercises 6](./exercises/sql-exercises-6.md)
-- [SQL Exercises 7](./exercises/sql-exercises-7.md)
-- [Entity-relationship Model Exercises](./exercises/er-exercises.md)
-- [Case assignment](./exercises/case-assignment.md)
-- [Logical Database Design Exercises](./exercises/ld-exercises.md)
 - [Database Transaction Exercises](./exercises/sql-transaction-exercises.md)
 - [SQL Access Control Exercises](./exercises/sql-access-control-exercises.md)
 - [SQL View Exercises](./exercises/sql-view-exercises.md)
+
+### Database design exercises
+
+- [Orientation Exercises](./exercises/orientation-exercises.md)
+- [Introduction Exercises](./exercises/introduction-exercises.md)
+- [Relational Model Exercises 1](./exercises/relational-model-exercises-1.md)
+- [Relational Model Exercises 2](./exercises/relational-model-exercises-2.md)
+- [Entity-relationship Model Exercises](./exercises/er-exercises.md)
+- [Logical Database Design Exercises](./exercises/ld-exercises.md)
+
+### Other exercises
+
+- [Learning Diary](./exercises/learning-diary.md)
+- [Case assignment](./exercises/case-assignment.md)
