@@ -150,6 +150,12 @@ Now, execute the following statements as instructed above:
 > [!CAUTION]
 > Execute the statements in the corresponding query window _in this specific order_. Remember, user A 🟢 executes statements on the query window on the left and user B 🔵 on the right.
 
+
+
+https://github.com/user-attachments/assets/8ad79c47-b9c8-4a17-b105-7aeec08a2cb6
+
+
+
 ```sql
 -- 1. User A 🟢:
 SELECT balance FROM Account WHERE accountNumber = 1;
