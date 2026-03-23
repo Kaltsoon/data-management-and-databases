@@ -1,5 +1,8 @@
 # Exam advice
 
+> [!IMPORTANT]
+> In both exams, all answers are written by hand on paper. You only need to bring a pen and an eraser to both exams. All other materials are provided in the exam.
+
 The course assessment is mostly based on the points from the mid-term and final exams. The final grade is calculated from the percentage of exam points from **both exams**:
 
 | % of exam points | Final grade |
@@ -24,7 +27,7 @@ The course assessment is mostly based on the points from the mid-term and final 
   - Aggregate functions (e.g. `SUM`, `COUNT`, or `MAX` functions)
   - Grouping (`GROUP BY` clause)
   - Subqueries ([IN and NOT IN](https://www.w3schools.com/sql/sql_in.asp) operators in subqueries might become useful)
-- Recap by redoing some of the SQL assignments (especially related to the topics above) and comparing your solutions to the model solutions     
+- Recap by redoing some of the SQL assignments (especially related to the topics above) and comparing your solutions to the model solutions
 - The exam has 7 questions and two bonus questions for additional points
 
 ## Final exam
