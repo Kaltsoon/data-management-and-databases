@@ -130,7 +130,7 @@ Then, do the following in SQL Server Management Studio:
 
 1. Close all query windows.
 2. To simulate two users executing simultaneous transactions, open _two_ new query windows for this task.
-3. Arrange the two query windows side by side by clicking "Window" > "New Vertical Tab Group".
+3. Arrange the two query windows side by side by clicking "Window" > "Move" > "To Tab Group Right" (or "Window" > "New Vertical Tab Group" on older SSMS version).
 
 The two query windows will simulate two separate database users, who are executing database transactions simultaneously:
 
