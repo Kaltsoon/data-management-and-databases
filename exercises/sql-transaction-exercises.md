@@ -137,22 +137,20 @@ The two query windows will simulate two separate database users, who are executi
 - In the task "user A" executes SQL statements via the query window _on the left_.
 - In the task "user B" executes SQL statements via the query window _on the right_.
 
-Let's assume that user A and user B are your friends who want to pay back the money they have
-borrowed from you. Account number 1 is your own bank account, with initial balance of 1000. Your friends want to perform the following deposits:
+Let's assume that user A and user B are your friends who want to pay you back the money they have borrowed from you. Account number 1 is your own bank account, with initial balance of 1000. Your friends want to perform the following deposits:
 
 - User A wants to _deposit 900 to your account_.
 - User B wants to _deposit 5000 to your account_.
 
-The balance after the both deposits should be 6900.
+The balance after both deposits should be 6900.
 
 Now, execute the following statements as instructed above:
 
 > [!CAUTION]
-> Execute the statements in the corresponding query window _in this specific order_. Remember, user A 🟢 executes statements on the query window on the left and user B 🔵 on the right.
+> Execute the statements in the corresponding query window _in this specific order_. Remember, user A 🟢 executes statements on the query window on the left and user B 🔵 on the right (like in the video below).
 
 
-
-https://github.com/user-attachments/assets/8ad79c47-b9c8-4a17-b105-7aeec08a2cb6
+https://github.com/user-attachments/assets/580bba57-1a23-41c0-919d-23706b18c728
 
 
 
