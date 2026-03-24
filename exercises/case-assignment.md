@@ -21,7 +21,7 @@ Step 1 has its own deadline. There's also a final deadline at the end of the cou
 ### Conceptual data modelling
 
 1. Create a conceptual model of the database and visualise it as an ER diagram.
-2. Write entity type definitions to the repository. Use the repository template in Moodle's "Case assignment" page.
+2. Write entity type definitions to the repository. **Use the repository template in Moodle's "Case assignment" page**.
 
 ### Logical database design
 
