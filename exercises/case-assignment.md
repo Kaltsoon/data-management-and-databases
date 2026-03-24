@@ -1,7 +1,7 @@
 # Case assignment
 
 > [!IMPORTANT]
-> **Case assignment is a team effort**, each team produces one case assignment as teamwork. Case assignment is mandatory to receive a passing grade in the course.
+> **Case assignment is a team effort**, each team produces one case assignment together. Case assignment is mandatory to receive a passing grade in the course.
 
 In this case assignment, your team will design and implement a database based on the customer's requirements. The case assignment is carried out in three steps, with its own requirements. You'll find the customer's requirements at the end of this material, and the case assignment should be implemented accordingly.
 
@@ -54,7 +54,7 @@ Step 1 has its own deadline. There's also a final deadline at the end of the cou
 
 1. Design test data and write an SQL script to insert the test data into the database. Save this script to a `.sql` file.
 2. Insert the test data into your database.
-3. Write an SQL script for all the 16 operations and queries listed at the end of this material. Save this script to a `.sql` file.
+3. Write an SQL script for all 15 operations and queries listed at the end of this material. Save this script to a `.sql` file.
 4. Test your implementation by executing the SQL statements.
 
 ## Step 3: Evaluate your work
@@ -111,7 +111,7 @@ Design your database structure based on these requirement details:
 4. All tickets for a specific event are priced equally.
 5. To comply with fire safety regulations, overbooking is not permitted.
 6. A single event may feature performances from multiple artists.
-7. Popular performers frequently visit Greenwood. The Association maintains a registry of artists, including their contact information and specific requests for catering and refreshments.
+7. Popular performers frequently visit Greenwood. The Association maintains a registry of artists, including their contact information and any specific catering and refreshment requests.
 8. When a client makes a booking, the client's phone number should be registered. No other client details are registered.
 9. Booked tickets are identified and purchased using a unique booking number.
 10. Each booking can contain tickets for only one event.
@@ -123,7 +123,7 @@ Design your database structure based on these requirement details:
 
 ### Validating the design of the database and testing the database implementation
 
-Validate and test your database structure by writing and executing SQL statements for all 16 operations and queries mentioned below.
+Validate and test your database structure by writing and executing SQL statements for all 15 operations and queries mentioned below.
 
 > [!NOTE]
 > During the design phase, you can use the following as a checklist when you are conducting conceptual data modelling.
