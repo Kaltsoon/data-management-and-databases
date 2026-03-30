@@ -326,6 +326,8 @@ concurrently using a standard database language with both programmatic and inter
 
 ## Relational database managament systems (RDBMS)
 
+<img src="/sql-server-logo.svg" class="top-right-watermark" alt="SQL Server logo" />
+
 - **Relational database management systems** (RDBMS) are among the most popular database management systems
 - The word _"relational"_ refers to the structure of the data in such DBMS
 - **Structured Query Language** (SQL) is the formal and most widely used database language standard for RDBMSs
