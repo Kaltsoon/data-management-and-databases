@@ -298,7 +298,7 @@ classDiagram
 
 ## Many-to-one relationship (1:N)
 
-> _"Division has one or many companies"_
+> _"Division is part of exactly <span v-mark.circle.red>one</span> company and company has one or <span v-mark.circle.red>many</span> divisions"_
 
 ```mermaid
 ---
@@ -327,7 +327,7 @@ classDiagram
 
 ## Many-to-many relationship (M:N)
 
-> "Athlete participates in zero or many races and race zero or many athlete participants"
+> "Athlete participates in zero or <span v-mark.circle.red>many</span> races and race has zero or <span v-mark.circle.red>many</span> athlete participants"
 
 ```mermaid
 ---
@@ -357,7 +357,7 @@ classDiagram
 
 ## One-to-one relationship (1:1)
 
-> "Team has exactly one athlete leader"
+> "Team has exactly <span v-mark.circle.red>one</span> leader and athlete leads zero or <span v-mark.circle.red>one</span> team"
 
 ```mermaid
 ---
