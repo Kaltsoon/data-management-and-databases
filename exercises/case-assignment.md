@@ -30,7 +30,12 @@ Step 1 has its own deadline. There's also a final deadline at the end of the cou
 3. Define integrity constraints for your relations. Document them in the repository.
 
 > [!IMPORTANT]
-> Submit all step 1 results to Moodle's "Case assignment" page in a single `case_assignment_database_design.pdf` PDF document. **Every team member should submit this**.
+> Submit all step 1 results to Moodle's "Case assignment" page in a single `case_assignment_database_design.pdf` PDF document. The file should contain:
+> 1. The ER diagram.
+> 2. The entity type definitions (as in the repository template).
+> 3. The relational schema.
+> 
+>  **Every team member should submit this**.
 
 ## Step 2: Physical design, implementation in SQL Server, and testing
 
