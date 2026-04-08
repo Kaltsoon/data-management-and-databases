@@ -77,7 +77,7 @@ Write a project closing report addressing the following points:
 
 Please submit all deliverables (from all the steps) to Moodle's "Case assignment" page in a single zip file containing the following files:
 
-- `case_assignment_database_design.pdf` containing everything from step 1.
+- `case_assignment_database_design.pdf` containing everything from step 1 and the table definitions from step 2.
 - All the `.sql` files from step 2.
   - Creating the database tables.
   - Creating the indexes.
