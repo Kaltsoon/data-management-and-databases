@@ -146,7 +146,7 @@ classDiagram
         student_number$
         first_name
         surname
-        emails
+        phone_numbers
     }
 ```
 
@@ -157,9 +157,9 @@ classDiagram
 - In the example we have one **many-to-many relationship** between the `Student` and `CourseInstance` entities ("..\*" on both sides of the "enrolls" relationship):
   - _"Student enrolls to zero or many course instances and course instance has zero or many students"_
   - In this case we create an additional **bridge relation**, for example `Enrollment`
-- There is a **multi-valued attribute** `emails` in the `Student` entity
-  - In this case we create an additional entity, for example `StudentEmail`
-- This leaves with the following relations: `Student`, `CourseInstance`, `Enrollment` and `StudentEmail`
+- There is a **multi-valued attribute** `phone_numbers` in the `Student` entity
+  - In this case we create an additional entity, for example `StudentPhoneNumber`
+- This leaves with the following relations: `Student`, `CourseInstance`, `Enrollment` and `StudentPhoneNumber`
 
 ---
 
@@ -216,7 +216,7 @@ Student(<u>student_number</u>, first_name, surname)
 - Alternate keys are unique by nature, so we should consider the use of the **unique constraint** on alternate keys to enforce their uniqueness:
 
   <pre>
-  Student (<u>studentnumber</u>, ssn, familyname, givenname)
+  Student (<u>student_number</u>, ssn, familyname, givenname)
     <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">UNIQUE (ssn)</span>
   </pre>
 
@@ -319,7 +319,7 @@ classDiagram
   <pre>
   Company (<u>company_id</u>, name)
   
-  Division (<u>division_id</u>, company_id, name)
+  Division (<u>division_id</u>, name, <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">company_id</span>)
     <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">FOREIGN KEY (company_id) REFERENCES Company(company_id)</span>
   </pre>
 
@@ -378,7 +378,7 @@ classDiagram
 
   <pre>
   Athlete (<u>athlete_id</u>, first_name, family_name)
-  Team (<u>team_id</u>, athlete_id, name)
+  Team (<u>team_id</u>, name, <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">athlete_id</span>)
     <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">FOREIGN KEY (athlete_id) REFERENCES Athlete(athlete_id)</span>
   </pre>
 
@@ -399,8 +399,8 @@ classDiagram
 
 classDiagram
     direction TB
-    class Employee {
-        empno$
+    class Student {
+        student_number$
         family_name
         given_name
         phone_numbers
@@ -411,9 +411,11 @@ classDiagram
 
 <div class="flex-1 m-l-2">
 
-- A relation can't have attributes with **multiple values**, such as the `phone_numbers` attribute of the `Employee` entity type in this example (employee has many phone numbers)
-- In such case, we must create a **new relation** to represent the multi-valued attribute, for example a `EmployeePhone` relation
-- We move the attribute from the original relation and place it to the new relation and place a copy of the parent relation's primary key into the child relation, to act as the foreign key
+- A relation can't have attributes with **multiple values**, such as the `phone_numbers` attribute of the `Student` entity type in this example (student has many phone numbers)
+- Instead, we replace the multi-value attribute with a **new relation**, such as `StudentPhone` relation
+- The multi-value attribute (`phone_numbers`) will be removed from the original relation and placed to the new relation
+- The original relation's primary key (`student_number`) is added as a foreign key to the new relation
+- The primary key of the new relation is commonly a **composite key** consisting of the attribute and the foreign key (`phone_number, student_number`)
 
 </div>
 
@@ -436,8 +438,8 @@ classDiagram
 
 classDiagram
     direction TB
-    class Employee {
-        empno$
+    class Student {
+        student_number$
         family_name
         given_name
         phone_numbers
@@ -451,9 +453,9 @@ classDiagram
 - In this example, we would get the following relation schema:
 
   <pre>
-  Employee (<u>empno</u>, first_name, family_name)
-  <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">EmployeePhone (<u>phone_number</u>, empno)
-    FOREIGN KEY (empno) REFERENCES Employee(empno)</span>
+  Student (<u>student_number</u>, first_name, family_name)
+  <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">StudentPhone (<u>phone_number</u>, <u>student_number</u>)
+    FOREIGN KEY (student_number) REFERENCES Student(student_number)</span>
   </pre>
 
 </div>

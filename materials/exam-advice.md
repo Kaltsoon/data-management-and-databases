@@ -1,4 +1,4 @@
-# Exam advice
+# Exam instructions
 
 > [!IMPORTANT]
 > In both exams, all answers are written by hand on paper. You only need to bring a pen and an eraser to both exams. All other materials are provided in the exam.
