@@ -44,7 +44,7 @@ Step 1 has its own deadline. There's also a final deadline at the end of the cou
 
 ### Physical design and implementation
 
-1. Write an SQL script to create the database tables in SQL Server. Save this script to a `.sql` file. Also include the table definitions in the step 1 design document (as in the repository template).
+1. Write an SQL script to create the database tables in SQL Server. Save this script to a `.sql` file. Include the table definitions in the step 1 design document (as in the repository template).
 2. Create the database tables in SQL Server.
 3. In SMSS, create a database diagram that shows your tables and relationships, etc.
 4. Design a minimal set of indexes on your tables and write an SQL script to create them. Save this script to a `.sql` file.
