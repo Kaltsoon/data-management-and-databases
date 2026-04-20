@@ -112,7 +112,7 @@ Functional dependencies:
 Here's a recap of the normal form rules:
 
 - 1NF: relation **must have a primary key** and all attributes **have atomic values** (no multi-valued attributes).
-- 2NF: if relation has a composite candidate key, there should not be a **partial functional dependency** in which part of a candidate determines some other attribute.
+- 2NF: if relation has a composite candidate key, there should not be a **partial functional dependency** in which part of a candidate key determines a non-candidate key attribute. E.g., if `(course_code, instance_number)` is a candidate key of a `CourseInstance` relation, `course_code → course_name` could be a partial functional dependency.
 - 3NF: there should not be a functional dependency between two **non-candidate key** attributes.
 - BCNF: there should not be a functional dependency in which the determinant (left) is not a whole candidate key.
 
