@@ -22,7 +22,7 @@ Welcome to the Data Management and Databases course! 👋
   - Knowing what kind of functions a full-scale DBMS should provide
   - Knowing and advantages of the **database approach** over the **file-based approach** in data management
 
-<div class="text-sm text-gray-5" style="position: absolute; left: 16px; bottom: 0px;">
+<div class="footnote">
 
 _A substantial portion of these materials is derived from the work of Kari Silpiö. Any use, reproduction, or distribution of this content requires prior written permission from him._
 

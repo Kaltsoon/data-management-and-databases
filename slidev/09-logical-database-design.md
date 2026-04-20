@@ -14,7 +14,7 @@ fonts:
   - Knowing how to **derive relations** from entity-relationship diagrams
   - Knowing how to determine **natural primary keys** and **foreign keys**
 
-<div class="text-sm text-gray-5" style="position: absolute; left: 16px; bottom: 0px;">
+<div class="footnote">
 
 _A substantial portion of these materials is derived from the work of Kari Silpiö. Any use, reproduction, or distribution of this content requires prior written permission from him._
 

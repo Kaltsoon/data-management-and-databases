@@ -9,13 +9,12 @@ fonts:
 
 - The learning objectives for this week are:
   - Knowing the purpose of **physical database design**
-  - Knowing the basic types of **integrity constrains**
+  - Knowing the basic types of **integrity constraints**
   - Knowing how to create a basic set of tables with integrity constraints in SQL Server
-  - Knowing the advantages and disadvantages of **database indexes**
-  - Knowing how to create indexes on database tables in SQL Server
   - Knowing what is meant by **database performance** and **database security**
+  - Knowing the advantages and disadvantages of **database indexes** and how to create them on database tables in SQL Server
 
-<div class="text-sm text-gray-5" style="position: absolute; left: 16px; bottom: 0px;">
+<div class="footnote">
 
 _A substantial portion of these materials is derived from the work of Kari Silpiö. Any use, reproduction, or distribution of this content requires prior written permission from him._
 
@@ -27,9 +26,9 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 - Once we have designed a logical database schema based on a specific data model, we can start designing the **physical implementation of the database**
 - The **physical database design** is concerned with the **target DBMS product** and all **physical-level details**
-- The target DMBS product could be for example SQL Server, PostgreSQL, or MySQL
+- The target DBMS product could be for example SQL Server, PostgreSQL, or MySQL
 - The designer should be fully aware of the functionality of the target DBMS and must know how the computer system hosting the DBMS operates
-- For example in RDMSs, the common SQL syntax and functionality is the same, but there are still important differences
+- For example in RDBMSs, the common SQL syntax and functionality is the same, but there are still important differences
 - In practice, physical design **must be tailored to a particular DBMS**
 
 ---
@@ -83,7 +82,7 @@ CREATE TABLE CourseInstance (
 ## Creating tables
 
 - In a SQL database the data is stored into **tables** that have **columns** with different **data types**, such as `VARCHAR(n)`, `INTEGER`, and `DATE`
-- Different DMBS support mostly the same data types, but many of them also support their own, **non-standard data types**, such as the PostgreSQL's `JSONB` data type for storing JSON data
+- Different DBMSs support mostly the same data types, but many of them also support their own, **non-standard data types**, such as PostgreSQL's `JSONB` data type for storing JSON data
 - A database table can be created with the `CREATE TABLE` statement:
 
   ```sql
@@ -97,7 +96,7 @@ CREATE TABLE CourseInstance (
 
 ## Database integrity
 
-- When we create a table with the `CREATE TABLE` stamement, we can define different **constraints** for the table
+- When we create a table with the `CREATE TABLE` statement, we can define different **constraints** for the table
 - Constraints enforce the database integrity in different ways:
   - The `PRIMARY KEY` constraint enforces uniqueness of values of a primary key
   - The `UNIQUE` constraint enforces uniqueness of values of an alternate key
@@ -126,7 +125,7 @@ CREATE TABLE Student (
   CONSTRAINT fk_TeacherStudent FOREIGN KEY (study_advisor)
   REFERENCES Teacher(teacher_number),
   -- the email column must have a value that is in an email format
-  CONSTRAINT chk_email_format CHECK (email LIKE '%_@_%._%')
+  CONSTRAINT chk_email_format CHECK (email LIKE '%@%.%')
 )
 ```
 
@@ -134,7 +133,7 @@ CREATE TABLE Student (
 
 ## Domain constraint
 
-- In addition to these constraints, a **domain constraint** can be used to specificy the data type and a set of allowed values in a column
+- In addition to these constraints, a **domain constraint** can be used to specify the data type and a set of allowed values in a column
 - A new domain can be created with the `CREATE DOMAIN` statement:
 
   ```sql
@@ -142,7 +141,7 @@ CREATE TABLE Student (
   ```
 
 - The new domain name can be used in column definitions instead of a built-in data type name
-- The `CREATE DOMAIN` statement is support by DBMSs such as PostgreSQL, but **not** by SQL Server
+- The `CREATE DOMAIN` statement is supported by DBMSs such as PostgreSQL, but **not by SQL Server**
 
 ---
 
@@ -150,12 +149,12 @@ CREATE TABLE Student (
 
 - **Autonumbering** allows a unique number to be automatically generated when a new row is inserted into a table
 - This is a useful option for **generating column values for surrogate primary keys**
-- We can create a **autonumber column** for a table by using an extra option in the column definition
+- We can create an **autonumber column** for a table by using an extra option in the column definition
 - In SQL Server, an autonumber column is defined with the `IDENTITY` property and it can be used with `TINYINT`, `SMALLINT`, `INTEGER`, `BIGINT`, `DECIMAL`, and `NUMERIC` data types
 
 ```sql
 CREATE TABLE Customer (
-  -- the customer_id column is a autonumber column
+  -- the customer_id column is an autonumber column
   customer_id INTEGER NOT NULL IDENTITY,
   name VARCHAR(50) NOT NULL,
   CONSTRAINT PK_Customer PRIMARY KEY (customer_id)
@@ -187,7 +186,7 @@ CREATE TABLE Customer (
 
 ## Database security
 
-- **Database security** is are the mechanisms that **protect the database against intentional or accidental threats**
+- **Database security** comprises mechanisms that **protect the database against intentional or accidental threats**
 - These threats include for example **loss of confidentiality** and **loss of privacy**
 - Organizations need to maintain secrecy over the data that is critical to them (confidentiality)
 - At least as important is the need to protect data about individuals (privacy). For example individual's private information (such as social security number, email, phone number) should be accessible limitedly
@@ -198,9 +197,9 @@ CREATE TABLE Customer (
 ## User authentication
 
 - The typical **user authentication** approaches are the following:
-  - **SQL authentication**: a virtual username is registered in the DBMS instance and protected by a password. Anybody who knows the username and password can log in into the DBMS instance
+  - **SQL authentication**: a virtual username is registered in the DBMS instance and protected by a password. Anybody who knows the username and password can log in to the DBMS instance
   - **Operating system authentication**: selected users or user groups in an operating system domain are allowed to connect to the DBMS instance. That is, the DBMS trusts the authentication service of the operating system
-- Out of these two the operating system authentication is considered more secure, because it uses more secure security protocol and enforces stricter password policies
+- Out of these two, operating system authentication is considered more secure, because it uses a more secure protocol and enforces stricter password policies
 
 ---
 
@@ -216,12 +215,11 @@ CREATE TABLE Customer (
 
 ## Database performance
 
-- A database commonly has certain **performance requirements**, for example a user don't want to wait for several seconds so that their discussion history is loaded in a messaging application
+- A database commonly has certain **performance requirements**, for example users don't want to wait for several seconds so that their discussion history is loaded in a messaging application
 - The two main aspects of **database performance** are **response time** and **throughput**
-- **Response time** is the time it takes for a user to receive the result for a certain SQL query (for example the result table of a `SELECT` query) they send to the DMBS
-- Response time includes the CPU time, queuing within the operating system, disk access, lock waits in multi-user environment, network traffic and other required operations
-- **Throughput** describes the overall capacity of the system to process data. It is measured in **database transactions** per second (TPS)
-- A single database transaction may involve several database operations
+- **Response time** is the time it takes for a user to receive the result for a certain SQL query (for example the result table of a `SELECT` query) they send to the DBMS
+- Response time includes the computation time, disk access, network traffic and other required operations
+- **Throughput** describes the overall capacity of the system to process data. It is measured in **database transactions** per second (TPS). A single database transaction may involve several database operations
 
 ---
 
@@ -230,24 +228,24 @@ CREATE TABLE Customer (
 - There are many ways to improve the database performance, for example:
   - Creating indexes on tables
   - Tuning or rewriting individual SQL queries. For example replacing certain subqueries with `JOIN` operations
-  - Distributing data access on disks
-  - Increasing main memory of the database server
+  - Distributing the database load on multiple server machines
+  - Improving the hardware (e.g., more main memory, better CPU) on the server machine
 
 ---
 
 ## Database indexes
 
-- Suppose that you are librarian in a library that has hundreds of books and you need to find the book by title "Dune"
+- Suppose that you are a librarian in a library that has hundreds of books and you need to find the book by title "Dune"
 - If you don't have any information on the locations of different books, you have to go through **every single book** to find the book you are looking for
 - If you have an ordered list of book titles and their locations you can quickly skip to letter "D" and find the location of the book you are looking for quite quickly
-- In a database such "ordered list of book titles and their locations" resembles an **index**
+- In a database, such an "ordered list of book titles and their locations" resembles an **index**
 
 ---
 
 ## Database indexes
 
 - **Indexes** are critical for database performance, due to the fact that in data processing (reading and writing data) **disk access** is extremely slow compared to **main memory access**
-- The whole database won't be able to fit into the main memory, but index is implemented with a compact data structure that at least partly fit into the main memory
+- The whole database won't be able to fit into the main memory, but an index is implemented with a compact data structure that can at least partly fit into the main memory
 - Based on a database query, index "points" to the locations of the result rows on the disk, which makes it possible for the DBMS to find data in the database with fewer disk accesses
 - Indexes are created on **columns** or a **group of columns** to speed up queries that are referencing the columns in a `WHERE` or `JOIN` clause
 - For example the following query would benefit from an index on the `title` column:
@@ -302,7 +300,7 @@ CREATE TABLE Customer (
 
 ## Advantages of indexes
 
-- If indexes are the magical way to search for rows based on a certain column value faster, then **why not add a index for every column on table?**
+- If indexes are the magical way to search for rows based on a certain column value faster, then **why not add an index for every column on a table?**
 - Indexes have many **advantages**, such as:
   - Minimise the number of disk accesses needed to locate data in the database
   - Enforce `PRIMARY KEY` and `UNIQUE` constraints. If a suitable index exists, then the DBMS
@@ -316,7 +314,7 @@ CREATE TABLE Customer (
 ## Disadvantages of indexes
 
 - But there are also **disadvantages**, such as:
-  - More main memroy and disk space is needed for indexes
+  - More main memory and disk space is needed for indexes
   - The DBMS has to update all indexes on the table when a new row is inserted
   - Also, when an existing row is updated the DBMS has to update related indexes accordingly
   - That is, if there are **unnecessary indexes** on a table they might start decreasing performance on inserts, updates, and deletes
@@ -350,8 +348,8 @@ CREATE TABLE Customer (
 ## Summary
 
 - The purpose of the **physical database design** is to produce a description of all the database's **physical-level implementation details** for a **certain DBMS product**
-- The physical database design should provide **adequate performance** and insure database **integrity**, **security** and **recoverability**
+- The physical database design should provide **adequate performance** and ensure database **integrity**, **security** and **recoverability**
 - **Database integrity** is ensured with **constraints** (for example `PRIMARY KEY`, `FOREIGN KEY`, `NOT NULL` and `UNIQUE` constraints)
-- **Database security** is are the mechanisms that **protect the database against intentional or accidental threats**
+- **Database security** comprises mechanisms that **protect the database against intentional or accidental threats**
 - Database security is accomplished by user **authentication** and **authorization**
 - Database indexes are data structures which **speed up queries** at the cost of **main memory and disk space** and **slower write operations**

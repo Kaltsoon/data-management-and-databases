@@ -35,6 +35,14 @@ export default defineConfig({
           margin-bottom: 1rem;
         }
 
+        .footnote {
+          color: ${theme.colors?.gray["5"]};
+          font-size: 0.8em;
+          position: absolute; 
+          left: 16px;
+          bottom: 0px;
+        }
+
 
         table {
           border-color: ${theme.colors?.gray["3"]};
