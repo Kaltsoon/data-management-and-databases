@@ -2,7 +2,7 @@
 colorSchema: light
 fonts:
   sans: Roboto
-  weights: '200,400,600,700'
+  weights: "200,400,600,700"
 ---
 
 ## Physical database design
@@ -62,15 +62,17 @@ CREATE TABLE Course (
   course_code VARCHAR(10) PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   credits INT NOT NULL
-);
+)
 
 CREATE TABLE CourseInstance (
   course_code VARCHAR(10),
   instance_number INT,
   start_date DATE NOT NULL,
-  PRIMARY KEY (course_code, instance_number),
-  FOREIGN KEY (course_code) REFERENCES Course(course_code)
-);
+  CONSTRAINT PK_CourseInstance
+    PRIMARY KEY (course_code, instance_number),
+  CONSTRAINT FK_Course_CourseInstance
+    FOREIGN KEY (course_code) REFERENCES Course(course_code)
+)
 ```
 
 </div>
@@ -81,14 +83,18 @@ CREATE TABLE CourseInstance (
 
 ## Creating tables
 
-- In a SQL database the data is stored into **tables** that have **columns** with different **data types**, such as `VARCHAR(n)`, `INTEGER`, and `DATE`
+- In a SQL database the data is stored into **tables** that have **columns** with different **data types**, such as `INTEGER`, `VARCHAR(n)`, and `DATE`
 - Different DBMSs support mostly the same data types, but many of them also support their own, **non-standard data types**, such as PostgreSQL's `JSONB` data type for storing JSON data
 - A database table can be created with the `CREATE TABLE` statement:
 
   ```sql
   CREATE TABLE Customer (
-    customer_id INTEGER,
-    name VARCHAR(50)
+    -- customer_id can only contain integers, e.g. 59
+    customer_id INTEGER PRIMARY KEY,
+    -- customer_name can only contain text with maximum length of 50, e.g. "John Doe"
+    customer_name VARCHAR(50),
+    -- sign_up_date can only contain dates, e.g. '2026-04-21' (YYYY-MM-DD format)
+    sign_up_date DATE
   )
   ```
 
@@ -98,89 +104,103 @@ CREATE TABLE CourseInstance (
 
 - When we create a table with the `CREATE TABLE` statement, we can define different **constraints** for the table
 - Constraints enforce the database integrity in different ways:
-  - The `PRIMARY KEY` constraint enforces uniqueness of values of a primary key
+  - The `PRIMARY KEY` constraint enforces **entity integrity** (every row in a table is uniquely identified by a primary key)
   - The `UNIQUE` constraint enforces uniqueness of values of an alternate key
-  - The `FOREIGN KEY` constraint enforces referential integrity
+  - The `FOREIGN KEY` constraint enforces **referential integrity** (foreign key in one table must always refer to an existing primary key in another table)
   - The `NOT NULL` constraint does not allow missing values
   - The `CHECK` constraint enforces a user-defined business rule
 
 ---
 
-## An example of constraints
+## Primary key constraint
+
+- The `PRIMARY KEY` constraint specifies the primary key column (or group of columns):
 
 ```sql
-CREATE TABLE Student (
-  student_number INTEGER NOT NULL,
-  -- the first_name column must have a value
-  first_name VARCHAR(50) NOT NULL,
-  surname VARCHAR(50) NOT NULL,
-  -- the ssn column must have a unique value
-  ssn VARCHAR(20) NOT NULL UNIQUE,
-  email VARCHAR(50),
-  study_advisor INTEGER,
+CREATE TABLE Course (
+  -- With a single column primary key, the constraint can be specified after the column's data type
+	course_code VARCHAR(10) PRIMARY KEY,
+  -- The UNIQUE constraint enforces that the column only has unique values
+	course_name VARCHAR(100) NOT NULL UNIQUE
+)
 
-  -- the student_number is the primary key column
-  CONSTRAINT pk_Student PRIMARY KEY (student_number),
-  -- the study_advisor is a foreign key column referencing the Teacher table
-  CONSTRAINT fk_TeacherStudent FOREIGN KEY (study_advisor)
-  REFERENCES Teacher(teacher_number),
-  -- the email column must have a value that is in an email format
-  CONSTRAINT chk_email_format CHECK (email LIKE '%@%.%')
+CREATE TABLE Enrollment (
+	student_id INT NOT NULL,
+	course_code VARCHAR(10) NOT NULL,
+	enrolled_on DATE NOT NULL,
+  -- Composite primary key needs to be defined using the CONSTRAINT keyword
+  -- "PK_Enrollment" is the name of the constraint, following the convention PK_NameOfTable
+	CONSTRAINT PK_Enrollment PRIMARY KEY (student_id, course_code)
 )
 ```
 
 ---
 
-## Domain constraint
+## Automatically generated primary key values
 
-- In addition to these constraints, a **domain constraint** can be used to specify the data type and a set of allowed values in a column
-- A new domain can be created with the `CREATE DOMAIN` statement:
+- Primary key column can be defined as an **identity column**, which will **generate a unique primary key value automatically**. The value will be an integer with increasing value (1, 2, 3...)
+- Identity columns are useful for surrogate keys, because we don't need to worry about the primary key value while inserting a new row
 
-  ```sql
-  CREATE DOMAIN SizeDomain AS CHAR(2) CHECK (VALUE IN ('S', 'M', 'L', 'XL'))
-  ```
+```sql
+CREATE TABLE Product (
+  -- the IDENTITY keyword specifies the identity column
+	product_id INT IDENTITY PRIMARY KEY,
+	product_name VARCHAR(100) NOT NULL,
+	unit_price DECIMAL(10,2) NOT NULL
+)
 
-- The new domain name can be used in column definitions instead of a built-in data type name
-- The `CREATE DOMAIN` statement is supported by DBMSs such as PostgreSQL, but **not by SQL Server**
+-- We don't need to specify a value for product_id, it will be generated automatically
+INSERT INTO Product (product_name, unit_price)
+VALUES
+	('Keyboard', 49.90),
+	('Mouse', 19.90)
+```
 
 ---
 
-## Column autonumbering
+## Foreign key constraint
 
-- **Autonumbering** allows a unique number to be automatically generated when a new row is inserted into a table
-- This is a useful option for **generating column values for surrogate primary keys**
-- We can create an **autonumber column** for a table by using an extra option in the column definition
-- In SQL Server, an autonumber column is defined with the `IDENTITY` property and it can be used with `TINYINT`, `SMALLINT`, `INTEGER`, `BIGINT`, `DECIMAL`, and `NUMERIC` data types
+- The `FOREIGN KEY` constraint specifies the foreign key column (or group of columns):
 
 ```sql
-CREATE TABLE Customer (
-  -- the customer_id column is an autonumber column
-  customer_id INTEGER NOT NULL IDENTITY,
-  name VARCHAR(50) NOT NULL,
-  CONSTRAINT PK_Customer PRIMARY KEY (customer_id)
+CREATE TABLE Department (
+	department_id INT PRIMARY KEY,
+	department_name VARCHAR(100) NOT NULL
+)
+
+CREATE TABLE Employee (
+	employee_id INT PRIMARY KEY,
+	employee_name VARCHAR(100) NOT NULL,
+	department_id INT NOT NULL,
+  -- This foreign key constraint will establish the link between the two tables
+  -- The name of constraint commonly follows the convention FK_TableA_TableB
+	CONSTRAINT FK_Employee_Department
+		FOREIGN KEY (department_id) REFERENCES Department(department_id)
 )
 ```
 
 ---
 
-## Example of column autonumbering
+## More examples of constraints
 
-- When we insert a new row into the table, the **DBMS assigns automatically a value to the identity column**
-- We **cannot** insert a value to the `IDENTITY` column explicitly:
+- Here are examples of the `NOT NULL` (column must have a value) and `CHECK` (column value must pass the specified condition) constraints:
 
-<div class="m-b-1">
+```sql
+CREATE TABLE MovieRating (
+	rating_id INT PRIMARY KEY,
+  -- the NOT NULL constraint enforces that the movie_title must have a value
+	movie_title VARCHAR(100) NOT NULL,
+	stars INT NOT NULL,
+	rating_source VARCHAR(20) NOT NULL,
+    -- The CHECK condition can be any condition with a true or false result
+	CONSTRAINT CK_MovieRating_stars CHECK (stars BETWEEN 1 AND 5),
+	CONSTRAINT CK_MovieRating_source CHECK (rating_source IN ('critic', 'user'))
+)
 
-  ```sql
-  INSERT INTO customer (name) VALUES ('Kalle Ilves')
-  INSERT INTO customer (name) VALUES ('Kari Silpiö')
-  ```
-
-</div>
-
-  | customer_id | name        |
-  | ----------- | ----------- |
-  | 1           | Kalle Ilves |
-  | 2           | Kari Silpiö |
+-- This insert fails because stars must be between 1 and 5
+INSERT INTO MovieRating (rating_id, movie_title, stars, rating_source)
+VALUES (2, 'Interstellar', 6, 'user')
+```
 
 ---
 
@@ -203,9 +223,9 @@ CREATE TABLE Customer (
 
 ---
 
-## User authorisation
+## User authorization
 
-- The typical **user authorisation** mechanism is called **discretionary access control** (DAC)
+- The typical **user authorization** mechanism is called **discretionary access control** (DAC)
 - The access control is based on the **privileges** that the DBMS system administrator or a database administrator grants to users:
   - On the **DBMS instance**: for example log in, create or drop databases, create users and roles **within the DBMS instance**
   - On the **database**: for example create tables, users, and other database objects **within the database**
@@ -269,14 +289,20 @@ CREATE TABLE Customer (
 - We can create an index in the SQL Server using the `CREATE INDEX` statement:
 
   ```sql
-  CREATE INDEX ix_title ON Book(title)
+  CREATE TABLE Book (
+    ISBN VARCHAR(13) PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    publish_year INT NOT NULL
+  );
+
+  -- Creates a index named "IX_title" for the Book table's title column
+  CREATE INDEX IX_title ON Book(title)
   ```
 
-- In this example, we create an index with name `ix_title` for the `Book` table's `title` column
 - We can delete an index with a specific name in a table using the `DROP INDEX` statement:
 
   ```sql
-  DROP INDEX ix_title ON Book
+  DROP INDEX IX_title ON Book
   ```
 
 ---
@@ -290,10 +316,10 @@ CREATE TABLE Customer (
   -- ⚡ This query is fast, it can use the index on the title column
   SELECT title FROM Book WHERE title = 'Dune'
   -- 🐢 This query is slow, it can't use the index on the title column
-  SELECT title FROM Book WHERE publish_year = 1965 
+  SELECT title FROM Book WHERE publish_year = 1965
   -- ⚡ Also UPDATE and DELETE operations benefit from an index
   UPDATE Book SET publish_year = 1965 WHERE title = 'Dune'
-  DELETE Book WHERE title = 'Dune'
+  DELETE FROM Book WHERE title = 'Dune'
   ```
 
 ---
@@ -332,14 +358,14 @@ CREATE TABLE Customer (
 ## Which columns should have an index?
 
 - Typically, basic indexes are created on:
-  - **Primary keys**: SQL Server **automatically** creates a **unique clustered index** on the primary key
-  - **Foreign keys**: Use `CREATE INDEX` to create an index on a foreign key
-  - **Alternate keys**: In SQL Server, `UNIQUE` constraint is physically implemented as a **unique non-clustered index**, which SQL Server creates **automatically**
-- In addition, we can consider indexes on columns that are referenced in a `WHERE` or `JOIN` clause:
+  - **Primary keys**: SQL Server **creates automatically** a unique index on the primary key
+  - **Foreign keys**: we should use the `CREATE INDEX` statement to create an index on a foreign key
+  - **Alternate keys**: in SQL Server, the `UNIQUE` constraint is physically implemented as a unique index, which SQL Server **creates automatically**
+- In addition, we should consider indexes on columns referenced in `WHERE` clauses of slow queries:
 
   ```sql
-  -- to improve the performance of this query,
-  -- we could create an index on the city column
+  -- To improve the performance of this query,
+  -- we can create an index on the city column
   SELECT first_name, surname FROM Student WHERE city = 'Helsinki'
   ```
 
