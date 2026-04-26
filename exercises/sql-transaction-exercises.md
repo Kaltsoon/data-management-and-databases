@@ -703,4 +703,4 @@ Study and explain the following concepts in your own words.
 1. Explain shortly why a DBMS should provide proper transaction management services.
 2. What are the ACID properties? Provide two examples illustrating problems that could occur if one or more of these properties were not enforced.
 3. What is the purpose of transaction's isolation level?
-4. How do the transaction isolation levels `READ COMMITTED`, `REPEATABLE READ` and `SERIALIZABLE` differ from each other? Refer to your experiences on the previous tasks.
+4. How do the transaction isolation levels `READ COMMITTED` and `REPEATABLE READ` differ from each other? Refer to your experiences on the previous tasks.
