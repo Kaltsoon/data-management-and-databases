@@ -37,13 +37,13 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 - Let's consider **redundancy problems** with the following `CourseEnrolment` relation rows:
 
-| course_code | instance_number | student_number | phone | email                       | enrolment_date |
-| ----------- | --------------- | -------------- | ----- | --------------------------- | -------------- |
-| C101        | 1               | S101            | 1234  | emma.wilson@university.com  | 2025-04-01     |
-| C101        | 1               | S102            | 5555  | oliver.brown@university.com | 2025-04-02     |
-| c102        | 3               | S103            | 8765  | sophia.clark@university.com | 2025-04-01     |
-| C102        | 3               | S104            | 1414  | leo.miller@university.com   | 2025-04-03     |
-| C102        | 3               | S101            | 1234  | emma.wilson@university.com  | 2025-04-07     |
+| course_code | instance_number | student_number | phonenumber | email                       |
+| ----------- | --------------- | -------------- | ----------- | --------------------------- |
+| C101        | 1               | S101           | 12345        | emma.wilson@university.com  |
+| C101        | 1               | S102           | 55555        | oliver.brown@university.com |
+| c102        | 3               | S103           | 87654        | sophia.clark@university.com |
+| C102        | 3               | S104           | 14141        | leo.miller@university.com   |
+| C102        | 3               | S101           | 12345        | emma.wilson@university.com  |
 
 ---
 
@@ -52,18 +52,18 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 - The student with student number `S101` has their **phone number and email duplicated** causing redundancy in the data
 - While, for example, updating a phone number or inserting a new row, there's an inconsistency risk of having **multiple different phone numbers for the same student**:
 
-| course_code | instance_number | student_number | phone                               | email                      | enrolment_date |
-| ----------- | --------------- | -------------- | ----------------------------------- | -------------------------- | -------------- |
-| C101        | 1               | S101            | <span v-mark.circle.red>1234</span> | emma.wilson@university.com | 2025-04-01     |
-| ...         | ...             | ...            | ...                                 | ...                        | ...            |
-| C102        | 3               | S101            | <span v-mark.circle.red>3338</span> | emma.wilson@university.com | 2025-04-07     |
+| course_code | instance_number | student_number | phonenumber                               | email                      |
+| ----------- | --------------- | -------------- | ----------------------------------- | -------------------------- |
+| C101        | 1               | S101           | <span v-mark.circle.red>12345</span> | emma.wilson@university.com |
+| ...         | ...             | ...            | ...                                 | ...                        |
+| C102        | 3               | S101           | <span v-mark.circle.red>56789</span> | emma.wilson@university.com |
 
 ---
 
 ## Database normalisation
 
 - In a case of fixing an identified structural problem, normalisation involves **decomposing a relation into less redundant (and smaller) relations** without losing information
-- For example, in the previous `CourseEnrolment` relation example, the student-related information would be extracted into a new `Student` relation
+- For example, in the previous `CourseEnrolment` relation example, the student-related `phonenumber` and `email` attributes would be extracted into a new `Student` relation and only leave a foreign key to the original `CourseEnrolment` relation
 - When an **ER model is well designed**, the resulting correctly derived relations won't normally have such structural problems and they will meet the criteria of database normalisation
 - Normalisation of candidate relations derived from ER diagrams is accomplished by analysing the **functional dependencies** associated with those relations
 
@@ -150,9 +150,9 @@ $$
 
   | studentnumber | surname | firstname |
   | ------------- | ------- | --------- |
-  | S101           | Smith   | John      |
-  | S102           | Smith   | Susan     |
-  | S103           | Jones   | Susan     |
+  | S101          | Smith   | John      |
+  | S102          | Smith   | Susan     |
+  | S103          | Jones   | Susan     |
 
 - The **functional dependency** `studentnumber → surname` guarantees that the query below (that uses an existing student number) returns exactly one surname and that holds all the time:
 
