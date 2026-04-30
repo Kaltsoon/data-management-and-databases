@@ -59,7 +59,7 @@ The database design team has been able to design and document the structure of t
 | brevetDate | The date when the brevet takes place                               | Date    | Yes      | -           | -                             | -                |
 | brevetTime | The time when the brevet starts                                    | Time    | Yes      | -           | -                             | -                |
 | location   | The location where the brevet starts                               | Text    | Yes      | -           | -                             | -                |
-| climbing   | The total (in meters) to be climbed when completing the brevet.    | Integer | Yes      | -           | 0-99999                       | Yes              |
+| climbing   | The total (in meters) to be climbed when completing the brevet    | Integer | Yes      | -           | 0-99999                       | Yes              |
 
 ### Brevet_Rider
 
@@ -68,7 +68,7 @@ The database design team has been able to design and document the structure of t
 | riderId       | Unique rider identifier                                                | Integer   | Yes      | IN PRIMARY KEY, FOREIGN KEY → Rider   | -                        | -                |
 | brevetId      | Unique brevet identifier                                               | Integer   | Yes      | IN PRIMARY KEY,  FOREIGN KEY → Brevet | -                        | -                |
 | isCompleted   | Brevet completion status 'N' = registered only, 'Y' = brevet completed | Text      | Yes      | -                                     | 'N','Y'                  | Yes              |
-| finishingTime | The rider's finishing time                                             | Time      | -      | -                                     | - | -                |
+| finishingTime | The time it took for  the rider to finish the brevet                                             | Time      | -      | -                                     | - | -                |
 
 ### Club
 
