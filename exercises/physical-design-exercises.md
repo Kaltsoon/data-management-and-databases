@@ -30,7 +30,7 @@ The database design team has been able to design and document the structure of t
 
 1. Write a query that displays a list of riders (riderId, givenName, familyName) who have finished a certain brevet.
 2. Write a query that displays the total number of completed brevets for each rider (riderId, familyName, givenName, completedBrevetsCount), ordered from most to least completions.
-3. Write a query that displays the winning time of each brevet (brevetId, winningTime).
+3. Write a query that displays the winning time of each brevet (brevetId, distance, winningTime).
 
 ## Entity type descriptions
 
