@@ -7,7 +7,7 @@
 > - `physical_design_indexes_YOURFAMILYNAME.sql`: contains SQL statements for creating indexes.
 > - `db_diagram_YOURFAMILYNAME.png`: screenshot of the database diagram.
 
-The objective of this exercise is to familiarise yourself with the basics of database table and index creation and gain hands-on practice in creating tables and indexes. Refer to this week's lesson slides and the "SQL Create Table Syntax" task as materials.
+The objective of this exercise is to familiarise yourself with the basics of database tables and index creation and gain hands-on practice in creating tables and indexes. Refer to this week's lesson slides and the "SQL Create Table Syntax" task as materials.
 
 # The task
 
@@ -19,14 +19,17 @@ The database design team has been able to design and document the structure of t
 2. Create the basic set of indexes for all tables (do not worry about the small number of rows). **NB!** SQL Server automatically creates some indexes. View the indexes on each table to see that you have not created any redundant indexes!
 3. Insert some rows into each table.
 4. Verify that your integrity constraints don't allow inserting invalid rows. That is, execute inserts with invalid column values and make sure that inserts don't succeed.
-5. Create a database diagram in the SQL Server Management Studio on the database tables. Include a screenshot of the diagram to the Moodle submission.
+5. Create a database diagram in the SQL Server Management Studio for the database tables. Include a screenshot of the diagram in the Moodle submission.
 
 > [!TIP]
 > Here are some tips:
-> 1. Create one table at a time. If table has a foreign key, you need to create the referenced table first.
+> 1. Create one table at a time. If the table has a foreign key, you need to create the referenced table first.
 > 2. If you have created a table and need to modify its columns, the easiest way is to drop the table first using the `DROP TABLE NameOfTable` statement and create the table again.
 
 ## ⭐ Bonus task
+
+> [!IMPORTANT]
+> This task is optional.
 
 1. Write a query that displays a list of riders (riderId, givenName, familyName) who have finished a certain brevet.
 2. Write a query that displays the total number of completed brevets for each rider (riderId, familyName, givenName, completedBrevetsCount), ordered from most to least completions.
@@ -37,7 +40,7 @@ The database design team has been able to design and document the structure of t
 | Entity type      | Description                                              | Synonyms, aliases                                      | Occurrence                                                                                                            | Min - max  | Volatility per year |
 | ---------------- | -------------------------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------- |
 | Brevet           | A non-competitive long-distance cycling event            | event, ride, sportive, randonnee                       | Every year ca. 20-30 brevets are organised                                                                            | 60 - 1000  | + 20-30             |
-| Rider            | A cyclist whose hobby is randonneuring                   | randonneur, cyclist                                    | New riders emerge all the year round. Possibly 20-30 new riders each year                                             | 200 - 2000 | + 10-30             |
+| Rider            | A cyclist whose hobby is randonneuring                   | randonneur, cyclist                                    | New riders emerge all year round. Possibly 20-30 new riders each year                                             | 200 - 2000 | + 10-30             |
 | Club             | A cycling club or team.                                  | cycling club, team, randonneur club                    | HH Randonneurs add new clubs from time to time and update the information, but only very rarely delete the old ones   | 20 - 100   | + 1-3               |
 | User credentials | Credentials that can be used to establish user identity. | identification credentials, authentication credentials | User credentials will be created for each rider. In addition, user credentials will be created for each administrator | 220 - 2000 | + 10-40             |
 
@@ -45,8 +48,8 @@ The database design team has been able to design and document the structure of t
 
 | Relationship type   | Description                   | Synonyms, aliases | Occurrence                                          | Min - max   | Volatility per year |
 | ------------------- | ----------------------------- | ----------------- | --------------------------------------------------- | ----------- | ------------------- |
-| Brevet registration | A rider signs up for a brevet | brevet sign up    | Typically, there are 5-50 sign ups per each brevet  | N/A - 10000 | + 400-500           |
-| Brevet completion   | A rider finishes a brevet     | diploma           | Typically, there are 5-50 finishers per each brevet | N/A - 10000 | + 400-500           |
+| Brevet registration | A rider signs up for a brevet | brevet sign up    | Typically, there are 5-50 sign-ups per brevet  | N/A - 10000 | + 400-500           |
+| Brevet completion   | A rider finishes a brevet     | diploma           | Typically, there are 5-50 finishers per brevet | N/A - 10000 | + 400-500           |
 
 ## Relations
 
