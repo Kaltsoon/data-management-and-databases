@@ -198,15 +198,15 @@ Student(<u>student_number</u>, first_name, surname)
 
 ## Surrogate keys
 
-- If there is initially no suitable candidate key for a relation, then we cannot determine a natural primary key
-- We have to take care of the situation by including an extra attribute in the relation to act as the primary key, which is called a **surrogate key**
-- Surrogate keys are commonly generated values, such as incrementing or random numbers, like the `messageid` primary key in the data below
+- If there is initially no candidate key available for a relation, then we cannot determine a **natural primary key**
+- In this case, we **add a new attribute** with a unique value to serve as the primary key, called a **surrogate key**
+- Surrogate keys are commonly system-generated values, such as random values or incrementing numbers, like the `messageid` primary key in the data below
 
 | <span v-mark.circle.red>messageid</span> | from                       | to                         | title    | body         |
-| --------- | -------------------------- | -------------------------- | -------- | ------------ |
-| 1         | kalle.ilves@haaga-helia.fi | john.doe@gmail.com         | Greeting | Hello John!  |
-| 2         | john.doe@gmail.com         | kalle.ilves@haaga-helia.fi | Response | Hello Kalle! |
-| ...       | ...                        | ...                        | ...      | ...          |
+| ---------------------------------------- | -------------------------- | -------------------------- | -------- | ------------ |
+| 1                                        | kalle.ilves@haaga-helia.fi | john.doe@gmail.com         | Greeting | Hello John!  |
+| 2                                        | john.doe@gmail.com         | kalle.ilves@haaga-helia.fi | Response | Hello Kalle! |
+| ...                                      | ...                        | ...                        | ...      | ...          |
 
 ---
 

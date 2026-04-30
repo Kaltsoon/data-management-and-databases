@@ -177,7 +177,7 @@ classDiagram
 
 ## Surrogate keys
 
-- If there is initially no candidate key for a relation, then we cannot determine a **natural primary key**. For example, in the `Message` relation, representing email messages:
+- If there is initially no candidate key available for a relation, then we cannot determine a **natural primary key**. For example, in the `Message` relation, representing email messages:
 
 | from                       | to                         | title    | body         |
 | -------------------------- | -------------------------- | -------- | ------------ |
@@ -188,7 +188,7 @@ classDiagram
 
 ## Surrogate keys
 
-- We can solve this situation by **including an extra attribute** in the relation to act as the primary key. For example, a `messageid` attribute that holds a unique number for each tuple:
+- We can solve this situation by **including an additional attribute** with a unique value in the relation to act as the primary key. For example, a `messageid` attribute that holds a unique number for each tuple:
 
 | <span v-mark.circle.red>messageid</span> | from                       | to                         | title    | body         |
 | --------- | -------------------------- | -------------------------- | -------- | ------------ |
@@ -199,7 +199,7 @@ classDiagram
 
 ## Surrogate keys
 
-- Such primary key is called a **surrogate key**, which has no relationship to the real-world meaning of the data held in a tuple
+- The `messageid` primary key is an example of a **surrogate key**, which is a system-generated identifier that carries no business meaning and is not derived from application data
 - Surrogate key value is commonly **automatically generated** by the DBMS once a tuple is inserted
 - For example, automatically increasing numbers (1, 2, 3, ...) or randomly generated values can be used to generate unique surrogate key values
 
