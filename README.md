@@ -31,6 +31,7 @@ This repository contains materials and exercises for Data Management and Databas
 - [SQL Exercises 4](./exercises/sql-exercises-4.md)
 - [SQL Exercises 5](./exercises/sql-exercises-5.md)
 - [SQL Exercises 6](./exercises/sql-exercises-6.md)
+- [Physical Design Exercises](./exercises/physical-design-exercises.md)
 - [Database Transaction Exercises](./exercises/sql-transaction-exercises.md)
 - [SQL Access Control Exercises](./exercises/sql-access-control-exercises.md)
 - [SQL View Exercises](./exercises/sql-view-exercises.md)
