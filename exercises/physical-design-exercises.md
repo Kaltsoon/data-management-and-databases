@@ -23,10 +23,9 @@ The database design team has been able to design and document the structure of t
 
 ## ⭐ Bonus task
 
-1. Write a query that displays a list of riders (riderId, givenName, familyName) who have finished a certain brevet.
+1. Write a query that displays a list of riders (riderId, givenName, familyName, clubName) who have finished a certain brevet.
 2. Write a query that displays the total number of completed brevets for each rider (riderId, familyName, givenName, completedBrevetsCount), ordered from most to least completions.
 3. Write a query that displays the winning time of each brevet (brevetId, winningTime).
-4. Many riders have complained that finding clubs in a specific city is very slow. Create the appropriate index to improve the performance of queries such as `SELECT clubId, clubName WHERE city = 'Tampere'`.
 
 ## Entity type descriptions
 
