@@ -68,7 +68,7 @@ The database design team has been able to design and document the structure of t
 | riderId       | Unique rider identifier                                                | Integer   | Yes      | IN PRIMARY KEY, FOREIGN KEY → Rider   | -                        | -                |
 | brevetId      | Unique brevet identifier                                               | Integer   | Yes      | IN PRIMARY KEY,  FOREIGN KEY → Brevet | -                        | -                |
 | isCompleted   | Brevet completion status 'N' = registered only, 'Y' = brevet completed | Text      | Yes      | -                                     | 'N','Y'                  | Yes              |
-| finishingTime | The rider's finishing time                                             | Text      | Yes      | -                                     | Valid time format: hh:mm | -                |
+| finishingTime | The rider's finishing time                                             | Time      | -      | -                                     | - | -                |
 
 ### Club
 
