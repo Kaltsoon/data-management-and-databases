@@ -21,6 +21,11 @@ The database design team has been able to design and document the structure of t
 4. Verify that your integrity constraints don't allow inserting invalid rows. That is, execute inserts with invalid column values and make sure that inserts don't succeed.
 5. Create a database diagram in the SQL Server Management Studio on the database tables. Include a screenshot of the diagram to the Moodle submission.
 
+> [!TIP]
+> Here are some tips:
+> 1. Create one table at a time. If table has a foreign key, you need to create the referenced table first.
+> 2. If you have created a table and need to modify its columns, the easiest way is to drop the table first using the `DROP TABLE NameOfTable` statement and create the table again.
+
 ## ⭐ Bonus task
 
 1. Write a query that displays a list of riders (riderId, givenName, familyName) who have finished a certain brevet.
