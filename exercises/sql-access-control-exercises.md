@@ -16,8 +16,9 @@ _Alternatively_, you can do complete the tasks alone, _if you have installed SQL
 
 1. Connect to the SQL Server on your own computer (like you have done in the exercise before) in SQL Server Management Studio.
 2. In the "Object Explorer" panel on the left, right-click the connection starting with "localhost" (or your Windows username) and choose "Properties". In the dialog, click "Security" and in the security settings, tick "SQL Server and Windows Authentication mode" and click "Ok".
+    ![Security settings](./assets/access-control-1.png)
 3. In the Windows app bar, type "Services" in the search bar and click the "Services" application. Scroll down to "SQL Server" service, right-click it, and click "Restart".
-4. Create a new SQL Server login name and username in your database. Then, grant the `CONNECT` privilege to the new username. You can do these steps by executing the following statements:
+4. In the SQL Server Management Studio, open a new query window. Create a new SQL Server login name and username (e.g. `visitor`) in your database. Then, grant the `CONNECT` privilege to the new username. You can do these steps by executing the following statements:
 
    ```sql
    -- feel free to change login name or password
@@ -50,11 +51,11 @@ _Alternatively_, you can do complete the tasks alone, _if you have installed SQL
     ```
 
 2. Insert a couple of rows into your table.
-3. Give the `SELECT` privilege on your table to another student.
+3. Give the `SELECT` privilege on your table to another student (or the `visitor` user if you are working alone).
 4. Tell the other student your username and the name of your table.
     - Ask the other student to try to select all rows from your table.
     - See that the other student can select the rows successfully.
-5. Revoke the `SELECT` privilege from the other student.
+5. Revoke the `SELECT` privilege from the other student (or the `visitor` user if you are working alone).
 6. Finally, ask the other student to try to select all rows from your table (the select operation should not succeed anymore). 
 
 ## Task 2
@@ -62,9 +63,9 @@ _Alternatively_, you can do complete the tasks alone, _if you have installed SQL
 > [!IMPORTANT]
 > If you are working alone in your own SQL Server environment, then you can use the role name `friends`.
 
-1. Create a new database role called `friends_of_XX`. IMPORTANT: replace `XX` with last two digits from your Haaga-Helia's SQL Server username. For example, if your SQL Server username is `DM_USER_99`, the role name is `friends_of_99`.
+1. Create a new database role called `friends_of_XX` (or `friends` if you are working alone). **IMPORTANT**: replace `XX` with last two digits from your Haaga-Helia's SQL Server username. For example, if your SQL Server username is `DM_USER_99`, the role name is `friends_of_99`.
 2. Give the `SELECT` and `INSERT` privileges on your table to the role `friends_of_XX`. The table is the table that you created in the previous task.
-3. Add the other student as a member to the role `friends_of_XX`.
+3. Add the other student (or the `visitor` user if you are working alone) as a member to the role `friends_of_XX` (or `friends` if you are working alone).
 4. Ask the other student to try to select all rows from your table.
     - See that they can select the rows successfully.
 5. Ask the other student to insert a couple of rows into your table.
