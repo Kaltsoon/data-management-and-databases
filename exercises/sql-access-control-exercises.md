@@ -15,7 +15,9 @@ It is highly recommended that you complete these tasks with another student as p
 _Alternatively_, you can do complete the tasks alone, _if you have installed SQL Server on your own computer_. Then you'll do the following:
 
 1. Connect to the SQL Server on your own computer (like you have done in the exercise before) in SQL Server Management Studio.
-2. Create a new SQL Server login name and username in your database. Then, grant the `CONNECT` privilege to the new username. You can do these steps by executing the following statements:
+2. In the "Object Explorer" panel on the left, right-click the connection starting with "localhost" (or your Windows username) and choose "Properties". In the dialog, click "Security" and in the security settings, tick "SQL Server and Windows Authentication mode" and click "Ok".
+3. In the Windows app bar, type "Services" in the search bar and click the "Services" application. Scroll down to "SQL Server" service, right-click it, and click "Restart".
+4. Create a new SQL Server login name and username in your database. Then, grant the `CONNECT` privilege to the new username. You can do these steps by executing the following statements:
 
    ```sql
    -- feel free to change login name or password
@@ -24,7 +26,7 @@ _Alternatively_, you can do complete the tasks alone, _if you have installed SQL
    GRANT CONNECT TO visitor
    ```
 
-3. Open a new connection to your SQL Server instance by clicking "Connect" in the "Object Explorer" panel on the left and choose "Database Engine". Choose the "Authentication" option as "SQL Server Authentication" and login using the username and password of the user you just created. Use this connection to execute the queries of the "other student" mentioned in the tasks.
+5. Open a new connection to your SQL Server instance by clicking "Connect" in the "Object Explorer" panel on the left and choosing "Database Engine". Choose the "Authentication" option as "SQL Server Authentication" and login using the username and password of the user you just created. Use this connection to execute the queries of the "other student" mentioned in the tasks.
 
 > [!IMPORTANT]
 > In this alternative way of compliting the tasks, you need to use the two connections: one for executing your queries and other for executing the "other student's" queries.
