@@ -1,4 +1,4 @@
-# Create table syntax
+# SQL Create Table Syntax
 
 Tables are created with the `CREATE TABLE` statements. Tables contain columns with varying data types depending on what kind of value (e.g. integer or text) the column stores.
 
