@@ -1,18 +1,17 @@
 # SQL access control exercises
 
 > [!IMPORTANT]
-> Please submit this exercise as a `access_control_exercises_YOURFAMILYNAME.sql` file to Moodle. If pair work, then both students submit the file with two family names in the file name.
+> Please submit this exercise as a `access_control_exercises_YOURFAMILYNAME.sql` file to Moodle.
 
 The objective of this exercise is to familiarize yourself with the basics of SQL access control with database users, database roles and privileges. Use this week's lesson slides as materials.
 
-## Instructions
+## The task setup
 
-It is highly recommended that you complete these tasks with another student as pairwork in the following way:
+In the tasks you will be granting privileges to another user to your database objects and observe how those privileges affect the database operations. So, the tasks requires you to use two users.
 
-1. Choose a student to work with. Both students should connect to the Haaga-Helia's SQL Server with their computers by following the [Using Haaga-Helia's SQL Server](../materials/sql-server/haaga-helia-sql-server.md) guide.
-2. Follow the instructions in the tasks, where you will give another student rights to access your table. The other student then accesses your table from their computer.
+If you are using the _Haaga-Helia's SQL Server (non-Windows users)_, all you need to do to get started is to log in using the SQL Server Management Studio. Take a look at the [Using Haaga-Helia's SQL Server](../materials/sql-server/haaga-helia-sql-server.md) guide if you have trouble.
 
-_Alternatively_, you can do complete the tasks alone, _if you have installed SQL Server on your own computer_. Then you'll do the following:
+If you have installed the _SQL Server on your own computer_, do the following to get started:
 
 1. Connect to the SQL Server on your own computer (like you have done in the exercise before) in SQL Server Management Studio.
 2. In the "Object Explorer" panel on the left, right-click the connection starting with "localhost" (or your Windows username) and choose "Properties". In the dialog, click "Security" and in the security settings, tick "SQL Server and Windows Authentication mode" and click "Ok".
@@ -27,18 +26,13 @@ _Alternatively_, you can do complete the tasks alone, _if you have installed SQL
    GRANT CONNECT TO visitor
    ```
 
-5. Open a new connection to your SQL Server instance by clicking "Connect" in the "Object Explorer" panel on the left and choosing "Database Engine". Choose the "Authentication" option as "SQL Server Authentication" and login using the username and password of the user you just created. Use this connection to execute the queries of the "other student" mentioned in the tasks.
-
-> [!IMPORTANT]
-> In this alternative way of compliting the tasks, you need to use the two connections: one for executing your queries and other for executing the "other student's" queries.
-
 ## Task 1
 
 > [!TIP]
 > This week's lesson slides have useful examples for SQL access control.
 
 > [!IMPORTANT]
-> In _Haaga Helia's SQL Server_ (not on SQL Server your own computer), you should refer to the table as `schemaName.TableName`. The `schemaName` is the username of the user who created the table, for example `DM_USER_99.TableName`. So, in your queries include the other student's username as the schema name, for example `SELECT * FROM DM_USER_99.Student`.
+> In _Haaga-Helia's SQL Server_ (not on SQL Server your own computer), you should refer to the table as `schemaName.TableName`. The `schemaName` is the username of the user who created the table, for example `DM_USER_99.TableName`. So, in your queries include your username as the schema name, for example `SELECT * FROM DM_USER_99.Student`.
 
 1. Create a new table as below (replace "XX" with a table name of your own choice).
 
@@ -51,33 +45,31 @@ _Alternatively_, you can do complete the tasks alone, _if you have installed SQL
     ```
 
 2. Insert a couple of rows into your table.
-3. Give the `SELECT` privilege on your table to another student (or the `visitor` user if you are working alone).
-4. Tell the other student your username and the name of your table.
-    - Ask the other student to try to select all rows from your table.
-    - See that the other student can select the rows successfully.
-5. Revoke the `SELECT` privilege from the other student (or the `visitor` user if you are working alone).
-6. Finally, ask the other student to try to select all rows from your table (the select operation should not succeed anymore). 
+3. Next, let's login using other user without any priviledges. Open a new connection to your SQL Server instance by clicking "Connect" in the "Object Explorer" panel on the left and choosing "Database Engine". Choose the "Authentication" option as "SQL Server Authentication" and login with the following username and password:
+  - In _Haaga-Helia's SQL Server_, the username is `DM_USER_50` and the password is the same as your user's password (check the password from Moodle home page's "SQL Server Usernames" link).
+  - In _your own computer's SQL Server_, the username and password is the one you created previously (username `visitor` and password `SECRET_password_12345` by default).
+4. Under the new connection (ends with the other user's username) in the "Object Explorer" panel, open a new query window in the database in which you created the table. You should now have two query windows: one for your user and one for the other user.
+5. In _your user's query window_, give the `SELECT` privilege on your table to the other user (either the `visitor` user or `DM_USER_50` depending on your SQL Server setup).
+6. In the _other user's query window_, try to select all rows from the table you created previously. If the other user fails to select the rows, revisit the previous step.
+7. Revoke the `SELECT` privilege from the other user in _your user's query window_.
+8. Finally, in the _other user's query window_, try to select all rows from your table. The select operation should not succeed anymore. If it does, revisit the previous step.
 
 ## Task 2
 
-> [!IMPORTANT]
-> If you are working alone in your own SQL Server environment, then you can use the role name `friends`.
-
-1. Create a new database role called `friends_of_XX` (or `friends` if you are working alone). **IMPORTANT**: replace `XX` with last two digits from your Haaga-Helia's SQL Server username. For example, if your SQL Server username is `DM_USER_99`, the role name is `friends_of_99`.
-2. Give the `SELECT` and `INSERT` privileges on your table to the role `friends_of_XX`. The table is the table that you created in the previous task.
-3. Add the other student (or the `visitor` user if you are working alone) as a member to the role `friends_of_XX` (or `friends` if you are working alone).
-4. Ask the other student to try to select all rows from your table.
-    - See that they can select the rows successfully.
-5. Ask the other student to insert a couple of rows into your table.
-    - See that they can insert the rows successfully.
-6. List all rows from your table.
-    - You should now see the rows that the other student inserted.
-7. Revoke the `INSERT` privilege from the role `friends_of_XX`
-8. Test the current privileges of the role `friends_of_XX` by asking the other student to do the following:
-    - Select all rows from your table.
-    - Insert a new row into your table.
-9. Remove all members from the role `friends_of_XX`.
-10. Delete the role `friends_of_XX`.
+1. In _your user's query window_, create a new database role depending on your SQL Server setup:
+  - In _Haaga-Helia's SQL Server_, create a role named `friends_of_XX` and replace `XX` with last two digits from your Haaga-Helia's SQL Server username.
+  - In _your own computer's SQL Server_, create a role named `friends`
+2. Give the `SELECT` and `INSERT` privileges on your table to the role you created. The table is the table that you created in the previous task.
+3. Add the _other user_ as a member to the role you created.
+4. In the _other user's query window_, try to select all rows from your table. If the other user fails to select the rows, revisit the previous step.
+5. In the _other user's query window_, insert a couple of rows into your table.
+6. In _your user's query window_, list all rows from your table. You should now see the rows that the other user inserted.
+7. Revoke the `INSERT` privilege from the role you created in _your user's query window_.
+8. Test the current privileges of the role by doing the following in the _other user's query window_:
+  - Select all rows from your table.
+  - Insert a new row into your table.
+9.  Remove all members from the role in _your user's query window_.
+10. Delete the role in _your user's query window_.
 
 > [!IMPORTANT]
-> You should both manage the access of the other student and try accessing the other student's table. So, both students should complete each step.
+> To submit a single file in Moodle, copy the contents of the other user's query window to your user's query window and save it as a `.sql` file.

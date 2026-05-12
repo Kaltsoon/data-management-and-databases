@@ -36,11 +36,9 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
   - The key concepts and terminology of data management and databases
   - Design and document the database's structure based on the requirements
   - Retrieve and manipulate the database's data with SQL
-- Each week there are two different teaching sessions:
-  - Lectures where we go through the theory of the weekly topics
-  - Laboratory sessions where we apply what we've learned by working on exercises together
-- The teaching session schedule can be found on the course's Moodle page
-- There are weekly exercises that need to be submitted in Moodle before the next week's lecture
+- During the weekly sessions we dive into new topics and reinforce learning through hands-on tasks
+- The teaching session schedule can be found on the Moodle's "Course outline" page
+- There are weekly exercises that need to be submitted in Moodle **before the next week's session**
 
 ---
 
@@ -59,14 +57,13 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 - ⚠️ To confirm the course participation the following need to be submitted **before the second week's session**:
   - The first part of your learning diary
-  - The first week's assignments (orientation exercise and intro assignment)
+  - The first week's exercises (orientation exercises and introduction exercises)
 - The course assessment is based on the combined points from two exams:
-  - The mid-term exam, half way through the course, will cover SQL operations
-  - The final exam, at the end of the course, will cover rest of the course topics
+  - The **mid-term exam**, half way through the course, will cover SQL operations
+  - The **final exam**, at the end of the course, will cover rest of the course topics
 - Passing grade has the following requirements:
-  - Pass both exams with 50% points in each exam
-  - At least 70% of the exercises, case assignment and learning diary must be submitted **before the final exam**
-- More details about the exam schedule and practicalities can be found in Moodle
+  - At least 40% points in each exam and 50% exam point average from the two exams
+  - At least 70% of the exercises, case assignment and learning diary must be submitted **before end of the final course week**
 
 ---
 

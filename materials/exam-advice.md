@@ -14,7 +14,7 @@ The course assessment is mostly based on the points from the mid-term and final 
 | 50%- 59%         | 1          |
 | 0% - 49%         | 0          |
 
-50% of exam points from **both exams** is required for a passing grade.
+At least 40% of exam points from **both exams** is required for a passing grade.
 
 ## Mid-term exam
 
