@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > In both exams, all answers are written by hand on paper. You only need to bring a pen and an eraser to both exams. All other materials are provided in the exam.
 
-The course assessment is mostly based on the points from the mid-term and final exams. The final grade is calculated from the percentage of exam points from **both exams**:
+The course assessment is mostly based on the points from the mid-term and final exams. The final grade is calculated from the **average percentage of exam points from both exams**:
 
 | % of exam points | Final grade |
 | ---------------- | ---------- |
