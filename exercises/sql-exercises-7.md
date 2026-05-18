@@ -9,7 +9,7 @@ List all the courses (surname, first name, teacher number, course name) that hav
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname | first_name | teacher_number | course_name |
 |---------|------------|----------------|-------------|
@@ -29,7 +29,7 @@ List all the teachers (surname, first name, teacher number, course name). If a t
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname | first_name | teacher_number | course_name |
 |---------|------------|----------------|-------------|
@@ -55,7 +55,7 @@ List all the course instances (course code, instance number, start date, surname
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | instance_number | start_date | Teacher | teacher_number |
 |-------------|-----------------|------------|---------|----------------|
@@ -73,7 +73,7 @@ List all the teachers (campus name, surname, first name, teacher number, course 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | campus_name | surname | first_name | teacher_number | course_name |
 |-------------|---------|------------|----------------|-------------|
@@ -99,7 +99,7 @@ List the number of teachers per each campus (campus name, "Number of teachers").
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | campus_name | Number of teachers |
 |-------------|--------------------|
@@ -118,7 +118,7 @@ Time dimension considerations: List all the teachers (surname, first name, teach
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname | first_name | teacher_number | start_date | end_date |
 |---------|------------|----------------|------------|----------|
@@ -142,7 +142,7 @@ List all the teachers (surname, first name, teacher number, course name). If the
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname | first_name | teacher_number | course_name |
 |---------|------------|----------------|-------------|
@@ -168,7 +168,7 @@ List all the teachers (surname, first name, teacher number, "Comment") without a
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname | first_name | teacher_number | Comment |
 |---------|------------|----------------|------------------|
@@ -195,7 +195,7 @@ How many teachers in charge of a course there are at each campus? Display campus
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | campus_name | Number of teachers in charge of a course |
 |-------------|------------------------------------------|

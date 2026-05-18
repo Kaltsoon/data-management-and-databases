@@ -12,7 +12,7 @@ What course instances does each teacher teach? Display surname, first name, teac
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname | first_name | teacher_number | course_code | instance_number |
 | ------- | ---------- | -------------- | ----------- | --------------- |
@@ -40,7 +40,7 @@ Who is the person in charge of each course? Display course code, course name, an
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | course_name        | Person in charge |
 | ----------- | ------------------ | ---------------- |
@@ -65,7 +65,7 @@ List all the teachers (surname, first name, teacher number, course name). If a t
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname  | first_name | teacher_number | course_name        |
 | -------- | ---------- | -------------- | ------------------ |
@@ -91,7 +91,7 @@ What is the grade point average (= average grade) for each student? Display surn
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname  | first_name | student_number | Grade point average |
 | -------- | ---------- | -------------- | ------------------- |
@@ -117,7 +117,7 @@ List all the course instances (course code, instance number, start date, surname
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | instance_number | start_date | Teacher       | teacher_number |
 | ----------- | --------------- | ---------- | ------------- | -------------- |
@@ -144,7 +144,7 @@ Time dimension considerations:
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 **Part 1:**
 
@@ -178,7 +178,7 @@ What types of academic misconduct have occurred at the university this far? List
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Misconduct occurred this far                                                                                    |
 | --------------------------------------------------------------------------------------------------------------- |
@@ -198,7 +198,7 @@ List all the students (surname, first name, student number, course code, grade) 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname  | first_name | student_number | course_code | grade |
 | -------- | ---------- | -------------- | ----------- | ----- |
@@ -219,7 +219,7 @@ List all the teachers (course code, course name, teacher number, surname, first 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | course_name | teacher_number | surname | first_name |
 | ----------- | ----------- | -------------- | ------- | ---------- |
@@ -236,7 +236,7 @@ List all the passing grades (course name, grade, surname, first name, student nu
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_name     | grade | surname  | first_name | student_number |
 | --------------- | ----- | -------- | ---------- | -------------- |
@@ -257,7 +257,7 @@ List the number of teachers per each campus (campus name, "Number of teachers").
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | campus_name | Number of teachers |
 | ----------- | ------------------ |
@@ -276,7 +276,7 @@ In which courses have female students achieved grade 5? Display course code, cou
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | course_name     | Grade five |
 | ----------- | --------------- | ---------- |
@@ -293,7 +293,7 @@ List all the students (surname, first name, student number) of those students, w
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname  | first_name | student_number |
 | -------- | ---------- | -------------- |
@@ -315,7 +315,7 @@ List all the teachers (teacher number, surname, first name, month name of the gr
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | teacher_number | surname | first_name | Grade month |
 | -------------- | ------- | ---------- | ----------- |
@@ -332,7 +332,7 @@ How are the average grade and the total number of grades distributed between fem
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | gender | Average grade | Number of grades |
 | ------ | ------------- | ---------------- |
@@ -349,7 +349,7 @@ Create a Cartesian product using the tables Campus and AcademicAdvisor, without 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | campus_name | teacher_number |
 | ----------- | -------------- |
@@ -384,7 +384,7 @@ List the courses that students have failed due to an academic misconduct inciden
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | instance_number | course_name     | student_number | surname | first_name | description                                                                                                     |
 | ----------- | --------------- | --------------- | -------------- | ------- | ---------- | --------------------------------------------------------------------------------------------------------------- |
@@ -401,7 +401,7 @@ List all the students (student number, surname, first name, disciplinary sanctio
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | student_number | surname | first_name | Sanction        | Misconduct                             |
 | -------------- | ------- | ---------- | --------------- | -------------------------------------- |
@@ -420,7 +420,7 @@ What is the prevalence of academic misconduct at the university? Find out the pe
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Misconduct % |
 | ------------ |
@@ -441,7 +441,7 @@ Time dimension considerations: List all the teachers (surname, first name, teach
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname | first_name | teacher_number | start_date | end_date |
 |---------|------------|----------------|------------|----------|
@@ -457,7 +457,7 @@ List all the courses (course name, teacher number, teacher name) where the perso
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_name     | Person in charge teaching | teacher_number |
 | --------------- | ------------------------- | -------------- |
@@ -478,7 +478,7 @@ List all the prerequisite courses for the course 'a500'. Display course code and
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | course_name        | Prerequisite         |
 | ----------- | ------------------ | -------------------- |
@@ -494,7 +494,7 @@ List all the courses and their prerequisite courses. Display the columns as befo
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | course_name        | Prerequisite            |
 | ----------- | ------------------ | ----------------------- |
@@ -517,7 +517,7 @@ List all the courses (course code, instance number, course name, teacher, person
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | course_name     | instance_number | Teacher            | Person in charge   |
 | ----------- | --------------- | --------------- | ------------------ | ------------------ |
@@ -544,7 +544,7 @@ List all the teachers (surname, first name, teacher number, "Comment") without a
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname  | first_name | teacher_number | Comment          |
 | -------- | ---------- | -------------- | ---------------- |
@@ -571,7 +571,7 @@ How many teachers in charge of a course there are at each campus? Display campus
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | campus_name | Number of teachers in charge of a course |
 | ----------- | ---------------------------------------- |

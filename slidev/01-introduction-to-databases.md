@@ -63,7 +63,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
   - The **final exam**, at the end of the course, will cover rest of the course topics
 - Passing grade has the following requirements:
   - At least 40% points in each exam and 50% exam point average from the two exams
-  - At least 70% of the exercises, case assignment and learning diary must be submitted **before end of the final course week**
+  - At least 70% of the exercises, case assignment and learning diary must be submitted **before the end of the final course week**
 
 ---
 

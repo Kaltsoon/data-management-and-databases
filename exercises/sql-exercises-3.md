@@ -26,7 +26,7 @@ How many rows there are in the `CourseGrade` table?
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Number of rows |
 |----------------|
@@ -42,7 +42,7 @@ What is the total number of grades in the `CourseGrade` table?
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Number of grades |
 |------------------|
@@ -58,7 +58,7 @@ How many teachers earn more than 16 000?
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Teachers who earn more than 16000 |
 |-----------------------------------|
@@ -74,7 +74,7 @@ Display teachers' maximum salary, minimum salary, average salary, and the total 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Maximum salary | Minimum salary | Average salary | Total of salary |
 |----------------|----------------|----------------|------------------|
@@ -112,7 +112,7 @@ What is the average grade for all the students? Write the following three versio
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 ### Part 1
 
@@ -146,7 +146,7 @@ How many times has the grade 3 been given this far?
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Number of grade 3 |
 |-------------------|
@@ -162,7 +162,7 @@ What is the average grade (with 2 decimal places) for the student whose student 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | o473 Average grade |
 |--------------------|
@@ -179,7 +179,7 @@ How many students' first name starts with the letter 'K'?
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | First names starting with 'K' |
 |-------------------------------|
@@ -195,7 +195,7 @@ How many different surnames of teachers there are that start with the letter 'T'
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Different surnames starting with 'T' |
 |--------------------------------------|
@@ -214,7 +214,7 @@ Write a SELECT statement that generates a list of default email addresses for st
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Default email |
 |---------------|
@@ -245,7 +245,7 @@ List the following facts on each student: name of birth month, surname, first na
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Month name | surname | first_name | student_number |
 |------------|---------|------------|----------------|
@@ -273,7 +273,7 @@ How many students were born in May?
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Number of students born in May |
 |--------------------------------|
@@ -289,7 +289,7 @@ List for each course instance the quarter of the year when the course instance w
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Quarter | start_date | course_code | instance_number |
 |---------|------------|-------------|------------------|
@@ -316,7 +316,7 @@ List all the students (birth month, day of birth month, surname, first name, stu
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Month | Day | surname | first_name | student_number |
 |-------|-----|---------|------------|----------------|
@@ -344,7 +344,7 @@ How many students were born on Sunday?
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Number of students born on Sunday |
 |-----------------------------------|
@@ -363,7 +363,7 @@ Display the current date and weekday. Rename the date as "Current date" and week
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Current date | Weekday |
 |--------------|----------|
@@ -379,7 +379,7 @@ Use the appropriate function to compute the length of each course in days. List 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Course length | course_code | instance_number |
 |---------------|-------------|------------------|
@@ -406,7 +406,7 @@ Calculate the age in years for each student. Rename age as "Age". Display age, s
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Age | surname | first_name | student_number |
 |-----|---------|------------|----------------|
@@ -439,7 +439,7 @@ List all the students (student number, surname, first name, email) whose email s
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | student_number | surname | first_name | email |
 |----------------|---------|------------|----------|
@@ -459,7 +459,7 @@ List all the different domain names from students' email addresses. Rename the c
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Domain name |
 |-------------|
@@ -477,7 +477,7 @@ What is the average course instance length in whole days?
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Average course instance length |
 |--------------------------------|

@@ -12,7 +12,7 @@ List teachers' and students' surnames. Show the result as a single list.
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname |
 |---------|
@@ -47,7 +47,7 @@ List such cities where there is a campus and at least one student is living in t
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | city |
 |----------|
@@ -63,7 +63,7 @@ List such cities where there is a campus and no student is living in the city.
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | city |
 |----------|
@@ -80,7 +80,7 @@ List such years when at least one teacher was born OR at least one student was b
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Year |
 |------|
@@ -110,7 +110,7 @@ List such years when at least one teacher was born AND at least one student was 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Year |
 |------|
@@ -127,7 +127,7 @@ List such years when at least one teacher was born AND no student was born.
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Year |
 |------|
@@ -148,7 +148,7 @@ List such years when at least one student was born AND no teacher was born. Disp
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Year |
 |------|

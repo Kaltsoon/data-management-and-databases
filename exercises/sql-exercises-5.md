@@ -9,7 +9,7 @@ Find out the total number of course participants per each course. Display "Numbe
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Number of participants | course_code |
 |------------------------|-------------|
@@ -28,7 +28,7 @@ How many passing grades does each student have? Display "Number of grades" and s
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Number of grades | student_number |
 |------------------|----------------|
@@ -57,7 +57,7 @@ What is the average grade for each student? Display 'Average grade' and student 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 **Part 1:**
 
@@ -103,7 +103,7 @@ How many course instances has each teacher given? Display teacher number and the
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | teacher_number | Number of course instances |
 |----------------|----------------------------|
@@ -124,7 +124,7 @@ How many different courses has each teacher given? Display teacher number and "N
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | teacher_number | Number of different courses |
 |----------------|-----------------------------|
@@ -145,7 +145,7 @@ List all the teachers who have given more than one course instance. Display teac
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | teacher_number | Number of course instances |
 |----------------|----------------------------|
@@ -164,7 +164,7 @@ List for each student the student number, average grade, highest grade, and lowe
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | student_number | Average grade | Highest grade | Lowest grade |
 |----------------|---------------|---------------|---------------|
@@ -193,7 +193,7 @@ List the same information as in the previous task, but this time only for those 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | student_number | Average grade | Highest grade | Lowest grade |
 |----------------|---------------|---------------|---------------|
@@ -213,7 +213,7 @@ In which course instances is the number of participants above the average? Displ
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | participants | course_code | instance_number |
 |--------------|-------------|------------------|
@@ -234,7 +234,7 @@ List all the students (surname, first name, student number) who have not passed 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname | first_name | student_number |
 |---------|------------|----------------|
@@ -251,7 +251,7 @@ List all the teachers (surname, first name, teacher number, salary) who earn mor
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname | first_name | teacher_number | salary |
 |---------|------------|----------------|----------|
@@ -271,7 +271,7 @@ List all the courses (course code, course name) that at least one student has pa
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | course_name |
 |-------------|----------|
@@ -290,7 +290,7 @@ List all the courses (course code, course name) that no student has passed this 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | course_name |
 |-------------|----------|
@@ -311,7 +311,7 @@ List all the teachers (teacher number, surname, first name) who have not given a
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | teacher_number | surname | first_name |
 |----------------|---------|------------|
@@ -339,7 +339,7 @@ Example of such course: There exists two course instances of the course. The fir
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_name |
 |-------------|
@@ -364,7 +364,7 @@ F | 46.2
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | gender | % |
 |--------|-----------|
@@ -385,7 +385,7 @@ Female | Male
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Female | Male |
 |--------|----------|
@@ -401,7 +401,7 @@ Display student number and average grade of the student(s) who has/have the high
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | student_number | average grade |
 |----------------|---------------|
@@ -421,7 +421,7 @@ Display how many teachers were born in each decade. Sort the result by decade in
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | decade | teachers born |
 |--------|---------------|
@@ -441,7 +441,7 @@ Find the youngest female student and youngest male student. Display gender, surn
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | gender | surname | first_name | birth_date | age |
 |--------|---------|------------|------------|-----|

@@ -54,7 +54,7 @@ List all the female students (first name, surname, student number, gender, city)
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | first_name | surname  | student_number | gender | city  |
 | ---------- | -------- | -------------- | ------ | ----- |
@@ -71,7 +71,7 @@ List all the students (name, city) who live in the capital city of Finland. Conc
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | Name            | city     |
 | --------------- | -------- |
@@ -90,7 +90,7 @@ List all the students (surname, first name, city) who do not live in the capital
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname  | first_name | city      |
 | -------- | ---------- | --------- |
@@ -114,7 +114,7 @@ List all the students (postcode, student number). Sort the result by (postcode, 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | postcode | student_number |
 | -------- | -------------- |
@@ -142,7 +142,7 @@ List all the postcodes of the areas where students live, without any duplicate e
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | postcode |
 | -------- |
@@ -168,7 +168,7 @@ List all the students (city, postcode, surname, first name), who either live in 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | city     | postcode | surname  | first_name |
 | -------- | -------- | -------- | ---------- |
@@ -187,7 +187,7 @@ List all the students (postcode, city, surname, first name), who do not live wit
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | postcode | city      | surname | first_name |
 | -------- | --------- | ------- | ---------- |
@@ -206,7 +206,7 @@ List all the misconduct types (description) where the description starts with 'A
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | description                                                                        |
 | ---------------------------------------------------------------------------------- |
@@ -230,7 +230,7 @@ List all the misconduct types (description) where the description does not conta
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | description                                                                                                     |
 | --------------------------------------------------------------------------------------------------------------- |
@@ -257,7 +257,7 @@ List all the teachers' surnames that end with 'ka' or 'ko'. Sort the result in a
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname |
 | ------- |
@@ -274,7 +274,7 @@ List all the course instances (course code, instance number, start date, end dat
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | instance_number | start_date | end_date |
 | ----------- | --------------- | ---------- | -------- |
@@ -292,7 +292,7 @@ List all the course grade rows (course code, instance number, student number, gr
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | instance_number | student_number | grade |
 | ----------- | --------------- | -------------- | ----- |
@@ -309,7 +309,7 @@ List all the known course grades (course code, instance number, student number, 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | course_code | instance_number | student_number | grade |
 | ----------- | --------------- | -------------- | ----- |
@@ -330,7 +330,7 @@ Display surname, first name, new salary, and old salary. In the query, rename th
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname  | first_name | New salary | Old salary |
 | -------- | ---------- | ---------- | ---------- |
@@ -351,7 +351,7 @@ List all the students (surname, first name, student number, gender). Display eit
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname  | first_name | student_number | gender |
 | -------- | ---------- | -------------- | ------ |
@@ -388,7 +388,7 @@ List all the course instances (start date, end date, course code, instance numbe
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | start_date | end_date   | course_code | instance_number |
 | ---------- | ---------- | ----------- | --------------- |

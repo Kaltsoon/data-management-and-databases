@@ -48,7 +48,7 @@ Write a SELECT statement that lists all the campuses. Display city and campus na
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | city | campus_name |
 |----------|-------------|
@@ -67,7 +67,7 @@ What kinds of disciplinary sanctions there are at the University? List all sanct
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | description | decision_maker |
 |-------------|----------------|
@@ -85,7 +85,7 @@ What types of academic misconduct are mentioned in the MisconductType table? Lis
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | description |
 |-------------|
@@ -115,7 +115,7 @@ List all the teachers (surname, first name, teacher number). Sort the result by 
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | surname | first_name | teacher_number |
 |---------|------------|----------------|
@@ -139,7 +139,7 @@ List all the female students (student number, surname, first name, birth date, g
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | student_number | surname | first_name | birth_date | gender |
 |----------------|---------|------------|------------|--------|
@@ -160,7 +160,7 @@ List all the teachers (salary, surname, first name, teacher number) whose salary
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | salary | surname | first_name | teacher_number |
 |--------|---------|------------|----------------|
@@ -181,7 +181,7 @@ Write a SELECT statement that finds Veera Vainio's teacher number.
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | teacher_number |
 |----------------|
@@ -197,7 +197,7 @@ List all the grades (examiner's teacher number, course code, instance number, st
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | examiner | course_code | instance_number | student_number | grade |
 |----------|-------------|-----------------|----------------|-------|
@@ -215,7 +215,7 @@ List all the course instances (start date, end date, course code, instance numbe
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | start_date | end_date | course_code | instance_number |
 |------------|----------|-------------|------------------|
@@ -239,7 +239,7 @@ List all the students (gender, birth date, surname, first name) whose surname is
 
 <details>
 
-<summary>Expected result table</summary>
+<summary>Expected result table (click to open)</summary>
 
 | gender | birth_date | surname | first_name |
 |--------|------------|---------|------------|
