@@ -1,7 +1,7 @@
 # Introduction Exercises
 
 > [!IMPORTANT]
-> Write your answers to a Word document named `introduction_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. Submissions can be found on Moodle's "Assignment submissions" page.
+> Write your answers to a Word document named `introduction_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. Submissions can be found on Moodle's "Assignment Submissions" page.
 
 ## Task 1: Advantages of DBMSs
 
