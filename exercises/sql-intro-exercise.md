@@ -13,7 +13,9 @@ In this exercise, always _execute the given SQL statements one by one_. Copy and
 > [!IMPORTANT]
 > Save your work on task 1 to a file named `sql_intro_1_YOURFAMILYNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md) guide to learn how to save your queries.
 
-Open a new query window in SQL Server Management Studio in which you'll put these statements. Create tables `Department` and `Employee` by executing the following two `CREATE TABLE` statements:
+https://github.com/user-attachments/assets/4da72a80-8529-4991-9881-ec3027d5b13f
+
+Take a look at the tutorial video above on how to execute database queries. Open a new query window in SQL Server Management Studio in which you'll put these statements. Create tables `Department` and `Employee` by executing the following two `CREATE TABLE` statements:
 
 ```sql
 -- Task 1 
