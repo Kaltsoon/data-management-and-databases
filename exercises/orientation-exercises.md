@@ -60,7 +60,7 @@ The University Database contains the following:
 | CS-4      | 1                            | 130        | 5     |
 | CS-2      | 2                            | 110        | 3     |
 
-### Questions
+### ❓ Questions
 
 Answer the following questions based on the database's data:
 
@@ -186,9 +186,9 @@ Fill in the primary keys and foreign keys in a table such as the following:
 
 In the "Primary key" column, write the name of the column (or a group of column names) that uniquely identifies each row in the table.
 
-In the "Foreign key" column, wirte name of the column (or group of column names) that links a row in this table to a row in another table. Mention also the name of the referenced table. NB! There are also tables without any foreign keys.
+In the "Foreign key" column, write the name of the column (or group of column names) that links a row in this table to a row in another table. Mention also the name of the referenced table. NB! There are also tables without any foreign keys.
 
 > [!TIP]
-> - Start by figuring out the primary keys, because only after that can you figure out foreign keys referencing those.
+- Start by identifying the primary keys, because only then can you determine the foreign keys referencing them.
 > - For example, in the `Course implementation` table, does the `Course ID` column alone uniquely identify each row, or might the primary key be a group of two columns that together uniquely identify each row?
 > - Foreign key has to always reference a primary key. So, if you are wondering if a column or a group of columns is a foreign key, think about which table's primary key it references.
