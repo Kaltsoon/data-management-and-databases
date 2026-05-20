@@ -1,15 +1,17 @@
 # Introduction Exercises
 
 > [!IMPORTANT]
-> Write your answers to a Word document named `introduction_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. Submissions can be found on Moodle's "Coursework submissions" page.
+> Write your answers to a Word document named `introduction_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. Submissions can be found on Moodle's "Assignment submissions" page.
 
 ## Task 1: Advantages of DBMSs
 
-Suppose that you were asked to give a presentation on advantages of DBMSs. Data storage and data retrieval and update operations are the basic functions of DBMS. If you were limited presenting only 3 functions from the remaining functions of a DBMS, which functions would you choose and why?
+Study the functions of a DBMS in this week's lesson slides.
+
+Suppose that you were asked to give a presentation on the advantages of DBMSs. Data storage, data retrieval, and update operations are the basic functions of DBMS. If you were limited to presenting only 3 functions from the remaining functions of a DBMS, which functions would you choose and why?
 
 ## Task 2: Important concepts
 
-Study this week's lessons slides and describe each of the following terms briefly in your own words:
+Study this week's lesson slides and describe each of the following terms briefly in your own words:
 
 1. Data
 2. Metadata
