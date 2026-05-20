@@ -78,7 +78,7 @@ SELECT TABLE_NAME, CONSTRAINT_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.CONSTRAI
 ```
 
 > [!IMPORTANT]
-> Save your work on task 1 to a file named `sql_intro_1_YOURFAMILYNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md) guide to learn how to save your queries.
+> Save your work on task 1 to a file named `sql_intro_1_YOURFAMILYNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md#saving-and-opening-database-queries) guide to learn how to save your queries.
 
 ## Task 2: Creating a database diagram
 
@@ -109,7 +109,7 @@ Open a _new query window_, in which write the following statements:
 5. Write and execute a `SELECT` statement that lists names of those employees who work for department 10. Display employee name and department number.
 
 > [!IMPORTANT]
-> Save your work on task 3 to a file named `sql_intro_3_YOURFAMILYNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md) guide to learn how to save your queries.
+> Save your work on task 3 to a file named `sql_intro_3_YOURFAMILYNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md#saving-and-opening-database-queries) guide to learn how to save your queries.
 
 ## Task 4: Creating tables
 
@@ -138,4 +138,4 @@ Open a new query window, in which write the following statements:
 > - While inserting data, _if a row has a foreing key, you need to first insert the row that is referenced_. E.g., you need to insert an `Department` row first, before inserting a `Employee` row referencing it with a foreign key.
 
 > [!IMPORTANT]
-> Save your work on task 4 to a file named `sql_intro_4_YOURFAMILYNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md) guide to learn how to save your queries.
+> Save your work on task 4 to a file named `sql_intro_4_YOURFAMILYNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md#saving-and-opening-database-queries) guide to learn how to save your queries.
