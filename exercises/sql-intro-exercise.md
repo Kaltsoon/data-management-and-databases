@@ -10,9 +10,6 @@ In this exercise, always _execute the given SQL statements one by one_. Copy and
 
 ## Task 1: Introduction
 
-> [!IMPORTANT]
-> Save your work on task 1 to a file named `sql_intro_1_YOURFAMILYNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md) guide to learn how to save your queries.
-
 https://github.com/user-attachments/assets/4da72a80-8529-4991-9881-ec3027d5b13f
 
 Take a look at the tutorial video above on how to execute database queries. Open a new query window in SQL Server Management Studio in which you'll put these statements. Create tables `Department` and `Employee` by executing the following two `CREATE TABLE` statements:
@@ -80,6 +77,9 @@ SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH FROM INFORMA
 SELECT TABLE_NAME, CONSTRAINT_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE ORDER BY TABLE_NAME
 ```
 
+> [!IMPORTANT]
+> Save your work on task 1 to a file named `sql_intro_1_YOURFAMILYNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md) guide to learn how to save your queries.
+
 ## Task 2: Creating a database diagram
 
 > [!IMPORTANT]
@@ -97,13 +97,10 @@ Congratulations! You have created your first database tables and a database diag
 
 ## Task 3: SQL Queries
 
-> [!IMPORTANT]
-> Save your work on task 3 to a file named `sql_intro_3_YOURFAMILYNAME.sql`.
-
 > [!TIP]
 > See task 1 for examples.
 
-Open a new query window, in which write the following statements:
+Open a _new query window_, in which write the following statements:
 
 1. Write and execute an `INSERT` statement that inserts a new department into the database. The department number is 30 and department name is 'Management'.
 2. Write and execute an `INSERT` statement that inserts a new employee into the database. The employee number is 4 and employee name is 'Athena'. She works for the Management department.
@@ -111,10 +108,10 @@ Open a new query window, in which write the following statements:
 4. Write and execute a `SELECT` statement that displays the name of the employee whose employee number is 2.
 5. Write and execute a `SELECT` statement that lists names of those employees who work for department 10. Display employee name and department number.
 
-## Task 4: Creating tables
-
 > [!IMPORTANT]
-> Save your work on task 4 to a file named `sql_intro_4_YOURFAMILYNAME.sql`.
+> Save your work on task 3 to a file named `sql_intro_3_YOURFAMILYNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md) guide to learn how to save your queries.
+
+## Task 4: Creating tables
 
 > [!TIP]
 > See task 1 for examples.
@@ -141,4 +138,4 @@ Open a new query window, in which write the following statements:
 > - While inserting data, _if a row has a foreing key, you need to first insert the row that is referenced_. E.g., you need to insert an `Department` row first, before inserting a `Employee` row referencing it with a foreign key.
 
 > [!IMPORTANT]
-> Remember to save the contents of each query window into their corresponding `.sql` files.
+> Save your work on task 4 to a file named `sql_intro_4_YOURFAMILYNAME.sql`. See the [Using SQL Server Management Studio](../materials/sql-server/sql-server-management-studio.md) guide to learn how to save your queries.
