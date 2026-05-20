@@ -21,7 +21,7 @@ At least 40% of exam points from **both exams** is required for a passing grade.
 - Mid-term exam will **only contain tasks related to SQL queries**, so every answer of the exam task will start with a `SELECT` statement
 - You will be presented with a database consisting of 3-4 tables with some example data for each table
 - You will receive a copy of the SQL DML Quick Reference in the exam
-- In the tasks, you will need to be able to write a SQL query that solves the specified query problem, e.g. _"Write a query that displays the author with the most Pulitzer prizes (author name, number of pulitzer prizes)"_
+- In the tasks, you will need to be able to write a SQL query that solves the specified query problem, e.g. _"Write a query that displays the author with the most Pulitzer prizes (author name, number of Pulitzer prizes)"_
 - You will definitely need the following SQL topics in the questions:
   - Join operations (`INNER JOIN` and `LEFT OUTER JOIN` operations)
   - Aggregate functions (e.g. `SUM`, `COUNT`, or `MAX` functions)
@@ -33,9 +33,8 @@ At least 40% of exam points from **both exams** is required for a passing grade.
 ## Final exam
 
 - It is guaranteed that the final exam **will include the following types of tasks**:
-  - Practical tasks (solving a problem)
-    - ER diagramming (create an ER diagram based on the given text)
-    - Normalisation (show the FDs, determine the normal form, decompose the relation). This includes a solid understanding of superkeys, candidate keys, primary keys, alternate keys, and composite keys
+  - ER diagramming (create an ER diagram based on the given text). To prepare, redo some of the tasks in [ER exercises](../exercises/er-exercises.md) and have a look at the model solutions in Moodle's "Course outline" page.
+  - Normalisation (show the FDs, determine the normal form, decompose the relation). This includes a solid understanding of superkeys, candidate keys, primary keys, alternate keys, and composite keys. To prepare, redo tasks 5, 6, and 7 in [Normalisation exercises](../exercises/normalisation-exercises.md) and have a look at the model solutions in Moodle's "Course outline" page.
   - Theory-related tasks (e.g. _"What is the purpose of X"_)
     - Terminology task (explain in your own words a couple of terms) and/or a question related to the theory
     - One theory-related task will be related to database transactions (doesn't require knowing any transaction-related SQL syntax)
