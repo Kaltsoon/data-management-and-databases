@@ -55,7 +55,7 @@ The `Musician` table:
 | 110         | Roger      | Taylor      | 2       |
 | 111         | John       | Deacon      | 2       |
 
-### Questions
+### ❓ Questions
 
 1. Who are the members of the band "The Beatles"?
 2. Who is the leader of the band "Queen"?
@@ -109,7 +109,7 @@ The `Band_Musician` table:
 | 3       | 106         |
 | 3       | 109         |
 
-### Questions
+### ❓ Questions
 
 1. Who are the members of the band "AC/DC"?
 2. Who are the members of the band "Steve Morse Band"?
