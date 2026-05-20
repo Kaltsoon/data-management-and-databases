@@ -50,4 +50,4 @@ At least 40% of exam points from **both exams** is required for a passing grade.
   - Database Normalisation (there will be a practical task on normalisation).
   - Physical Database Design (focus on integrity constraints and indexes).
   - Database Transactions (the basic concepts, concurrency control).
-- The exam has 5 questions and two bonus questions for additional points.
+- The exam has 5 questions and one bonus question for additional points.
