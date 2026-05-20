@@ -1,7 +1,7 @@
 # Orientation Exercises
 
 > [!IMPORTANT]
-> Write your answers to a Word document named `orientation_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. Submissions can be found on Moodle's "Coursework submissions" page.
+> Write your answers to a Word document named `orientation_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. Submissions can be found on Moodle's "Assignment submissions" page.
 
 ## Task 1: Exploring a database
 
