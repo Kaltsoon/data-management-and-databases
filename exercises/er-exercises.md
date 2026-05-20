@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > Write your answers to a Word document named `er_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle. Include ER diagrams as images in the document.
 
-The objective of this exercise is to familiarize yourself with the basics of conceptual modeling, have some hands-on practicing in data modeling, and learn to create simple ER diagrams based on a closed small set of requirements. Refer to this week's lesson slides and the ER refresher task as materials.
+The objective of this exercise is to familiarize yourself with the basics of conceptual modeling, have some hands-on practice in data modeling, and learn to create simple ER diagrams based on a closed, small set of requirements. Refer to this week's lesson slides and the ER refresher task as materials.
 
 ## Drawing ER diagrams
 
@@ -42,7 +42,7 @@ Are the statements below true or false? _Give arguments!_
 
 > [!TIP]
 > 
-> While interpreting the number of instances associated with the entity, we look at the multiplicity constaint on the _opposite side of the relationship_. For example in the ER diagram below, teacher teaches _zero or more_ (`0..*`) course instances and course instance is teached by _at least one_ (`1..*`) teacher.
+> While interpreting the number of instances associated with the entity, we look at the multiplicity constraint on the _opposite side of the relationship_. For example in the ER diagram below, teacher teaches _zero or more_ (`0..*`) course instances and course instance is teached by _at least one_ (`1..*`) teacher.
 >
 > ```mermaid
 > ---
