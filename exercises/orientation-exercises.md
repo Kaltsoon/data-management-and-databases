@@ -100,7 +100,7 @@ The whole content of the _election file_ is as follows:
 | 27  | 30  | 28  | 29  | 28  | 27  | 28  | 31  | 29  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-### Questions
+### ❓ Questions
 
 #### Part A
 
