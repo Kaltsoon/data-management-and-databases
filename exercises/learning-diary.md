@@ -5,9 +5,9 @@ Keeping a learning diary will guide you to:
 1. _Reflect_ and _self-evaluate_ your own _studying and learning processes_.
 2. Help you in _developing your studying skills_.
 
-In addition, your teacher will get useful information for running the current course implementation and for the further development of the course.
+In addition, your teacher will get useful information for running the current course implementation and for further development of the course.
 
-_The completion of a proper learning diary is mandatory_ (no diary, no passing grade) and it is included in your activity points in course assessment. Deadlines must be observed carefully. Learning diaries are 100% confidential. Please feel free to ask your teacher for more advice.
+_The completion of a proper learning diary is mandatory_ (no diary, no passing grade), and it is included in your activity points in the course assessment. Deadlines must be observed. Learning diaries are 100% confidential. Please feel free to ask your teacher for more advice.
 
 ## How to submit your diary
 
@@ -23,8 +23,8 @@ Please submit each part of your diary as a separate Word or PDF document to Mood
 
 First, describe:
 
-- Your starting level on this subject
-- Your own aims and objectives
+- Your starting level on this subject.
+- Your own aims and objectives.
 - Are there any known obstacles in your way?
 
 Then, answer the following questions:
@@ -34,7 +34,7 @@ Then, answer the following questions:
 
 1. How do you confirm your participation in the Data Management and Databases course?
 2. What are the minimum requirements for passing the course?
-3. Explain in your own words what do the "Study Instructions" section on the Moodle's "General" page say about using AI in this course?
+3. Explain in your own words what the "Study Instructions" section on Moodle's "General" page says about using AI in this course?
 
 ## Part 2
 
@@ -56,7 +56,7 @@ Add content to your learning diary based on the following questions:
 ## Part 3
 
 > [!IMPORTANT]
-> The deadline for part 3 is before the last week of the course starts.
+> The deadline for part 3 is before the end of the last course week.
 
 Add content to your learning diary based on the following questions:
 
