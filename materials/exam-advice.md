@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > In both exams, all answers are written by hand on paper. You only need to bring a pen and an eraser to both exams. All other materials are provided in the exam.
 
-The course assessment is mostly based on the points from the mid-term and final exams. The final grade is calculated from the **average percentage of exam points from both exams**:
+The course assessment is primarily based on the points from the mid-term and final exams. The final grade is calculated from the **average percentage of exam points from both exams**:
 
 | % of exam points | Final grade |
 | ---------------- | ---------- |
@@ -14,7 +14,7 @@ The course assessment is mostly based on the points from the mid-term and final 
 | 50%- 59%         | 1          |
 | 0% - 49%         | 0          |
 
-At least 40% of exam points from **both exams** is required for a passing grade.
+Passing requirements are 40% of the exam points from **both exams**, with an average across the two exams of 50% points.
 
 ## Mid-term exam
 
@@ -24,7 +24,7 @@ At least 40% of exam points from **both exams** is required for a passing grade.
 - In the tasks, you will need to be able to write a SQL query that solves the specified query problem, e.g. _"Write a query that displays the author with the most Pulitzer prizes (author name, number of Pulitzer prizes)"_.
 - You will definitely need the following SQL topics in the questions:
   - Join operations (`INNER JOIN` and `LEFT OUTER JOIN` operations).
-  - Aggregate functions (e.g. `SUM`, `COUNT`, or `MAX` functions).
+  - Aggregate functions (e.g., `SUM`, `COUNT`, or `MAX` functions).
   - Grouping (`GROUP BY` clause).
   - Subqueries ([IN and NOT IN](https://www.w3schools.com/sql/sql_in.asp) operators in subqueries might become useful).
 - Recap by redoing some of the SQL assignments (especially related to the topics above) and comparing your solutions to the model solutions.

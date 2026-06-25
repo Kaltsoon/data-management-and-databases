@@ -104,7 +104,7 @@ The whole content of the _election file_ is as follows:
 
 #### Part A
 
-Does the candidate file contain _data_ or _metadata_?
+Does the candidate file contain _data_ or _[metadata](https://www.ibm.com/think/topics/metadata)_?
 
 #### Part B
 
@@ -130,18 +130,24 @@ Another program has updated the original election file. The new content of the e
 - What can you say about the consistency of the data in this situation?
 - How could we prevent this type of problem? Think about a situation when a new entry (number of votes, candidate age, candidate number) is to be inserted into the election file.
 
+> [!TIP]
+> Check who is the candidate of each election file entry.
+
 ## Task 3: Keys
 
-In a table, the _primary key_ is a single column or a _group of columns_ that uniquely identifies each row in the table.
+In a table, the _primary key_ is column (or group of columns) that uniquely identifies each row in a table. No two rows can have the same primary key value, and it cannot be empty.
 
-- The database designer defines the primary key constraint in each table. The DBMS takes care of not allowing duplicate or missing primary key values (entity integrity).
-- Only one primary key in a table is allowed. It can consist of more than one column.
-- A primary key should not include columns beyond those required to ensure uniqueness.
+> [!NOTE]
+> 
+> - The database designer defines the primary key constraint in each table. The DBMS takes care of not allowing duplicate or missing primary key values (entity integrity).
+> - Only one primary key in a table is allowed. It can consist of more than one column.
+> - A primary key should not include columns beyond those required to ensure uniqueness.
 
-In a table, a _foreign key_ is a column or _group of columns_ that we use to link a row to another row.
+In a table, a _foreign key_ is a column  (or group of columns) in one table that points to the primary key in another table. It creates a relationship between the two tables and helps keep the data consistent.
 
-- A foreign key is a column or group of columns whose values are required to match those of the primary key of the referenced table.
-- The database designer defines foreign key constraints. The DBMS takes care of not allowing invalid foreign key references (referential integrity).
+> [!NOTE]
+> 
+> The database designer defines foreign key constraints. The DBMS takes care of not allowing invalid foreign key references (referential integrity).
 
 For example, in the following `Degree Program` table, the `program code` column uniquely identifies each row in the table. There aren't two rows with the same value for this column. This means that the `program code` is the table's _primary key_.
 
@@ -164,7 +170,7 @@ The `Course` table:
 | 🔑 SWD1TF001  | Orientation to Software Engineering | 5       | 🔗 BIT2020   |
 | 🔑 ECO1LF001A | Principles of Economics             | 3       | 🔗 GLOBBA19  |
 
-### Questions
+### ❓ Questions
 
 Look at the University Database example in task 1 and determine the primary key and foreign keys for each table.
 
@@ -189,6 +195,6 @@ In the "Primary key" column, write the name of the column (or a group of column 
 In the "Foreign key" column, write the name of the column (or group of column names) that links a row in this table to a row in another table. Mention also the name of the referenced table. NB! There are also tables without any foreign keys.
 
 > [!TIP]
-- Start by identifying the primary keys, because only then can you determine the foreign keys referencing them.
+> - Start by identifying the primary keys, because only then can you determine the foreign keys referencing them.
 > - For example, in the `Course implementation` table, does the `Course ID` column alone uniquely identify each row, or might the primary key be a group of two columns that together uniquely identify each row?
 > - Foreign key has to always reference a primary key. So, if you are wondering if a column or a group of columns is a foreign key, think about which table's primary key it references.

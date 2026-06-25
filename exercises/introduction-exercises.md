@@ -11,7 +11,7 @@ Suppose that you were asked to give a presentation on the advantages of DBMSs. D
 
 ## Task 2: Important concepts
 
-Study this week's lesson slides and describe each of the following terms briefly in your own words:
+Study this week's lesson slides and other suitable materials and describe each of the following terms briefly in your own words:
 
 1. Data
 2. Metadata
