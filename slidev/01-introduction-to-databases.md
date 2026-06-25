@@ -70,35 +70,44 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 > _"A representation of facts or ideas in a formalized manner capable of being communicated or manipulated by some process."_
 >
-> ― Definition for the word "Data" in Oxford Languages
+> ― Definition for the word _"Data"_ in Oxford Languages
 
-- In a digital world we are constantly accessing and manipulating stored information, for example, when we open our favorite messaging application, we can see the previously sent messages and we can send new messages
-- The backbone of basically any information system is a **database**, an organized collection of data that allows for easy access, management, and updating of information
-- Databases help store large amounts of structured data efficiently and enable fast querying and data manipulation
-- There are many different kind of database technologies, such as, PostgreSQL, MySQL and MongoDB
-
----
-
-## Definition of database
-
-- There have been many different formal definitions for the term _"database"_ and the definition has evolved during the years:
-  - Date in 1990: _"A database consists of some collection of persistent data that is used by the application systems of some given enterprise."_
-  - Ramakrishnan & Gerhke in 2000: _"A database is a collection of data, typically describing the activities of one or more related organizations."_
-- Based on a bit more recent definition of Connolly & Begg in year 2005, database is defined as:
-  
-> _"A database is a shared collection of logically related data (and a description of this data), designed to meet the information needs of an organization."_
+- In today's digital world, we constantly access and manipulate stored information. For example, when we open an messaging application, we can view previously sent messages and send new ones
+- Individual pieces of information, such as a user's email address or a message's content, are called **data**. An organized collection of related data forms a **database**
+- A database is the backbone of most information systems. It enables large amounts of data to be stored efficiently while supporting fast retrieval and modification of that data
+- There are many different database technologies, such as SQL Server, PostgreSQL, and MongoDB
 
 ---
 
 ## Definition of database
 
-> _"A database is a shared collection of logically related data (and a description of this data), designed to meet the information needs of an organization."_
+- Due to changing requirements, database systems have evolved significantly over the years, and so has the definition of the term _"database"_:
 
+> _"A database consists of some collection of <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">persistent data</span> that is used by the application systems of some given enterprise."_
+> 
+> ― Date in 1990
+
+<div class="m-t-2">
+
+> _"A database is a <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">shared collection</span> of <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">logically related data</span> and a <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">description of this data</span>, designed to <span v-mark="{ color: 'rgba(250, 204, 21, 0.5)', type: 'highlight' }">meet the information needs</span> of an organization."_
+> 
+> ― Connolly & Begg in 2005
+
+</div>
+
+---
+
+## Definition of database
+
+> _"A database is a shared collection of logically related data and a description of this data, designed to meet the information needs of an organization."_
+> 
+> ― Connolly & Begg in 2005
+
+- _"persistent data"_: data is commonly in **permanent storage** and doesn't vanish, when e.g. the server machine shuts down
 - _"shared collection"_: database is **accessible** to specific applications, users, and organizations
-- _"logically related data"_: the different pieces of **information has logical relations**, e.g. messages in a messaging app are related to the sender and the receiver users
-- _"persistent data"_: data is in **permanent storage** and doesn't unexpectedly vanish
-- _"description of this data"_: on top of the actual data such as the user's name, the database contains **metadata** like table and column names
-- _"information needs"_: the kind of information stored in the database is **use-case specific**. For example, a messaging application needs to store information about users and messages
+- _"logically related data"_: pieces of data in a database are **connected**, e.g. a message is connected to the sender and the receiver user
+- _"description of this data"_: in addition to the actual data (such as a user's phone number), the database also contains **metadata**, including table and column names
+- _"meet the information needs"_: the stored data is **use-case specific**, e.g. a messaging application needs to store information about users and messages
 
 ---
 
@@ -134,7 +143,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
   - Each property has a property owner and a lease if the property is rented
   - Each lease has a client who is renting the property from the owner
   - The company has a **sales team** responsible for finding clients for the available properties and a **contracts team** responsible for managing the leases
-- Next, we will have a look at two possible approaches of managing this data, which are the **file-based** and **data management system** approaches
+- Next, we will have a look at two possible approaches of managing this data, which are the **file-based** and **database management system** approaches
 
 ---
 
@@ -153,10 +162,9 @@ flowchart TD
 
 <div class="flex-1">
 
-- Data for sales and contracts teams is in **separate files**
+- Sales and contracts teams have data relevant for their needs in **separate files** (e.g. spreadsheets)
 - Each team uses a separate application that defines and manages data in application-specific files
-- Each file has a specific format
-- Applications that use these files depend on knowledge about that format
+- Each file has a specific format and the application that uses a file depends on knowledge about its format
 
 </div>
 </div>
@@ -166,13 +174,13 @@ flowchart TD
 ## File-based approach in data management
 
 - The sales application operates with the following **sales files**:
-  - _private-owner.csv_ (ownernumber, firstname, lastname, address, phone)
-  - ⚠️ _property-for-rent.csv_ (propertynumber, street, city, postcode, size, rooms, rent, ownernumber)
-  - ⚠️ _client.csv_ (clientnumber, firstname, lastname, address, phone, maxrent, sizepreference)
+  - _property-owners_ (ownernumber, firstname, lastname, address, phone)
+  - ⚠️ _properties_ (propertynumber, ownernumber, street, city, postcode, size, roomcount, rent)
+  - ⚠️ _clients_ (clientnumber, firstname, lastname, address, phone, maxrent, sizepreference)
 - And the contracts application with the separate **contracts files**:
-  - _lease.csv_ (leasenumber, propertynumber, clientnumber, deposit, paid, rentstart, rentfinish)
-  - ⚠️ _property-for-rent.csv_ (propertynumber, street, city, postcode, rent)
-  - ⚠️ _client.csv_ (clientnumber, firstname, lastname, address, phone)
+  - _leases_ (leasenumber, propertynumber, clientnumber, startdate, enddate, deposit)
+  - ⚠️ _properties_ (propertynumber, street, city, postcode, rent)
+  - ⚠️ _clients_ (clientnumber, firstname, lastname, address, phone)
 - The same client and property information is stored in **both sales and contracts files**. Such **data reduncancy** will lead to inconsistent information, e.g. the same client having a different phone number in different files
 
 ---
@@ -203,17 +211,16 @@ flowchart TD
 
 <div class="flex-1">
 
-- Problems of the file-based approach can be avoided by delegating data related operations to a separate software, **Database Management System** (DBMS)
-- It controls all access to the database
-- It allows users to define the database, usually through a **Data Definition Language** (DDL)
-- It allows insert, update, delete, and retrieve data from the database, usually through a **Data Manipulation Language** (DML)
+- The limitations of the file-based approach can be overcome by using a separate software system called a **database management system** (DBMS), which manages and controls all access to the database
+- DBMS allows users to define the structure of a database using a a **data definition language** (DDL)
+- DBMS also enables users to insert, update, delete, and retrieve data from the database using a **data manipulation language** (DML)
 
 </div>
 </div>
 
 ---
 
-## Database approach in data management
+## DBMS approach in data management
 
 <div class="flex">
 <div class="flex-1 m-r-2">
@@ -240,7 +247,7 @@ flowchart TD
 
 ---
 
-## Database approach in data management
+## DBMS approach in data management
 
 <div class="flex">
 <div class="flex-basis-35% m-r-2">
@@ -255,13 +262,13 @@ flowchart TD
 classDiagram
     direction TB
 
-    class PrivateOwner
-    class PropertyForRent
+    class PropertyOwner
+    class Property
     class Lease
     class Client
 
-    PrivateOwner "1..1" -- "0..*" PropertyForRent : owns
-    PropertyForRent "1..1" -- "0..*" Lease : is leased in
+    PropertyOwner "1..1" -- "0..*" Property : owns
+    Property "1..1" -- "0..*" Lease : is leased in
     Client "1..1" -- "0..*" Lease : signs
 ```
 
@@ -270,10 +277,10 @@ classDiagram
 <div class="flex-1">
 
 - In the database, the sales and contracts details can be structured into the following **database tables**:
-  - _PrivateOwner_ (ownernumber, firstname, lastname, address, phone)
-  - _PropetyForRent_ (propertynumber, street, city, postcode, size, rooms, rent, ownernumber)
-  - _Client_ (clientNo, firstname, lastname, address, phone, maxrent, sizepreference)
-  - _Lease_ (leasenumber, propertynumber, clientnumber, deposit, paid, rentstart, rentfinish)
+  - `PropertyOwner` (ownernumber, firstname, lastname, address, phone)
+  - `Property` (propertynumber, ownernumber, street, city, postcode, size, roomcount, rent)
+  - `Client` (clientnumber, firstname, lastname, address, phone, maxrent, sizepreference)
+  - `Lease` (leasenumber, propertynumber, clientnumber, startdate, enddate, deposit)
 - Now, there's a **common structure** for the organization's data without duplication and structural differences
 
 </div>
@@ -281,7 +288,7 @@ classDiagram
 
 ---
 
-## Advantages of database approach
+## Advantages of the DBMS approach
 
 - **Data independence**: applications don't need to know about the physical level storage structures, which improves data accessibility, maintainability of the applications and reusability of existing data
 - **Effective access to data**: multiple users can access the data
@@ -322,14 +329,11 @@ concurrently using a standard database language with both programmatic and inter
 
 ## Relational database managament systems (RDBMS)
 
-<img src="/sql-server-logo.svg" class="top-right-watermark" alt="SQL Server logo" />
-
-- **Relational database management systems** (RDBMS) are among the most popular database management systems
-- The word _"relational"_ refers to the structure of the data in such DBMS
-- **Structured Query Language** (SQL) is the formal and most widely used database language standard for RDBMSs
-- SQL offers both **data definition language** (DDL) and **data manipulation language** (DML) features
-- There are multiple RDBMS products, such as SQL Server, MySQL and PostgreSQL
-- During this course we will be using the **SQL Server** RDBMS
+- **Relational database management systems** (RDBMS) are among the most widely used types of database management systems
+- The term _"relational"_ refers to the way data is organized into related tables
+- **Structured Query Language** (SQL) is the standard language for querying and managing data in RDBMSs
+- SQL includes both **data definition language** (DDL) for defining database structures and **data manipulation language** (DML) for querying and modifying data
+- Popular RDBMS products include SQL Server, MySQL, and PostgreSQL. In this course, we will focus on the SQL Server RDBMS
 
 ```sql
 -- Example of DML syntax in SQL

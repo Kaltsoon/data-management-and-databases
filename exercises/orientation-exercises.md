@@ -104,7 +104,7 @@ The whole content of the _election file_ is as follows:
 
 #### Part A
 
-Does the candidate file contain _data_ or _metadata_?
+Does the candidate file contain _data_ or _[metadata](https://www.ibm.com/think/topics/metadata)_?
 
 #### Part B
 
@@ -189,6 +189,6 @@ In the "Primary key" column, write the name of the column (or a group of column 
 In the "Foreign key" column, write the name of the column (or group of column names) that links a row in this table to a row in another table. Mention also the name of the referenced table. NB! There are also tables without any foreign keys.
 
 > [!TIP]
-- Start by identifying the primary keys, because only then can you determine the foreign keys referencing them.
+> - Start by identifying the primary keys, because only then can you determine the foreign keys referencing them.
 > - For example, in the `Course implementation` table, does the `Course ID` column alone uniquely identify each row, or might the primary key be a group of two columns that together uniquely identify each row?
 > - Foreign key has to always reference a primary key. So, if you are wondering if a column or a group of columns is a foreign key, think about which table's primary key it references.
