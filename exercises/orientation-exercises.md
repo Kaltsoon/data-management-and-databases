@@ -130,6 +130,9 @@ Another program has updated the original election file. The new content of the e
 - What can you say about the consistency of the data in this situation?
 - How could we prevent this type of problem? Think about a situation when a new entry (number of votes, candidate age, candidate number) is to be inserted into the election file.
 
+> [!TIP]
+> Check who is the candidate of each election file entry.
+
 ## Task 3: Keys
 
 In a table, the _primary key_ is a single column or a _group of columns_ that uniquely identifies each row in the table.
