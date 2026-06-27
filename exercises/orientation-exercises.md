@@ -135,16 +135,19 @@ Another program has updated the original election file. The new content of the e
 
 ## Task 3: Keys
 
-In a table, the _primary key_ is a single column or a _group of columns_ that uniquely identifies each row in the table.
+In a table, the _primary key_ is column (or group of columns) that uniquely identifies each row in a table. No two rows can have the same primary key value, and it cannot be empty.
 
-- The database designer defines the primary key constraint in each table. The DBMS takes care of not allowing duplicate or missing primary key values (entity integrity).
-- Only one primary key in a table is allowed. It can consist of more than one column.
-- A primary key should not include columns beyond those required to ensure uniqueness.
+> [!NOTE]
+> 
+> - The database designer defines the primary key constraint in each table. The DBMS takes care of not allowing duplicate or missing primary key values (entity integrity).
+> - Only one primary key in a table is allowed. It can consist of more than one column.
+> - A primary key should not include columns beyond those required to ensure uniqueness.
 
-In a table, a _foreign key_ is a column or _group of columns_ that we use to link a row to another row.
+In a table, a _foreign key_ is a column  (or group of columns) in one table that points to the primary key in another table. It creates a relationship between the two tables and helps keep the data consistent.
 
-- A foreign key is a column or group of columns whose values are required to match those of the primary key of the referenced table.
-- The database designer defines foreign key constraints. The DBMS takes care of not allowing invalid foreign key references (referential integrity).
+> [!NOTE]
+> 
+> The database designer defines foreign key constraints. The DBMS takes care of not allowing invalid foreign key references (referential integrity).
 
 For example, in the following `Degree Program` table, the `program code` column uniquely identifies each row in the table. There aren't two rows with the same value for this column. This means that the `program code` is the table's _primary key_.
 
