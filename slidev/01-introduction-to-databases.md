@@ -62,7 +62,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
   - The **final exam**, at the end of the course, will cover rest of the course topics
 - Passing grade has the following requirements:
   - At least 40% points in each exam and 50% exam point average from the two exams
-  - At least 70% of the exercises, case assignment and learning diary must be submitted **before the end of the final course week**
+  - At least 50% of the exercises, case assignment and learning diary must be submitted **before the end of the final course week**
 
 ---
 
@@ -113,14 +113,13 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ## Data management
 
-- **Data management** is the development, maintenance and coordination of **database systems**
+- **Data management** is the process of developing, maintaining, and coordinating database systems to ensure that data is stored, managed, and accessed efficiently
 - A database system consists of five major components:
-  - **Hardware** consists of the physical devices (for example, servers and hard drives) and infrastructure that support the database system
-  - **Software** consists of the set of applications used to manage and interact with the database
-  - **Data** (the database) constitutes of the actual stored information that the database system manages
-  - **Procedures** consists of the documented instructions and rules for using and managing the database system
-  - **Users** who are the people or applications who interact with the database system
-
+  - **Hardware**: the physical devices and infrastructure (such as servers, storage devices, and networking equipment) that support the database system
+  - **Software**: the database management system (DBMS) and related applications used to manage and access data
+  - **Data**: the collection of stored information (the database) that the system manages
+  - **Procedures**: the documented policies, guidelines, and instructions that define how the database system is used, maintained and secured
+  - **Users**: the people and applications that interact with the database system, including database administrators, developers, and end users
 ---
 
 ## The objective of data management
