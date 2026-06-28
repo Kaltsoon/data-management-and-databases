@@ -170,7 +170,7 @@ The `Course` table:
 | 🔑 SWD1TF001  | Orientation to Software Engineering | 5       | 🔗 BIT2020   |
 | 🔑 ECO1LF001A | Principles of Economics             | 3       | 🔗 GLOBBA19  |
 
-### Questions
+### ❓ Questions
 
 Look at the University Database example in task 1 and determine the primary key and foreign keys for each table.
 
