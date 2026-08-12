@@ -8,15 +8,31 @@
 Read about the relational schemas in this week's lesson slides. Suppose that we defined some primary key constraints as below. Explain why each of these primary key constraints is problematic (you can consider Haaga-Helia UAS as the context).
 
 1. <pre>Student (studentNumber, <ins>familyName, givenName</ins>, nationality, socialSecurityNumber)</pre>
-2. <pre>Student (studentNumber , familyName, givenName, nationality, <ins>socialSecurityNumber</ins>)</pre>
+2. <pre>Student (studentNumber , familyName, givenName, nationality, <ins>libraryCardNumber</ins>)</pre>
 3. <pre>Course (<ins>courseCode</ins>, courseName, <ins>credits</ins>)</pre>
 4. <pre>CourseOffering (<ins>courseCode</ins>, courseOfferingNumber, <ins>startDate</ins>, teacherNumber)</pre>
+
+> [!TIP]
+> Consider the most important criteria for a good primary key:
+> - It should be unique.
+> - It must be minimal: a primary key should contain no more attributes than necessary to uniquely identify each row (minimality).
+> - Its value should not change.
+> - It must have a value.
 
 ## Task 2
 
 ### Part A
 
-There are curriculums and courses. Each course belongs to exactly one curriculum. Curriculum has a curriculum code, name, and start year. Course has a course code, name and credits. Write relation schemas based on the information given above. Determine all primary key constraints and foreign key constraints.
+There are curriculums and courses. Each course belongs to exactly one curriculum. Curriculum has a curriculum code, name, and start year. Course has a course code, name, and credits. 
+
+Write a _relational schema_ (see example below) based on the information given above. Determine all primary key constraints and foreign key constraints. As a reference, here's an example of relational schema describing `Director` and `Movie` relations:
+
+<pre>
+Director (<ins>directorid</ins>, firstname, surname)
+  
+Movie (<ins>movieid</ins>, name, releaseYear, directorid)
+  FOREIGN KEY (directorid) REFERENCES Director (directorid)
+</pre>
 
 ### Part B
 
@@ -63,7 +79,7 @@ Derive correct relation schemas from the above. Determine all primary key constr
 Determine all primary key constraints and foreign key constraints for the relations below.
 
 > [!TIP]
-> Even if the column name `id` sounds a tempting primary key candidate, try not to pay too much attention on the column's name. It is also necessary to look at more than one relation when you are determining a primary key. _If there is a foreign key, it must match with a primary key_.
+> Instead of paying attention on the column names, focus on the criteria of a primary key. It is also necessary to look at more than one relation when you are determining a primary key. _If there is a foreign key, it must match with a primary key_.
 
 ### Book
 

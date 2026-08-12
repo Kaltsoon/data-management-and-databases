@@ -34,7 +34,7 @@ Passing requirements are 40% of the exam points from **both exams**, with an ave
 
 - It is guaranteed that the final exam **will include the following types of tasks**:
   - ER diagramming (create an ER diagram based on the given text). To prepare, redo some of the tasks in [ER exercises](../exercises/er-exercises.md) and have a look at the model solutions in Moodle's "Course outline" page.
-  - Normalisation (show the FDs, determine the normal form, decompose the relation). This includes a solid understanding of superkeys, candidate keys, primary keys, alternate keys, and composite keys. To prepare, redo tasks 5, 6, and 7 in [Normalisation exercises](../exercises/normalisation-exercises.md) and have a look at the model solutions in Moodle's "Course outline" page.
+  - Normalisation (show the functional dependencies, determine the normal form, decompose the relation). This includes a solid understanding of superkeys, candidate keys, primary keys, alternate keys, and composite keys. To prepare, redo tasks 5, 6, and 7 in [Normalisation exercises](../exercises/normalisation-exercises.md) and have a look at the model solutions in Moodle's "Course outline" page.
   - Theory-related tasks (e.g. _"What is the purpose of X"_):
     - Terminology task (explain in your own words a couple of terms) and/or a question related to the theory.
     - One theory-related task will be related to database transactions (doesn't require knowing any transaction-related SQL syntax).

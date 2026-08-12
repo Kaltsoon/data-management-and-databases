@@ -25,7 +25,7 @@ This repository contains materials and exercises for Data Management and Databas
 - [SQL Introduction Exercises](./exercises/sql-intro-exercise.md)
 - [Initialize Takkula Tables](./exercises/sql-initialize-takkula-exercise.md)
 - [SQL Exercises 1](./exercises/sql-exercises-1.md)
-- [SQL Syntax & WHERE Conditions Exercises](./exercises/sql-syntax-exercises.md)
+- [SQL Syntax & WHERE Conditions Exercises](./exercises/sql-syntax-exercise.md)
 - [SQL Exercises 2](./exercises/sql-exercises-2.md)
 - [SQL Exercises 3](./exercises/sql-exercises-3.md)
 - [SQL Exercises 4](./exercises/sql-exercises-4.md)

@@ -274,13 +274,13 @@ classDiagram
 
 - To provide a textual presentation of relation or a collection related relations, we can use **relation schemas** and **relational schemas**
 - **Relation schema** describes a single relation. It includes the name of the relation, the
-names of attributes and the **primary key** attribute underlined
+names of attributes and the primary key attribute underlined
 
 <pre>
 Course (<u>courseCode</u>, courseName, credits)
 </pre>
 
-- **Relational schema** describes a collection of relations (the logical structure of a relational database)
+- **Relational schema** describes collection of relations and their relationships established with foreign keys
 
 <pre>
 Course (<u>courseCode</u>, courseName, credits)

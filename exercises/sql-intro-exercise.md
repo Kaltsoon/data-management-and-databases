@@ -51,6 +51,9 @@ Execute the following `SELECT` statements _one by one_ to see some of the data t
 SELECT deptno, deptname FROM Department
 ```
 
+> [!NOTE]
+> `SELECT` statements return a _result table_ containing the rows that match the query. After executing a `SELECT` statement, you can view the result table below the query window.
+
 ```sql
 SELECT deptname FROM Department WHERE deptno = 10
 ```

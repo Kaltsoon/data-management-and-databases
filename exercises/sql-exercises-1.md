@@ -4,21 +4,19 @@
 > Using generative AI tools to directly generate task answers is strictly forbidden and considered plagiarism. You won't be able to use such tools in the exam and without a lot of practice, your exam and learning results won't be good.
 
 > [!IMPORTANT]
-> Create a Word document named `sql_exercises_1_YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and a [screenshot](https://www.take-a-screenshot.org/) of the result** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
+> Save your SQL queries to a file `sql_exercises_1_YOURFAMILYNAME.sql` in SQL Server Management Studio. Write the task numbers as comments to your query window as follows:
+>
+> ```sql
+> -- 1
+> SELECT ...
+> -- 2
+> SELECT ...
+> ```
+>
+> Finally, submit the file to Moodle.
 
 > [!TIP]
 > To understand the database structure, use the **Database Diagram** in this week's "Materials" section on Moodle's "Course outline" page. It shows the database tables, columns, primary keys and foreign keys.
-
-Write the task numbers to your query window as follows:
-
-```sql
--- 1
-SELECT ...
--- 2
-SELECT ...
-```
-
-You can copy and paste the query window contents to your submission Word document. Also include a [screenshot](https://www.take-a-screenshot.org/) of each query's result.
 
 ## 1.
 
@@ -31,12 +29,12 @@ Write a SELECT statement that lists all the campuses. Display all columns. The o
 
 <summary>Expected result table (click to open)</summary>
 
-| campus_code | campus_name | street | postcode | city |
-|-------------|-------------|--------|----------|----------|
-| c111 | Pasila | Ratapihantie 13 | 00520 | Helsinki |
-| c222 | Malmi | Hietakummuntie 1 A | 00700 | Helsinki |
-| c333 | Vierumäki | Kaskelantie 10 | 19120 | Vierumäki |
-| c444 | Porvoo | Taidetehtaankatu 1 | 06100 | Porvoo |
+| campus_code | campus_name | street             | postcode | city      |
+| ----------- | ----------- | ------------------ | -------- | --------- |
+| c111        | Pasila      | Ratapihantie 13    | 00520    | Helsinki  |
+| c222        | Malmi       | Hietakummuntie 1 A | 00700    | Helsinki  |
+| c333        | Vierumäki   | Kaskelantie 10     | 19120    | Vierumäki |
+| c444        | Porvoo      | Taidetehtaankatu 1 | 06100    | Porvoo    |
 
 (4 row(s) affected)
 
@@ -50,12 +48,12 @@ Write a SELECT statement that lists all the campuses. Display city and campus na
 
 <summary>Expected result table (click to open)</summary>
 
-| city | campus_name |
-|----------|-------------|
-| Helsinki | Malmi |
-| Helsinki | Pasila |
-| Porvoo | Porvoo |
-| Vierumäki | Vierumäki |
+| city      | campus_name |
+| --------- | ----------- |
+| Helsinki  | Malmi       |
+| Helsinki  | Pasila      |
+| Porvoo    | Porvoo      |
+| Vierumäki | Vierumäki   |
 
 (4 row(s) affected)
 
@@ -69,11 +67,11 @@ What kinds of disciplinary sanctions there are at the University? List all sanct
 
 <summary>Expected result table (click to open)</summary>
 
-| description | decision_maker |
-|-------------|----------------|
-| Expulsion | Board of the University |
+| description     | decision_maker              |
+| --------------- | --------------------------- |
+| Expulsion       | Board of the University     |
 | Written warning | President of the University |
-| Oral warning | Head of faculty |
+| Oral warning    | Head of faculty             |
 
 (3 row(s) affected)
 
@@ -87,23 +85,23 @@ What types of academic misconduct are mentioned in the MisconductType table? Lis
 
 <summary>Expected result table (click to open)</summary>
 
-| description |
-|-------------|
-| Assisting another student to cheat (e.g., by allowing own coursework to be copied) |
-| Cheating in an exam |
-| Collusion (unauthorized collaboration) |
-| Copying of coursework from another student |
-| Disturbing teaching or fellow students |
+| description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- |
+| Assisting another student to cheat (e.g., by allowing own coursework to be copied)                              |
+| Cheating in an exam                                                                                             |
+| Collusion (unauthorized collaboration)                                                                          |
+| Copying of coursework from another student                                                                      |
+| Disturbing teaching or fellow students                                                                          |
 | Dual submission (submitting own work, which already has been graded for an earlier course, for a second course) |
-| Fabrication (making things up in research-oriented coursework) |
-| Falsification (modifying data in research-oriented coursework) |
-| Falsifying a list of attendees |
-| Freeloading in a group work assignment |
-| Giving false information to University staff to gain an academic advantage |
-| Lack of citation or improper citation |
-| Refusal to take a drug test |
-| Submitting a paper or assignment that is retrieved from the Internet or a paper-mill |
-| Use of intoxicants or being under the influence of intoxicants |
+| Fabrication (making things up in research-oriented coursework)                                                  |
+| Falsification (modifying data in research-oriented coursework)                                                  |
+| Falsifying a list of attendees                                                                                  |
+| Freeloading in a group work assignment                                                                          |
+| Giving false information to University staff to gain an academic advantage                                      |
+| Lack of citation or improper citation                                                                           |
+| Refusal to take a drug test                                                                                     |
+| Submitting a paper or assignment that is retrieved from the Internet or a paper-mill                            |
+| Use of intoxicants or being under the influence of intoxicants                                                  |
 
 (15 row(s) affected)
 
@@ -117,17 +115,17 @@ List all the teachers (surname, first name, teacher number). Sort the result by 
 
 <summary>Expected result table (click to open)</summary>
 
-| surname | first_name | teacher_number |
-|---------|------------|----------------|
-| Kiisseli | Marja | h999 |
-| Kokki | Seppo | h180 |
-| Matikka | Mauri | h777 |
-| Ponteva | Veli | h303 |
-| Saari | Sisko | h290 |
-| Tahko | Olka | h560 |
-| Tahko | Olka | h714 |
-| Vainio | Veera | h784 |
-| Virta | Emma | h430 |
+| surname  | first_name | teacher_number |
+| -------- | ---------- | -------------- |
+| Kiisseli | Marja      | h999           |
+| Kokki    | Seppo      | h180           |
+| Matikka  | Mauri      | h777           |
+| Ponteva  | Veli       | h303           |
+| Saari    | Sisko      | h290           |
+| Tahko    | Olka       | h560           |
+| Tahko    | Olka       | h714           |
+| Vainio   | Veera      | h784           |
+| Virta    | Emma       | h430           |
 
 (9 row(s) affected)
 
@@ -141,14 +139,14 @@ List all the female students (student number, surname, first name, birth date, g
 
 <summary>Expected result table (click to open)</summary>
 
-| student_number | surname | first_name | birth_date | gender |
-|----------------|---------|------------|------------|--------|
-| o148 | Rentukka | Sanna | 1985-10-22 | F |
-| o348 | Käki | Kaarina | 1985-04-03 | F |
-| o410 | Liimatta | Leila | 1969-03-03 | F |
-| o548 | Vuori | Valma | 1984-10-10 | F |
-| o558 | Hullerus | Greta | 1977-03-28 | F |
-| o654 | Laine | Rosina | 1978-05-07 | F |
+| student_number | surname  | first_name | birth_date | gender |
+| -------------- | -------- | ---------- | ---------- | ------ |
+| o148           | Rentukka | Sanna      | 1985-10-22 | F      |
+| o348           | Käki     | Kaarina    | 1985-04-03 | F      |
+| o410           | Liimatta | Leila      | 1969-03-03 | F      |
+| o548           | Vuori    | Valma      | 1984-10-10 | F      |
+| o558           | Hullerus | Greta      | 1977-03-28 | F      |
+| o654           | Laine    | Rosina     | 1978-05-07 | F      |
 
 (6 row(s) affected)
 
@@ -162,11 +160,11 @@ List all the teachers (salary, surname, first name, teacher number) whose salary
 
 <summary>Expected result table (click to open)</summary>
 
-| salary | surname | first_name | teacher_number |
-|--------|---------|------------|----------------|
-| 25000.00 | Kiisseli | Marja | h999 |
-| 18100.00 | Virta | Emma | h430 |
-| 16049.00 | Vainio | Veera | h784 |
+| salary   | surname  | first_name | teacher_number |
+| -------- | -------- | ---------- | -------------- |
+| 25000.00 | Kiisseli | Marja      | h999           |
+| 18100.00 | Virta    | Emma       | h430           |
+| 16049.00 | Vainio   | Veera      | h784           |
 
 (3 row(s) affected)
 
@@ -184,8 +182,8 @@ Write a SELECT statement that finds Veera Vainio's teacher number.
 <summary>Expected result table (click to open)</summary>
 
 | teacher_number |
-|----------------|
-| h784 |
+| -------------- |
+| h784           |
 
 (1 row(s) affected)
 
@@ -200,10 +198,10 @@ List all the grades (examiner's teacher number, course code, instance number, st
 <summary>Expected result table (click to open)</summary>
 
 | examiner | course_code | instance_number | student_number | grade |
-|----------|-------------|-----------------|----------------|-------|
-| h784 | a480 | 1 | o354 | 2 |
-| h784 | a480 | 2 | o298 | 3 |
-| h784 | a480 | 2 | o473 | 0 |
+| -------- | ----------- | --------------- | -------------- | ----- |
+| h784     | a480        | 1               | o354           | 2     |
+| h784     | a480        | 2               | o298           | 3     |
+| h784     | a480        | 2               | o473           | 0     |
 
 (3 row(s) affected)
 
@@ -217,14 +215,14 @@ List all the course instances (start date, end date, course code, instance numbe
 
 <summary>Expected result table (click to open)</summary>
 
-| start_date | end_date | course_code | instance_number |
-|------------|----------|-------------|------------------|
-| 2007-01-03 | 2007-02-25 | a450 | 1 |
-| 2007-02-10 | 2007-04-22 | a480 | 1 |
-| 2007-03-15 | 2007-05-30 | a730 | 1 |
-| 2007-08-01 | 2007-09-15 | a290 | 1 |
-| 2007-08-20 | 2007-10-05 | a730 | 2 |
-| 2007-10-01 | 2007-11-20 | a730 | 3 |
+| start_date | end_date   | course_code | instance_number |
+| ---------- | ---------- | ----------- | --------------- |
+| 2007-01-03 | 2007-02-25 | a450        | 1               |
+| 2007-02-10 | 2007-04-22 | a480        | 1               |
+| 2007-03-15 | 2007-05-30 | a730        | 1               |
+| 2007-08-01 | 2007-09-15 | a290        | 1               |
+| 2007-08-20 | 2007-10-05 | a730        | 2               |
+| 2007-10-01 | 2007-11-20 | a730        | 3               |
 
 (6 row(s) affected)
 
@@ -241,15 +239,15 @@ List all the students (gender, birth date, surname, first name) whose surname is
 
 <summary>Expected result table (click to open)</summary>
 
-| gender | birth_date | surname | first_name |
-|--------|------------|---------|------------|
-| M | 1967-02-27 | Kaarlo | Kuikka |
-| M | 1977-03-28 | Keto | Martti |
-| M | 1980-08-31 | Kuikka | Kaarlo |
-| M | 1981-05-22 | Huhta | Usko |
-| M | 1986-05-17 | Keto | Matti |
-| F | 1977-03-28 | Hullerus | Greta |
-| F | 1985-04-03 | Käki | Kaarina |
+| gender | birth_date | surname  | first_name |
+| ------ | ---------- | -------- | ---------- |
+| M      | 1967-02-27 | Kaarlo   | Kuikka     |
+| M      | 1977-03-28 | Keto     | Martti     |
+| M      | 1980-08-31 | Kuikka   | Kaarlo     |
+| M      | 1981-05-22 | Huhta    | Usko       |
+| M      | 1986-05-17 | Keto     | Matti      |
+| F      | 1977-03-28 | Hullerus | Greta      |
+| F      | 1985-04-03 | Käki     | Kaarina    |
 
 (7 row(s) affected)
 
@@ -263,8 +261,8 @@ List all the students (gender, birth date, surname, first name) whose surname is
 Execute the following query to find out what tables you have created this far:
 
 ```sql
-SELECT table_name 
-FROM information_schema.tables 
+SELECT table_name
+FROM information_schema.tables
 ORDER BY table_name
 ```
 
@@ -274,7 +272,7 @@ Execute the following query to find out what columns there are in the table Teac
 
 ```sql
 SELECT table_name, column_name, data_type, character_maximum_length, numeric_precision, numeric_scale, is_nullable
-FROM information_schema.columns 
+FROM information_schema.columns
 WHERE table_name = 'Teacher'
 ```
 

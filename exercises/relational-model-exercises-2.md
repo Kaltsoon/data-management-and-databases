@@ -38,19 +38,18 @@ For each table, answer the following questions:
 
 ## Task 4
 
-Study the terms below and describe each of them shortly in your own words:
+Study the terms below and describe each of them briefly in your own words:
 
 1. Domain integrity
 2. Entity integrity
 3. Alternate key
 4. Candidate key
 5. Composite key
-6. Compound key
-7. Foreign key
-8. Natural key
-9. Primary key
-10. Superkey
-11. Surrogate key
+6. Foreign key
+7. Natural key
+8. Primary key
+9. Superkey
+10. Surrogate key
 
 > [!IMPORTANT]
 > Some of these terms will be asked in the final exam.

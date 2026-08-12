@@ -1,7 +1,16 @@
 # SQL Exercises 5: Grouping and subqueries
 
 > [!IMPORTANT]
-> Create a Word document named `sql_exercises_5_YOURFAMILYNAME.docx`. For all the SQL queries, please copy and paste both **the SQL statement and a [screenshot](https://www.take-a-screenshot.org/) of the result** into your Word document. Do not worry about formatting. Finally, submit the Word document to Moodle.
+> Save your SQL queries to a file `sql_exercises_5_YOURFAMILYNAME.sql` in SQL Server Management Studio. Write the task numbers as comments to your query window as follows:
+>
+> ```sql
+> -- 1
+> SELECT ...
+> -- 2
+> SELECT ...
+> ```
+>
+> Finally, submit the file to Moodle.
 
 ## 1.
 
