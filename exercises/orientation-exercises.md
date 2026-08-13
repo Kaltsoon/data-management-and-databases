@@ -196,5 +196,5 @@ In the "Foreign key" column, write the name of the column (or group of column na
 
 > [!TIP]
 > - Start by identifying the primary keys, because only then can you determine the foreign keys referencing them.
-> - For example, in the `Course implementation` table, does the `Course ID` column alone uniquely identify each row, or might the primary key be a group of two columns that together uniquely identify each row?
+> - For certain tables, a single column alone won't uniquely identify each row, but a _group of two or more columns together_ will.
 > - Foreign key has to always reference a primary key. So, if you are wondering if a column or a group of columns is a foreign key, think about which table's primary key it references.

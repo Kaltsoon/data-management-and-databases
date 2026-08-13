@@ -44,6 +44,7 @@ This repository contains materials and exercises for Data Management and Databas
 - [Relational Model Exercises 2](./exercises/relational-model-exercises-2.md)
 - [Entity-relationship Model Exercises](./exercises/er-exercises.md)
 - [Logical Database Design Exercises](./exercises/ld-exercises.md)
+- [Normalisation Orientation Exercises](./exercises/normalisation-orientation-exercises.md)
 - [Normalisation Exercises](./exercises/normalisation-exercises.md)
 
 ### Other exercises
