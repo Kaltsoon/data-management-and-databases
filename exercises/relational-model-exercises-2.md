@@ -59,5 +59,5 @@ Study the terms below and describe each of them briefly in your own words:
 Give examples of two _candidate keys_, one _alternate key_, and one _primary key_. In your examples, use attributes of the following relation schema:
 
 <pre>
-Employee (employeeNumber, loginName, givenName, familyName)
+Employee (employeeNumber, username, givenName, familyName)
 </pre>
