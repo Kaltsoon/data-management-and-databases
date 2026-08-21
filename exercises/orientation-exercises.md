@@ -64,8 +64,8 @@ The University Database contains the following:
 
 Answer the following questions based on the database's data:
 
-1. What are the names of the teachers who have taught the course 'Databases'?
-2. What are the names of the students who have received a grade from the course 'Databases'?
+1. What are the names of the teachers who have taught the course "Databases"?
+2. What are the names of the students who have received a grade from the course "Databases"?
 3. What are the names of the courses Joe Pass has completed successfully?
 4. What are the names of the teachers who have taught Frank Zappa?
 5. How many students have grades from courses given by Albert Collins?
@@ -131,11 +131,11 @@ Another program has updated the original election file. The new content of the e
 - How could we prevent this type of problem? Think about a situation when a new entry (number of votes, candidate age, candidate number) is to be inserted into the election file.
 
 > [!TIP]
-> Check who is the candidate of each election file entry.
+> Check who the candidate is for each election file entry.
 
 ## Task 3: Keys
 
-In a table, the _primary key_ is column (or group of columns) that uniquely identifies each row in a table. No two rows can have the same primary key value, and it cannot be empty.
+In a table, the _primary key_ is a column (or group of columns) that uniquely identifies each row in a table. No two rows can have the same primary key value, and it cannot be empty.
 
 > [!NOTE]
 > 
