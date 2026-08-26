@@ -1,7 +1,7 @@
 # SQL Exercises 6: Joins
 
 > [!IMPORTANT]
-> Save your SQL queries to a file `sql_exercises_6_YOURFAMILYNAME.sql` in SQL Server Management Studio. Write the task numbers as comments to your query window as follows:
+> Write your SQL queries in SQL Server Management Studio and include the task numbers as comments to your query window as follows:
 >
 > ```sql
 > -- 1
@@ -10,7 +10,7 @@
 > SELECT ...
 > ```
 >
-> Finally, submit the file to Moodle.
+> In Moodle, submit a `sql_exercises_6_YOURFAMILYNAME.docx` document containing the **SQL query and a [screenshot](https://www.take-a-screenshot.org/) of the result table in each task**.
 
 > [!TIP]
 > Especially with the join operations, we need to understand the relationships between the tables. Use the **Database Diagram** in this week's "Materials" section on Moodle's "Course outline" page to understand the primary and foreign key relationships of the tables.

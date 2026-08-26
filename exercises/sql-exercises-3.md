@@ -4,7 +4,7 @@
 > Using generative AI tools to directly generate task answers is strictly forbidden and considered plagiarism. You won't be able to use such tools in the exam and without a lot of practice, your exam and learning results won't be good.
 
 > [!IMPORTANT]
-> Save your SQL queries to a file `sql_exercises_3_YOURFAMILYNAME.sql` in SQL Server Management Studio. Write the task numbers as comments to your query window as follows:
+> Write your SQL queries in SQL Server Management Studio and include the task numbers as comments to your query window as follows:
 >
 > ```sql
 > -- 1
@@ -13,7 +13,7 @@
 > SELECT ...
 > ```
 >
-> Finally, submit the file to Moodle.
+> In Moodle, submit a `sql_exercises_3_YOURFAMILYNAME.docx` document containing the **SQL query and a [screenshot](https://www.take-a-screenshot.org/) of the result table in each task**.
 
 > [!TIP]
 > To understand the database structure, use the **Database Diagram** in this week's "Materials" section on Moodle's "Course outline" page. It shows the database tables, columns, primary keys and foreign keys.
