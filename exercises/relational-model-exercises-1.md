@@ -39,7 +39,7 @@ Movie (<ins>movieid</ins>, name, releaseYear, directorid)
 
 ### Part B
 
-Similar scenario as previously, but some courses belong to _more than one curriculum_.
+Similar scenario as previously, but some courses belong to _more than one curriculum_. Write a relational schema for this scenario as well.
 
 > [!TIP]
 > The previous week's "Introduction Exercises" assignment's final task has an example, in which a musician can belong to more than one band. You might need a similar structure here.
