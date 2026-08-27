@@ -34,6 +34,9 @@ Movie (<ins>movieid</ins>, name, releaseYear, directorid)
   FOREIGN KEY (directorid) REFERENCES Director (directorid)
 </pre>
 
+> [!TIP]
+> You'll need to add a foreign key attribute to one of the relations, but which one?
+
 ### Part B
 
 Similar scenario as previously, but some courses belong to _more than one curriculum_.
