@@ -8,7 +8,7 @@
 Read about the relational schemas in this week's lesson slides. Suppose that we defined some primary key constraints as below. Explain why each of these primary key constraints is problematic (you can consider Haaga-Helia UAS as the context).
 
 1. <pre>Student (studentNumber, <ins>familyName, givenName</ins>, nationality, socialSecurityNumber)</pre>
-2. <pre>Student (studentNumber , familyName, givenName, nationality, <ins>libraryCardNumber</ins>)</pre>
+2. <pre>Student (studentNumber, familyName, givenName, nationality, <ins>libraryCardNumber</ins>)</pre>
 3. <pre>Course (<ins>courseCode</ins>, courseName, <ins>credits</ins>)</pre>
 4. <pre>CourseOffering (<ins>courseCode</ins>, courseOfferingNumber, <ins>startDate</ins>, teacherNumber)</pre>
 
@@ -33,6 +33,9 @@ Director (<ins>directorid</ins>, firstname, surname)
 Movie (<ins>movieid</ins>, name, releaseYear, directorid)
   FOREIGN KEY (directorid) REFERENCES Director (directorid)
 </pre>
+
+> [!TIP]
+> You'll need to add a foreign key attribute to one of the relations, but which one?
 
 ### Part B
 
