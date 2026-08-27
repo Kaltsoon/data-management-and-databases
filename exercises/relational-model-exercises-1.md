@@ -51,7 +51,7 @@ Similar scenario as previously, but some courses belong to _more than one curric
 Read about properties of relations in this week's lesson slides. Then explain what is incorrect in the relation schemas below.
 
 <pre>
-Country (<ins>countryCode</ins>, countryName )
+Country (<ins>countryCode</ins>, countryName)
 Ship (<ins>shipNumber</ins>, shipName, countryCode, Cabins (cabinNumber, cabinType))
 </pre>
 
