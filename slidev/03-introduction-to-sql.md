@@ -41,7 +41,7 @@ WHERE first_name = 'John' AND surname = 'Doe';
 
 ## SQL syntax variations
 
-- There is an official standard for SQL maintained by ISO/IEC and **most of the syntax is the same in all RDBMS**, but **every major RDBMS introduces its own extensions, syntax tweaks, or behaviors**
+- There is an official standard for SQL and **most of the syntax is the same in all RDBMS**, but **every major RDBMS introduces its own extensions, syntax tweaks, or behaviors**
 - However, learning the SQL syntax of a specific RDMBS makes it very easy to learn the minor differences of another one
 
 | Operation        | SQL Server                  | PostgreSQL                    |
@@ -169,8 +169,6 @@ CREATE TABLE Student (
 | Decimal Types   | `DECIMAL(p,s)` | Fixed precision and scale numeric data                               |
 | Character Types | `CHAR(n)`      | Fixed-length non-Unicode string (max 8,000 chars)                    |
 |                 | `VARCHAR(n)`   | Variable-length non-Unicode string                                   |
-| Unicode Types   | `NCHAR(n)`     | Fixed-length Unicode string                                          |
-|                 | `NVARCHAR(n)`  | Variable-length Unicode string                                       |
 | Date & Time     | `DATE`         | Stores date (YYYY-MM-DD)                                             |
 |                 | `TIME`         | Stores time only (HH:MM:SS)                                          |
 
