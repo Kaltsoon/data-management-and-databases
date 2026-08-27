@@ -35,11 +35,11 @@ Movie (<ins>movieid</ins>, name, releaseYear, directorid)
 </pre>
 
 > [!TIP]
-> You'll need to add a foreign key attribute to one of the relations, but which one?
+> To establish the relationship between courses and curriculums, you'll need to add a foreign key attribute to one of the relations, but which one?
 
 ### Part B
 
-Similar scenario as previously, but some courses belong to _more than one curriculum_.
+Similar scenario as previously, but some courses belong to _more than one curriculum_. Write a relational schema for this scenario as well.
 
 > [!TIP]
 > The previous week's "Introduction Exercises" assignment's final task has an example, in which a musician can belong to more than one band. You might need a similar structure here.
@@ -51,7 +51,7 @@ Similar scenario as previously, but some courses belong to _more than one curric
 Read about properties of relations in this week's lesson slides. Then explain what is incorrect in the relation schemas below.
 
 <pre>
-Country (<ins>countryCode</ins>, countryName )
+Country (<ins>countryCode</ins>, countryName)
 Ship (<ins>shipNumber</ins>, shipName, countryCode, Cabins (cabinNumber, cabinType))
 </pre>
 
