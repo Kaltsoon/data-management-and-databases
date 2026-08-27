@@ -4,7 +4,7 @@ clicks: false
 transition: none
 fonts:
   sans: Roboto
-  weights: '200,400,600,700'
+  weights: "200,400,600,700"
 ---
 
 ## The relational model
@@ -121,11 +121,11 @@ classDiagram
 
 ## Integrity constraints
 
-| order_id | customer_id | order_date   | total_amount |
-| -------- | ----------- | ------------ | ------------ |
-| <span v-mark.circle.red>1</span>    | 102         | 2025-01-13   | <span v-mark.circle.red>-50.00</span>     |
-| <span v-mark.circle.red>1</span>    | <span v-mark.circle.red>NULL</span>     | 2025-01-14   | 150.00       |
-| 6        | 104         | <span v-mark.circle.red>02.02.2025</span> | 200.00       |
+| order_id                         | customer_id                         | order_date                                | total_amount                          |
+| -------------------------------- | ----------------------------------- | ----------------------------------------- | ------------------------------------- |
+| <span v-mark.circle.red>1</span> | 102                                 | 2025-01-13                                | <span v-mark.circle.red>-50.00</span> |
+| <span v-mark.circle.red>1</span> | <span v-mark.circle.red>NULL</span> | 2025-01-14                                | 150.00                                |
+| 6                                | 104                                 | <span v-mark.circle.red>02.02.2025</span> | 200.00                                |
 
 - The quality of the data directly determines the quality of the whole database
 - Therefore preventing entry of incorrect data is one of the most important functions of a DBMS
@@ -191,9 +191,9 @@ classDiagram
 - We can solve this situation by **including an additional attribute** with a unique value in the relation to act as the primary key. For example, a `messageid` attribute that holds a unique number for each tuple:
 
 | <span v-mark.circle.red>messageid</span> | from                       | to                         | title    | body         |
-| --------- | -------------------------- | -------------------------- | -------- | ------------ |
-| 1         | kalle.ilves@haaga-helia.fi | john.doe@gmail.com         | Greeting | Hello John!  |
-| 2         | john.doe@gmail.com         | kalle.ilves@haaga-helia.fi | Response | Hello Kalle! |
+| ---------------------------------------- | -------------------------- | -------------------------- | -------- | ------------ |
+| 1                                        | kalle.ilves@haaga-helia.fi | john.doe@gmail.com         | Greeting | Hello John!  |
+| 2                                        | john.doe@gmail.com         | kalle.ilves@haaga-helia.fi | Response | Hello Kalle! |
 
 ---
 
@@ -244,7 +244,7 @@ classDiagram
 - Each employee belongs to one department, where they work in
 - This relationship is established between entities by using a **foreign key** attribute `deptno` in the `Employee` relation, which is linked to the `Department` relation's **primary key** attribute `deptno`
 - ⚠️ A general rule is, that foreign key **always references a primary key**
-  
+
 </div>
 </div>
 
@@ -253,7 +253,7 @@ classDiagram
 ## Example of primary and foreign keys
 
 <div class="flex">
-<div class="flex-basis-26% m-r-2">
+<div class="flex-basis-26% mr-2">
 
 ![](./primary-foreign-key-example.png)
 
@@ -261,20 +261,20 @@ classDiagram
 
 <div class="flex-1">
 
-- Let's consider the following question related to these `Team`, `Artist` and `Team_Artist` relations:
+- Let's consider the following question related to these `Player`, `Team` and `TeamPlayer` relations:
   - ❓ What are the **primary keys** for each table?
   - ❓ What are the **foreign keys** for each table?
-  
+
 </div>
 </div>
 
 ---
 
-# Relation schema and relational schema
+## Relation schema and relational schema
 
 - To provide a textual presentation of relation or a collection related relations, we can use **relation schemas** and **relational schemas**
 - **Relation schema** describes a single relation. It includes the name of the relation, the
-names of attributes and the primary key attribute underlined
+  names of attributes and the primary key attribute underlined
 
 <pre>
 Course (<u>courseCode</u>, courseName, credits)
@@ -306,11 +306,11 @@ CourseGrade (<u>courseCode</u>, <u>studentNumber</u>, grade)
 
 ## Not null constraint
 
-| studentid | name          | phonenumber    | major            |
-| --------- | ------------- | -------------- | ---------------- |
-| 2001      | Emma Thompson | (415) 555-0198 | Computer Science |
-| 2002      | Liam Martinez | <span v-mark.circle.red>NULL</span>       | Computer Science |
-| 2003      | Sophia Chen   | (212) 555-0843 | Psychology       |
+| studentid | name          | phonenumber                         | major            |
+| --------- | ------------- | ----------------------------------- | ---------------- |
+| 2001      | Emma Thompson | (415) 555-0198                      | Computer Science |
+| 2002      | Liam Martinez | <span v-mark.circle.red>NULL</span> | Computer Science |
+| 2003      | Sophia Chen   | (212) 555-0843                      | Psychology       |
 
 - **Null** is a marker for a missing attribute value
 - Null is not the same as e.g. blanks or zero. Null represents **absence of a value**
