@@ -35,7 +35,7 @@ Movie (<ins>movieid</ins>, name, releaseYear, directorid)
 </pre>
 
 > [!TIP]
-> You'll need to add a foreign key attribute to one of the relations, but which one?
+> To establish the relationship between courses and curriculums, you'll need to add a foreign key attribute to one of the relations, but which one?
 
 ### Part B
 
