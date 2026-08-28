@@ -180,7 +180,7 @@ classDiagram
 
 - Let's consider a suitable primary key in the following cases:
   - ❓ Is `Student` relation's `phonenumber` attribute a good option for a primary key? Why or why not?
-  - ❓ A `Customer` relation has attributes `email`, `name`, `address`,  and `social_security_number`. What would be suitable primary key for this relation and why?
+  - ❓ A `Customer` relation has attributes `email`, `name`, `address`, and `social_security_number`. What would be suitable primary key for this relation and why?
 
 | email                    | name          | address                  | social_security_number |
 | ------------------------ | ------------- | ------------------------ | ---------------------- |
@@ -348,8 +348,8 @@ WHERE course_name = 'Data Management and Databases';
 
 </div>
 
-| course_code  | course_name                          | credits |
-| ----- | ----------------------------- | ------- |
+| course_code | course_name                   | credits |
+| ----------- | ----------------------------- | ------- |
 | SOF001AS2AE | Data Management and Databases | 5       |
 
 ---
