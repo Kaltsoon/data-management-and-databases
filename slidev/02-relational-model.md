@@ -134,11 +134,11 @@ classDiagram
 
 ---
 
-## Superkey, candidate key and primary key
+## Superkey: unique attributes
 
 - A **superkey** is an attribute or group of attributes that **uniquely identifies** each tuple of a relation
 - Superkey consisting of a group of attributes is called a **composite key**
-- Relation can have multiple superkeys, for example in the `Course` relation the `code` attribute, and group of `code` and `name` attributes (composite key) are superkeys
+- Relation can have multiple superkeys, for example in the `Course` relation the `code` attribute, and group of attributes `(code, name)` (composite key), are superkeys
 - ❓ What other superkeys does the `Course` relation have?
 
 | code    | name                        | credits | programmecode |
@@ -149,12 +149,13 @@ classDiagram
 
 ---
 
-## Superkey, candidate key and primary key
+## Candidate key: a minimal superkey
 
-- A composite **candidate key** is a superkey that satisfies the property of **minimality**
-- Minimality is satisfied if an attribute can't be removed from the composite key without breaking the uniqueness property
-- In the `Course` relation the group of `code` and `name` attributes doesn't satify minimality, so it isn't a candidate key
-- ❓ What other candidate keys does the `Course` relation have?
+- A **candidate key** is a **minimal superkey**
+- A composite candidate key is minimal if **no attribute can be removed without losing uniqueness**
+- In the `Course` relation, `(code, name)` is a superkey, but **not a candidate key**, because `code` alone is already unique
+- Relation can have multiple candidate keys, `code` being one of them in the `Course` relation
+- ❓ What other candidate key does the `Course` relation have?
 
 | code    | name                        | credits | programmecode |
 | ------- | --------------------------- | ------- | ------------- |
@@ -164,18 +165,32 @@ classDiagram
 
 ---
 
-## Entity integrity
+## Primary key and entity integrity
 
-- From the set of candidate keys for the relation, **exactly one** candidate key is chosen to be the **primary key**
-- The other candidate keys become **alternate keys**
-- Each tuple has a value for the primary key, **it can't be missing**
-- Primary key's value **should not change**. For example person's name or phone number might sound tempting options for a primary key but are actully subject to change
-- **Primary key constraint** prevents duplicate tuples to exist for the relation
-- Primary key constraints enforce **entity integrity**
+- **Exactly one** candidate key is chosen as the **primary key** based on certain criteria, most importantly:
+  - Primary key **must have a value** for every tuple, it cannot be `NULL` (a missing value). For example, the `Vehicle` relation's `licensePlate` attribute value might be missing for unregistered vehicles
+  - Primary key values **should be stable** and not change over time. For example, the `Course` relation's `name` attribute value may change
+- The other candidate keys are called **alternate keys**
+- A **primary key constraint** ensures that primary key values are **unique and not `NULL`**
+- This requirement is known as **entity integrity**
 
 ---
 
-## Surrogate keys
+## Choosing a primary key
+
+- Let's consider a suitable primary key in the following cases:
+  - ❓ Is `Student` relation's `phonenumber` attribute a good option for a primary key? Why or why not?
+  - ❓ A `Customer` relation has attributes `email`, `name`, `address`,  and `social_security_number`. What would be suitable primary key for this relation and why?
+
+| email                    | name          | address                  | social_security_number |
+| ------------------------ | ------------- | ------------------------ | ---------------------- |
+| alicejohnson@gmail.com   | Alice Johnson | 742 Evergreen Terrace    | 123-45-6789            |
+| bobthebot87@hotmail.com  | Bob Smith     | 221B Baker Street        | 987-65-4321            |
+| carolnguyen123@gmail.com | Carol Nguyen  | 1600 Pennsylvania Avenue | 555-12-3456            |
+
+---
+
+## What if candidate key is not available?
 
 - If there is initially no candidate key available for a relation, then we cannot determine a **natural primary key**. For example, in the `Message` relation, representing email messages:
 
@@ -186,7 +201,7 @@ classDiagram
 
 ---
 
-## Surrogate keys
+## What if candidate key is not available?
 
 - We can solve this situation by **including an additional attribute** with a unique value in the relation to act as the primary key. For example, a `messageid` attribute that holds a unique number for each tuple:
 
@@ -197,7 +212,7 @@ classDiagram
 
 ---
 
-## Surrogate keys
+## Surrogate key: when no natural primary key exists
 
 - The `messageid` primary key is an example of a **surrogate key**, which is a system-generated identifier that carries no business meaning and is not derived from application data
 - Surrogate key value is commonly **automatically generated** by the DBMS once a tuple is inserted
@@ -205,31 +220,17 @@ classDiagram
 
 ---
 
-## Choosing a primary key
+## Foreign key and referential integrity
 
-- Let's consider a suitable primary key in the following cases:
-  - ❓ Is `Student` relation's `phonenumber` attribute a good option for a primary key? Why or why not?
-  - ❓ A `Customer` relation has attributes `address`, `name`, `email` and `social_security_number`. What would be suitable primery key for this relation and why?
-
-| social_security_number | name          | address                  | email                    |
-| ---------------------- | ------------- | ------------------------ | ------------------------ |
-| 123-45-6789            | Alice Johnson | 742 Evergreen Terrace    | alicejohnson@gmail.com   |
-| 987-65-4321            | Bob Smith     | 221B Baker Street        | bobthebot87@hotmail.com  |
-| 555-12-3456            | Carol Nguyen  | 1600 Pennsylvania Avenue | carolnguyen123@gmail.com |
+- A **foreign key** is an attribute or group of attributes whose values reference values in the primary key of another relation
+- There can be **several** foreign keys in a relation referencing different relations
+- In relational databases, foreign keys are the "glue" that connects relations by establishing relationships between them
+- A **foreign key constraint** ensures that a foreign key value has a matching primary key value in the refenced relation
+- This requirement is known as **referential integrity**
 
 ---
 
-## Referential Integrity
-
-- **Foreign key** is a attribute or group attributes whose values are required to match those of the primary key of the referenced relation
-- There can be several foreign keys in a relation
-- Foreign-to-primary-key matching is the "glue" which holds the database together
-- **Foreign key constraint** prevents foreign key not being matched by a primary key in the referenced relation
-- Foreign key constraints enforce **referential integrity**
-
----
-
-## Referential Integrity
+## Foreign key and referential integrity
 
 <div class="flex">
 <div class="flex-1 m-r-2">
@@ -270,6 +271,32 @@ classDiagram
 
 ---
 
+## Domain integrity
+
+- A **domain constraint** specifies the set of allowable values for an attribute
+- It includes attribute's **type-based restriction** (e.g. integer, string, or date) and further restrictions based on user-defined rules. For example:
+  - Valid grade marks are integers between 0 and 5
+  - Student's birth date is a valid date before today's date
+  - Student's email should be a string in format `%@%.%`
+- Domain constraints enforce **domain integrity**
+
+---
+
+## Not null constraint
+
+| studentid | name          | phonenumber                         | major            |
+| --------- | ------------- | ----------------------------------- | ---------------- |
+| 2001      | Emma Thompson | (415) 555-0198                      | Computer Science |
+| 2002      | Liam Martinez | <span v-mark.circle.red>NULL</span> | Computer Science |
+| 2003      | Sophia Chen   | (212) 555-0843                      | Psychology       |
+
+- `NULL` is a marker for a missing attribute value
+- `NULL` is not the same as e.g. blanks or zero. `NULL` represents **absence of a value**
+- The **not null constraint** is a restriction placed on an attribute, which enforces that in every tuple of data the attribute **must have a value**
+- For example, it would make sense that in the `Employee` relation, the `deptno` attribute has a not null constraint, meaning that every employee belongs to a department
+
+---
+
 ## Relation schema and relational schema
 
 - To provide a textual presentation of relation or a collection related relations, we can use **relation schemas** and **relational schemas**
@@ -290,32 +317,6 @@ CourseGrade (<u>courseCode</u>, <u>studentNumber</u>, grade)
  FOREIGN KEY (courseCode) REFERENCES Course (courseCode)
  FOREIGN KEY (studentNumber) REFERENCES Student (studentNumber)
 </pre>
-
----
-
-## Domain integrity
-
-- A **domain constraint** specifies the set of allowable values for an attribute
-- It includes attribute's **type-based restriction** (e.g. integer, string, or date) and further restrictions based on user-defined rules. For example:
-  - Valid grade marks are integers between 0 and 5
-  - Student's birth date is a valid date before today's date
-  - Student's email should be a string in format `%@%.%`
-- Domain constraints enforce **domain integrity**
-
----
-
-## Not null constraint
-
-| studentid | name          | phonenumber                         | major            |
-| --------- | ------------- | ----------------------------------- | ---------------- |
-| 2001      | Emma Thompson | (415) 555-0198                      | Computer Science |
-| 2002      | Liam Martinez | <span v-mark.circle.red>NULL</span> | Computer Science |
-| 2003      | Sophia Chen   | (212) 555-0843                      | Psychology       |
-
-- **Null** is a marker for a missing attribute value
-- Null is not the same as e.g. blanks or zero. Null represents **absence of a value**
-- The **not null constraint** is a restriction placed on an attribute, which enforces that in every tuple of data the attribute **must have a value**
-- For example, it would make sense that in the `Employee` relation, the `deptno` attribute has a not null constraint, meaning that every employee belongs to a department
 
 ---
 
@@ -340,16 +341,16 @@ CourseGrade (<u>courseCode</u>, <u>studentNumber</u>, grade)
 <div class="m-b-2">
 
 ```sql
-SELECT code, name, credits
-FROM course
-WHERE name = 'Data Management and Databases';
+SELECT course_code, course_name, credits
+FROM Course
+WHERE course_name = 'Data Management and Databases';
 ```
 
 </div>
 
-| code  | name                          | credits |
+| course_code  | course_name                          | credits |
 | ----- | ----------------------------- | ------- |
-| CS220 | Data Management and Databases | 5       |
+| SOF001AS2AE | Data Management and Databases | 5       |
 
 ---
 

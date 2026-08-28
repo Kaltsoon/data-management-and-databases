@@ -2,7 +2,7 @@
 colorSchema: light
 fonts:
   sans: Roboto
-  weights: '200,400,600,700'
+  weights: "200,400,600,700"
 ---
 
 ## Introduction to SQL
@@ -26,22 +26,23 @@ fonts:
 <div class="m-b-2">
 
 ```sql
-SELECT teacher_number, email, phone
+SELECT teacher_number, first_name, surname, phone
 FROM Teacher
-WHERE first_name = 'John' AND surname = 'Doe';
 ```
 
 </div>
 
-| teacher_number | email                   | phone          |
-| -------------- | ----------------------- | -------------- |
-| T254           | john.doe@haaga-helia.fi | (415) 555-0198 |
+| teacher_number | first_name | surname | phone     |
+| -------------- | ---------- | ------- | --------- |
+| h180           | Seppo      | Kokki   | 09-808800 |
+| h290           | Sisko      | Saari   | 09-776655 |
+| ...            | ...        | ...     | ...       |
 
 ---
 
 ## SQL syntax variations
 
-- There is an official standard for SQL and **most of the syntax is the same in all RDBMS**, but **every major RDBMS introduces its own extensions, syntax tweaks, or behaviors**
+- There is an official standard for SQL maintained by ISO/IEC and **most of the syntax is the same in all RDBMS**, but **every major RDBMS introduces its own extensions, syntax tweaks, or behaviors**
 - However, learning the SQL syntax of a specific RDMBS makes it very easy to learn the minor differences of another one
 
 | Operation        | SQL Server                  | PostgreSQL                    |
@@ -153,7 +154,7 @@ CREATE TABLE Student (
   - The "Student" table contains rows that represent students
   - The "first_name" column contains the first name of the student
 - Table and column names should consist of letters, digits or underscores. They **should not contain whitespace**
-- In column names, a underscore symbol (_) is commonly used instead of whitespace. For example "first_name" instead of "first name"
+- In column names, a underscore symbol (\_) is commonly used instead of whitespace. For example "first_name" instead of "first name"
 - Table names are commonly in **singular format**, for example "Student"
 - Each column has a **data-type** that determines the kind of values the column can have
 - For example an `INTEGER` type of column can only contain integer values and `VARCHAR(n)` column string values
@@ -162,15 +163,15 @@ CREATE TABLE Student (
 
 ## SQL Server data types
 
-| Category        | Data Type      | Description                                                          |
-| --------------- | -------------- | -------------------------------------------------------------------- |
-| Integer Types   | `INT`          | Integer from -2,147,483,648 to 2,147,483,647                         |
-|                 | `BIGINT`       | Integer from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 |
-| Decimal Types   | `DECIMAL(p,s)` | Fixed precision and scale numeric data                               |
-| Character Types | `CHAR(n)`      | Fixed-length non-Unicode string (max 8,000 chars)                    |
-|                 | `VARCHAR(n)`   | Variable-length non-Unicode string                                   |
-| Date & Time     | `DATE`         | Stores date (YYYY-MM-DD)                                             |
-|                 | `TIME`         | Stores time only (HH:MM:SS)                                          |
+| Category        | Data type      | Description                                                          | Example value  |
+| --------------- | -------------- | -------------------------------------------------------------------- | -------------- |
+| Integer Types   | `INTEGER`      | Integer from -2,147,483,648 to 2,147,483,647                         | `42`           |
+|                 | `BIGINT`       | Integer from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 | `9000000000`   |
+| Decimal Types   | `DECIMAL(p,s)` | Fixed precision and scale numeric data (decimal numbers)             | `123.45`       |
+| Character Types | `CHAR(n)`      | Fixed-length non-Unicode string (max 8,000 chars)                    | `'ABC'`        |
+|                 | `VARCHAR(n)`   | Variable-length non-Unicode string                                   | `'Hello!'`     |
+| Date & Time     | `DATE`         | Date with year, month and day (YYYY-MM-DD)                           | `'2026-08-28'` |
+|                 | `TIME`         | Time with hours, minutes and seconds (HH:MM:SS)                      | `'14:30:00'`   |
 
 ---
 
@@ -233,10 +234,10 @@ CREATE TABLE Laptop (
 
 - We insert a new row into a table by defining the table name and the values for the columns
 - A new row can be inserted with the `INSERT INTO` statement
-- ⚠️ String literals are defined with **single quotes**, for example `'Kalle'`
+- ⚠️ String literals are defined with **single quotes**, for example `'Tampere'`
 
 ```sql
-INSERT INTO Student (student_number, first_name, surname) VALUES (1, 'Kalle', 'Ilves')
+INSERT INTO Campus (campus_code, campus_name) VALUES ('c555', 'Tampere')
 ```
 
 ---
@@ -248,27 +249,28 @@ INSERT INTO Student (student_number, first_name, surname) VALUES (1, 'Kalle', 'I
 - For example if `NOT NULL` constraint of a column is violated, there will be an error
 
 ```sql
--- ❌ surname columns has a NOT NULL constraint, omitting it will cause an error
-INSERT INTO Student (student_number, first_name) VALUES (1, 'Kalle')
+-- ❌ campus_name column has a NOT NULL constraint, omitting it will cause an error
+INSERT INTO Campus (campus_code) VALUES ('c666')
 ```
 
 ---
 
 ## Retrieving data
 
-- The `SELECT` statement is used to select rows from a table
-- With the `SELECT` statement we define a group of columns we want to select the data from and the name of the target table
-- The result is a **result table** containing the rows from the target table with the specified columns
+- The `SELECT` statement is used to **retrieve data from a table**
+- It specifies the **columns** to return, the **table** to retrieve the data from, and optionally a **condition** to filter the rows
+- The result is a **result table** containing the selected columns and the **matching rows** from the target table
 
 ```sql
-SELECT first_name, surname FROM Student
+SELECT course_code, course_name, credits
+FROM Course
+WHERE credits > 3
 ```
 
-| first_name | surname |
-| ---------- | ------- |
-| Alice      | Johnson |
-| Bob        | Smith   |
-| Charlie    | Nguyen  |
+| course_code | course_name | credits |
+| ----------- | ----------- | ------- |
+| a730        | E-business  | 4       |
+| a800        | Finnish 1   | 6       |
 
 ---
 
