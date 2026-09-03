@@ -5,7 +5,6 @@ Customer (customerNumber, customerName, homeAddress, phone, email)
 
 ---
 
-
 | hotelNumber | hotelName           | city     |
 | ----------- | ------------------- | -------- |
 | 1           | Grand Central Hotel | Helsinki |
