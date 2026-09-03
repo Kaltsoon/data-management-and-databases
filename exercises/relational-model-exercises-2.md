@@ -32,7 +32,7 @@ Here's how the hotel booking should work:
 
 For each table, answer the following questions:
 
-1. Are there any non-atomic attributes? If yes, how would you change them to atomic?
+1. Are there any [non-atomic attributes](https://ecampusontario.pressbooks.pub/relationaldatabasesandmicrosoftaccess365/chapter/__unknown__-59/)? If yes, how would you change them to atomic?
 2. What attribute or combination of attributes would you choose to be primary keys ?
 2. Are there any foreign keys? If yes, what are they and what are they used for?
 
