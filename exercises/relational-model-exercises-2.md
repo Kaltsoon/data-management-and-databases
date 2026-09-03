@@ -32,9 +32,12 @@ Here's how the hotel booking should work:
 
 For each table, answer the following questions:
 
-1. Are there any [non-atomic attributes](https://ecampusontario.pressbooks.pub/relationaldatabasesandmicrosoftaccess365/chapter/__unknown__-59/)? If yes, how would you change them to atomic?
+1. Are there any non-atomic attributes? If yes, how would you change them to atomic?
 2. What attribute or combination of attributes would you choose to be primary keys ?
-2. Are there any foreign keys? If yes, what are they and what are they used for?
+3. Are there any foreign keys? If yes, what are they and what are they used for?
+
+> [!NOTE]
+> A _non-atomic_ attribute is one that can be decomposed into meaningful components. For example, a `BusStop` relation could have a `coordinates` attribute containing the latitude and longitude coordinates of a bus stop, e.g. `"60.1699, 24.9384"`. The `coordinates` attribute is non-atomic, because we an decompose it into `latitude` and `longitude` components. So, to turn the attribute atomic, we would have atomic `latitude` and `longitude` attributes instead of the non-atomic `coordinates` attribute.
 
 ## Task 4
 
