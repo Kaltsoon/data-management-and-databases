@@ -23,7 +23,7 @@ Download the script files as a folder by clicking the "Download folder" button.
 
 ## Task 3: Inserting the data
 
-1. Open `TAKKULA_Create_Tables.sql` in a query window by navigating to "File" > "Open" > "File". Make sure that the target database is selected as "BIT_SWD03" in the dropdown menu next to the "Execute" button! 
+1. Open `TAKKULA_Insert_Data.sql` in a query window by navigating to "File" > "Open" > "File". Make sure that the target database is selected as "BIT_SWD03" in the dropdown menu next to the "Execute" button! 
 2. Execute the whole file (without highlighting anything) by clicking the "Execute" button.
 3. Open a new query window and make sure that there is data in the tables. For example, display the contents of the following tables: `Teacher`, `Student`, and `CourseGrade` by executing three separate `SELECT` statements one by one. 
 4. Finally, close all query windows.
