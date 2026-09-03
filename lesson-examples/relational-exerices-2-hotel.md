@@ -5,7 +5,6 @@ Customer (customerNumber, customerName, homeAddress, phone, email)
 
 ---
 
-
 | hotelNumber | hotelName           | city     |
 | ----------- | ------------------- | -------- |
 | 1           | Grand Central Hotel | Helsinki |
@@ -29,6 +28,6 @@ Customer (customerNumber, customerName, homeAddress, phone, email)
 
 | customerNumber | customerName  | homeAddress                         | phone            | email                                             |
 | -------------- | ------------- | ----------------------------------- | ---------------- | ------------------------------------------------- |
-| 1              | Alice Johnson | Mannerheimintie 25, 00100, Helsinki | +358 40 123 4567 | [alice@example.com](mailto:alice@example.com)     |
-| 2              | Bob Smith     | Hämeenkatu 18, 33100, Tampere      | +358 50 234 5678 | [bob@example.com](mailto:bob@example.com)         |
-| 3              | Charlie Brown | Aurakatu 12, 20100, Turku           | +358 44 345 6789 | [charlie@example.com](mailto:charlie@example.com) |
+| 1              | Alice Johnson | Mannerheimintie 25, 00100, Helsinki | +358 40 123 4567 | alice@example.com     |
+| 2              | Bob Smith     | Hämeenkatu 18, 33100, Tampere      | +358 50 234 5678 | bob@example.com        |
+| 3              | Charlie Brown | Aurakatu 12, 20100, Turku           | +358 44 345 6789 | charlie@example.com |

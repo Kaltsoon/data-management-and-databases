@@ -24,7 +24,7 @@ Customer (customerNumber, customerName, homeAddress, phone, email)
 
 Here's how the hotel booking should work:
 
-- In each hotel, there are rooms of more than one type. The room type can be single, double, suite, etc.
+- In each hotel, there are rooms of more than one type. The room type can be single, double, suite, etc. The room number is a sequential number starting from 1 and increasing up to the number of the hotel's last room.
 - Each booking is for one night only.
 - Each booking is for one room only. If two rooms are needed, then two separate bookings are needed.
 - When a booking is registered, only one customer name is registered with the booking.
