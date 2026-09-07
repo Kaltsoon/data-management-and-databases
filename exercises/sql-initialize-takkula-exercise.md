@@ -28,4 +28,4 @@ Download the script files as a folder by clicking the "Download folder" button.
 3. Open a new query window and make sure that there is data in the tables. For example, display the contents of the following tables: `Teacher`, `Student`, and `CourseGrade` by executing three separate `SELECT` statements one by one. 
 4. Finally, close all query windows.
 
-Now everything is ready for you to move on to the SQL Exercise 1.
+Now everything is ready for you to move on to the SQL Exercise 1. 🎉
