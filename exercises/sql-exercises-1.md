@@ -4,6 +4,9 @@
 > Using generative AI tools to directly generate task answers is strictly forbidden and considered plagiarism. You won't be able to use such tools in the exam and without a lot of practice, your exam and learning results won't be good.
 
 > [!IMPORTANT]
+> [Initialize Takkula Tables Exercise](https://github.com/Kaltsoon/data-management-and-databases/blob/main/exercises/sql-initialize-takkula-exercise.md) must be completed before this exercise.
+
+> [!IMPORTANT]
 > Write your SQL queries in SQL Server Management Studio and include the task numbers as comments to your query window as follows:
 >
 > ```sql
