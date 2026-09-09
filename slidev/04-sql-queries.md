@@ -4,7 +4,7 @@ clicks: false
 transition: none
 fonts:
   sans: Roboto
-  weights: '200,400,600,700'
+  weights: "200,400,600,700"
 ---
 
 ## SQL queries
@@ -44,7 +44,7 @@ FROM table_name [ [ AS ] table_alias ]
 [ ORDER BY sort_specification_list ]
 ```
 
-``` sql
+```sql
 -- ❌ wrong syntax for the SELECT statement, "Incorrect syntax near the keyword 'FROM'."
 SELECT FROM Student first_name, surname
 -- ✅ correct syntax for the SELECT statement
@@ -101,7 +101,7 @@ WHERE start_year < 2025 -- less than
 WHERE start_year <= 2025 -- less than or equal
 -- 💡 greater than and less than operators work also for e.g. dates and strings
 WHERE birth_date >= '1993-01-01'
-WHERE finnish_proficiency_level <= 'B2' 
+WHERE finnish_proficiency_level <= 'B2'
 ```
 
 ---
@@ -116,7 +116,7 @@ WHERE first_name = 'Matti' OR first_name = 'Kaarina' -- OR operator
 WHERE NOT start_year < 2020 -- NOT operator
 ```
 
-- The `AND` operator **is evaluated first**, before the `OR` operator, similarly as the multiplication operator (*) is evaluated before the sum operator (+)
+- The `AND` operator **is evaluated first**, before the `OR` operator, similarly as the multiplication operator (\*) is evaluated before the sum operator (+)
 
 ```sql
 -- these two conditions are the same
@@ -175,11 +175,11 @@ FROM Course
 ORDER BY credits, course_name
 ```
 
-| course_name        | credits |
-| ------------------ | ------- |
-| Algorithms         | <span v-mark.circle.red>4</span>      |
-| Python Programming | <span v-mark.circle.red>4</span>       |
-| Databases          | 3       |
+| course_name        | credits                          |
+| ------------------ | -------------------------------- |
+| Algorithms         | <span v-mark.circle.red>4</span> |
+| Python Programming | <span v-mark.circle.red>4</span> |
+| Databases          | 3                                |
 
 ---
 
@@ -222,10 +222,10 @@ SELECT first_name AS given_name, surname AS family_name
 FROM STUDENT
 ```
 
-| given_name | family_name |
-| ---------- | ----------- |
-| John       | Doe         |
-| ...        | ...         |
+| <span v-mark.circle.red>given_name</span> | <span v-mark.circle.red>family_name</span> |
+| ----------------------------------------- | ------------------------------------------ |
+| John                                      | Doe                                        |
+| ...                                       | ...                                        |
 
 ---
 
@@ -236,13 +236,13 @@ FROM STUDENT
 
 ```sql
 -- combine first_name and surname and name the column full_name
-SELECT first_name + ' ' + surname AS full_name FROM Student
+SELECT first_name, surname, first_name + ' ' + surname AS full_name FROM Student
 ```
 
-| full_name |
-| --------- |
-| John Doe  |
-| ...       |
+| first_name | surname | <span v-mark.circle.red>full_name</span> |
+| ---------- | ------- | ---------------------------------------- |
+| John       | Doe     | <span v-mark.circle.red>John Doe</span>  |
+| ...        | ...     | ...                                      |
 
 ---
 
