@@ -10,7 +10,7 @@
 > SELECT ...
 > ```
 >
-> In Moodle, submit a `sql_exercises_4_YOURFAMILYNAME.docx` document containing the **SQL query and a [screenshot](https://www.take-a-screenshot.org/) of the result table in each task**.
+> Save the contents of the query window to `sql_exercises_4_YOURFAMILYNAME.sql` file and submit it to Moodle.
 
 > [!NOTE]
 > You'll need to use the set operations in these tasks: `EXCEPT`, `INTERSECT`, or `UNION`.

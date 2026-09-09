@@ -13,7 +13,7 @@
 > SELECT ...
 > ```
 >
-> In Moodle, submit a `sql_exercises_2_YOURFAMILYNAME.docx` document containing the **SQL query and a [screenshot](https://www.take-a-screenshot.org/) of the result table in each task**.
+> Save the contents of the query window to `sql_exercises_2_YOURFAMILYNAME.sql` file and submit it to Moodle.
 
 > [!TIP]
 > To understand the database structure, use the **Database Diagram** in this week's "Materials" section on Moodle's "Course outline" page. It shows the database tables, columns, primary keys and foreign keys.
