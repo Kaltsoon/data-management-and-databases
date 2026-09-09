@@ -10,7 +10,7 @@ Open the "SQL DML Quick Reference" in this week's "Materials" section on the Moo
 Are the SQL statements below syntactically correct according the SELECT statement syntax? **Please give arguments!**
 
 > [!TIP]
-> Pay attention to order of the keywords in the syntax, e.g. `WHERE` should be before `ORDER BY`. The square brackets in the syntax define optional keywords, e.g. `This is required [but this can be left out]`.
+> Pay attention to order of the keywords in the syntax, e.g. `WHERE` should be before `ORDER BY`. The square brackets `[]` in the syntax define optional keywords, e.g. `This is required [but this can be left out]`.
 
 1. ```sql
    SELECT family_name, given_name
