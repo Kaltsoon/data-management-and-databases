@@ -214,6 +214,9 @@ List all the grades (examiner's teacher number, course code, instance number, st
 
 List all the course instances (start date, end date, course code, instance number) that have started and ended in 2007. Sort the result by (start date, end date, course code, instance number) in ascending order.
 
+> [!IMPORTANT]
+> In SQL, `DATE` values are written in the ISO date format `'yyyy-mm-dd'`. That is, a `DATE` value is always exactly 10 characters enclosed within single quotes, for example `'2012-02-25'`.
+
 <details>
 
 <summary>Expected result table (click to open)</summary>
@@ -234,9 +237,6 @@ List all the course instances (start date, end date, course code, instance numbe
 ## 11.
 
 List all the students (gender, birth date, surname, first name) whose surname is in the range of (A-K). Display girls after all boys in the list. Boys should be listed in ascending order by birth date.
-
-> [!IMPORTANT]
-> In SQL, `DATE` values are written in the ISO date format `'yyyy-mm-dd'`. That is, a `DATE` value is always exactly 10 characters enclosed within single quotes, for example `'2012-02-25'`.
 
 <details>
 
