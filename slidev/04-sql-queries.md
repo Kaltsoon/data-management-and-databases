@@ -144,7 +144,7 @@ first_name = 'Matti' OR (first_name = 'Elina' AND city = 'Helsinki')
 
 ---
 
-## Order by
+## Controlling the order of result rows
 
 - The order of result table's rows is **unpredictable**, it might not be the same each time we execute the query
 - We can use the `ORDER BY` clause to define **in which order** we want the rows to be in the result table
@@ -163,7 +163,7 @@ ORDER BY credits -- rows will be sorted by the credits column's value
 
 ---
 
-## Order by with multiple columns
+## Ordering by multiple columns
 
 - Table might contain multiple rows with the same value in the column used in the `ORDER BY` clause
 - To determine the order of such rows we can provide **multiple columns** to the `ORDER BY` clause
@@ -177,16 +177,16 @@ ORDER BY credits, course_name
 
 | course_name        | credits                          |
 | ------------------ | -------------------------------- |
-| Algorithms         | <span v-mark.circle.red>4</span> |
-| Python Programming | <span v-mark.circle.red>4</span> |
-| Databases          | 3                                |
+| Algorithms         | <span v-mark.circle.red>3</span> |
+| Python Programming | <span v-mark.circle.red>3</span> |
+| Databases          | 4                                |
 
 ---
 
-## Switching the sort order
+## Changing the sort order
 
-- The `ORDER BY` sorts the records in **ascending order** (smallest value first) by default
-- We can change the order by using either `ASC` (ascending order) or `DESC` (descending order) keyword
+- The `ORDER BY` sorts the rows in **ascending order** (smallest value first) by default
+- We can change the order by using either `ASC` (ascending, smallest value first) or `DESC` (descending, largest value first) keyword
 
 ```sql
 SELECT course_name, credits
@@ -335,9 +335,9 @@ ORDER BY birth_date DESC; -- "sort the results in descending order by birth date
 
 ---
 
-## Arithmetic operations
+## Calculations with arithmetic operators
 
-- SQL supports similar arithmetic operators for calculations as many programming languages
+- SQL supports similar **arithmetic operators** for calculations as many programming languages
 
 ```sql
 -- the + operator for addition
@@ -350,17 +350,9 @@ SELECT credits, credits * 2 AS credits_calculation FROM Course
 SELECT credits, credits / 2 AS credits_calculation FROM Course
 -- the % operator for remainder of a division
 SELECT credits, credits % 2 AS credits_calculation FROM Course
-```
-
----
-
-## Arithmetic operations
-
-- We can use brackets to determine the order operations
-
-```sql
--- first calculate credits * 20, then dive the result with 2
-SELECT (credits * 20) / 2 AS credits_calculation FROM Course
+-- we can use brackets to determine the order operations
+-- first calculate credits + 20, then dive the result with 2
+SELECT (credits + 20) / 2 AS credits_calculation FROM Course
 ```
 
 ---
