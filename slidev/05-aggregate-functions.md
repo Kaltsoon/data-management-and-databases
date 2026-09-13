@@ -2,7 +2,7 @@
 colorSchema: light
 fonts:
   sans: Roboto
-  weights: '200,400,600,700'
+  weights: "200,400,600,700"
 ---
 
 ## Aggregate functions and set operators
@@ -25,10 +25,10 @@ fonts:
 
 ---
 
-## The COUNT aggregate function
+## COUNT aggregate function ― counting rows
 
 ```sql
-COUNT ( * | { [ DISTINCT ] column_expression } ) 
+COUNT ( * | { [ DISTINCT ] column_expression } )
 ```
 
 - The `COUNT` aggregate function returns the **total number of rows** that match the specified criteria
@@ -36,10 +36,10 @@ COUNT ( * | { [ DISTINCT ] column_expression } )
 
 ```sql
 -- what's the number of courses in the Course table?
-SELECT COUNT(*) as number_of_courses FROM Course
+SELECT COUNT(*) AS number_of_courses FROM Course
 ```
 
-- The `COUNT` aggregate function operates on all the target table rows, leaving the result table with a single row:
+- The `COUNT` aggregate function operates on all the target table rows, leaving the result table with a single row
 
 | number_of_courses |
 | ----------------- |
@@ -49,15 +49,15 @@ SELECT COUNT(*) as number_of_courses FROM Course
 
 ## Using aggregate functions with a WHERE clause
 
-- We can also filter the rows the aggregate function operates on using the `WHERE` clause:
+- We can also filter the rows the aggregate function operates on using the `WHERE` clause
 
 ```sql
 -- what's the number of courses with more than 3 credits?
-SELECT COUNT(*) as number_of_courses FROM Course
+SELECT COUNT(*) AS number_of_courses FROM Course
 WHERE credits > 3
 ```
 
-- Now the aggregate function operates on the target table rows, **which match the `WHERE` clause condition**, leaving the result table with a single row:
+- Now the aggregate function operates on the target table rows, **which match the `WHERE` clause condition**, leaving the result table with a single row
 
 | number_of_courses |
 | ----------------- |
@@ -65,53 +65,55 @@ WHERE credits > 3
 
 ---
 
-## Omitting NULL values with COUNT aggregate function
+## Excluding NULL values with COUNT aggregate function
 
-- We can also provide a column name for the `COUNT` aggregate function in which case the function returns the number of the **non-null values** of the given column:
+- We can also provide a column name for the `COUNT` aggregate function in which case the function returns the number of the **non-null values** of the given column
 
 ```sql
 -- what's the number of students with an email address?
-SELECT COUNT(email) as number_of_students_with_email
+SELECT COUNT(email) AS number_of_students_with_email
 FROM Student
 ```
 
 ---
 
-## Omitting NULL values with COUNT aggregate function
+## Excluding NULL values with COUNT aggregate function
 
-| student_number | email           |
-| -------------- | --------------- |
-| o354           | 0354@takkula.fi |
-| o410           | 0410@takkula.fi |
-| o473           | NULL            |
+| student_number | email                               |
+| -------------- | ----------------------------------- |
+| o354           | 0354@takkula.fi                     |
+| o410           | 0410@takkula.fi                     |
+| o473           | <span v-mark.circle.red>NULL</span> |
 
 ```sql
--- count all rows, total_number_of_students is 3
-SELECT COUNT(*) as total_number_of_students
+-- count all rows
+SELECT COUNT(*) AS total_number_of_students
 FROM Student
+-- total_number_of_students: 3
 
--- count rows with non-null email column value, number_of_students_with_email is 2
-SELECT COUNT(email) as number_of_students_with_email
+-- count rows with non-null email column value
+SELECT COUNT(email) AS number_of_students_with_email
 FROM Student
+-- number_of_students_with_email: 2
 ```
 
 ---
 
-## The SUM aggregate function
+## SUM aggregate function ― sum of column values
 
 ```sql
 SUM ( [ DISTINCT ] column_expression )
 ```
 
-- The `SUM` aggregate function returns the **sum of all the non-null values** of a column:
+- The `SUM` aggregate function returns the **sum of all the non-null values** of a column
 
 ```sql
 -- what's the sum of salaries of female teachers?
-SELECT SUM(salary) as sum_of_salaries FROM Teacher
+SELECT SUM(salary) AS sum_of_salaries FROM Teacher
 WHERE gender = 'F'
 ```
 
-- The `SUM` aggregate function operates on all the target table rows, leaving the result table with a single row:
+- The `SUM` aggregate function operates on all the target table rows, leaving the result table with a single row
 
 | sum_of_salaries |
 | --------------- |
@@ -119,21 +121,17 @@ WHERE gender = 'F'
 
 ---
 
-## The AVG aggregate function
-
-$$
-\text{AVG}(column) = \frac{\text{SUM}(column)}{\text{COUNT}(column)}
-$$
+## AVG aggregate function ― average of column values
 
 ```sql
 AVG ( [ DISTINCT ] column_expression )
 ```
 
-- The `AVG` aggregate function returns the **average of non-null values** of a column:
+- The `AVG` aggregate function returns the **average of non-null values** of a column
 
 ```sql
 -- what's the average grade from course with code "a730"?
-SELECT AVG(grade) as average_grade FROM CourseGrade
+SELECT AVG(grade) AS average_grade FROM CourseGrade
 WHERE course_code = 'a730'
 ```
 
@@ -145,14 +143,14 @@ WHERE course_code = 'a730'
 
 ---
 
-## Rounding the AVG aggregate function result
+## Rounding the average
 
 - Calculating the average includes a division operation, which can produce decimal numbers
-- To avoid losing the decimal part of the average, we need to cast integer column values to a `DECIMAL` type:
+- To avoid losing the decimal part of the average, we need to cast integer column values to a `DECIMAL` type
 
 ```sql
 -- multiplying an integer with 1.0 will end up with a DECIMAL type
-SELECT AVG(grade * 1.0) as average_grade FROM CourseGrade
+SELECT AVG(grade * 1.0) AS average_grade FROM CourseGrade
 WHERE course_code = 'a730'
 ```
 
@@ -162,13 +160,13 @@ WHERE course_code = 'a730'
 
 ---
 
-## Rounding the AVG aggregate function result
+## Rounding the average
 
-- We can limit the number of decimal places in the result by using casting the result to a `DECIMAL` type with specific precision (the total number of decimal digits stored) and scale (the number of decimal digits stored to the right of the decimal point):
+- We can limit the number of decimal places in the result by using casting the result to a `DECIMAL` type with specific precision (the total number of decimal digits stored) and scale (the number of decimal digits stored to the right of the decimal point)
 
 ```sql
 -- use scale of 2 in the DECIMAL type to round to two decimals places
-SELECT CAST(AVG(grade * 1.0) AS DECIMAL(5, 2)) as average_grade
+SELECT CAST(AVG(grade * 1.0) AS DECIMAL(5, 2)) AS average_grade
 FROM CourseGrade
 WHERE course_code = 'a730'
 ```
@@ -185,17 +183,17 @@ $$
 
 ---
 
-## The MIN aggregate function
+## MIN aggregate function ― the smallest column value
 
 ```sql
-MIN ( column_expression ) 
+MIN ( column_expression )
 ```
 
 - The `MIN` function returns the **smallest value** of a column
 
 ```sql
 -- what's the lowest grade from course with code "a730"?
-SELECT MIN(grade) as lowest_grade FROM CourseGrade
+SELECT MIN(grade) AS lowest_grade FROM CourseGrade
 WHERE course_code = 'a730'
 ```
 
@@ -207,17 +205,17 @@ WHERE course_code = 'a730'
 
 ---
 
-## The MAX aggregate function
+## MAX aggregate function ― the largest column value
 
 ```sql
-MAX ( column_expression ) 
+MAX ( column_expression )
 ```
 
 - The `MAX` function returns the **largest value** of a column
 
 ```sql
 -- what's the highest grade from course with code "a730"?
-SELECT MAX(grade) as highest_grade FROM CourseGrade
+SELECT MAX(grade) AS highest_grade FROM CourseGrade
 WHERE course_code = 'a730'
 ```
 
@@ -231,15 +229,15 @@ WHERE course_code = 'a730'
 
 ## Multiple aggregate functions in a single query
 
-- We can have multiple aggregate functions in the same query:
+- We can have multiple aggregate functions in the same query
 
 ```sql
 -- what's the highest and lowest grade from course with code "a730"?
-SELECT MAX(grade) as highest_grade, MIN(grade) as lowest_grade FROM CourseGrade
+SELECT MAX(grade) AS highest_grade, MIN(grade) AS lowest_grade FROM CourseGrade
 WHERE course_code = 'a730'
 ```
 
-- The result table contains a single row with two columns:
+- The result table contains a single row with two columns
 
 | highest_grade | lowest_grade |
 | ------------- | ------------ |
@@ -249,51 +247,58 @@ WHERE course_code = 'a730'
 
 ## Only operating on distinct values
 
-- The `COUNT`, `SUM` and `AVG` aggregate functions support the `DISTINCT` keyword for only operating on **distinct values**:
+- The `COUNT`, `SUM` and `AVG` aggregate functions support the `DISTINCT` keyword for only operating on **distinct values**
+
+| course_code | instance_number | grade |
+| ----------- | --------------- | ----- |
+| a730        | 1               | 5     |
+| a730        | 1               | 3     |
+| a290        | 2               | 3     |
 
 ```sql
 -- how many different grades have been given?
-SELECT COUNT(DISTINCT grade) as number_of_different_grades FROM CourseGrade
+SELECT COUNT(DISTINCT grade) AS number_of_different_grades FROM CourseGrade
+-- number_of_different_grades: 2
 ```
 
 ---
 
-## Combining aggregate function and non-aggregate function columns
+## Restrictions of aggregate function columns
 
-- If we use an aggregate function, we **can't include non-aggregate function columns** in the `SELECT` statement\*:
+- If we use an aggregate function, we **can't include non-aggregate function columns** in the `SELECT` statement\*
 
 ```sql
 -- ✅ only aggregate function columns, all good here
-SELECT COUNT(*) as number_of_courses FROM Course
+SELECT COUNT(*) AS number_of_courses FROM Course
 
 -- ❌ combintation of aggregate function and non-aggregate function columns, this won't work
-SELECT course_name, COUNT(*) as number_of_courses FROM Course
+SELECT course_name, COUNT(*) AS number_of_courses FROM Course
 ```
 
 - \* That is, unless the non-aggregate function columns are included in a `GROUP BY` clause, but we will cover that later
 
 ---
 
-## Combining aggregate function and non-aggregate function columns
+## Restrictions of aggregate function columns
 
-- If it would be possible, how would the RDMS know, which `course_name` to display in the result table?
+- If it would be possible, how would the RDMS know, which `course_name` value to display in the result table?
 
 ```sql
 -- ❌ combintation of aggregate function and non-aggregate function columns, this won't work
-SELECT course_name, COUNT(*) as number_of_courses FROM Course
+SELECT course_name, COUNT(*) AS number_of_courses FROM Course
 ```
 
 | course_name | number_of_courses |
 | ----------- | ----------------- |
-| ?           | 2                 |
+| ???         | 2                 |
 
 ---
 
-## Combining results tables with set operators
+## Combining result tables with set operators
 
 <div class="flex">
 
-<div class="flex-basis-40% m-r-2">
+<div class="flex-basis-40% m-r-4">
 
 ![](./union.png)
 
@@ -302,7 +307,7 @@ SELECT course_name, COUNT(*) as number_of_courses FROM Course
 <div class="flex-1">
 
 - We can use the results from **multiple result tables** using the `UNION`, `EXCEPT`, and `INTERSECT` **set operators**
-- For example, the `UNION` operator returns **all** the rows from two or more result tables **without duplicate values**:
+- For example, the `UNION` operator returns **all** the rows from two or more result tables **without duplicate values**
 
 ```sql
 -- what are all the surnames among teachers and students?
@@ -317,7 +322,7 @@ SELECT surname FROM Student
 
 ---
 
-## The UNION operator
+## UNION set operator ― combine rows
 
 > _"What are all the surnames among teachers and students?"_
 
@@ -367,11 +372,11 @@ SELECT surname FROM Student
 
 ---
 
-## The EXCEPT operator
+## EXCEPT set operator ― exclude rows
 
 <div class="flex">
 
-<div class="flex-basis-40% m-r-2">
+<div class="flex-basis-40% m-r-4">
 
 ![](./except.png)
 
@@ -379,7 +384,7 @@ SELECT surname FROM Student
 
 <div class="flex-1">
 
-- The `EXCEPT` operator returns only the rows from the first result table that are **not included** in the second result table **without duplicate values**:
+- The `EXCEPT` operator returns only the rows from the first result table that are **not included** in the second result table **without duplicate values**
 
 ```sql
 -- what are the campus cities that no student lives in?
@@ -394,7 +399,7 @@ SELECT city FROM Student
 
 ---
 
-## The EXCEPT operator
+## EXCEPT set operator ― exclude rows
 
 > _"What are the campus cities that no student lives in?"_
 
@@ -441,11 +446,11 @@ SELECT city FROM Student
 
 ---
 
-## The INTERSECT operator
+## INTERSECT set operator ― include common rows
 
 <div class="flex">
 
-<div class="flex-basis-40% m-r-2">
+<div class="flex-basis-40% m-r-4">
 
 ![](./intersection.png)
 
@@ -453,10 +458,11 @@ SELECT city FROM Student
 
 <div class="flex-1">
 
-- The `INTERSECT` operator returns only the rows that **exist in both** result tables **without duplicate values**:
+- The `INTERSECT` operator returns only the rows that **exist in both** result tables **without duplicate values**
 
 ```sql
--- what are the campus cities that have students living in them?
+-- what are the campus cities
+-- that have students living in them?
 SELECT city FROM Campus
 INTERSECT
 SELECT city FROM Student
@@ -468,7 +474,7 @@ SELECT city FROM Student
 
 ---
 
-## The EXCEPT operator
+## INTERSECT set operator ― include common rows
 
 > _"What are the campus cities that have students living in them?"_
 
@@ -515,9 +521,9 @@ SELECT city FROM Student
 
 ---
 
-## The set operators
+## Restrictions of set operators
 
-- ⚠️ With set operators, the column names and data types of each `SELECT` statement **must match**:
+- ⚠️ With set operators, the column names and data types of each `SELECT` statement **must match**
 
 ```sql
 -- ❌ first_name column is missing from the latter SELECT statement.
