@@ -1,6 +1,5 @@
 -- 2. List all the female students (first name, surname, student number, gender, city) who live in Espoo.
 -- Sort the result by (surname, first name, student number) in ascending order.
---
 -- NOTE: A city name might have been saved in the database either in Finnish or Swedish.
 -- For example, both 'Vantaa' and 'Vanda' are names of the same city.
 
@@ -13,3 +12,5 @@
 -- Display surname, first name, new salary, and old salary.
 -- In the query, rename the salary columns as "New salary" and "Old salary".
 -- Sort the result by (new salary, surname, first name) in descending order.
+
+-- 11. List all the teachers' surnames that end with 'ka' or 'ko'. Sort the result in ascending order.

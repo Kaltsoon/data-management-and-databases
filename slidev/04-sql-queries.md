@@ -16,7 +16,7 @@ fonts:
   - Knowing how to do **arithmetic operations**
   - Knowing how to define **conditional expressions** with the `CASE` expression
   - Knowing how to handle missing, `NULL` values in queries
-  - Knowing how to **omit duplicate rows** with `SELECT DISTINCT` statement
+  - Knowing how to **exclude duplicate rows** with `SELECT DISTINCT` statement
 
 ---
 
@@ -100,7 +100,9 @@ WHERE start_year >= 2020 -- greater than or equal
 WHERE start_year < 2025 -- less than
 WHERE start_year <= 2025 -- less than or equal
 -- 💡 greater than and less than operators work also for e.g. dates and strings
+-- birth date is after '1993-01-01', e.g. '2026-09-14'
 WHERE birth_date >= '1993-01-01'
+-- finnish proficiency level is alphabetically before 'B2', e.g. 'B1' or 'A1'
 WHERE finnish_proficiency_level <= 'B2'
 ```
 
@@ -195,6 +197,12 @@ FROM Course
 ORDER BY credits DESC, course_name ASC
 ```
 
+| course_name        | credits |
+| ------------------ | ------- |
+| Databases          | 4       |
+| Algorithms         | 3       |
+| Python Programming | 3       |
+
 ---
 
 ## Column aliases
@@ -208,7 +216,7 @@ SELECT first_name, surname FROM Student
 | first_name | surname |
 | ---------- | ------- |
 | John       | Doe     |
-| ...        | ...     |
+| Mary       | Smith   |
 
 ---
 
@@ -225,11 +233,11 @@ FROM STUDENT
 | <span v-mark.circle.red>given_name</span> | <span v-mark.circle.red>family_name</span> |
 | ----------------------------------------- | ------------------------------------------ |
 | John                                      | Doe                                        |
-| ...                                       | ...                                        |
+| Mary                                      | Smith                                      |
 
 ---
 
-## Column aliases
+## Computed columns
 
 - Alias names are handy for renaming columns, but we can also use them to define **additional columns** for the result table
 - The additional columns don't have to exist in the target table, they can be, for example computed from target table's columns
@@ -239,48 +247,54 @@ FROM STUDENT
 SELECT first_name, surname, first_name + ' ' + surname AS full_name FROM Student
 ```
 
-| first_name | surname | <span v-mark.circle.red>full_name</span> |
-| ---------- | ------- | ---------------------------------------- |
-| John       | Doe     | <span v-mark.circle.red>John Doe</span>  |
-| ...        | ...     | ...                                      |
+| first_name | surname | <span v-mark.circle.red>full_name</span>  |
+| ---------- | ------- | ----------------------------------------- |
+| John       | Doe     | <span v-mark.circle.red>John Doe</span>   |
+| Mary       | Smith   | <span v-mark.circle.red>Mary Smith</span> |
 
 ---
 
-## Column aliases
+## Column expressions
 
 - In fact, the content before the `AS alias_column_name` is an **column expression**
-- Column expression can for example be a literal value, an arithmetic operation performed on target table columns, or a function call
+- Column expression can, for example, be a literal value, a calculation performed on target table columns, or a function call
 
 ```sql
--- a literal value 1
-SELECT student_number, 1 AS literal_value FROM Student
--- an arithmetic operation grade * 20
-SELECT course_code, grade * 20 AS zero_to_hundred_scale_grade FROM CourseGrade
--- a function call CONCAT(first_name, ' ', surname)
-SELECT student_number, CONCAT(first_name, ' ', surname) AS full_name FROM Student
+SELECT
+'Lecturer' AS job_title, -- a literal value 'Lecturer'
+salary * 100 AS salary_in_cents, -- a calculation salary * 100
+CONCAT(first_name, ' ', surname) AS full_name -- CONCAT function call
+FROM Teacher
 ```
+
+| job_title | salary_in_cents | full_name    |
+| --------- | --------------- | ------------ |
+| Lecturer  | 1578000.00      | Seppo Korkki |
+| Lecturer  | 1572500.00      | Sisko Saari  |
 
 ---
 
-## Column aliases
+## Availability of alias names
 
-- It's worth noting, that column aliases **can't be used** in the `WHERE` clause
+- It's worth noting, that alias names **can't be referenced** in the `WHERE` clause
 
 ```sql
 -- ❌ this won't work
-SELECT first_name + ' ' + surname AS full_name
+SELECT teacher_number, first_name + ' ' + surname AS full_name
 FROM Student
 WHERE full_name = 'Matti Keto'
 
 -- ✅ this will work
-SELECT first_name + ' ' + surname AS full_name
+SELECT teacher_number, first_name + ' ' + surname AS full_name
 FROM Student
 WHERE first_name + ' ' + surname = 'Matti Keto'
+-- 💡 alias names can be referenced in the ORDER BY clause
+ORDER BY full_name
 ```
 
 ---
 
-## String concatenation
+## String concatenation ― combining strings into one string
 
 - Combining string values to produce a new string is called **string concatenation**
 - String concatenation can be done using the + operator similarly as in many programming languages, such as Java
@@ -338,6 +352,7 @@ ORDER BY birth_date DESC; -- "sort the results in descending order by birth date
 ## Calculations with arithmetic operators
 
 - SQL supports similar **arithmetic operators** for calculations as many programming languages
+- Brackets can be used to change the default order in which the operators are applied, e.g. `(8 + 2) * 2 = 20`
 
 ```sql
 -- the + operator for addition
@@ -422,41 +437,74 @@ VALUES ('o193', 'Kalle', '', '1993-01-19', 'M')
 
 ```sql
 -- ❌ this won't work, we cannot use the equals = operator
+-- the result table will never have any rows
 SELECT student_number, email FROM Student WHERE email = NULL
 
--- ✅ instead, let's use the IS NULL operator
+-- ✅ instead, we should use the IS NULL or IS NOT NULL operators
 SELECT student_number, email FROM Student WHERE email IS NULL
+SELECT student_number, phone FROM Student WHERE phone IS NOT NULL
 ```
 
 ---
 
-## Omitting duplicate rows
+## Excluding duplicate rows
 
-- A common query problem is that we want to know what are all **distinct values** for a column or group of columns
-- For example, _"what are the available number of credits from courses?"_
-- We can use the `SELECT DISTINCT` statement to select only distinct (different) values
+- A common query requirement is to find all **different values** in a column or combination of columns
+- For example: _"What are the available numbers of credits for courses"_
+- We can use the `SELECT DISTINCT` statement to return only **unique values**, eliminating duplicates
 
 ```sql
--- ❌ many courses have the same number of credits
+-- ❌ duplicate values, because many courses have the same number of credits
 SELECT credits FROM Course
+-- credits: 3, 3, 4, 4, 5
 
--- ✅ SELECT DISTINCT statement omits duplicate number of credits
+-- ✅ SELECT DISTINCT statement excludes duplicate values
 SELECT DISTINCT credits FROM Course
+-- credits: 3, 4, 5
 ```
 
 ---
 
-## Select distinct
+## Distinct combinations of columns
 
-- We can also define a **group columns** that needs to distinct in the result table
+- We can also define a **combination of columns** that needs to unique in the result table
 - For example, _"what are the courses teached by each teacher?"_
 
+<div class="flex">
+
+<div class="m-r-1 flex-1">
+
 ```sql
--- group of teacher_number and course_code
--- needs to be distinct in the result table
-SELECT DISTINCT teacher_number, course_code FROM CourseInstance
-ORDER BY teacher_number
+-- ❌ duplicate (teacher_number, course_code)
+SELECT teacher_number, course_code
+FROM CourseInstance
 ```
+
+| teacher_number | course_code |
+| -------------- | ----------- |
+| h303           | a450        |
+| h303           | a450        |
+| h180           | a450        |
+| h180           | a450        |
+
+</div>
+
+<div class="m-l-1 flex-1">
+
+```sql
+-- ✅ unique (teacher_number, course_code)
+SELECT DISTINCT teacher_number, course_code
+FROM CourseInstance
+```
+
+| teacher_number | course_code |
+| -------------- | ----------- |
+| h303           | a450        |
+| h180           | a450        |
+
+</div>
+
+</div>
 
 ---
 
