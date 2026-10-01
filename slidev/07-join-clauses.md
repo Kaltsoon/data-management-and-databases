@@ -21,6 +21,7 @@ fonts:
 - For example, _"What is the name of each course instance's teacher?"_
 - We need to select course instance rows from the `CourseInstance` table and **join** them with the teacher rows from the `Teacher` table based on the `teacher_number` foreign key column value
 - The referential integrity and such **join operations** are the key features which distinguish the relational database management systems from other database management systems
+- We will familiarize ourselves with three differently operating join operations: **inner join**, **outer join** and **cross join**
 
 ---
 
@@ -46,23 +47,6 @@ fonts:
 
 ## Join clauses
 
-```sql
-SELECT [ DISTINCT ] {
-  -- ...
-}
-FROM table_name [ [ AS ] table_alias ]
--- JOIN clause
-[ { [ INNER ] JOIN table_name [ [ AS ] table_alias ] ON join_condition }... ] 
-```
-
-- **Join clause** combines **row** from one or more tables into a new table
-- Rows are join based on a condition called **join condition**, which is commonly formulated to match the foreign with a primary key
-- There's three different kind of **join operations** which operate in different ways: **inner join**, **outer join** and **cross join**
-
----
-
-## Join clauses
-
 - With a `SELECT` statement we get the `teacher_number` foreign key column value:
 
 ```sql
@@ -75,13 +59,14 @@ FROM CourseInstance
 | a290        | 1               | 🔗 h430         |
 
 - If we want to include information, such as the name of the teacher (`first_name` and `surname` columns), we need to **join** the matching row from the `Teacher` table
-- While constructing joins we need to be aware of the relationships between tables which makes the database diagram extremely useful
+- **Join clause** combines rows from one or more tables into a new table
+- Rows are joined based on a **join condition**, which is commonly formulated to match the foreign with a primary key
 
 ---
 
 ## Join clauses
 
-- We can use the `INNER JOIN` clause to combine the rows from the `Teacher` table:
+- We can use the `INNER JOIN` clause to combine the rows from the `Teacher` table and access its `first_name` and `surname` columns:
 
 ```sql
 -- what is the first name and surname of each course instance teacher?
@@ -94,9 +79,30 @@ FROM CourseInstance
 INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
 
-| course_code | instance_number | teacher_number | first_name | surname |
+| course_code | instance_number | teacher_number | <span v-mark.underline.red>first_name</span> | <span v-mark.underline.red>surname</span> |
 | ----------- | --------------- | -------------- | ---------- | ------- |
 | a290        | 1               | h430           | Emma       | Virta   |
+
+---
+
+## Ambigious column names with joins
+
+- With join clauses we operate on multiple tables, which **can have columns with the same name**
+- This leads to errors caused by **ambiguous column names**, which can be avoided by specifying the table name before the column name using the `TableName.column_name` syntax:
+
+```sql
+-- ❌ teacher_number column name is ambiguous because
+-- both CourseInstance and Teacher table have the teacher_number column
+SELECT teacher_number
+FROM CourseInstance
+INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+
+-- ✅ we specify that the teacher_number column
+-- of the CourseInstance table should be selected
+SELECT CourseInstance.teacher_number
+FROM CourseInstance
+INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
+```
 
 ---
 
@@ -110,6 +116,7 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 ```
 
+- To determine the join condition, we need to identify the corresponding foreign key and primary key column names, which might not be the same
 - ⚠️ The join condition **does not** have to compare primary key to a foreign key, any kind of condition can be used
 
 ---
@@ -135,28 +142,7 @@ AND CourseGrade.instance_number = CourseInstance.instance_number
 
 ---
 
-## Join clauses
-
-- With join clauses we operate on multiple tables, which can have columns with the same name
-- This leads to errors caused by **ambiguous column names**, which can be avoided by specifying the table name before the column name using the `table_name.column_name` syntax:
-
-```sql
--- ❌ teacher_number column name is ambiguous because
--- both CourseInstance and Teacher table have the teacher_number column
-SELECT teacher_number
-FROM CourseInstance
-INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
-
--- ✅ we specify that the teacher_number column
--- of the CourseInstance table should be selected
-SELECT CourseInstance.teacher_number
-FROM CourseInstance
-INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
-```
-
----
-
-## Join clauses
+## Multiple join clauses
 
 - If we want to get columns from more than two tables, we can **chain multiple join clauses** together
 - For example, in the following example we need information from the `CourseGrade`, `Course` and `Student` tables:
