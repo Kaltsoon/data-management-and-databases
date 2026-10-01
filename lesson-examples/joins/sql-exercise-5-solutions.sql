@@ -1,3 +1,7 @@
+-- 2. How many passing grades does each student have? 
+-- Display "Number of grades" and student number. 
+-- Sort the result by (number of grades in descending order, student number in ascending order).
+
 -- 4. How many course instances has each teacher given?
 -- Display teacher number and the number of course instances.
 -- Rename the second column as "Number of course instances". Sort the result by teacher number.
@@ -9,5 +13,6 @@
 -- who earn more than all of those teachers who work at campus that has campus code 'c222'. 
 -- Sort the result by (surname, first name, teacher number) in ascending order.
 
--- 13. List all the courses (course code, course name) 
--- that no student has passed this far. Sort the result by course code in ascending order.
+-- 12. List all the courses (course code, course name) 
+-- that at least one student has passed this far. 
+-- Sort the result by course code in ascending order.
