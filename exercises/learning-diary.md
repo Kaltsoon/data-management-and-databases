@@ -39,7 +39,7 @@ Then, answer the following questions:
 ## Part 2
 
 > [!IMPORTANT]
-> The deadline for part 2 is at the start of the second period of the semester.
+> The deadline for part 2 is before the course week after the mid-term exam.
 
 Add content to your learning diary based on the following questions:
 
