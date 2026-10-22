@@ -6,6 +6,6 @@
 - The exam paper has the questions. **Write your final answers on this paper**
 - The drafting paper is for you to draft your anwers. **Do not use this paper for the final answers**
 
-The exam ends at 10:45.
+The exam ends at XXX.
 
 Good luck!
