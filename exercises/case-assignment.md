@@ -46,7 +46,7 @@ Step 1 has its own deadline. There's also a final deadline at the end of the cou
 
 1. Write an SQL script to create the database tables in SQL Server. Save this script to a `.sql` file. Include the table definitions in the step 1 design document (as in the repository template).
 2. Create the database tables in SQL Server.
-3. In SMSS, create a database diagram that shows your tables and relationships, etc.
+3. In SQL Server Management Studio, create a database diagram that shows your tables and relationships, etc.
 4. Design a minimal set of indexes on your tables and write an SQL script to create them. Save this script to a `.sql` file.
 
 > [!NOTE]
@@ -71,11 +71,11 @@ Write a project closing report addressing the following points:
 3. What lessons were learned from this project? What will we do better next time?
 
 > [!IMPORTANT]
-> In your closing report, ensure to include the working time records categorized by person(s) and task.
+> In your closing report, ensure you include the working time records categorized by person(s) and task.
 
 ## Finally, submit all deliverables to Moodle
 
-Please submit all deliverables (from all the steps) to Moodle's "Case assignment" page in a single zip file containing the following files:
+Please submit all deliverables (from all the steps) to Moodle's "Case assignment" page in a single ZIP file containing the following files:
 
 - `case_assignment_database_design.pdf` containing everything from step 1 and the table definitions from step 2.
 - All the `.sql` files from step 2.
@@ -86,7 +86,7 @@ Please submit all deliverables (from all the steps) to Moodle's "Case assignment
 - `case_assignment_database_diagram.pdf` containing the database diagram generated in step 2.
 - `case_assignment_closing_report.pdf` containing the closing report from step 3.
 
-The zip file should be named as `case_assignment_final_YOURFAMILYNAME.zip`. **Every team member should submit this**.
+The ZIP file should be named `case_assignment_final_YOURFAMILYNAME.zip`. **Every team member should submit this**.
 
 > [!TIP]
 > If you are using [GitHub](https://github.com/), consider publishing the case assignment on GitHub, because it will be a good portfolio piece.
@@ -102,9 +102,9 @@ The teacher represents the customer from the _Greenwood Cultural Association_. H
 > 
 > _The Association is now looking to modernize its operations by launching a website where clients can view upcoming events and book tickets. Due to budget constraints, a full-scale system is not feasible at this time. Therefore, this case assignment focuses on the initial phase of development._
 >
-> _In this first phase, tickets can be booked online, but online payment is not yet available. Upon booking, clients will receive a unique booking number. Clients must purchase their booked tickets within four days from the booking date at the Greenwood tourist office."_
+> _In this first phase, tickets can be booked online, but online payment is not yet available. Upon booking, clients will receive a unique booking number. Clients must purchase their booked tickets within four days of the booking date at the Greenwood tourist office."_
 
-As database designers, it is your responsibility to communicate with the customer for any clarification or additional information regarding their requirements.
+As database designers, you are responsible for communicating with the customer for any clarification or additional information about__ their requirements.
 
 ### Further details
 
@@ -139,23 +139,23 @@ The database implementation should be designed to allow the following operations
 2. Changing the number of tickets in a booking.
 3. Changing ticket booking status to "sold" when tickets are purchased.
 4. Cancelling a ticket booking.
-5. Removing unpurchased bookings from the database after three days from booking.
+5. Removing unpurchased bookings from the database three days after booking.
 6. Cancelling the status of an event to "cancelled" if the event is cancelled.
-7. Refunding a client in a case of a cancelled event.
+7. Refunding a client in the case of a cancelled event.
 
 > [!NOTE]
-> These operations should be performed using e.g. `INSERT INTO` or `UPDATE` statements. You are not required to write any procedural code or triggers to perform the operations.
+> These operations should be performed using, e.g., `INSERT INTO` or `UPDATE` statements. You do not need to write any procedural code or triggers to perform these operations.
 
 Examples of the queries the database implementation should support are the following:
 
 1. What is Taylor Swift's contact email?
-2. Which artists are scheduled to perform in the Jazz Night event on 30.11.2025?
-3. What is the venue name and address for Billie Eilish's concert on 25.3.2026?
+2. Which artists are scheduled to perform in the Jazz Night event on 30.11.2026?
+3. What is the venue name and address for Billie Eilish's concert on 25.3.2027?
 4. When is Imagine Dragons' performance in Greenwood, and what are their special requests for catering?
 5. What events are coming up this year?
 6. What dance performances are coming up this year?
-7. How many tickets have been sold so far for The Weeknd's concert scheduled for 5.2.2026?
-8. How many tickets remain for Harry Styles' concert on 12.9.2025?
+7. How many tickets have been sold so far for The Weeknd's concert scheduled for 5.2.2027?
+8. How many tickets remain for Harry Styles' concert on 12.9.2026?
 9. How much revenue has the Greenwood Association generated from ticket sales this year?
 
 
