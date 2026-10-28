@@ -23,7 +23,7 @@
 List all the male students (student number, surname, first name, gender). Sort the result by student number in ascending order.
 
 > [!IMPORTANT]
-> Compare the result tables of your own queries to the expected result tables to see if your queries are correct.
+> Compare the result tables of your own queries in SQL Server Management Studio to the expected result tables to see if your queries are correct.
 
 <details>
 
