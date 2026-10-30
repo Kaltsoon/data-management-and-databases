@@ -36,7 +36,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ## Conceptual vs. logical database schema
 
-- Here's a comparison of conceptual (left) and logical (right) database schema of a course enrollment database:
+- Here's a comparison of **conceptual** (left) and **logical** (right) database schema of a course enrollment database:
 
 <div class="flex">
 
@@ -94,7 +94,7 @@ Enrollment(<u>course_code</u>, <u>instance_number</u>, <u>student_number</u>)
 ## Logical database design
 
 - Typically, the logical database design process includes the following types of activities:
-  1. Derive relations for the logical data model. Entity types, attributes, and relationship types from a conceptual schema can be directly transformed into relations with some simple rules
+  1. Create relations from conceptual schema's entity types by following a fairly simple process 
   2. Validate that the relations don't have redundancies using normalization techniques
   3. Validate relations against users' requirements. For example, _"list all course names a student has enrolled to"_ could be a user's requirement for a schema
   4. Verify integrity constraints, e.g., primary keys, foreign keys and not null contraints
@@ -104,8 +104,8 @@ Enrollment(<u>course_code</u>, <u>instance_number</u>, <u>student_number</u>)
 
 ## Deriving relations for the logical data model
 
-- The process starts by **deriving relations for the logical data model**, which includes:
-  1. Creating the relations
+- The process starts by **creating relations for the logical data model**, which includes:
+  1. Creating the relations from the entitity types
   2. Refining the attributes. For example, a non-atomic `full_name` attribute could be refined to `first_name` and `surname` attributes
   3. Determining primary and foreign keys
   4. Determining other types of integrity constraints. For example `Course` relation's `name` attribute should have a not null constraint
@@ -114,7 +114,7 @@ Enrollment(<u>course_code</u>, <u>instance_number</u>, <u>student_number</u>)
 
 ## Creating relations
 
-- To transform a conceptual schema into a relational database schema, we might need **additional relations** to establish specific relationships
+- To transform a conceptual schema into a relational schema, we might need **additional relations** to establish specific relationships
 - We create the relations in the following manner:
   - For **each entity type**, we create a relation that includes all simple (single-value) attributes of the entity
   - For **many-to-many relationship types** ("..\*" on both sides of the relationship), we create a **"bridge relation"** to represent the relationship
@@ -159,7 +159,7 @@ classDiagram
   - In this case we create an additional **bridge relation**, for example `Enrollment`
 - There is a **multi-valued attribute** `phone_numbers` in the `Student` entity
   - In this case we create an additional entity, for example `StudentPhoneNumber`
-- This leaves with the following relations: `Student`, `CourseInstance`, `Enrollment` and `StudentPhoneNumber`
+- This leaves with the following relations: `Student`, `Course`, `CourseInstance`, `Enrollment` and `StudentPhoneNumber`
 
 ---
 
@@ -188,11 +188,11 @@ Student(<u>student_number</u>, first_name, surname)
 
 ## Primary key of a weak entity type
 
-- A **weak entity type** is an entity type that is dependent on the existence of another entity type and cannot be uniquely identified by its own attributes alone
-- For example, `CourseGrade` cannot exist without a `Student` and a `CourseInstance`
-- When a relation is derived from a weak entity type, its natural primary key is usually derived partly or fully from the owner entity type(s)
-- In practice, `CourseGrade` can use a composite primary key such as (`student_number`, `course_code`, `instance_number`), where the columns come from foreign keys to `Student` and `CourseInstance`
-- Because of this, we determine the foreign keys first and then define the weak entity relation's primary key
+- A **weak entity type** depends on other entity types and cannot be uniquely identified by its own attributes alone
+- For example, a `CourseGrade` cannot exist without a `Student` and a `CourseInstance`.
+- When creating a relation from a weak entity type, its primary key includes the primary keys of its owner relations
+- For example, the `CourseGrade` relation uses `student_number`, `course_code`, and `instance_number` as its primary key. These attributes come from the `Student` and `CourseInstance` relations
+- In such case, we need to define the foreign keys first, then use them to define the weak entity relation's primary key
 
 ---
 
