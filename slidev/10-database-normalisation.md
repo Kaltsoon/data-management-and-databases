@@ -25,11 +25,11 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ## Database normalisation
 
-- **Database normalisation** is a formal technique of organizing data in a database in a way that **redundancy** and **inconsistency** within the data is eliminated
-- The objective of database normalisation is to ensure that:
-  - Attributes with a **close logical relationship** (functional dependency) are found in the **same relation**
-  - The relations do not display **hidden data redundancy**, which can cause inconsistencies that violate database integrity
-- The technique involves a set of normalisation rules, known as **normal forms**, which serve as criteria for achieving a well-structured, also called _"normalized"_, database design
+- **Database normalisation** is a process used to construct a **well-organized database** without problems caused by unnecessary data duplication
+- More specifically, normalisation aims to:
+  - **Reduce data redundancy**, by avoiding storing the same information multiple times unnecessarily
+  - **Improve data consistency and integrity**, by organising data so that information is stored in the appropriate place and remains consistent across the database
+- The process involves a set of normalisation rules, known as **normal forms**, which serve as criteria for achieving a well-structured, also called _"normalized"_, database design
 
 ---
 
@@ -39,11 +39,11 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 | course_code | instance_number | student_number | phonenumber | email                       |
 | ----------- | --------------- | -------------- | ----------- | --------------------------- |
-| C101        | 1               | S101           | 12345        | emma.wilson@university.com  |
-| C101        | 1               | S102           | 55555        | oliver.brown@university.com |
-| c102        | 3               | S103           | 87654        | sophia.clark@university.com |
-| C102        | 3               | S104           | 14141        | leo.miller@university.com   |
-| C102        | 3               | S101           | 12345        | emma.wilson@university.com  |
+| C101        | 1               | S101           | 12345       | emma.wilson@university.com  |
+| C101        | 1               | S102           | 55555       | oliver.brown@university.com |
+| c102        | 3               | S103           | 87654       | sophia.clark@university.com |
+| C102        | 3               | S104           | 14141       | leo.miller@university.com   |
+| C102        | 3               | S101           | 12345       | emma.wilson@university.com  |
 
 ---
 
@@ -52,20 +52,20 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 - The student with student number `S101` has their **phone number and email duplicated** causing redundancy in the data
 - While, for example, updating a phone number or inserting a new row, there's an inconsistency risk of having **multiple different phone numbers for the same student**:
 
-| course_code | instance_number | student_number | phonenumber                               | email                      |
-| ----------- | --------------- | -------------- | ----------------------------------- | -------------------------- |
+| course_code | instance_number | student_number | phonenumber                          | email                      |
+| ----------- | --------------- | -------------- | ------------------------------------ | -------------------------- |
 | C101        | 1               | S101           | <span v-mark.circle.red>12345</span> | emma.wilson@university.com |
-| ...         | ...             | ...            | ...                                 | ...                        |
+| ...         | ...             | ...            | ...                                  | ...                        |
 | C102        | 3               | S101           | <span v-mark.circle.red>56789</span> | emma.wilson@university.com |
 
 ---
 
 ## Database normalisation
 
-- In a case of fixing an identified structural problem, normalisation involves **decomposing a relation into less redundant (and smaller) relations** without losing information
+- Normalisation involves identifying the structural problems and fixing them by **decomposing a problematic relation into less redundant and smaller relations** without losing information
 - For example, in the previous `CourseEnrolment` relation example, the student-related `phonenumber` and `email` attributes would be extracted into a new `Student` relation and only leave a foreign key to the original `CourseEnrolment` relation
-- When an **ER model is well designed**, the resulting correctly derived relations won't normally have such structural problems and they will meet the criteria of database normalisation
-- Normalisation of candidate relations derived from ER diagrams is accomplished by analysing the **functional dependencies** associated with those relations
+- Relations created from a well-designed ER model won't normally have such structural problems and they will meet the criteria of database normalisation
+- Identifying and fixing structural problems requires analysing the relationships between attributes, known as **functional dependencies**
 
 ---
 
@@ -91,7 +91,7 @@ graph LR
         N1[Smith]
         N2[Johnson]
         N3[Williams]
-        N4[Brown]
+        N4[Smith]
         N5[Jones]
     end
 
@@ -106,10 +106,9 @@ graph LR
 
 <div>
 
-- A **functional dependency** is a relationship between two attributes in which one attribute determines the value of another attribute
-- We only care about relationships that are **always true**, not just true in one small sample
+- A **functional dependency** is a relationship between two attributes in which by knowing the value of one attribute, we can uniquely determine the value of another attribute
 - For example, in the `Student` relation, **one student number is linked to exactly one surname**, so there is a functional dependency in which `studentnumber` determines the `surname`
-- In contrast, **one surname can belong to many students**, so there is **no** functional dependency in which `surname` determines the `studentnumber`
+- In contrast, **one surname can be linked to many student numbers** (e.g. many students can have the surname "Smith"), so there is **no** functional dependency in which `surname` determines the `studentnumber`
 
 </div>
 
