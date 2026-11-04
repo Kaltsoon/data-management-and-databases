@@ -58,7 +58,7 @@ The database design team has been able to design and document the structure of t
 | Attribute  | Description                                                        | Type    | Required | Key         | Special domain                | CHECK constraint |
 | ---------- | ------------------------------------------------------------------ | ------- | -------- | ----------- | ----------------------------- | ---------------- |
 | brevetId   | Surrogate key: Unique brevet identifier                            | Integer | Yes      | PRIMARY KEY | -                             | -                |
-| distance   | The distance in kilometres to be cycled when completing the brevet | Integer | Yes      | -           | 200, 300, 400, 600, 1000, or 1200 | Yes              |
+| distance   | The distance in kilometres to be cycled when completing the brevet | Integer | Yes      | -           | 200, 300, 400, 600, 1000, 1200 | Yes              |
 | brevetDate | The date when the brevet takes place                               | Date    | Yes      | -           | -                             | -                |
 | brevetTime | The time when the brevet starts                                    | Time    | Yes      | -           | -                             | -                |
 | location   | The location where the brevet starts                               | Text    | Yes      | -           | -                             | -                |
