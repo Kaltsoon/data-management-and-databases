@@ -1,6 +1,6 @@
 # Analysis of the primary key for the CourseGrade relation
 
-In this example, we analyze the possible primary key for a CourseGrade relation. This example demonstrates how choosing the wrong primary key for the relation can introduce limitations.
+In this example, we analyze the possible primary key for a `CourseGrade` relation. This example demonstrates how choosing the wrong primary key for the relation can introduce limitations.
 
 Suppose that the following tuple already exists:
 
@@ -12,7 +12,7 @@ The correct primary key `(studentNumber, courseCode)` allows us to add at
 most one course grade for each student for each course. For example, it does
 not accept the following new tuple to be added: `(100, swd4tf003, 2, 5)`, because the student with student number `100` already has a grade from the course `swd4tf003` as mentioned above.
 
-Some examples of incorrect primary keys for the CourseGrade relation and their limitations:
+Some examples of incorrect primary keys for the `CourseGrade` relation and their limitations:
 
 | Primary key candidate                               | Limitations                                                                                                                                |
 | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
