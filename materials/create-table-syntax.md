@@ -1,5 +1,17 @@
 # SQL Create Table Syntax
 
+- [Creating a table](#creating-a-table)
+- [Primary key](#primary-key)
+  - [Automatically generated primary key values](#automatically-generated-primary-key-values)
+- [Foreign keys](#foreign-keys)
+- [Unique columns](#unique-columns)
+- [Required columns](#required-columns)
+- [Custom column rules](#custom-column-rules)
+- [Indexes](#indexes)
+- [Modifying existing tables](#modifying-existing-tables)
+
+## Creating a table
+
 Tables are created with the `CREATE TABLE` statements. Tables contain columns with varying data types depending on what kind of value (e.g. integer or text) the column stores.
 
 ```sql
