@@ -139,7 +139,7 @@ The database implementation should be designed to allow the following operations
 2. Changing the number of tickets in a booking.
 3. Changing ticket booking status to "sold" when tickets are purchased.
 4. Cancelling a ticket booking.
-5. Removing unpurchased bookings from the database three days after booking.
+5. Removing unpurchased bookings from the database four days after booking.
 6. Cancelling the status of an event to "cancelled" if the event is cancelled.
 7. Refunding a client in the case of a cancelled event.
 
