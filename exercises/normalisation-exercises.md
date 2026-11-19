@@ -1,17 +1,17 @@
 # Normalisation Exercises
 
 > [!IMPORTANT]
-> Write your answers to a Word document named `normalisation_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle.
+> Write your answers in a Word document named `normalisation_exercises_YOURFAMILYNAME.docx` and submit the document to Moodle.
 
-The objective of this exercises is to familiarise yourself with the basics of database normalisation, to understand the basic normalisation terminology, have hands-on practise in identifying functional dependencies and validating relations with the Boyce-Codd normal form, and decomposing relations when needed. Refer to this week's lesson slides as materials.
+The objective of these exercises is to familiarise yourself with the basics of database normalisation, to understand the basic normalisation terminology, have hands-on practice in identifying functional dependencies and validating relations with the Boyce-Codd normal form, and decomposing relations when needed. Refer to this week's lesson slides as materials.
 
 ## Task 1
 
-Functional dependency describes the relationship between attributes in a relation. It occurs when attribute A in a relation uniquely determines attribute B. That is, for each value of A there is exactly one value of B and that holds all the time. This can be written `A → B`. For example `studentnumber → surname`.
+Functional dependency describes the relationship between attributes in a relation. It occurs when attribute A in a relation uniquely determines attribute B. That is, for each value of A, there is exactly one value of B, and that holds all the time. This can be written as `A → B`. For example, `studentnumber → surname`.
 
 - `A → B` means that A uniquely determines B.
 - `{A, B} → C` means that A and B together uniquely determine C.
-- `A → B, C, D` means that A uniquely determines B, C and D.
+- `A → B, C, D` means that A uniquely determines B, C, and D.
 
 The determinant of a functional dependency refers to the attribute, or group of attributes, on the left-hand side of the arrow. In `A → B`, A is the determinant of B.
 
@@ -43,11 +43,11 @@ Which of the following functional dependencies do definitely not hold over the t
 4. `B → A`
 
 > [!TIP]
-> For example with the `A → B` functional dependency candidate, write down what kind of value(s) specific value of A has for B. For example, `A: 1 → B: 2`, `A: 4 → B: 2`, `A: 5 → B: 3`. If there is a `A` value that has different `B` values, it is not functional dependency.
+> For example, with the `A → B` functional dependency candidate, write down what kind of value(s) a specific value of A has for B. For example, `A: 1 → B: 2`, `A: 4 → B: 2`, `A: 5 → B: 3`. If there is an `A` value that has different `B` values, it is **not** a functional dependency.
 
 ## Task 3
 
-Which of the following functional dependencies do definitely not hold over the table below?
+Which of the following functional dependencies do not definitely hold over the table below?
 
 | A   | B   | C   | D   |
 | --- | --- | --- | --- |
@@ -65,7 +65,7 @@ Which of the following functional dependencies do definitely not hold over the t
 Determine candidate keys for the following relations that have the specified functional dependencies.
 
 > [!TIP]
-> Candidate key is a attribute (or group of attributes) that determine all other attributes. Attribute can also determine an attribute _through_ other attributes. E.g. If `X → Y` and `Y → Z`, then also functional dependency `X → Z` exists.
+> A candidate key is an attribute (or group of attributes) that determines all other attributes. An attribute can also determine an attribute _through_ other attributes. E.g. If `X → Y` and `Y → Z`, then also functional dependency `X → Z` exists.
 
 ### Relation A
 
@@ -112,11 +112,11 @@ Functional dependencies:
 Here's a recap of the normal form rules:
 
 - 1NF: relation **must have a primary key** and all attributes **have atomic values** (no multi-valued attributes).
-- 2NF: if relation has a composite candidate key, there should not be a **partial functional dependency** in which part of a candidate key determines a non-candidate key attribute. E.g., if `(course_code, instance_number)` is a candidate key of a `CourseInstance` relation, `course_code → course_name` would be a partial functional dependency.
+- 2NF: if a relation has a composite candidate key, there should not be a **partial functional dependency** in which part of a candidate key determines a non-candidate key attribute. E.g., if `(course_code, instance_number)` is a candidate key of a `CourseInstance` relation, `course_code → course_name` would be a partial functional dependency.
 - 3NF: there should not be a functional dependency between two **non-candidate key** attributes.
 - BCNF: there should not be a functional dependency in which the determinant (left) is not a whole candidate key.
 
-In each normal form, all so the previous normal form's rules should be followed.
+In each normal form, all the previous normal form's rules should be followed.
 
 **What is the normal form for each of the relations below?** Start by specifying the primary key, if it is not already specified. Give arguments!
 
@@ -136,7 +136,7 @@ In each normal form, all so the previous normal form's rules should be followed.
     - `C → B`
 
 > [!TIP]
-> Start with the rules of the 1NF. If those are followed, move on to the 2NF and so on. If the normal form rules are violated, the relation is in the previous normal form. For example if the 1NF rules are follow, but the 2NF rules are violated, the relation is in 1NF.
+> Start with the rules of 1NF. If those are followed, move on to the 2NF and so on. If the normal form rules are violated, the relation is in the previous normal form. For example, if the 1NF rules are followed, but the 2NF rules are violated, the relation is in 1NF.
 
 ## Task 6
 
