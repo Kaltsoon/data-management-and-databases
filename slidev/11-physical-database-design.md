@@ -249,7 +249,7 @@ VALUES (2, 'Interstellar', 6, 'user')
   - Creating indexes on tables
   - Tuning or rewriting individual SQL queries. For example replacing certain subqueries with `JOIN` operations
   - Distributing the database load on multiple server machines
-  - Improving the hardware (e.g., more main memory, better CPU) on the server machine
+  - Improving the hardware (e.g., more main memory or better processor) on the server machine
 
 ---
 

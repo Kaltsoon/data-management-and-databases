@@ -92,17 +92,17 @@ Functional dependencies:
 
 Functional dependencies:
 
-- `C → D` 
-- `C → A` 
+- `C → D`
+- `C → A`
 - `B → C`
 
 ### Relation D
 
-<pre>RelationD (A, B, C)</pre> 
+<pre>RelationD (A, B, C)</pre>
 
 Functional dependencies:
 
-- `B → A` 
+- `B → A`
 - `C → B`
 - `B → C`
 - `C → A`
@@ -126,23 +126,24 @@ In each normal form, all so the previous normal form's rules should be followed.
 4. <pre>Department (deptno, deptname, companycode, companyname)</pre>
 5. <pre>Textbook (ISBN, bookname, chapternumber, chaptername, publisher)</pre>
 6. <pre>Employee (empno, surname, firstname, Phone(phonenumber, phonetype))</pre>
-6. <pre>R (A, B, C, D)</pre>
+7. <pre>R (A, B, C, D)</pre>
 
-    There are the following functional dependencies:
-
-    - `{A, B} → D`
-    - `{A, C} → D`
-    - `B → C`
-    - `C → B`
+   There are the following functional dependencies:
+   - `{A, B} → D`
+   - `{A, C} → D`
+   - `B → C`
+   - `C → B`
 
 > [!TIP]
 > Start with the rules of the 1NF. If those are followed, move on to the 2NF and so on. If the normal form rules are violated, the relation is in the previous normal form. For example if the 1NF rules are follow, but the 2NF rules are violated, the relation is in 1NF.
 
 ## Task 6
 
-Based on the dependency diagram below, create relations that are in BCNF.
+The `Medication` relation stores information about the medications prescribed to a patient. The relation has the following attributes and relationships between them:
 
 ![Dependencies](./assets/normalisation-exercises-task-6.png)
+
+The current relation has redundancy problems. **Fix these problems by decomposing it into relations that are in BCNF.**
 
 In your relation schemas:
 
