@@ -22,7 +22,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ---
 
-## Introduction to database transactions
+## Bank transfer example
 
 - Let's imagine that we are responsible for designing a database that needs to store bank account balances
 - The design should support a basic use case of transferring money between two accounts. That is, withdrawing money from one account and depositing it to another
@@ -39,7 +39,7 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ---
 
-## Introduction to database transactions
+## Risk of separate updates
 
 - Then we consider the required database operations for transferring money between two accounts. We think that we can handle it with just two separate `UPDATE` statements:
 
@@ -58,31 +58,30 @@ _A substantial portion of these materials is derived from the work of Kari Silpi
 
 ---
 
-## Introduction to database transactions
+## Transactions as units of work
 
 - In this case, the second statement would never be executed, meaning that the money is deposited to one account but never withdrawn from the other one
 - What we would have wanted is that either **both of the statements succeed** or **in case of a failure the database is restored to its previous state**
-- This behavior can be achieved with **database transactions**
-- A database transaction is a **unit of work** that is performed on a database consisting of multiple database operations
+- This behavior can be achieved with a **database transaction**, which is a unit of work that is performed on a database consisting of multiple database operations
 - All operations within the unit of work are **either completed successfully** or the **transaction is aborted at the point of failure** and all the previous operations are rolled back to their former state
 
 ---
 
 ## Purpose of database transactions
 
-- Database transactions have two main purposes:
-  1. To provide reliable units of work that allow **correct recovery** from failures and keep a database consistent even in cases of system failure. The previous example is an example of such case
-  2. To provide **isolation between programs** accessing a database concurrently. For example, two programs that read and update the same rows at the same time might end up in a situation where the updates aren't applied correctly
+- Database transactions serve two main purposes:
+  - **Reliable recovery from failures**: transactions provide reliable units of work that ensure the database remains consistent, even if a system failure occurs during an operation. The previous example illustrates this purpose
+  - **Isolation between concurrent users**: transactions prevent concurrent operations from interfering with each other. For example, they help prevent two users from simultaneously updating the same row and accidentally overwriting each other's changes
 
 ---
 
 ## The autocommit mode
 
-- By default, each SQL statement submitted for execution is treated as a **single transaction**
-- If a statement **completes successfully**, it is **committed**
-- If a statement **encounters any error**, it is **rolled back**
-- That is, no changes can be rolled back after the statement has been successfully executed
-- This, so called **autocommit mode** is the default transaction management mode in SQL Server, MariaDB, and PostgreSQL.
+- By default, each SQL statement is executed as a **separate transaction**
+- If a statement **completes successfully**, its changes are automatically **committed** to the database
+- If a statement **encounters an error**, its changes are **rolled back** (undone)
+- Once a statement has been successfully committed, its changes cannot be undone
+- This behavior is called **autocommit mode** and is the default transaction management mode in SQL Server, and PostgreSQL
 
 ```sql
 INSERT INTO Account (balance) VALUES (0) -- automatically committed
@@ -91,9 +90,9 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 
 ---
 
-## Problems with the autocommit mode
+## Partial commit after a failure
 
-- Let's see what's the consistency problem mentioned in the previous bank account example. Let's assume that the total balance of the bank is 900 euros:
+- Let's see what's the consistency problem mentioned in the previous bank account example. The initial total balance of the bank is 900 euros:
 
   | account_id | balance |
   | ---------- | ------- |
@@ -110,20 +109,20 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 
 ---
 
-## Problems with the autocommit mode
+## Inconsistent total balance
 
-- We end up with a situation where the database is **not in a consistent state** any more and the total balance retrieved from the database is 1000 euros, even though it should be 900 euros:
+- We end up with a situation where the database is **not in a consistent state** any more and the bank's total balance is 1000 euros, even though it should be 900 euros:
 
-  | account_id | balance |
-  | ---------- | ------- |
-  | 1          | 300     |
-  | 2          | <span v-mark.circle.red>700</span>     |
+  | account_id | balance                            |
+  | ---------- | ---------------------------------- |
+  | 1          | 300                                |
+  | 2          | <span v-mark.circle.red>700</span> |
 
-- With a database transaction, we can "group" these operations so that both updates can be handled as **one unit**: either both changes are committed, or both are rolled back on failure
+- Using a database transaction, we can group these operations into a single unit of work, ensuring that either both updates are successfully committed or neither update takes effect if an error occurs
 
 ---
 
-## Database transactions
+## ACID properties
 
 - Transactions have four standard properties, usually referred to by the acronym **ACID**
 - **Atomicity** ensures that all operations within the work unit are completed successfully. Otherwise, the transaction is aborted at the point of failure and all the previous operations are rolled back to their former state
@@ -133,7 +132,7 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 
 ---
 
-## SQL transactions
+## SQL transaction statements
 
 - When the application logic needs to execute a sequence of SQL statements in an atomic fashion, then the statements need to be grouped as a logical unit of work called **SQL transaction**
 - The following SQL statements can be used for starting and ending SQL transactions:
@@ -143,7 +142,7 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 
 ---
 
-## SQL transactions
+## Bank transfer as a transaction
 
 - In the bank transfer example we could have the following transaction:
 
@@ -160,7 +159,7 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 
 ---
 
-## SQL transactions
+## Rollback and commit failures
 
 - The `COMMIT` statement **can fail**, whereas the `ROLLBACK` statement **cannot ever fail**
 - If an application crash or any system failure occurs before a transaction commits, the DBMS automatically rolls back all the changes made by the transaction
@@ -175,7 +174,7 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 
 ---
 
-## SQL transactions
+## Failure before commit
 
 - Initially, the total balance of the bank is 900 euros:
 
@@ -194,18 +193,18 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 
 ---
 
-## SQL transactions
+## Automatic rollback
 
-- Due to the failure the second `UPDATE` and the `COMMIT` statement are not executed
-- Because the transaction is never terminated with the `COMMIT` statement, **no changes are made** (before or after the failure in the transaction)
-- If the client application failed or if the client computer went down, the database connection is lost. The DBMS will notice the uncommitted transaction and **rolls it back**
-- If the failure was on the DBMS side then the **DBMS automatically rolls back all uncommitted transactions** when it goes through the standard recovery process on restart
+- Due to the failure, the second `UPDATE` statement and the `COMMIT` statement are never executed.
+- Since the transaction is never successfully committed, **none of its changes are permanently applied**. This includes changes made by statements executed before the failure
+- If the client application crashes or the client computer shuts down, the database connection is lost. The DBMS detects the connection loss and **automatically rolls back the uncommitted transaction**.
+- If the failure occurs on the DBMS side (e.g. a system crash), the DBMS uses its **recovery mechanism on restart to roll back uncommitted transactions**
 
 ---
 
-## SQL transactions
+## Consistent state after rollback
 
-- That is, we always end up with a situation where the database is in a **consistent state**
+- Automatic rollback ensures that a failed transaction does not leave the database in a partially updated or inconsistent state
 - The DBMS will automatically **undo the first update** and the total balance retrieved from the database is 900:
 
   | account_id | balance |
@@ -217,29 +216,30 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 
 ## Transaction modes
 
-- **Transaction mode** determines how transactions are started. By default, transactions are managed at the database connection level
-- A database connection operates either in **explicit transactions mode** or **implicit transactions mode**
-- In the **explicit transactions mode** (default mode in SQL Server), a transaction must be started explicitly by executing the `BEGIN TRANSACTION` statement
-- In the **implicit transactions mode**, transactions are **not** started explicitly by executing the `BEGIN TRANSACTION` statement
-- Instead, a transaction begins **implicitly** with the first executable SQL statement after the database connection is opened or after the previous transaction is terminated
+- **Transaction mode** determines how transactions are started and managed within a database connection
+- A database connection typically operates in either **explicit transaction mode** or **implicit transaction mode**
+- In **explicit transaction mode** (the default in SQL Server), a transaction must be started manually by executing the `BEGIN TRANSACTION` statement
+- In **implicit transaction mode**, transactions are started automatically when an executable SQL statement is executed. There is no need to execute `BEGIN TRANSACTION` explicitly
+- An implicit transaction begins with the first executable SQL statement after the connection is opened or after the previous transaction has been committed or rolled back
 
 ---
 
 ## Concurrency control
 
-- To fulfil the business requirements the DBMS should protect database consistency **without sacrificing too much performance**
-- In a multi-user environment the DBMS has to **interleave the actions of several transactions** but still preserve the illusion that each user is executing alone. For example, allowing two transactions to read the same row without needing to wait for the other to complete
-- The **concurrency control** mechanism ensures that concurrently running transactions do not interfere with each other, so each transaction behaves as if it were running in isolation
-- The developer decides the required level of isolation based on the data requirements. For example, in some cases it is important that a certain column value of a row doesn't change within a transaction
+- The DBMS must protect **database consistency while maintaining good performance**
+- In a multi-user environment, the DBMS needs to **interleave the operations of multiple transactions** while ensuring that they do not interfere with each other. For example, multiple transactions should be able to read the same row concurrently without unnecessarily waiting for one another
+- **Concurrency control** refers to the mechanisms used by the DBMS to coordinate concurrent transactions and prevent unwanted interference between them
+- The goal is to make transactions behave as if they were **executing in isolation**, even when their operations are interleaved with those of other transactions
+- The transaction's **isolation level** controls how much a transaction is isolated from the changes made by other concurrently running transactions
 
 ---
 
-## Locking
+## Locking mechanism
 
-- Data consistency and isolation with transactions is achieved by the **locking mechanism**
-- When our transaction changes (`INSERT`, `UPDATE`, `DELETE`) a row in a database, the DBMS **locks the row**
-- Other concurrent transactions **are not allowed to change the row** as long as the transaction is running
-- That is, the other transactions that want to change the row **must wait** until the transaction ends (it is committed)
+- Data consistency and transaction isolation can be achieved through a **locking mechanism**
+- When a transaction modifies a row using `INSERT`, `UPDATE`, or `DELETE`, the DBMS acquires a **lock** on the affected row
+- Other concurrent transactions are **prevented from modifying the locked row** until the lock is released, ensuring that their changes do not interfere with the ongoing transaction
+- Transactions that attempt to modify the same row must **wait until the lock is released**, typically when the first transaction commits or rolls back
 
 ```sql
 BEGIN TRANSACTION
@@ -251,7 +251,7 @@ COMMIT -- committing releases all the locks
 
 ---
 
-## Locking
+## Lock waiting example
 
 - For example, if **user A** starts a transaction which **updates** a row in the `Account` table:
 
@@ -273,12 +273,12 @@ COMMIT -- committing releases all the locks
 
 ---
 
-## Locking
+## Blocking and deadlocks
 
-- Locking resolves concurrency conflicts by **blocking a transaction** (like in the previous example) or **forcing a transaction to abort**
-- When transaction is blocked it has to wait for the resource. The default for the maximum waiting time is "forever"
-- When two transactions start to **permanently block each other**, the DBMS **forces either one transaction to abort** (rollback). This allows the other transaction to continue normally
-- A **deadlock** occurs when two (or more) transactions permanently block each other by each transaction having a lock on a resource which the other transaction is trying to lock
+- Locking resolves concurrency conflicts by either **blocking a transaction** or **forcing a transaction to abort**
+- When a transaction is blocked, it must wait until the required resource becomes available. By default, the maximum waiting time is unlimited
+- If two or more transactions **permanently block each other**, the DBMS detects the situation and **forces one of the transactions to abort** (rollback). This releases its locks and allows the other transaction to continue
+- A **deadlock** occurs when two or more transactions are waiting for each other to release locks. For example, each transaction holds a lock on a resource that another transaction needs, creating a cycle of dependencies
 
 ---
 
@@ -342,7 +342,7 @@ WHERE account_id = 1
 
 ---
 
-## Example of a deadlock
+## Deadlock steps
 
 - The following things happen in the example:
   1. Transaction A locks account 1 and updates it
@@ -353,7 +353,7 @@ WHERE account_id = 1
 
 ---
 
-## Example of a deadlock
+## Deadlock resolution
 
 - Both transactions in the deadlock will wait unless the deadlock is broken by the DBMS
 - When the DBMS detects a deadlock it chooses one of the transactions as a victim and terminates it (rollback) with an error message
@@ -364,9 +364,9 @@ WHERE account_id = 1
 
 ## Row-level locking in SQL Server
 
-- When a user has a lock on a row, the lock **prevents other users from modifying or even reading that row**
-- The behavior depends on the **lock type**, which is commonly either **write lock** (acquired by modifying a row) or **read lock** (acquired by reading a row)
-- In SQL Server, to avoid a certain type of deadlock, **"intent to update" lock** is also available
+- When a transaction acquires a lock on a row, the lock **controls whether other transactions can read or modify that row**
+- The behavior depends on the **lock type**, which include **write lock** (acquired when a transaction modifies a row) and **read lock** (acquired when a transaction reads a row)
+- SQL Server also supports an **update lock**, which helps prevent certain types of deadlocks when transactions first read data and then attempt to modify it
 
 ---
 
@@ -402,7 +402,7 @@ WHERE account_id = 1
 
 ---
 
-## Locking behavior in different isolation levels
+## Isolation levels and read locks
 
 ```sql
 SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
@@ -418,9 +418,9 @@ SELECT balance FROM Account WHERE account_id = 1;
 
 ---
 
-## "Intent to update" lock
+## SQL Server's update lock
 
-- In SQL Server, you can use the non-standard `(UPDLOCK)` locking hint that prevents a certain form of deadlocks that occur when two transactions are first reading the same row and then updating the row
+- In SQL Server, we can use the non-standard `(UPDLOCK)` locking hint that prevents a certain form of deadlocks that occur when two transactions are first reading the same row and then updating the row
 - The DBMS allows only one transaction at time to **read the same row** with the `(UPDLOCK)` locking hint
 - If another transaction tries to read the same row with the `(UPDLOCK)` locking hint, it has to wait until the first transaction ends
 
@@ -435,11 +435,11 @@ SELECT balance FROM Account (UPDLOCK) WHERE account_id = 1
 
 ## Summary of lock types
 
-| Statement                          | Acquired lock type      | Allowed locks on the same row                                      |
-| ---------------------------------- | ----------------------- | ------------------------------------------------------------------ |
-| `UPDATE`, `DELETE`, `INSERT`       | Write lock              | **None**                                                           |
-| `SELECT`                           | Read lock               | Any number of **read locks** and a **"intent to update" lock**     |
-| `SELECT` with the `(UPDLOCK)` hint | "Intent to update" lock | Any number of **read locks** (but **no "intent to update" locks**) |
+| Statement                          | Acquired lock type | Allowed locks on the same row                          |
+| ---------------------------------- | ------------------ | ------------------------------------------------------ |
+| `UPDATE`, `DELETE`, `INSERT`       | Write lock         | **None**                                               |
+| `SELECT`                           | Read lock          | Any number of **read locks** and a **update lock**     |
+| `SELECT` with the `(UPDLOCK)` hint | Update lock        | Any number of **read locks** (but **no update locks**) |
 
 ---
 
