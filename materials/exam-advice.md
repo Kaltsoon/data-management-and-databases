@@ -10,8 +10,8 @@ The course assessment is primarily based on the points from the mid-term and fin
 | 90% - 100%       | 5          |
 | 80% - 89%        | 4          |
 | 70% - 79%        | 3          |
-| 60%- 69%         | 2          |
-| 50%- 59%         | 1          |
+| 60% - 69%         | 2          |
+| 50% - 59%         | 1          |
 | 0% - 49%         | 0          |
 
 Passing requirements are 40% of the exam points from **both exams**, with an average across the two exams of 50% points.
