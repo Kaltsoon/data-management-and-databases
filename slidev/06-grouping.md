@@ -312,20 +312,19 @@ GROUP BY deptno HAVING AVG(salary) > (SELECT AVG(salary) FROM Employee)
 - The subquery's result set can be used in the `FROM` clause similarly to a normal table
 - Let's consider the following example:
 
-> _"What is the minimum and the maximum grade point average (GPA) of such students who have passed more than 20 courses?"_
+> _"What is the minimum and the maximum grade point average (GPA) of students who have at least 10 grades?"_
 
 ---
 
 ## Subqueries within a FROM clause
 
-- First, we define a query for the grade point average of students who have passed more than 20 courses:
+- First, we define a query for _"the grade point average of students who have at least 10 grades"_:
 
 ```sql
 SELECT student_number, AVG(grade) AS gpa
 FROM CourseGrade
-WHERE grade > 0
 GROUP BY student_number
-HAVING COUNT(*) > 20
+HAVING COUNT(*) >= 10
 ```
 
 ---
@@ -336,15 +335,14 @@ HAVING COUNT(*) > 20
 
 ```sql
 -- what is the minimum and the maximum grade point average (GPA)
--- of such students who have passed more than 20 courses?
+-- of such students who have at least 10 grades?
 SELECT MIN(gpa) AS min_gpa, MAX(gpa) AS max_gpa
 FROM (
   -- our subquery from the previous slide
   SELECT student_number, AVG(grade) AS gpa
   FROM CourseGrade
-  WHERE grade > 0
   GROUP BY student_number
-  HAVING COUNT(*) > 20
+  HAVING COUNT(*) >= 10
 ) AS StudentGpa -- ⚠️ alias name for the subquery is required
 ```
 
@@ -375,16 +373,15 @@ SELECT MAX(grade_count) AS most_grades FROM CourseGradeCount
 
 ```sql
 -- common table expression containing 
--- the GPA of each student who has passed more than 20 courses
+-- the GPA of each student who have at least 10 grades
 WITH StudentGpa (student_number, gpa) AS (
   SELECT student_number, AVG(grade) AS gpa
   FROM CourseGrade
-  WHERE grade > 0
   GROUP BY student_number
-  HAVING COUNT(*) > 20
+  HAVING COUNT(*) >= 10
 )
 
--- which students have passed more than 20 courses with above 4.5 GPA?
+-- which students have at least 10 grades with above 4.5 GPA?
 SELECT student_number, first_name, surname
 FROM Student
 -- here we use StudentGpa just like a "regular" table

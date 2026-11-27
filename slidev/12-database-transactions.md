@@ -125,10 +125,10 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 ## ACID properties
 
 - Transactions have four standard properties, usually referred to by the acronym **ACID**
-- **Atomicity** ensures that all operations within the work unit are completed successfully. Otherwise, the transaction is aborted at the point of failure and all the previous operations are rolled back to their former state
-- **Consistency** ensures that the database properly changes states upon a successfully committed transaction, meaning all operations within the transaction are applied (e.g. multiple updates)
-- **Isolation** enables transactions to operate independently of and transparent to each other
-- **Durability** ensures that the result or effect of a committed transaction persists in case of a system failure
+- **Atomicity**: all operations in the transaction either complete successfully or none of them take effect. If an operation fails, the transaction is aborted and all previous operations are rolled back to their original state
+- **Consistency**: a transaction moves the database from one valid state to another. When it commits, all of its operations (e.g. multiple updates) are applied, and all integrity constraints still hold
+- **Isolation**: concurrently running transactions operate independently of each other, so one transaction does not see the uncommitted changes of another
+- **Durability**: once a transaction is committed, its changes persist even if the system fails afterwards
 
 ---
 
@@ -195,8 +195,8 @@ UPDATE Account SET balance = 100 WHERE account_id = 1 -- automatically committed
 
 ## Automatic rollback
 
-- Due to the failure, the second `UPDATE` statement and the `COMMIT` statement are never executed.
-- Since the transaction is never successfully committed, **none of its changes are permanently applied**. This includes changes made by statements executed before the failure
+- Due to the failure, the second `UPDATE` statement and the `COMMIT` statement are never executed
+- Since the transaction is never successfully committed, **none of its changes are permanently applied** This includes changes made by statements executed before the failure
 - If the client application crashes or the client computer shuts down, the database connection is lost. The DBMS detects the connection loss and **automatically rolls back the uncommitted transaction**.
 - If the failure occurs on the DBMS side (e.g. a system crash), the DBMS uses its **recovery mechanism on restart to roll back uncommitted transactions**
 
@@ -283,7 +283,8 @@ COMMIT -- committing releases all the locks
 ---
 
 <div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 0px 16px;">
-<div>
+<div style="position: relative">
+<div style="position: absolute; left: 0rem; top: -1.5rem"><strong>User A</strong></div>
 
 ```sql
 BEGIN TRANSACTION
@@ -299,7 +300,8 @@ WHERE account_id = 1 -- 🔒 locking account 1
 
 <div>
 </div>
-<div>
+<div style="position: relative">
+<div style="position: absolute; left: 0rem; top: -7.5rem"><strong>User B</strong></div>
 
 ```sql
 BEGIN TRANSACTION
@@ -316,7 +318,7 @@ WHERE account_id = 2 -- 🔒 locking account 2
 UPDATE Account
 SET balance = balance - 50
 -- ⏲️ trying to lock account 2,
--- must wait for transaction B
+-- must wait for user B
 WHERE account_id = 2
 ```
 
@@ -332,7 +334,7 @@ WHERE account_id = 2
 UPDATE Account
 SET balance = balance - 100
 -- ⏲️ trying to lock account 1,
--- must wait for transaction A
+-- must wait for user A
 WHERE account_id = 1
 ```
 
@@ -345,11 +347,11 @@ WHERE account_id = 1
 ## Deadlock steps
 
 - The following things happen in the example:
-  1. Transaction A locks account 1 and updates it
-  2. Transaction B locks account 2 and updates it
-  3. Transaction A is trying to lock account 2 (must wait, B has already locked the row)
-  4. Transaction B is trying to lock account 1 (must wait, A has already locked the row)
-- Transaction B cannot continue until transaction A completes, but transaction A is blocked by transaction B. This cycle is a deadlock
+  1. User A locks account 1 and updates it
+  2. User B locks account 2 and updates it
+  3. User A is trying to lock account 2 (must wait, B has already locked the row)
+  4. User B is trying to lock account 1 (must wait, A has already locked the row)
+- User B cannot continue until user A completes, but user A is blocked by user B. This cycle is a deadlock
 
 ---
 
@@ -372,49 +374,50 @@ WHERE account_id = 1
 
 ## Write lock
 
-- If transaction T1 wants to **modify a row** (update, delete, insert), then it has to acquire a **write lock** on the row
+- When a transaction wants to **modify a row** (using `INSERT`, `UPDATE`, or `DELETE`), it must acquire a **write lock** on the row
 
   ```sql
   BEGIN TRANSACTION
-  -- 🔒 acquire write lock for account 1
+  -- 🔒 acquire a write lock on account 1
   UPDATE Account SET balance = 6000 WHERE account_id = 1;
   ```
 
-- ⚠️ T1 has to wait until **the row is free from all other locks** before acquiring the lock
-- When T1 has a write lock on the row, all other transactions that want to access (select or modify) the row have to wait until T1 ends
-- A write lock is **never released before the transaction ends**
+- ⚠️ A transaction must **the row is free from all other locks** before it can acquire a write lock
+- While a transaction holds a write lock on a row, **other transactions cannot read or modify that row**. They must wait until the lock is released
+- A write lock is **held until the transaction ends** (either through `COMMIT` or `ROLLBACK`)
 
 ---
 
 ## Read lock
 
-- If transaction T1 wants to **select a row**, then it has to acquire a **read lock** on the row
+- When a transaction wants to **read a row** (using `SELECT`), it must acquire a **read lock** on the row
 
   ```sql
   BEGIN TRANSACTION
-  -- 🔒 acquire read lock for account 1
+  -- 🔒 acquire a read lock on account 1
   SELECT balance FROM Account WHERE account_id = 1;
   ```
 
-- ⚠️ If another transaction has a **write lock** on the row, then T1 has to wait until the other transaction ends
-- If there is no write lock on the row, then T1 gets a read lock on the row
-- A read lock is released depending on the **isolation level** of the transaction either immediately or after the transaction ends
+- ⚠️ If another transaction holds a **write lock on the row**, the transaction must wait until that lock is released
+- If there is no write lock on the row, the transaction can acquire a read lock and read the row
+- A read lock is released depending on the transaction's **isolation level**, either immediately or after the transaction ends
 
 ---
 
 ## Isolation levels and read locks
 
 ```sql
+-- specify the transaction's isolation level
 SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
 BEGIN TRANSACTION
 -- 🔒 acquire read lock for account 1
 SELECT balance FROM Account WHERE account_id = 1;
 ```
 
-- The transaction **isolation level** controls when the read lock is released
-- If the transaction isolation level is set to `READ COMMITTED` (the default), then the read lock is **released immediately after the row is retrieved from the database**
-- If the transaction isolation level is set to `REPEATABLE READ` or `SERIALIZABLE`, then the read lock **is not released before the transaction ends**, providing more isolation
-- With these isolation levels, the row can't change within the transaction, meaning that the same read operation can be repeated without the row changing
+- The transaction's **isolation level** determines how long read locks are held
+- With `READ COMMITTED` (the default isolation level), a read lock is **released after the read operation completes**
+- With `REPEATABLE READ` or `SERIALIZABLE`, read locks are **held until the transaction ends**, providing stronger isolation
+- These isolation levels prevent other transactions from modifying rows that have already been read, ensuring that **repeating the same read within a transaction returns the same values**
 
 ---
 

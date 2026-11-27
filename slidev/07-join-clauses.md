@@ -222,7 +222,7 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 - This is useful, if we want to select **all course instances** (including the ones with missing `teacher_number`) and the name of their teacher
 - The `OUTER JOIN` clause has two variations: `LEFT OUTER JOIN` and `RIGHT OUTER JOIN`
 - The difference between `INNER JOIN` and `OUTER JOIN` join opreations two lies in the **inclusion of non-matching rows**
-- ❗ With the `OUTER JOIN` clauses the order of tables in `FROM TableA LEFT OUTER JOIN TableB` does matter
+- ⚠️ With the `OUTER JOIN` clauses the order of tables in `FROM TableA LEFT OUTER JOIN TableB` matters
 
 ---
 
@@ -234,7 +234,7 @@ INNER JOIN Teacher ON CourseInstance.teacher_number = Teacher.teacher_number
 SELECT
 course_code, instance_number, 
 Teacher.teacher_number, first_name, surname
--- ❗ order of tables matter!
+-- ⚠️ order of tables matter!
 FROM CourseInstance -- "left table"
 LEFT OUTER JOIN Teacher -- "right table"
 ON CourseInstance.teacher_number = Teacher.teacher_number

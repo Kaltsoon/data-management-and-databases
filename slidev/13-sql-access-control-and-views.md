@@ -2,7 +2,7 @@
 colorSchema: light
 fonts:
   sans: Roboto
-  weights: '200,400,600,700'
+  weights: "200,400,600,700"
 ---
 
 ## SQL access control and views
@@ -84,7 +84,7 @@ graph TD
 ## Granting privileges
 
 - This is the simplified syntax of the `GRANT` statement in SQL Server:
-  
+
   ```sql
   GRANT privilegeList ON objectName
   TO { authorizationIdList | PUBLIC }
@@ -243,12 +243,12 @@ flowchart TB
 
 <div class="flex-1 m-r-1">
 
-| id    | name            | title             | city              | salary    |
-| ----- | --------------- | ----------------- | ----------------- | --------- |
-| 1     | Alice Smith     | Software Engineer | New York          | 120000    |
-| **2** | **Bob Johnson** | **Salesperson**   | **San Francisco** | **95000** |
-| 3     | Carol Evans     | Product Manager   | Austin            | 110000    |
-| **5** | **Emma Brown**  | **Salesperson**   | **Chicago**       | **88000** |
+| id  | name        | title                                      | city          | salary |
+| --- | ----------- | ------------------------------------------ | ------------- | ------ |
+| 1   | Alice Smith | Software Engineer                          | New York      | 120000 |
+| 2   | Bob Johnson | <span v-mark.circle.red>Salesperson</span> | San Francisco | 95000  |
+| 3   | Carol Evans | Product Manager                            | Austin        | 110000 |
+| 5   | Emma Brown  | <span v-mark.circle.red>Salesperson</span> | Chicago       | 88000  |
 
 </div>
 
@@ -268,7 +268,7 @@ flowchart TB
 ## Updatable vs. non-updatable views
 
 - View is **updatable** if it is defined by selecting some
-existing columns and rows from a **single base table**
+  existing columns and rows from a **single base table**
 - The operations (e.g. deleting a row) reflects to the base table
 
   ```sql
@@ -300,13 +300,13 @@ existing columns and rows from a **single base table**
 
 <div class="m-t-2">
 
-| id    | name                  | title             | city          | salary   |
-| ----- | --------------------- | ----------------- | ------------- | -------- |
-| 1     | Alice Smith           | Software Engineer | New York      | 120000   |
-| 2     | Bob Johnson           | Salesperson       | San Francisco | 95000    |
-| 3     | Carol Evans           | Product Manager   | Austin        | 110000   |
-| 5     | Emma Brown            | Salesperson       | Chicago       | 88000    |
-| **6** | **Matti Meikäläinen** | **Salesperson**   | **Helsinki**  | **NULL** |
+| id  | name              | title             | city          | salary |
+| --- | ----------------- | ----------------- | ------------- | ------ |
+| 1   | Alice Smith       | Software Engineer | New York      | 120000 |
+| 2   | Bob Johnson       | Salesperson       | San Francisco | 95000  |
+| 3   | Carol Evans       | Product Manager   | Austin        | 110000 |
+| 5   | Emma Brown        | Salesperson       | Chicago       | 88000  |
+| <span v-mark.circle.red>6</span>   | Matti Meikäläinen | Salesperson       | Helsinki      | NULL   |
 
 </div>
 
@@ -321,7 +321,7 @@ existing columns and rows from a **single base table**
   AS SELECT id, name, title, city AS branch
   FROM Employee
   WHERE title = 'Salesperson'
-  
+
   -- "Office Dog" doesn't satisfy condition WHERE title = 'Salesperson'
   INSERT INTO SalesEmployee (id, name, title, branch)
   VALUES (80, 'Luna', 'Office Dog', 'Helsinki')

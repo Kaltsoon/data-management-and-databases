@@ -77,7 +77,19 @@ export default defineConfig({
           color: ${theme.colors?.gray["5"]} !important;
           border-radius: 0px !important;
           font-size: 1em !important;
-        } 
+        }
+
+        ul {
+          list-style-type: disc !important;
+        }
+
+        li::marker {
+            color: ${theme.colors?.gray["4"]} !important;
+        }
+
+        li:has(.item-warning)::marker {
+            content: "⚠️";
+        }
       `,
     },
   ],
