@@ -46,8 +46,8 @@ If you have installed _SQL Server on your own computer_, do the following to get
 
 2. Insert a couple of rows into your table.
 3. Next, let's log in using another user without any privileges. Open a new connection to your SQL Server instance by clicking "Connect" in the "Object Explorer" panel on the left and choosing "Database Engine". Choose the "Authentication" option as "SQL Server Authentication" and log in with the following username and password:
-  - In _Haaga-Helia's SQL Server_, the username is `DM_USER_50` and the password is the same as your user's password (check the password from the Moodle home page's "SQL Server Usernames" link).
-  - In _your own computer's SQL Server_, the username and password are the ones you created previously (username `visitor` and password `SECRET_password_12345` by default).
+    - In _Haaga-Helia's SQL Server_, the username is `DM_USER_50` and the password is the same as your user's password (check the password from the Moodle home page's "SQL Server Usernames" link).
+    - In _your own computer's SQL Server_, the username and password are the ones you created previously (username `visitor` and password `SECRET_password_12345` by default).
 4. Under the new connection (ends with the other user's username) in the "Object Explorer" panel, open a new query window in the database in which you created the table. You should now have two query windows: one for your user and one for the other user.
 5. In _your user's query window_, give the `SELECT` privilege on your table to the other user (either the `visitor` user or `DM_USER_50`, depending on your SQL Server setup).
 6. In the _other user's query window_, try to select all rows from the table you created previously. If the other user fails to select the rows, revisit the previous step.
@@ -57,8 +57,8 @@ If you have installed _SQL Server on your own computer_, do the following to get
 ## Task 2
 
 1. In _your user's query window_, create a new database role depending on your SQL Server setup:
-  - In _Haaga-Helia's SQL Server_, create a role named `friends_of_XX` and replace `XX` with the last two digits of your Haaga-Helia's SQL Server username.
-  - In _your own computer's SQL Server_, create a role named `friends`
+    - In _Haaga-Helia's SQL Server_, create a role named `friends_of_XX` and replace `XX` with the last two digits of your Haaga-Helia's SQL Server username.
+    - In _your own computer's SQL Server_, create a role named `friends`
 2. Give the `SELECT` and `INSERT` privileges on your table to the role you created. The table is the table that you created in the previous task.
 3. Add the _other user_ as a member of the role you created.
 4. In the _other user's query window_, try to select all rows from your table. If the other user fails to select the rows, revisit the previous step.
@@ -66,8 +66,8 @@ If you have installed _SQL Server on your own computer_, do the following to get
 6. In _your user's query window_, list all rows from your table. You should now see the rows that the other user inserted.
 7. Revoke the `INSERT` privilege from the role you created in _your user's query window_.
 8. Test the current privileges of the role by doing the following in the _other user's query window_:
-  - Select all rows from your table.
-  - Insert a new row into your table.
+    - Select all rows from your table.
+    - Insert a new row into your table.
 9.  Remove all members from the role in _your user's query window_.
 10. Delete the role in _your user's query window_.
 
